@@ -177,17 +177,19 @@
         <button class="retry-btn" onclick="retryQuiz()">Retry</button>
       `;
       nextBtn.style.display = 'none';
+      
+      // ✅ Send quiz result back to parent only after quiz ends
+      window.parent.postMessage({ type: "quizResult", score: percent }, "*");
     }
-    window.parent.postMessage({ type: "quizResult", score: percent }, "*");
 
     function retryQuiz() {
       current = 0;
       score = 0;
       showQuestion();
     }
-    // Start the quiz
-    showQuestion();
 
+    // ✅ Start the quiz properly
+    showQuestion();
   </script>
 
 </body>
