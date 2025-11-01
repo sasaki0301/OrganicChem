@@ -41,6 +41,8 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.2s;
+      border: none;
+      cursor: pointer;
     }
     .quiz-button:hover {
       background-color: #0f5b52;
@@ -95,11 +97,17 @@
     <li>Functional groups define compound properties and reactions.</li>
   </ul>
 
-	<p style="text-align:center; margin-top:40px;">
-  	<button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
-	</p>
+  <p style="text-align:center; margin-top:40px;">
+    <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
+  </p>
 
-
+  <!-- 🚀 Trigger for Apps Script Dashboard -->
+  <script>
+    document.getElementById('takeQuizBtn').addEventListener('click', () => {
+      // This sends a message to the parent dashboard to open the quiz
+      window.parent.postMessage({ type: 'openQuiz' }, '*');
+    });
+  </script>
 
 </body>
 </html>
