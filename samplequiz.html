@@ -142,10 +142,18 @@
       const q = quizData[current];
       quizBox.innerHTML = `
         <div class="question">${current + 1}. ${q.q}</div>
-        <div class="choices">
-          ${q.c.map((choice, i) => `<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join('')}
-        </div>
+        <div class="choices"></div>
       `;
+
+      const choicesContainer = quizBox.querySelector('.choices');
+      q.c.forEach((choice, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.textContent = choice;
+        btn.addEventListener('click', () => selectChoice(i));
+        choicesContainer.appendChild(btn);
+      });
+
       nextBtn.style.display = 'none';
       selected = null;
     }
@@ -158,7 +166,7 @@
       nextBtn.style.display = 'inline-block';
     }
 
-    nextBtn.onclick = function() {
+    nextBtn.addEventListener('click', () => {
       if (selected === quizData[current].a) score++;
       current++;
       if (current < quizData.length) {
@@ -166,7 +174,7 @@
       } else {
         showResult();
       }
-    };
+    });
 
     function showResult() {
       const percent = Math.round((score / quizData.length) * 100);
@@ -174,12 +182,15 @@
         <div class="result">
           🎉 You scored ${score} out of ${quizData.length} (${percent}%)
         </div>
-        <button class="retry-btn" onclick="retryQuiz()">Retry</button>
+        <button class="retry-btn" id="retryBtn">Retry</button>
       `;
       nextBtn.style.display = 'none';
-      
-      // ✅ Send quiz result back to parent only after quiz ends
+
+      // ✅ Send result to parent dashboard
       window.parent.postMessage({ type: "quizResult", score: percent }, "*");
+
+      // Enable retry
+      document.getElementById('retryBtn').addEventListener('click', retryQuiz);
     }
 
     function retryQuiz() {
@@ -188,7 +199,7 @@
       showQuestion();
     }
 
-    // ✅ Start the quiz properly
+    // ✅ Start quiz
     showQuestion();
   </script>
 
