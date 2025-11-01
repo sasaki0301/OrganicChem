@@ -187,6 +187,9 @@
 
     // Start the quiz
     showQuestion();
+    
+    window.parent.postMessage({ type: "quizResult", score: percent }, "*");
+
   </script>
 
 </body>
