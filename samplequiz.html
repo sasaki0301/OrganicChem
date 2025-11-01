@@ -178,17 +178,15 @@
       `;
       nextBtn.style.display = 'none';
     }
+    window.parent.postMessage({ type: "quizResult", score: percent }, "*");
 
     function retryQuiz() {
       current = 0;
       score = 0;
       showQuestion();
     }
-
     // Start the quiz
     showQuestion();
-    
-    window.parent.postMessage({ type: "quizResult", score: percent }, "*");
 
   </script>
 
