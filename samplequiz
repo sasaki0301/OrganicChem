@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organic Chemistry Quiz</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f5f7fb;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    h2 {
+      color: #174ea6;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .choice {
+      width: 100%;
+      max-width: 400px;
+      background: #e8ecf8;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .choice:hover {
+      background: #d3dbf8;
+      transform: scale(1.02);
+    }
+
+    .choice.selected {
+      background: #174ea6;
+      color: #fff;
+    }
+
+    .next-btn {
+      background: #2b7de9;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .next-btn:hover {
+      background: #174ea6;
+    }
+
+    .result {
+      font-size: 18px;
+      font-weight: bold;
+      color: #174ea6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2>Introduction to Organic Chemistry – Quiz</h2>
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  </div>
+
+  <script>
+    const quizData = [
+      { q: "Which element forms the backbone of organic compounds?", c: ["Silicon", "Carbon", "Phosphorus", "Sodium"], a: 1 },
+      { q: "What type of bond involves the sharing of electron pairs between atoms?", c: ["Ionic", "Covalent", "Hydrogen", "Metallic"], a: 1 },
+      { q: "Which of the following is a saturated hydrocarbon?", c: ["Ethene", "Ethyne", "Ethane", "Benzene"], a: 2 },
+      { q: "A functional group characteristic of alcohols is:", c: ["–COOH", "–OH", "–NH₂", "–CHO"], a: 1 },
+      { q: "Which statement is true about isomers?", c: ["Different molecular formulas", "Same formula, different structure", "Mirror images", "Same structure, different names"], a: 1 },
+      { q: "Which hybridization is typical for carbon in an alkene (C=C)?", c: ["sp", "sp2", "sp3", "d-sp2"], a: 1 },
+      { q: "In a reaction mechanism, a nucleophile is:", c: ["Electron-rich species", "Electron-poor species", "Radical species", "Inert solvent"], a: 0 },
+      { q: "Which functional group is present in a ketone?", c: ["–COOH", "–C=O bonded to two carbons", "–OH", "–NH₂"], a: 1 },
+      { q: "Which of these is an unsaturated hydrocarbon?", c: ["Propane", "Butane", "Propene", "Cyclohexane"], a: 2 },
+      { q: "Stereochemistry focuses on:", c: ["Reaction sequence", "Spatial arrangement", "Reaction speed", "Color change"], a: 1 }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let selected = null;
+
+    const quizBox = document.getElementById('quizBox');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showQuestion() {
+      const q = quizData[current];
+      quizBox.innerHTML = `
+        <div class="question">${current + 1}. ${q.q}</div>
+        <div class="choices">
+          ${q.c.map((choice, i) => `<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join('')}
+        </div>
+      `;
+      nextBtn.style.display = 'none';
+      selected = null;
+    }
+
+    function selectChoice(i) {
+      selected = i;
+      document.querySelectorAll('.choice').forEach((btn, index) => {
+        btn.classList.toggle('selected', index === i);
+      });
+      nextBtn.style.display = 'inline-block';
+    }
+
+    nextBtn.onclick = function() {
+      if (selected === quizData[current].a) score++;
+      current++;
+      if (current < quizData.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
+
+    function showResult() {
+      const percent = Math.round((score / quizData.length) * 100);
+      quizBox.innerHTML = `
+        <div class="result">
+          You scored ${score} out of ${quizData.length} (${percent}%)
+        </div>
+      `;
+      nextBtn.style.display = 'none';
+    }
+
+    showQuestion();
+  </script>
+
+</body>
+</html>
