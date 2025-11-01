@@ -7,19 +7,23 @@
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #f5f7fb;
+      background: linear-gradient(to bottom right, #f5f7fb, #e9effd);
       margin: 0;
-      padding: 20px;
+      padding: 0;
       color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
 
     .quiz-container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      width: 90%;
+      max-width: 800px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
 
@@ -29,51 +33,53 @@
     }
 
     .question {
-      font-size: 18px;
-      margin-bottom: 16px;
+      font-size: 20px;
+      margin-bottom: 18px;
       font-weight: 600;
+      color: #1a237e;
     }
 
     .choices {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
+      margin-bottom: 20px;
     }
 
     .choice {
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       background: #e8ecf8;
       border: none;
-      border-radius: 8px;
-      padding: 12px 16px;
+      border-radius: 10px;
+      padding: 14px 18px;
       cursor: pointer;
       text-align: left;
       font-size: 16px;
-      transition: background 0.2s, transform 0.1s;
+      transition: all 0.2s ease;
     }
 
     .choice:hover {
       background: #d3dbf8;
-      transform: scale(1.02);
+      transform: translateY(-2px);
     }
 
     .choice.selected {
       background: #174ea6;
       color: #fff;
+      transform: scale(1.02);
     }
 
     .next-btn {
       background: #2b7de9;
       color: #fff;
       border: none;
-      padding: 12px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
-      margin-top: 20px;
       font-size: 16px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: 0.2s;
     }
 
     .next-btn:hover {
@@ -81,9 +87,25 @@
     }
 
     .result {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       color: #174ea6;
+      margin-top: 20px;
+    }
+
+    .retry-btn {
+      background: #136f63;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .retry-btn:hover {
+      background: #0f5b52;
     }
   </style>
 </head>
@@ -150,12 +172,20 @@
       const percent = Math.round((score / quizData.length) * 100);
       quizBox.innerHTML = `
         <div class="result">
-          You scored ${score} out of ${quizData.length} (${percent}%)
+          🎉 You scored ${score} out of ${quizData.length} (${percent}%)
         </div>
+        <button class="retry-btn" onclick="retryQuiz()">Retry</button>
       `;
       nextBtn.style.display = 'none';
     }
 
+    function retryQuiz() {
+      current = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    // Start the quiz
     showQuestion();
   </script>
 
