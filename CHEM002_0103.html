@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1 – Lesson 3: Applications of Organic Chemistry in Daily Life</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #136f63;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .image, .video {
+      text-align: center;
+      margin: 25px 0;
+    }
+    iframe {
+      border-radius: 12px;
+      width: 90%;
+      height: 400px;
+      max-width: 700px;
+    }
+    img {
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 25px;
+    }
+    .quiz-button {
+      display: inline-block;
+      background-color: #136f63;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .quiz-button:hover {
+      background-color: #0f5b52;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Applications of Organic Chemistry in Daily Life</h1>
+
+  <p>
+    Organic chemistry is not just confined to laboratories — it plays a crucial role in our everyday lives.
+    From the food we eat to the medicines we take and the materials we use, organic compounds are everywhere.
+  </p>
+
+  <div class="section">
+    <h2>1. Medicine and Pharmaceuticals</h2>
+    <p>
+      Many life-saving drugs are organic compounds. Aspirin, paracetamol, and penicillin are all products of organic synthesis.
+      Organic chemistry helps design new molecules for treating diseases, understanding how drugs interact with the body,
+      and improving drug stability and effectiveness.
+    </p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Aspirin-skeletal.svg" alt="Aspirin molecule structure" />
+      <p><em>Aspirin (C₉H₈O₄) – a widely used organic compound in medicine.</em></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Fuels and Energy</h2>
+    <p>
+      Hydrocarbons like methane, propane, and octane are organic compounds that power vehicles and generate electricity.
+      Organic chemistry also plays a major role in developing biofuels and renewable energy materials.
+    </p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Gas_flame_bunsen_burner.jpg" alt="Burning hydrocarbon flame" />
+      <p><em>Combustion of hydrocarbons releases energy used in daily activities.</em></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Food and Nutrition</h2>
+    <p>
+      Carbohydrates, proteins, fats, and vitamins — all essential nutrients — are organic compounds.
+      Organic chemistry explains how these molecules interact to provide energy, build tissues, and regulate body functions.
+    </p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Protein_structure.png" alt="Protein structure" />
+      <p><em>Proteins are complex organic molecules made up of amino acids.</em></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4. Polymers and Plastics</h2>
+    <p>
+      Organic chemistry is behind materials like plastics, rubber, and fibers.
+      Everyday items — from bottles and clothing to medical devices — rely on polymer science, a branch of organic chemistry.
+    </p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Polyethylene-chain-3D-vdW.png" alt="Polyethylene structure" />
+      <p><em>Polyethylene – a common plastic used in packaging and containers.</em></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5. Agriculture and Environment</h2>
+    <p>
+      Fertilizers, pesticides, and herbicides are organic or organometallic compounds.
+      Organic chemistry also contributes to developing eco-friendly and biodegradable materials to reduce pollution.
+    </p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Fertilizer_field.jpg" alt="Fertilizers in agriculture" />
+      <p><em>Organic compounds improve crop yield and sustainability in agriculture.</em></p>
+    </div>
+  </div>
+
+  <div class="video">
+    <h3>🎥 Watch: Organic Chemistry in Everyday Life</h3>
+    <iframe
+      src="https://www.youtube.com/embed/YmQD9oeblWs"
+      title="Organic Chemistry in Everyday Life"
+      allowfullscreen></iframe>
+  </div>
+
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li>Organic chemistry affects all aspects of daily life: medicine, food, fuel, and materials.</li>
+    <li>It helps create safer, more sustainable, and more effective products.</li>
+    <li>Knowledge of organic chemistry connects science directly to real-world applications.</li>
+  </ul>
+
+  <p style="text-align:center; margin-top:40px;">
+    <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
+  </p>
+
+  <script>
+    document.getElementById("takeQuizBtn").addEventListener("click", () => {
+      window.parent.postMessage({ type: "openQuiz", quiz: "chapter1_lesson3_quiz.html" }, "*");
+    });
+  </script>
+
+</body>
+</html>
