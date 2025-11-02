@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1 – Definition and Brief History of Organic Chemistry</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 { color: #136f63; }
+    .video, .image { text-align: center; margin: 20px 0; }
+    iframe {
+      border-radius: 12px;
+      width: 90%;
+      height: 400px;
+      max-width: 700px;
+    }
+    img {
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .quiz-button {
+      display: inline-block;
+      background-color: #136f63;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .quiz-button:hover { background-color: #0f5b52; }
+  </style>
+</head>
+<body>
+
+  <h1>Definition and Brief History of Organic Chemistry</h1>
+
+  <p>
+    Organic chemistry is the branch of chemistry that focuses on the study of compounds
+    containing carbon, particularly those that include carbon–hydrogen bonds.
+    These compounds form the basis of all known life on Earth and are fundamental to many
+    industries including pharmaceuticals, fuels, plastics, and food.
+  </p>
+
+  <h2>Historical Background</h2>
+  <p>
+    The term <em>organic</em> was originally used to describe substances derived from living organisms.
+    For centuries, scientists believed organic compounds could only be formed through a “vital force” in living things—a belief known as <strong>vitalism</strong>.
+  </p>
+
+  <div class="image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/W%C3%B6hler_urea_synthesis.png" alt="Wöhler’s Urea Synthesis Diagram" />
+    <p><em>Friedrich Wöhler’s synthesis of urea (1828) disproved vitalism and marked the birth of modern organic chemistry.</em></p>
+  </div>
+
+  <p>
+    In 1828, German chemist <strong>Friedrich Wöhler</strong> synthesized urea (an organic compound)
+    from ammonium cyanate (an inorganic compound). This groundbreaking experiment demonstrated that
+    organic compounds could be created from inorganic sources, paving the way for
+    the development of modern organic chemistry.
+  </p>
+
+  <h2>Evolution of Organic Chemistry</h2>
+  <ul>
+    <li><strong>19th Century – Structure and Theory:</strong> Development of structural theory by Kekulé, Couper, and others.</li>
+    <li><strong>20th Century – Mechanisms and Synthesis:</strong> Advances in reaction mechanisms and industrial synthesis.</li>
+    <li><strong>Modern Era – Organic Chemistry in Life and Technology:</strong> Applications in medicine, polymers, and materials science.</li>
+  </ul>
+
+  <div class="video">
+    <h3>🎥 Watch: The Birth of Organic Chemistry</h3>
+    <iframe src="https://www.youtube.com/embed/EI0YkTz7JqY"
+      title="The Birth of Organic Chemistry"
+      allowfullscreen></iframe>
+  </div>
+
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li>Organic chemistry studies carbon-based compounds and their reactions.</li>
+    <li>Vitalism was disproved by Wöhler’s synthesis of urea in 1828.</li>
+    <li>Modern organic chemistry connects chemistry, biology, and materials science.</li>
+  </ul>
+
+  <p style="text-align:center; margin-top:40px;">
+    <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
+  </p>
+
+  <script>
+    document.getElementById("takeQuizBtn").addEventListener("click", () => {
+      // Notify parent dashboard to open the quiz
+      window.parent.postMessage({ type: "openQuiz", quiz: "chapter1_lesson1_quiz.html" }, "*");
+    });
+  </script>
+
+</body>
+</html>
