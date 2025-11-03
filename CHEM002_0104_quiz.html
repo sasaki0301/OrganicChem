@@ -82,47 +82,85 @@
       { q: "25. Why is carbon so versatile in forming compounds?", c: ["It forms four covalent bonds", "It forms only ionic bonds", "It has low reactivity", "It is a noble gas"], a: 0 }
     ];
 
-    let current = 0, score = 0, selected = null;
-    const quizBox = document.getElementById("quizBox");
-    const nextBtn = document.getElementById("nextBtn");
+    let current = 0;
+    let score = 0;
+    let selected = null;
+
+    const quizBox = document.getElementById('quizBox');
+    const nextBtn = document.getElementById('nextBtn');
 
     function showQuestion() {
       const q = quizData[current];
-      quizBox.innerHTML = `<div class='question'>${q.q}</div><div class='choices'></div>`;
-      const choicesContainer = quizBox.querySelector(".choices");
+      quizBox.innerHTML = `
+        <div class="question">${current + 1}. ${q.q}</div>
+        <div class="choices"></div>
+      `;
+
+      const choicesContainer = quizBox.querySelector('.choices');
       q.c.forEach((choice, i) => {
-        const btn = document.createElement("button");
-        btn.className = "choice";
-        btn.innerHTML = choice;
-        btn.addEventListener("click", () => selectChoice(i));
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.textContent = choice;
+        btn.addEventListener('click', () => selectChoice(i));
         choicesContainer.appendChild(btn);
       });
-      nextBtn.style.display = "none"; selected = null;
+
+      nextBtn.style.display = 'none';
+      selected = null;
     }
 
     function selectChoice(i) {
       selected = i;
-      document.querySelectorAll(".choice").forEach((btn, idx) =>
-        btn.classList.toggle("selected", idx === i)
-      );
-      nextBtn.style.display = "inline-block";
+      document.querySelectorAll('.choice').forEach((btn, index) => {
+        btn.classList.toggle('selected', index === i);
+      });
+      nextBtn.style.display = 'inline-block';
     }
 
-    nextBtn.addEventListener("click", () => {
+    nextBtn.addEventListener('click', () => {
       if (selected === quizData[current].a) score++;
       current++;
-      if (current < quizData.length) showQuestion(); else showResult();
+      if (current < quizData.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
     });
 
     function showResult() {
       const percent = Math.round((score / quizData.length) * 100);
-      quizBox.innerHTML = `<div class='result'>🎉 You scored ${score} / ${quizData.length} (${percent}%)</div><button class='retry-btn' id='retryBtn'>Retry</button>`;
-      nextBtn.style.display = "none";
-      window.parent.postMessage({ type: "assessmentResult", score: percent }, "*");
-      document.getElementById("retryBtn").addEventListener("click", retryQuiz);
+      const passed = percent >= 80;
+      quizBox.innerHTML = `
+        <div class="result">
+          🎉 You scored ${score} out of ${quizData.length} (${percent}%)
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn" id="backBtn">⬅ Back</button>
+          <button class="quiz-btn" id="retryBtn">🔁 Retry</button>
+          <button class="quiz-btn primary" id="nextLessonBtn" ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+        </div>
+      `;
+      nextBtn.style.display = 'none';
+
+      // Send result to parent dashboard
+      window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+
+      document.getElementById('retryBtn').addEventListener('click', retryQuiz);
+      document.getElementById('backBtn').addEventListener('click', () => {
+        window.parent.postMessage({ type: "quizBack" }, "*");
+      });
+      document.getElementById('nextLessonBtn').addEventListener('click', () => {
+        if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+      });
     }
 
-    function retryQuiz() { current = 0; score = 0; showQuestion(); }
+    function retryQuiz() {
+      current = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    // Start quiz
     showQuestion();
   </script>
 
