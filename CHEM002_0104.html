@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1 Summary – Introduction to Organic Chemistry</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 { color: #136f63; }
+    ul { margin-left: 20px; }
+    .quiz-button {
+      display: inline-block;
+      background-color: #136f63;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .quiz-button:hover { background-color: #0f5b52; }
+  </style>
+</head>
+<body>
+
+  <h1>Chapter 1 Summary – Introduction to Organic Chemistry</h1>
+
+  <h2>Lesson 1: Definition and Brief History</h2>
+  <ul>
+    <li>Organic chemistry studies carbon-containing compounds and their reactions.</li>
+    <li>Early scientists believed in “vitalism” — that organic substances required a life force to form.</li>
+    <li>Friedrich Wöhler’s synthesis of urea (1828) disproved vitalism and began modern organic chemistry.</li>
+  </ul>
+
+  <h2>Lesson 2: Organic vs Inorganic Compounds</h2>
+  <ul>
+    <li>Organic compounds contain carbon–hydrogen bonds; inorganic compounds usually do not.</li>
+    <li>Organic compounds are generally covalent, flammable, and complex.</li>
+    <li>Inorganic compounds are often ionic, water-soluble, and have high melting points.</li>
+  </ul>
+
+  <h2>Lesson 3: Applications of Organic Chemistry in Daily Life</h2>
+  <ul>
+    <li>Medicine: organic molecules form drugs such as aspirin and penicillin.</li>
+    <li>Energy: hydrocarbons power vehicles and generate electricity.</li>
+    <li>Food: carbohydrates, proteins, and fats are organic nutrients.</li>
+    <li>Polymers: plastics and fibers are synthetic organic materials.</li>
+    <li>Agriculture: fertilizers and pesticides often contain organic compounds.</li>
+  </ul>
+
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li>Organic chemistry connects to biology, medicine, industry, and environment.</li>
+    <li>Carbon’s bonding versatility explains the diversity of organic compounds.</li>
+    <li>Understanding organic chemistry reveals how matter behaves in living systems and modern materials.</li>
+  </ul>
+
+  <p style="text-align:center; margin-top:40px;">
+    <button class="quiz-button" id="takeQuizBtn">Take Chapter 1 Assessment →</button>
+  </p>
+
+  <script>
+    document.getElementById("takeQuizBtn").addEventListener("click", () => {
+      window.parent.postMessage({ type: "openQuiz", quiz: "chapter1_assessment.html" }, "*");
+    });
+  </script>
+
+</body>
+</html>
