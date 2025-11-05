@@ -6,66 +6,124 @@
   <title>Chapter 2 – Lesson 2: Chemical Bonding Theory (Interactive)</title>
   <style>
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #fafafa;
-      color: #222;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.7;
-    }
-    h1, h2 { color: #136f63; margin-bottom: 8px; }
-    h3 { color: #174ea6; margin: 8px 0; }
-    p { margin: 10px 0; }
-    .section { margin-bottom: 26px; }
-    .image, .video { text-align: center; margin: 18px 0; }
-    img { border-radius: 8px; width: 80%; max-width: 520px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    iframe { width: 90%; max-width: 720px; height: 400px; border-radius: 12px; }
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #fafafa;
+  color: #222;
+  margin: 0;
+  padding: 24px;
+  line-height: 1.8;
+  font-size: 18px; /* 🔹 Increased base font size */
+}
 
-    /* Activity block */
-    .activity {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 14px 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin: 18px 0;
-    }
-    .activity h3 { margin: 0 0 8px 0; }
-    .toggle-btn {
-      background: #136f63;
-      color: #fff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.18s;
-      margin-top: 8px;
-    }
-    .toggle-btn:hover { background: #0f5b52; transform: translateY(-1px); }
-    .answer {
-      display: none;
-      margin-top: 12px;
-      background: #eef3ff;
-      padding: 12px;
-      border-radius: 8px;
-    }
+h1 {
+  color: #136f63;
+  font-size: 2.1em;  /* Larger headline */
+  margin-bottom: 0.4em;
+}
 
-    /* quiz button */
-    .quiz-button {
-      display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 20px;
-    }
-    .quiz-button:hover { background-color: #0f5b52; }
+h2 {
+  color: #136f63;
+  font-size: 1.6em;
+  margin-top: 1.4em;
+  margin-bottom: 0.3em;
+}
 
-    .note { font-size: 0.95rem; color: #555; margin-top: 6px; }
+h3 {
+  color: #174ea6;
+  font-size: 1.25em;
+  margin: 0.6em 0;
+}
+
+p {
+  margin: 12px 0;
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+/* Media / Image / Video */
+.image, .video {
+  text-align: center;
+  margin: 22px 0;
+}
+img {
+  border-radius: 10px;
+  width: 80%;
+  max-width: 540px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+iframe {
+  width: 90%;
+  max-width: 760px;
+  height: 430px;
+  border-radius: 12px;
+}
+
+/* Activity block */
+.activity {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  margin: 20px 0;
+}
+.activity h3 {
+  margin-top: 0;
+}
+.toggle-btn {
+  background: #136f63;
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.18s;
+  margin-top: 8px;
+}
+.toggle-btn:hover {
+  background: #0f5b52;
+  transform: translateY(-1px);
+}
+.answer {
+  display: none;
+  margin-top: 12px;
+  background: #eef3ff;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 17px;
+}
+
+/* Quiz or navigation button */
+.quiz-button, .next-btn, .retry-btn {
+  display: inline-block;
+  background-color: #136f63;
+  color: white;
+  padding: 13px 26px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 22px;
+}
+.quiz-button:hover, .next-btn:hover, .retry-btn:hover {
+  background-color: #0f5b52;
+}
+/* Subtext or note */
+.note {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 6px;
+}
+    
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
   </style>
 </head>
 <body>
