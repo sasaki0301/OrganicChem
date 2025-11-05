@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 2 – Lesson 1 Quiz: Review of Atomic Structure</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom right, #f5f7fb, #e9effd);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .quiz-container {
+      width: 90%;
+      max-width: 850px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #174ea6;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 18px;
+      font-weight: 600;
+      color: #1a237e;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .choice {
+      width: 100%;
+      max-width: 500px;
+      background: #e8ecf8;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 18px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .choice:hover {
+      background: #d3dbf8;
+      transform: translateY(-2px);
+    }
+
+    .choice.selected {
+      background: #174ea6;
+      color: #fff;
+      transform: scale(1.02);
+    }
+
+    .next-btn {
+      background: #2b7de9;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .next-btn:hover {
+      background: #174ea6;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #174ea6;
+      margin-top: 20px;
+    }
+
+    /* ✅ New Navigation Buttons */
+    .quiz-btn {
+      background: #e8ecf8;
+      color: #174ea6;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 15px;
+      margin: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-btn:hover {
+      background: #d3dbf8;
+      transform: translateY(-2px);
+    }
+
+    .quiz-btn.primary {
+      background: #2b7de9;
+      color: #fff;
+    }
+
+    .quiz-btn.primary:hover {
+      background: #174ea6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2>Review of Atomic Structure – Quiz</h2>
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  </div>
+
+  <script>
+    const quizData = [
+      { q: "1. Which subatomic particle determines the element’s identity?", c: ["Electron", "Neutron", "Proton", "Positron"], a: 2 },
+      { q: "2. An atom has 17 protons, 18 neutrons, and 17 electrons. What is its atomic mass number?", c: ["17", "18", "34", "35"], a: 3 },
+      { q: "3. The diagram below shows a simplified atom model.<br><img src='https://upload.wikimedia.org/wikipedia/commons/7/7e/Bohr_Model.svg' width='180'><br>What does each orbit represent?", c: ["Neutron layer", "Electron energy level", "Proton ring", "Atomic shell of nucleus"], a: 1 },
+      { q: "4. The atomic number represents:", c: ["Number of neutrons", "Sum of protons and neutrons", "Number of protons", "Number of isotopes"], a: 2 },
+      { q: "5. Which statement best describes isotopes?", c: ["Different elements with same number of protons", "Same element, different number of neutrons", "Different elements with same atomic mass", "Atoms with same number of electrons"], a: 1 },
+      { q: "6. The electron configuration of sodium is:", c: ["1s² 2s² 2p⁶ 3s¹", "1s² 2s² 2p⁶ 2s¹", "1s² 2p⁶ 3s²", "1s² 2s² 2p⁴"], a: 0 },
+      { q: "7. In a neutral atom, the number of electrons is always equal to the number of:", c: ["Neutrons", "Isotopes", "Protons", "Orbitals"], a: 2 },
+      { q: "8. Which subatomic particle has a negative charge?", c: ["Neutron", "Proton", "Electron", "Positron"], a: 2 },
+      { q: "9. The model below was proposed by Niels Bohr.<br><img src='https://upload.wikimedia.org/wikipedia/commons/4/42/Electron_shells.svg' width='180'><br>What did this model introduce?", c: ["Electron clouds", "Energy levels or shells", "Proton orbitals", "Nucleus splitting"], a: 1 },
+      { q: "10. What is the correct order of filling for these orbitals: 1s, 2s, 2p, 3s?", c: ["1s → 2s → 2p → 3s", "1s → 2p → 2s → 3s", "2p → 1s → 2s → 3s", "3s → 2p → 2s → 1s"], a: 0 }
+    ];
+
+    let current = 0, score = 0, selected = null;
+    const quizBox = document.getElementById("quizBox");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function showQuestion() {
+      const q = quizData[current];
+      quizBox.innerHTML = `<div class='question'>${q.q}</div><div class='choices'></div>`;
+      const choicesContainer = quizBox.querySelector(".choices");
+      q.c.forEach((choice, i) => {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.innerHTML = choice;
+        btn.addEventListener("click", () => selectChoice(i));
+        choicesContainer.appendChild(btn);
+      });
+      nextBtn.style.display = "none";
+      selected = null;
+    }
+
+    function selectChoice(i) {
+      selected = i;
+      document.querySelectorAll(".choice").forEach((btn, idx) =>
+        btn.classList.toggle("selected", idx === i)
+      );
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (selected === quizData[current].a) score++;
+      current++;
+      if (current < quizData.length) showQuestion(); else showResult();
+    });
+
+    function showResult() {
+      const percent = Math.round((score / quizData.length) * 100);
+      const passed = percent >= 80;
+      quizBox.innerHTML = `
+        <div class='result'>🎉 You scored ${score} out of ${quizData.length} (${percent}%)</div>
+        <div class='quiz-nav'>
+          <button class='quiz-btn' id='backBtn'>⬅ Back</button>
+          <button class='quiz-btn' id='retryBtn'>🔁 Retry</button>
+          <button class='quiz-btn primary' id='nextLessonBtn' ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+        </div>
+      `;
+      nextBtn.style.display = "none";
+      window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+
+      document.getElementById("retryBtn").addEventListener("click", retryQuiz);
+      document.getElementById("backBtn").addEventListener("click", () => {
+        window.parent.postMessage({ type: "quizBack" }, "*");
+      });
+      document.getElementById("nextLessonBtn").addEventListener("click", () => {
+        if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+      });
+    }
+
+    function retryQuiz() {
+      current = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
