@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 2 – Lesson 1: Review of Atomic Structure</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #136f63;
+    }
+    .image, .video {
+      text-align: center;
+      margin: 25px 0;
+    }
+    iframe {
+      border-radius: 12px;
+      width: 90%;
+      height: 400px;
+      max-width: 700px;
+    }
+    img {
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ✅ Activity Blocks */
+    .activity {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 15px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin: 20px 0;
+    }
+    .activity h3 {
+      color: #174ea6;
+    }
+    .answer {
+      display: none;
+      margin-top: 10px;
+      background: #eef3ff;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .toggle-btn {
+      background: #136f63;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .toggle-btn:hover {
+      background: #0f5b52;
+    }
+
+    .quiz-button {
+      display: inline-block;
+      background-color: #136f63;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .quiz-button:hover {
+      background-color: #0f5b52;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Review of Atomic Structure</h1>
+
+  <p>
+    Before we dive into organic chemistry, let’s recall the fundamental structure of the atom — the basic unit of all matter. Understanding atomic structure helps explain why atoms bond, form molecules, and exhibit chemical behavior.
+  </p>
+
+  <h2>1. The Structure of the Atom</h2>
+  <p>
+    Atoms consist of three subatomic particles: protons, neutrons, and electrons. Protons and neutrons are found in the nucleus, while electrons move around it in specific energy levels or shells.
+  </p>
+
+  <div class="image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Bohr_Model.svg" alt="Bohr model of an atom" />
+    <p><em>Bohr Model – electrons orbit the nucleus in quantized energy levels.</em></p>
+  </div>
+
+  <div class="activity">
+    <h3>💡 Activity 1: Counting Subatomic Particles</h3>
+    <p>An atom of sodium (Na) has an atomic number of 11 and a mass number of 23. How many protons, neutrons, and electrons does it have?</p>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+    <div class="answer">
+      <strong>Answer:</strong> 11 protons, 12 neutrons, and 11 electrons.<br>
+      <strong>Explanation:</strong> Atomic number = protons = electrons. Mass number – atomic number = neutrons → 23 – 11 = 12.
+    </div>
+  </div>
+
+  <h2>2. Atomic Number and Mass Number</h2>
+  <p>
+    - The <strong>atomic number</strong> identifies the element and equals the number of protons.<br>
+    - The <strong>mass number</strong> is the total number of protons and neutrons in the nucleus.<br>
+    - Isotopes are atoms of the same element with different numbers of neutrons.
+  </p>
+
+  <div class="activity">
+    <h3>🧠 Activity 2: Identifying Isotopes</h3>
+    <p>Carbon-12 and Carbon-14 are both isotopes of carbon. What makes them isotopes of the same element?</p>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+    <div class="answer">
+      <strong>Answer:</strong> They have the same number of protons but different numbers of neutrons.<br>
+      <strong>Explanation:</strong> All carbon atoms have 6 protons. Carbon-12 has 6 neutrons; Carbon-14 has 8 neutrons.
+    </div>
+  </div>
+
+  <h2>3. Electron Configuration and Energy Levels</h2>
+  <p>
+    Electrons occupy specific energy levels around the nucleus. The arrangement of these electrons determines how atoms bond in molecules.
+  </p>
+
+  <div class="image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Electron_shells.svg" alt="Electron shells diagram" />
+    <p><em>Electrons fill energy levels in increasing order of energy.</em></p>
+  </div>
+
+  <div class="activity">
+    <h3>⚡ Activity 3: Electron Configuration Practice</h3>
+    <p>Write the electron configuration of oxygen (atomic number 8).</p>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+    <div class="answer">
+      <strong>Answer:</strong> 1s² 2s² 2p⁴<br>
+      <strong>Explanation:</strong> The first two electrons fill the 1s orbital, two more fill the 2s, and four occupy the 2p orbital.
+    </div>
+  </div>
+
+  <div class="video">
+    <h3>🎥 Watch: Structure of the Atom – FuseSchool</h3>
+    <iframe
+      src="https://www.youtube.com/embed/MxIopx8rxNQ"
+      title="Structure of the Atom – FuseSchool"
+      allowfullscreen></iframe>
+  </div>
+
+  <h2>4. Key Takeaways</h2>
+  <ul>
+    <li>Atoms are composed of protons, neutrons, and electrons.</li>
+    <li>Atomic number = number of protons = number of electrons (in a neutral atom).</li>
+    <li>Electron configuration determines bonding and reactivity.</li>
+    <li>Isotopes have the same number of protons but different neutrons.</li>
+  </ul>
+
+  <p style="text-align:center; margin-top:40px;">
+    <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
+  </p>
+
+  <script>
+    function toggleAnswer(btn) {
+      const answer = btn.nextElementSibling;
+      const isVisible = answer.style.display === "block";
+      answer.style.display = isVisible ? "none" : "block";
+      btn.textContent = isVisible ? "Show Answer" : "Hide Answer";
+    }
+
+    document.getElementById("takeQuizBtn").addEventListener("click", () => {
+      window.parent.postMessage({ type: "openQuiz", quiz: "chapter2_lesson1_quiz.html" }, "*");
+    });
+  </script>
+
+</body>
+</html>
