@@ -10,75 +10,120 @@
       background-color: #fafafa;
       color: #222;
       margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #136f63;
-    }
-    .image, .video {
-      text-align: center;
-      margin: 25px 0;
-    }
-    iframe {
-      border-radius: 12px;
-      width: 90%;
-      height: 400px;
-      max-width: 700px;
-    }
-    img {
-      border-radius: 10px;
-      width: 80%;
-      max-width: 500px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      line-height: 1.8;
+      font-size: 24px; /* 🔹 Increased base font size */
     }
 
-    /* ✅ Activity Blocks */
-    .activity {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 15px 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin: 20px 0;
-    }
-    .activity h3 {
-      color: #174ea6;
-    }
-    .answer {
-      display: none;
-      margin-top: 10px;
-      background: #eef3ff;
-      padding: 10px;
-      border-radius: 8px;
-    }
-    .toggle-btn {
-      background: #136f63;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .toggle-btn:hover {
-      background: #0f5b52;
-    }
+  h1 {
+    color: #136f63;
+    font-size: 2.1em;  /* Larger headline */
+    margin-bottom: 0.4em;
+  }
 
-    .quiz-button {
-      display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      border: none;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .quiz-button:hover {
-      background-color: #0f5b52;
-    }
+  h2 {
+    color: #136f63;
+    font-size: 1.6em;
+    margin-top: 1.4em;
+    margin-bottom: 0.3em;
+  }
+
+  h3 {
+    color: #174ea6;
+    font-size: 1.25em;
+    margin: 0.6em 0;
+  }
+
+  p {
+    margin: 12px 0;
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+
+  /* Media / Image / Video */
+  .image, .video {
+    text-align: center;
+    margin: 22px 0;
+  }
+  img {
+    border-radius: 10px;
+    width: 80%;
+    max-width: 540px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  iframe {
+    width: 90%;
+    max-width: 760px;
+    height: 430px;
+    border-radius: 12px;
+  }
+
+  /* Activity block */
+  .activity {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    margin: 20px 0;
+  }
+  .activity h3 {
+    margin-top: 0;
+  }
+  .toggle-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.18s;
+    margin-top: 8px;
+  }
+  .toggle-btn:hover {
+    background: #0f5b52;
+    transform: translateY(-1px);
+  }
+  .answer {
+    display: none;
+    margin-top: 12px;
+    background: #eef3ff;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 17px;
+  }
+
+  /* Quiz or navigation button */
+  .quiz-button, .next-btn, .retry-btn {
+    display: inline-block;
+    background-color: #136f63;
+    color: white;
+    padding: 13px 26px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 22px;
+  }
+  .quiz-button:hover, .next-btn:hover, .retry-btn:hover {
+    background-color: #0f5b52;
+  }
+  /* Subtext or note */
+  .note {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 6px;
+  }
+    
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
   </style>
 </head>
 <body>
@@ -104,8 +149,8 @@
     <p>An atom of sodium (Na) has an atomic number of 11 and a mass number of 23. How many protons, neutrons, and electrons does it have?</p>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
     <div class="answer">
-      <strong>Answer:</strong> 11 protons, 12 neutrons, and 11 electrons.<br>
-      <strong>Explanation:</strong> Atomic number = protons = electrons. Mass number – atomic number = neutrons → 23 – 11 = 12.
+      <strong>Answer:</strong><br>11 protons, 12 neutrons, and 11 electrons.
+      <strong>Explanation:</strong><br>Atomic number = protons = electrons. Mass number – atomic number = neutrons → 23 – 11 = 12.
     </div>
   </div>
 
@@ -121,8 +166,8 @@
     <p>Carbon-12 and Carbon-14 are both isotopes of carbon. What makes them isotopes of the same element?</p>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
     <div class="answer">
-      <strong>Answer:</strong> They have the same number of protons but different numbers of neutrons.<br>
-      <strong>Explanation:</strong> All carbon atoms have 6 protons. Carbon-12 has 6 neutrons; Carbon-14 has 8 neutrons.
+      <strong>Answer:</strong><br>They have the same number of protons but different numbers of neutrons.<br>
+      <strong>Explanation:</strong><br>All carbon atoms have 6 protons. Carbon-12 has 6 neutrons; Carbon-14 has 8 neutrons.
     </div>
   </div>
 
@@ -141,8 +186,8 @@
     <p>Write the electron configuration of Oxygen (atomic number 8).</p> 
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
     <div class="answer">
-      <strong>Answer:</strong> 1s² 2s² 2p⁴<br>
-      <strong>Explanation:</strong> The first two electrons fill the 1s orbital, two more fill the 2s, and four occupy the 2p orbital.
+      <strong>Answer:</strong><br>1s² 2s² 2p⁴
+      <strong>Explanation:</strong><br>The first two electrons fill the 1s orbital, two more fill the 2s, and four occupy the 2p orbital.
     </div>
   </div>
 
