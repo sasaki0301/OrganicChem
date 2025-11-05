@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chapter 2 – Lesson 2: Chemical Bonding Theory (Interactive)</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.7;
+    }
+    h1, h2 { color: #136f63; margin-bottom: 8px; }
+    h3 { color: #174ea6; margin: 8px 0; }
+    p { margin: 10px 0; }
+    .section { margin-bottom: 26px; }
+    .image, .video { text-align: center; margin: 18px 0; }
+    img { border-radius: 8px; width: 80%; max-width: 520px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    iframe { width: 90%; max-width: 720px; height: 400px; border-radius: 12px; }
+
+    /* Activity block */
+    .activity {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin: 18px 0;
+    }
+    .activity h3 { margin: 0 0 8px 0; }
+    .toggle-btn {
+      background: #136f63;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.18s;
+      margin-top: 8px;
+    }
+    .toggle-btn:hover { background: #0f5b52; transform: translateY(-1px); }
+    .answer {
+      display: none;
+      margin-top: 12px;
+      background: #eef3ff;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    /* quiz button */
+    .quiz-button {
+      display: inline-block;
+      background-color: #136f63;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 20px;
+    }
+    .quiz-button:hover { background-color: #0f5b52; }
+
+    /* small note */
+    .note { font-size: 0.95rem; color: #555; margin-top: 6px; }
+
+    /* code-like */
+    .mono { font-family: "Courier New", monospace; background:#f3f6ff; padding:4px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+
+  <h1>Chemical Bonding Theory — Step by Step</h1>
+  <p class="note">This lesson explains how atoms form bonds, why different bond types exist, and how bonding influences molecular properties. Work through the short activities to check understanding — use the <strong>Show Answer</strong> toggle only after you attempt each question.</p>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <h2>1. Why atoms bond</h2>
+    <p>Atoms bond to reach a more stable (lower energy) arrangement. Typically this means achieving a filled valence shell — for many atoms this is the noble gas configuration (octet rule for many second-row elements).</p>
+
+    <div class="activity">
+      <h3>Activity 1: Stability and the Octet Rule</h3>
+      <p>Explain, in your own words, why a sodium atom tends to lose an electron while a chlorine atom tends to gain one.</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Answer:</strong> Sodium (Na) has one valence electron in a 3s orbital; losing it gives the Na⁺ ion a full octet in the previous shell (like neon). Chlorine (Cl) has seven valence electrons; gaining one gives Cl⁻ a full octet. This change lowers the total energy, making the ions more stable.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <h2>2. Ionic bonding</h2>
+    <p><strong>Definition:</strong> Ionic bonding occurs when one atom transfers electrons to another, producing oppositely charged ions that attract each other.</p>
+    <p><strong>Typical features:</strong> metals + nonmetals, formation of cations and anions, high melting points, crystalline solids, conducts electricity when molten or dissolved.</p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/NaCl-sodium-chloride-3D-ionic.png" alt="Sodium chloride ionic lattice" />
+      <p class="note"><em>Example: NaCl — Na transfers an electron to Cl to form Na⁺ and Cl⁻ which pack into an ionic lattice.</em></p>
+    </div>
+
+    <div class="activity">
+      <h3>Activity 2: Identify Ionic vs Covalent</h3>
+      <p>Which of the following pairs would most likely form an ionic bond? A) Na + Cl  B) C + O  C) H + H</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Answer:</strong> A) Na + Cl. Sodium (a metal) and chlorine (a nonmetal) differ greatly in electronegativity; sodium tends to lose an electron while chlorine gains — forming ions and an ionic bond.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <h2>3. Covalent bonding</h2>
+    <p><strong>Definition:</strong> Covalent bonds form when two atoms share one or more pairs of electrons. This commonly occurs between nonmetal atoms.</p>
+    <p>We distinguish <strong>nonpolar covalent</strong> (equal sharing) from <strong>polar covalent</strong> (unequal sharing) based on electronegativity differences.</p>
+
+    <div class="image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Covalent-bond.svg" alt="Covalent bond diagram" />
+      <p class="note"><em>Line formulas (single, double bonds) represent shared electron pairs between atoms.</em></p>
+    </div>
+
+    <div class="activity">
+      <h3>Activity 3: Predict Bond Type</h3>
+      <p>Predict the bond type between the following atom pairs (Ionic / Polar covalent / Nonpolar covalent): A) H–H  B) H–Cl  C) Na–Cl</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Answer:</strong> A) H–H = Nonpolar covalent (same atom, equal sharing). B) H–Cl = Polar covalent (Cl more electronegative than H, electrons pulled toward Cl). C) Na–Cl = Ionic (large electronegativity difference, electron transfer).
+      </div>
+    </div>
+
+    <div class="activity">
+      <h3>Activity 4: Simple Lewis Structure</h3>
+      <p>Draw the Lewis structure for H<sub>2</sub>O (water). Then explain how the bonding leads to a bent molecular shape.</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Answer:</strong> Lewis structure: O in center with two lone pairs and two H atoms bonded by single bonds. Electron pairs (bonding & lone pairs) repel; lone pairs exert slightly more repulsion, producing a bent shape (~104.5°). VSEPR explains the geometry.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <h2>4. Metallic bonding & coordinate (dative) bonds</h2>
+    <p><strong>Metallic bonding:</strong> Atoms in metals share a 'sea of electrons' that are delocalized across the lattice — explains conductivity and malleability.</p>
+    <p><strong>Coordinate (dative) bond:</strong> A covalent bond where one atom donates both electrons in the shared pair (common in Lewis acid-base reactions).</p>
+
+    <div class="activity">
+      <h3>Activity 5: Recognize a Coordinate Bond</h3>
+      <p>Which of the following shows a coordinate bond? A) NH<sub>3</sub> → H<sup>+</sup> forming NH<sub>4</sub><sup>+</sup>  B) H<sub>2</sub> + Cl<sub>2</sub>  C) NaCl formation</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Answer:</strong> A) NH<sub>3</sub> donating its lone pair to a proton (H⁺) forms NH<sub>4</sub><sup>+</sup> via a coordinate bond (both electrons of the bond come from N).
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <h2>5. Bond polarity, bond length & bond energy</h2>
+    <p><strong>Bond polarity:</strong> arises from differences in electronegativity — creates partial charges (δ⁺ / δ⁻) within the bond.</p>
+    <p><strong>Bond length:</strong> average distance between nuclei of two bonded atoms (shorter bonds usually stronger).</p>
+    <p><strong>Bond energy:</strong> energy required to break a bond — multiple bonds (double, triple) are stronger and shorter than single bonds.</p>
+
+    <div class="activity">
+      <h3>Activity 6: Compare Bond Lengths & Energies</h3>
+      <p>Which has the shortest bond length and highest bond energy: C–C single bond, C=C double bond, or C≡C triple bond?</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Answer:</strong> C≡C (triple bond) has the shortest bond length and highest bond energy; C=C is intermediate; C–C single is the longest and weakest of the three.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: resources -->
+  <div class="section">
+    <h2>Further Resources (searchable)</h2>
+    <p class="note">If you want a short visual video, search for <em>"Ionic vs covalent bonds Khan Academy"</em> or visit Khan Academy’s chemistry unit on bonding (<span class="mono">https://www.khanacademy.org</span> → Chemistry → Chemical bonds). Below are reliable image sources included in this lesson (all from Wikimedia Commons).</p>
+
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Chemical_bond" target="_blank" rel="noopener">Wikipedia — Chemical bond</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/Main_Page" target="_blank" rel="noopener">Wikimedia Commons (images used in lesson)</a></li>
+    </ul>
+  </div>
+
+  <div style="text-align:center; margin-top:18px;">
+    <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
+  </div>
+
+  <script>
+    /* Toggle answer used in activities */
+    function toggleAnswer(btn) {
+      const answer = btn.nextElementSibling;
+      const isVisible = answer.style.display === "block";
+      answer.style.display = isVisible ? "none" : "block";
+      btn.textContent = isVisible ? "Show Answer" : "Hide Answer";
+    }
+
+    /* Quiz trigger to parent */
+    document.getElementById('takeQuizBtn').addEventListener('click', () => {
+      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter2_lesson2_quiz.html' }, '*');
+    });
+  </script>
+
+</body>
+</html>
