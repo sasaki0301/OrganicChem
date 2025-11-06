@@ -1,205 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 2 – Comprehensive Assessment</title>
-<style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to bottom right, #f5f7fb, #e9effd);
-    margin: 0; padding: 0;
-    color: #333;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 100vh;
-    font-size: 20px;
-  }
-  .quiz-container {
-    width: 90%; max-width: 900px;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  h2 { color: #174ea6; margin-bottom: 20px; font-size: 28px; }
-  .question { font-size: 22px; margin-bottom: 18px; font-weight: 600; color: #1a237e; }
-  .choices {
-    display: flex; flex-direction: column; gap: 12px;
-    align-items: center; margin-bottom: 20px;
-  }
-  .choice {
-    width: 100%; max-width: 550px; background: #e8ecf8;
-    border: none; border-radius: 10px; padding: 14px 18px;
-    cursor: pointer; text-align: left;
-    font-size: 18px; transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-  .next-btn {
-    background: #2b7de9; color: #fff; border: none;
-    padding: 12px 24px; border-radius: 8px; font-size: 18px;
-    cursor: pointer; transition: 0.2s;
-  }
-  .next-btn:hover { background: #174ea6; }
-  .result {
-    font-size: 22px; font-weight: bold; color: #174ea6; margin-top: 20px;
-  }
-  .quiz-btn {
-    background: #e8ecf8; color: #174ea6; border: none;
-    border-radius: 8px; padding: 10px 20px;
-    font-size: 17px; margin: 5px; cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #2b7de9; color: #fff; }
-  .quiz-btn.primary:hover { background: #174ea6; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 2 – Comprehensive Assessment</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom right, #f5f7fb, #e9effd);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      min-height: 100vh;
+    }
+    .quiz-container {
+      width: 90%;
+      max-width: 850px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 { color: #174ea6; margin-bottom: 20px; font-size: 30px; }
+    .question { font-size: 22px; margin-bottom: 18px; font-weight: 600; color: #1a237e; }
+    .choices {
+      display: flex; flex-direction: column; gap: 12px;
+      align-items: center; margin-bottom: 20px;
+    }
+    .choice {
+      width: 100%; max-width: 600px; background: #e8ecf8;
+      border: none; border-radius: 10px; padding: 16px 20px;
+      cursor: pointer; text-align: left;
+      font-size: 20px; transition: all 0.2s ease;
+    }
+    .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+    .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
+    .next-btn {
+      background: #2b7de9; color: #fff; border: none;
+      padding: 12px 24px; border-radius: 8px; font-size: 20px; cursor: pointer;
+    }
+    .next-btn:hover { background: #174ea6; }
+    .result { font-size: 24px; font-weight: bold; color: #174ea6; margin-top: 20px; }
+    .retry-btn {
+      background: #136f63; color: white; border: none;
+      padding: 10px 20px; border-radius: 8px; margin-top: 20px;
+      font-size: 20px; cursor: pointer;
+    }
+    .retry-btn:hover { background: #0f5b52; }
+    .quiz-btn {
+      background: #e8ecf8;
+      color: #174ea6;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 17px;
+      margin: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+    .quiz-btn.primary { background: #2b7de9; color: #fff; }
+    .quiz-btn.primary:hover { background: #174ea6; }
+  </style>
 </head>
 <body>
 
-<div class="quiz-container">
-  <h2 id="sectionTitle">Atomic Structure</h2>
-  <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-</div>
+  <div class="quiz-container">
+    <h2>Chapter 2 – Comprehensive Assessment</h2>
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  </div>
 
-<script>
-const quizSections = [
-  {
-    title: "Atomic Structure",
-    questions: [
-      { q: "Which particle determines the atomic number of an element?", c: ["Neutron", "Electron", "Proton", "Nucleus"], a: 2 },
-      { q: "Electrons are arranged in regions called:", c: ["Nuclei", "Orbitals", "Isotopes", "Molecules"], a: 1 },
-      { q: "What is the maximum number of electrons in the 2nd shell?", c: ["2", "8", "18", "32"], a: 1 },
-      { q: "Which statement best describes an isotope?", c: ["Same protons, different neutrons", "Different elements", "Different electrons", "Same neutrons, different protons"], a: 0 },
-      { q: "What is the electron configuration of sodium (Z=11)?", c: ["1s² 2s² 2p⁶ 3s¹", "1s² 2s² 2p⁴", "1s² 2s² 2p⁶ 3p¹", "1s² 2p⁶ 3s²"], a: 0 },
-    ]
-  },
-  {
-    title: "Chemical Bonding",
-    questions: [
-      { q: "Ionic bonds form between:", c: ["Two metals", "Two nonmetals", "A metal and a nonmetal", "Gases only"], a: 2 },
-      { q: "Covalent bonds involve:", c: ["Electron transfer", "Sharing of electrons", "Loss of protons", "Delocalized electrons"], a: 1 },
-      { q: "Which has a polar covalent bond?", c: ["H₂", "Cl₂", "HCl", "NaCl"], a: 2 },
-      { q: "Metallic bonds are best described as:", c: ["Shared pairs between nonmetals", "Sea of delocalized electrons", "Transfer of electrons", "Magnetic attraction"], a: 1 },
-      { q: "Coordinate bonds occur when:", c: ["Both atoms donate one electron", "One atom donates both electrons", "Electrons are lost", "Neutrons are shared"], a: 1 },
-    ]
-  },
-  {
-    title: "Hybridization & Structure",
-    questions: [
-      { q: "The hybridization of carbon in methane (CH₄) is:", c: ["sp", "sp²", "sp³", "p⁴"], a: 2 },
-      { q: "An sp² hybridized atom forms bonds with what geometry?", c: ["Linear", "Trigonal planar", "Tetrahedral", "Bent"], a: 1 },
-      { q: "Triple bonds involve:", c: ["3 sigma", "1 sigma + 2 pi", "2 sigma + 1 pi", "3 pi"], a: 1 },
-      { q: "Bond angles in CH₄ are approximately:", c: ["120°", "109.5°", "90°", "180°"], a: 1 },
-      { q: "sp hybridization gives what molecular shape?", c: ["Linear", "Trigonal planar", "Tetrahedral", "Bent"], a: 0 },
-    ]
-  },
-  {
-    title: "Drawing Chemical Structures",
-    questions: [
-      { q: "Lewis structures show:", c: ["All electrons including core", "Only valence electrons", "Neutron distribution", "Bond polarity only"], a: 1 },
-      { q: "Each line in a Lewis structure represents:", c: ["1 electron", "2 shared electrons", "1 proton", "1 neutron"], a: 1 },
-      { q: "According to VSEPR, molecules adjust to minimize:", c: ["Electron repulsion", "Proton attraction", "Mass", "Bond energy"], a: 0 },
-      { q: "Water has a ___ shape due to two lone pairs on oxygen.", c: ["Linear", "Trigonal", "Bent", "Planar"], a: 2 },
-      { q: "CO₂ has what molecular shape?", c: ["Bent", "Linear", "Tetrahedral", "Trigonal pyramidal"], a: 1 },
-    ]
-  },
-  {
-    title: "Nomenclature Principles",
-    questions: [
-      { q: "What is the correct order in an IUPAC name?", c: ["Suffix–Parent–Prefix", "Prefix–Parent–Suffix", "Parent–Prefix–Suffix", "Group–Subgroup–Chain"], a: 1 },
-      { q: "The prefix in a compound name indicates:", c: ["The parent chain", "The substituents", "The suffix type", "The hybridization"], a: 1 },
-      { q: "What does the suffix ‘-ol’ represent?", c: ["Alcohol group", "Acid group", "Amine group", "Aldehyde group"], a: 0 },
-      { q: "If both –COOH and –OH are present, which suffix is used?", c: ["–ol", "–oic acid", "–al", "–amine"], a: 1 },
-      { q: "When multiple substituents exist, they are listed:", c: ["By mass", "By order of discovery", "Alphabetically", "By chain position"], a: 2 },
-    ]
-  }
-];
+  <script>
+    const quizData = [
+      // --- Atomic Structure (5) ---
+      { q: "1. Which subatomic particle determines the atomic number of an element?", c: ["Proton", "Electron", "Neutron", "Nucleus"], a: 0 },
+      { q: "2. The 2p orbital can hold a maximum of how many electrons?", c: ["2", "4", "6", "8"], a: 2 },
+      { q: "3. The electron configuration of sodium (Z = 11) is:", c: ["1s² 2s² 2p⁶ 3s¹", "1s² 2s² 2p⁴", "1s² 2s² 2p⁶ 3p¹", "1s² 2p⁶ 3s²"], a: 0 },
+      { q: "4. Isotopes of the same element differ in:", c: ["Number of protons", "Number of neutrons", "Number of electrons", "Charge"], a: 1 },
+      { q: "5. The outermost electrons responsible for chemical bonding are called:", c: ["Core electrons", "Valence electrons", "Stable electrons", "Bond electrons"], a: 1 },
 
-let currentSection = 0, currentQ = 0, score = 0, selected = null;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const sectionTitle = document.getElementById("sectionTitle");
+      // --- Chemical Bonding (5) ---
+      { q: "6. Ionic bonds occur through:", c: ["Electron transfer", "Electron sharing", "Delocalized electrons", "Nuclear attraction"], a: 0 },
+      { q: "7. Covalent bonds are common between:", c: ["Metals", "Nonmetals", "Metalloids", "Inert gases"], a: 1 },
+      { q: "8. Metallic bonding explains:", c: ["Hardness of salts", "Malleability and conductivity", "Acid strength", "Polarity"], a: 1 },
+      { q: "9. The molecule HCl has what bond type?", c: ["Ionic", "Nonpolar covalent", "Polar covalent", "Metallic"], a: 2 },
+      { q: "10. In a coordinate bond, both electrons come from:", c: ["Each atom equally", "The more electronegative atom", "The same atom (donor)", "The nucleus"], a: 2 },
 
-function loadQuestion() {
-  const q = quizSections[currentSection].questions[currentQ];
-  quizBox.innerHTML = `
-    <div class="question">${currentQ + 1}. ${q.q}</div>
-    <div class="choices"></div>`;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-}
+      // --- Hybridization & Structure (5) ---
+      { q: "11. The carbon in CH₄ is:", c: ["sp hybridized", "sp² hybridized", "sp³ hybridized", "unhybridized"], a: 2 },
+      { q: "12. An sp² carbon forms what geometry?", c: ["Tetrahedral", "Linear", "Trigonal planar", "Bent"], a: 2 },
+      { q: "13. Triple bonds consist of:", c: ["1 sigma, 2 pi bonds", "3 sigma bonds", "2 sigma, 1 pi bonds", "3 pi bonds"], a: 0 },
+      { q: "14. What is the bond angle in CH₄?", c: ["90°", "120°", "109.5°", "180°"], a: 2 },
+      { q: "15. Ethene (C₂H₄) involves which type of hybridization?", c: ["sp³", "sp²", "sp", "none"], a: 1 },
 
-function selectChoice(i) {
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => 
-    btn.classList.toggle("selected", idx === i)
-  );
-  nextBtn.style.display = "inline-block";
-}
+      // --- Drawing & Structure (5) ---
+      { q: "16. A Lewis structure represents:", c: ["All electrons", "Only valence electrons", "Atomic mass", "Core electrons"], a: 1 },
+      { q: "17. Each single bond represents how many shared electrons?", c: ["1", "2", "3", "4"], a: 1 },
+      { q: "18. VSEPR theory helps predict:", c: ["Bond polarity", "Bond length", "Molecular shape", "Reaction rate"], a: 2 },
+      { q: "19. H₂O has a ___ shape due to lone pairs on oxygen.", c: ["Linear", "Tetrahedral", "Bent", "Planar"], a: 2 },
+      { q: "20. CO₂ is linear because:", c: ["Central atom sp³ hybridized", "Lone pairs push bonds", "It has two double bonds 180° apart", "It has a single bond only"], a: 2 },
 
-nextBtn.addEventListener("click", () => {
-  if (selected === quizSections[currentSection].questions[currentQ].a) score++;
-  currentQ++;
-  if (currentQ < quizSections[currentSection].questions.length) {
-    loadQuestion();
-  } else {
-    showSectionResult();
-  }
-});
+      // --- Nomenclature (5) ---
+      { q: "21. The IUPAC name has what basic order?", c: ["Prefix–Parent–Suffix", "Suffix–Parent–Prefix", "Parent–Prefix–Suffix", "Group–Chain–Name"], a: 0 },
+      { q: "22. The parent chain indicates:", c: ["Substituents", "Longest continuous carbon chain", "Functional group type", "Hydrogen atoms"], a: 1 },
+      { q: "23. The suffix '-ol' means the compound is:", c: ["An alcohol", "An acid", "An aldehyde", "An ether"], a: 0 },
+      { q: "24. When both –COOH and –OH are present, which is used for naming?", c: ["–ol", "–al", "–oic acid", "–one"], a: 2 },
+      { q: "25. Substituents in names are listed:", c: ["By size", "By order of discovery", "Alphabetically", "By bond order"], a: 2 }
+    ];
 
-function showSectionResult() {
-  const total = quizSections[currentSection].questions.length;
-  const percent = Math.round((score / total) * 100);
-  const passed = percent >= 80;
-  quizBox.innerHTML = `
-    <div class='result'>Section Complete!<br>You scored ${score}/${total} (${percent}%)</div>
-    <div>
-      <button class='quiz-btn' id='retryBtn'>🔁 Retry</button>
-      ${currentSection < quizSections.length - 1
-        ? `<button class='quiz-btn primary' id='nextSectionBtn' ${passed ? "" : "disabled"}>➡ Next Section</button>`
-        : `<button class='quiz-btn primary' id='finishBtn' ${passed ? "" : "disabled"}>🏁 Finish</button>`}
-    </div>`;
-  nextBtn.style.display = "none";
-  document.getElementById("retryBtn").addEventListener("click", retrySection);
-  if (passed && currentSection < quizSections.length - 1)
-    document.getElementById("nextSectionBtn").addEventListener("click", nextSection);
-  else if (passed && currentSection === quizSections.length - 1)
-    document.getElementById("finishBtn").addEventListener("click", finishQuiz);
-}
+    let current = 0;
+    let score = 0;
+    let selected = null;
 
-function retrySection() {
-  score = 0;
-  currentQ = 0;
-  loadQuestion();
-}
+    const quizBox = document.getElementById('quizBox');
+    const nextBtn = document.getElementById('nextBtn');
 
-function nextSection() {
-  currentSection++;
-  currentQ = 0;
-  score = 0;
-  sectionTitle.textContent = quizSections[currentSection].title;
-  loadQuestion();
-}
+    function showQuestion() {
+      const q = quizData[current];
+      quizBox.innerHTML = `
+        <div class="question">${current + 1}. ${q.q}</div>
+        <div class="choices"></div>
+      `;
+      const choicesContainer = quizBox.querySelector('.choices');
+      q.c.forEach((choice, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.textContent = choice;
+        btn.addEventListener('click', () => selectChoice(i));
+        choicesContainer.appendChild(btn);
+      });
+      nextBtn.style.display = 'none';
+      selected = null;
+    }
 
-function finishQuiz() {
-  quizBox.innerHTML = `<div class='result'>🎉 You completed all sections! Excellent work!</div>`;
-  nextBtn.style.display = "none";
-}
+    function selectChoice(i) {
+      selected = i;
+      document.querySelectorAll('.choice').forEach((btn, index) => {
+        btn.classList.toggle('selected', index === i);
+      });
+      nextBtn.style.display = 'inline-block';
+    }
 
-sectionTitle.textContent = quizSections[currentSection].title;
-loadQuestion();
-</script>
+    nextBtn.addEventListener('click', () => {
+      if (selected === quizData[current].a) score++;
+      current++;
+      if (current < quizData.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      const percent = Math.round((score / quizData.length) * 100);
+      const passed = percent >= 80;
+      quizBox.innerHTML = `
+        <div class="result">
+          🎉 You scored ${score} out of ${quizData.length} (${percent}%)
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn" id="backBtn">⬅ Back</button>
+          <button class="quiz-btn" id="retryBtn">🔁 Retry</button>
+          <button class="quiz-btn primary" id="nextLessonBtn" ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+        </div>
+      `;
+      nextBtn.style.display = 'none';
+      window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+
+      document.getElementById('retryBtn').addEventListener('click', retryQuiz);
+      document.getElementById('backBtn').addEventListener('click', () => {
+        window.parent.postMessage({ type: "quizBack" }, "*");
+      });
+      document.getElementById('nextLessonBtn').addEventListener('click', () => {
+        if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+      });
+    }
+
+    function retryQuiz() {
+      current = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    showQuestion();
+  </script>
 
 </body>
 </html>
