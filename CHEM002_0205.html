@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chapter 2 – Lesson 5: Nomenclature</title>
+  <title>Chapter 2 – Lesson 5: Nomenclature (Final Enhanced)</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -12,19 +12,19 @@
       margin: 0;
       padding: 24px;
       line-height: 1.8;
-      font-size: 24px;
+      font-size: 18px;
     }
 
     h1 { color: #136f63; font-size: 2.1em; margin-bottom: 0.4em; }
-    h2 { color: #136f63; font-size: 1.6em; margin-top: 1.4em; margin-bottom: 0.3em; }
-    h3 { color: #174ea6; font-size: 1.25em; margin: 0.6em 0; }
+    h2 { color: #136f63; font-size: 1.6em; margin-top: 1.2em; margin-bottom: 0.3em; }
+    h3 { color: #174ea6; font-size: 1.15em; margin: 0.6em 0; }
     p { margin: 12px 0; }
     ul { margin-left: 24px; }
     .section { margin-bottom: 28px; }
 
     .image, .video {
       text-align: center;
-      margin: 22px 0;
+      margin: 20px 0;
     }
 
     img {
@@ -42,13 +42,12 @@
       border: none;
     }
 
-    /* Activity block */
     .activity {
       background: #ffffff;
       border-radius: 12px;
       padding: 16px 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      margin: 20px 0;
+      margin: 18px 0;
     }
 
     .toggle-btn {
@@ -96,142 +95,179 @@
       background-color: #0f5b52;
     }
 
-    .note { font-size: 1.5rem; color: #555; margin-top: 6px; }
+    table.prefix {
+      width: 100%;
+      max-width: 720px;
+      border-collapse: collapse;
+      margin: 12px auto;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    table.prefix th, table.prefix td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 16px;
+    }
+    table.prefix th {
+      background: #f3f7ff;
+      color: #174ea6;
+    }
+
+    .note { font-size: 0.95rem; color: #555; margin-top: 6px; }
 
     * { box-sizing: border-box; scroll-behavior: smooth; }
   </style>
 </head>
 <body>
 
-  <h1>Organic Compound Nomenclature</h1>
+  <h1>Organic Nomenclature — Step-by-Step Guide</h1>
   <p class="note">
-    In this lesson, you’ll learn how to name organic compounds systematically using IUPAC rules — from simple hydrocarbons to compounds with substituents and functional groups.
+    This lesson teaches a reliable naming workflow for organic molecules. We’ll focus on IUPAC’s systematic steps — how to find the parent chain, identify substituents, and select the correct suffix. Detailed alkane-specific naming will appear in the next chapter.
   </p>
 
-  <!-- SECTION 1 -->
+  <!-- 1. Basic structure -->
   <div class="section">
-    <h2>1. Introduction to IUPAC Nomenclature</h2>
+    <h2>1. Structure of an IUPAC Name</h2>
     <p>
-      The <strong>International Union of Pure and Applied Chemistry (IUPAC)</strong> developed a standardized way to name organic compounds so that each name represents exactly one structure.
-    </p>
-
-    <p>The IUPAC name consists of three main parts:</p>
-    <ul>
-      <li><strong>Prefix:</strong> shows substituents or branches.</li>
-      <li><strong>Parent name:</strong> indicates the longest carbon chain.</li>
-      <li><strong>Suffix:</strong> denotes the primary functional group.</li>
-    </ul>
-
-    <div class="image">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/IUPAC_naming_structure.png" alt="IUPAC name structure diagram">
-      <p class="note"><em>Example breakdown of a compound’s IUPAC name.</em></p>
-    </div>
-  </div>
-
-  <!-- SECTION 2 -->
-  <div class="section">
-    <h2>2. Naming Alkanes (Saturated Hydrocarbons)</h2>
-    <p>
-      Alkanes contain only single (σ) bonds between carbon atoms. The root name is based on the number of carbons in the longest chain.
+      The IUPAC name of an organic compound has three essential parts:
     </p>
     <ul>
-      <li>1 – Meth-</li>
-      <li>2 – Eth-</li>
-      <li>3 – Prop-</li>
-      <li>4 – But-</li>
-      <li>5 – Pent-</li>
-      <li>6 – Hex-, etc.</li>
+      <li><strong>Prefix</strong> – identifies substituents and their positions.</li>
+      <li><strong>Parent name</strong> – indicates the longest carbon chain (root word).</li>
+      <li><strong>Suffix</strong> – identifies the main functional group.</li>
     </ul>
-    <p>
-      The suffix <strong>–ane</strong> indicates all single bonds.
-    </p>
 
-    <div class="activity">
-      <h3>Activity 1: Identify the Compound</h3>
-      <p>What is the name of a 5-carbon chain alkane with no branches?</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <strong>Answer:</strong> Pentane (C₅H₁₂)
-      </div>
-    </div>
+    <h3>Common Parent Chain Prefixes</h3>
+    <table class="prefix">
+      <tr><th>Carbons</th><th>Prefix</th><th>Example</th></tr>
+      <tr><td>1</td><td>meth-</td><td>CH₄ → methane</td></tr>
+      <tr><td>2</td><td>eth-</td><td>C₂H₆ → ethane</td></tr>
+      <tr><td>3</td><td>prop-</td><td>C₃H₈ → propane</td></tr>
+      <tr><td>4</td><td>but-</td><td>C₄H₁₀ → butane</td></tr>
+      <tr><td>5</td><td>pent-</td><td>C₅H₁₂ → pentane</td></tr>
+      <tr><td>6–10</td><td>hex-, hept-, oct-, non-, dec-</td><td>6–10 carbon chains</td></tr>
+    </table>
   </div>
 
-  <!-- SECTION 3 -->
+  <!-- 2. Steps -->
   <div class="section">
-    <h2>3. Naming Branched Hydrocarbons</h2>
-    <p>
-      For branched alkanes, identify and number the longest carbon chain, then name the attached groups (alkyl substituents) as prefixes.
-    </p>
-    <p>Use the lowest possible numbers for substituent positions.</p>
-
-    <div class="image">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Iso-butane-2D-skeletal.png" alt="Isobutane skeletal formula">
-      <p class="note"><em>Example: 2-methylpropane (isobutane)</em></p>
-    </div>
+    <h2>2. Step-by-Step Procedure</h2>
+    <ol>
+      <li><strong>Find the longest continuous carbon chain</strong> (parent).</li>
+      <li><strong>Number the chain</strong> to give substituents the lowest possible locants.</li>
+      <li><strong>Identify substituents</strong> (alkyl, halo, nitro, etc.).</li>
+      <li><strong>Assign locants</strong> and combine using hyphens and commas.</li>
+      <li><strong>Add multiplicative prefixes</strong> (di-, tri-, tetra-).</li>
+      <li><strong>Select the suffix</strong> for the principal functional group.</li>
+      <li><strong>Combine everything</strong>: Prefix + Parent + Suffix.</li>
+    </ol>
 
     <div class="activity">
-      <h3>Activity 2: Apply Numbering Rules</h3>
-      <p>What is the correct IUPAC name for this structure?</p>
+      <h3>Activity 1: Guided Example</h3>
       <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/2-methylbutane.png" alt="2-methylbutane structure">
+      <p>Try to name this compound following the steps above.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        <strong>Answer:</strong> 2-Methylbutane.  
-        The longest chain has 4 carbons (butane). A methyl group is attached to the second carbon.
+        <ol>
+          <li>Longest chain = 4 carbons → but-</li>
+          <li>One methyl group at carbon 2.</li>
+          <li>Combine: <strong>2-methylbutane</strong>.</li>
+        </ol>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 4 -->
+  <!-- 3. Functional group priority -->
   <div class="section">
-    <h2>4. Functional Group Suffixes</h2>
+    <h2>3. Selecting the Correct Suffix</h2>
     <p>
-      Functional groups determine the suffix used in the compound name:
+      The suffix reflects the main functional group and determines how you number the chain.  
+      If multiple groups are present, the one with the highest priority defines the suffix.
     </p>
     <ul>
-      <li>–OH (alcohol): <strong>–ol</strong></li>
-      <li>–CHO (aldehyde): <strong>–al</strong></li>
-      <li>–COOH (carboxylic acid): <strong>–oic acid</strong></li>
-      <li>–NH₂ (amine): <strong>–amine</strong></li>
+      <li>–COOH → <strong>-oic acid</strong></li>
+      <li>–CHO → <strong>-al</strong></li>
+      <li>–OH → <strong>-ol</strong></li>
+      <li>–NH₂ → <strong>-amine</strong></li>
     </ul>
 
     <div class="activity">
-      <h3>Activity 3: Identify Functional Group</h3>
-      <p>Name the compound with this structure:</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Ethanol-3D-balls.png" alt="Ethanol 3D structure">
+      <h3>Activity 2: Suffix Selection</h3>
+      <p>Which suffix takes priority if both –OH and –COOH are in the molecule?</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        <strong>Answer:</strong> Ethanol.  
-        The suffix “–ol” indicates an alcohol; two-carbon chain gives “eth-”.
+        <strong>Answer:</strong> Use <strong>-oic acid</strong> (carboxylic acid) since it outranks –OH.
       </div>
     </div>
   </div>
 
-  <!-- SECTION 5 -->
+  <!-- 4. New Examples Section -->
   <div class="section">
-    <h2>5. Multiple Substituents and Complex Names</h2>
-    <p>
-      When there are multiple identical substituents, use prefixes like di-, tri-, or tetra-.  
-      List different substituents alphabetically, ignoring prefixes.
-    </p>
+    <h2>4. More Step-by-Step Examples</h2>
 
     <div class="activity">
-      <h3>Activity 4: Name the Compound</h3>
-      <p>Give the IUPAC name for this structure:</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/2%2C3-dimethylbutane.png" alt="2,3-dimethylbutane">
+      <h3>Example 1: Halogen Substituent</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/1-chloropropane.png" alt="1-chloropropane structure">
+      <p>Name this compound containing a halogen substituent.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        <strong>Answer:</strong> 2,3-Dimethylbutane.  
-        Two methyl groups attached to carbons 2 and 3 on the main butane chain.
+        <ol>
+          <li>Longest chain: 3 carbons → prop-</li>
+          <li>Substituent: chlorine at carbon 1.</li>
+          <li>Combine prefix and suffix: <strong>1-chloropropane</strong>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <h3>Example 2: Double Bond (Alkene)</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/But-2-ene-structure.png" alt="but-2-ene">
+      <p>Follow IUPAC rules to name this molecule with a C=C double bond.</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <ol>
+          <li>Parent chain: 4 carbons → but-</li>
+          <li>Double bond starts at carbon 2 → "-2-ene"</li>
+          <li>Final name: <strong>but-2-ene</strong>.</li>
+        </ol>
+        <p class="note">If both ends could be numbered, choose the direction that gives the double bond the lower locant.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <h3>Example 3: Multiple Substituents</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/2-fluoro-3-methylpentane.png" alt="2-fluoro-3-methylpentane">
+      <p>Name this compound containing both fluoro and methyl substituents.</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <ol>
+          <li>Parent chain: 5 carbons → pent-</li>
+          <li>Substituents: fluoro at C-2, methyl at C-3.</li>
+          <li>Alphabetical order: fluoro before methyl.</li>
+          <li>Final name: <strong>2-fluoro-3-methylpentane</strong>.</li>
+        </ol>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 6 -->
+  <!-- 5. Tips -->
   <div class="section">
-    <h2>6. Practice Interactive Video</h2>
-    <p>
-      Watch this short guide from Khan Academy to review the steps for naming simple organic compounds:
-    </p>
+    <h2>5. Common Pitfalls and Tips</h2>
+    <ul>
+      <li>Always pick the <strong>longest chain</strong> that includes the main functional group.</li>
+      <li><strong>Lowest locant rule:</strong> Number to give the smallest numbers to substituents or bonds.</li>
+      <li><strong>Alphabetize substituents</strong> (ignore prefixes like di-, tri-, sec-, tert-).</li>
+      <li>Remember: double/triple bonds take precedence in numbering over simple substituents.</li>
+    </ul>
+  </div>
+
+  <!-- 6. Video -->
+  <div class="section">
+    <h2>6. Video Guide</h2>
+    <p>Watch this concise walkthrough from Khan Academy:</p>
     <div class="video">
       <iframe src="https://www.youtube.com/embed/-9g4Hr-2P6M" title="Khan Academy: Introduction to Organic Nomenclature" allowfullscreen></iframe>
     </div>
