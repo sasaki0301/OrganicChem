@@ -3,225 +3,291 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 2 – Lesson 1: Review of Atomic Structure</title>
+  <title>Chapter 2 – Lesson 1 Quiz: Atomic Structure</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #fafafa;
-      color: #222;
+      background: linear-gradient(to bottom right, #f5f7fb, #e9effd);
       margin: 0;
-      padding: 24px;
-      line-height: 1.8;
-      font-size: 24px; /* 🔹 Increased base font size */
+      padding: 0;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      min-height: 100vh;
     }
 
-  h1 {
-    color: #136f63;
-    font-size: 2.1em;  /* Larger headline */
-    margin-bottom: 0.4em;
-  }
+    .quiz-container {
+      width: 90%;
+      max-width: 850px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-  h2 {
-    color: #136f63;
-    font-size: 1.6em;
-    margin-top: 1.4em;
-    margin-bottom: 0.3em;
-  }
+    h2 {
+      color: #174ea6;
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
 
-  h3 {
-    color: #174ea6;
-    font-size: 1.25em;
-    margin: 0.6em 0;
-  }
+    .question {
+      font-size: 26px;
+      margin-bottom: 18px;
+      font-weight: 600;
+      color: #1a237e;
+    }
 
-  p {
-    margin: 12px 0;
-  }
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-  .section {
-    margin-bottom: 28px;
-  }
+    .choice {
+      width: 100%;
+      max-width: 600px;
+      background: #e8ecf8;
+      border: none;
+      border-radius: 10px;
+      padding: 18px 22px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 22px;
+      transition: all 0.2s ease;
+    }
 
-  /* Media / Image / Video */
-  .image, .video {
-    text-align: center;
-    margin: 22px 0;
-  }
-  img {
-    border-radius: 10px;
-    width: 80%;
-    max-width: 540px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-  iframe {
-    width: 90%;
-    max-width: 760px;
-    height: 430px;
-    border-radius: 12px;
-  }
+    .choice:hover {
+      background: #d3dbf8;
+      transform: translateY(-2px);
+    }
 
-  /* Activity block */
-  .activity {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    margin: 20px 0;
-  }
-  .activity h3 {
-    margin-top: 0;
-  }
-  .toggle-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 9px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    transition: 0.18s;
-    margin-top: 8px;
-  }
-  .toggle-btn:hover {
-    background: #0f5b52;
-    transform: translateY(-1px);
-  }
-  .answer {
-    display: none;
-    margin-top: 12px;
-    background: #eef3ff;
-    padding: 14px;
-    border-radius: 8px;
-    font-size: 17px;
-  }
+    .choice.selected {
+      background: #174ea6;
+      color: #fff;
+      transform: scale(1.02);
+    }
 
-  /* Quiz or navigation button */
-  .quiz-button, .next-btn, .retry-btn {
-    display: inline-block;
-    background-color: #136f63;
-    color: white;
-    padding: 13px 26px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 22px;
-  }
-  .quiz-button:hover, .next-btn:hover, .retry-btn:hover {
-    background-color: #0f5b52;
-  }
-  /* Subtext or note */
-  .note {
-    font-size: 0.95rem;
-    color: #555;
-    margin-top: 6px;
-  }
-    
-  * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
+    .next-btn {
+      background: #2b7de9;
+      color: #fff;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .next-btn:hover {
+      background: #174ea6;
+    }
+
+    .result {
+      font-size: 28px;
+      font-weight: bold;
+      color: #174ea6;
+      margin-top: 20px;
+    }
+
+    .quiz-btn {
+      background: #e8ecf8;
+      color: #174ea6;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 20px;
+      margin: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-btn:hover {
+      background: #d3dbf8;
+      transform: translateY(-2px);
+    }
+
+    .quiz-btn.primary {
+      background: #2b7de9;
+      color: #fff;
+    }
+
+    .quiz-btn.primary:hover {
+      background: #174ea6;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Review of Atomic Structure</h1>
-
-  <p>
-    Before we dive into organic chemistry, let’s recall the fundamental structure of the atom — the basic unit of all matter. Understanding atomic structure helps explain why atoms bond, form molecules, and exhibit chemical behavior.
-  </p>
-
-  <h2>1. The Structure of the Atom</h2>
-  <p>
-    Atoms consist of three subatomic particles: protons, neutrons, and electrons. Protons and neutrons are found in the nucleus, while electrons move around it in specific energy levels or shells.
-  </p>
-
-  <div class="image">
-    <img src="https://d20khd7ddkh5ls.cloudfront.net/bohrs_atomic_model.jpeg" alt="Bohr model of an atom" />
-    <p><em>Bohr Model – electrons orbit the nucleus in quantized energy levels.</em></p>
+  <div class="quiz-container">
+    <h2>Atomic Structure – Lesson Quiz</h2>
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
   </div>
-
-  <div class="activity">
-    <h3>💡 Activity 1: Counting Subatomic Particles</h3>
-    <p>An atom of sodium (Na) has an atomic number of 11 and a mass number of 23. How many protons, neutrons, and electrons does it have?</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      <strong>Answer:</strong><br>11 protons, 12 neutrons, and 11 electrons.
-      <strong>Explanation:</strong><br>Atomic number = protons = electrons. Mass number – atomic number = neutrons → 23 – 11 = 12.
-    </div>
-  </div>
-
-  <h2>2. Atomic Number and Mass Number</h2>
-  <p>
-    - The <strong>atomic number</strong> identifies the element and equals the number of protons.<br>
-    - The <strong>mass number</strong> is the total number of protons and neutrons in the nucleus.<br>
-    - Isotopes are atoms of the same element with different numbers of neutrons.
-  </p>
-
-  <div class="activity">
-    <h3>🧠 Activity 2: Identifying Isotopes</h3>
-    <p>Carbon-12 and Carbon-14 are both isotopes of carbon. What makes them isotopes of the same element?</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      <strong>Answer:</strong><br>They have the same number of protons but different numbers of neutrons.<br>
-      <strong>Explanation:</strong><br>All carbon atoms have 6 protons. Carbon-12 has 6 neutrons; Carbon-14 has 8 neutrons.
-    </div>
-  </div>
-
-  <h2>3. Electron Configuration and Energy Levels</h2>
-  <p>
-    Electrons occupy specific energy levels around the nucleus. The arrangement of these electrons determines how atoms bond in molecules.
-  </p>
-
-  <div class="image">
-    <img src="https://ibchemninja.weebly.com/uploads/4/9/2/5/49255073/2172354_orig.png" alt="Electron shells diagram" />
-    <p><em>Electrons fill energy levels in increasing order of energy.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>⚡ Activity 3: Electron Configuration Practice</h3>
-    <p>Write the electron configuration of Oxygen (atomic number 8).</p> 
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      <strong>Answer:</strong><br>1s² 2s² 2p⁴
-      <strong>Explanation:</strong><br>The first two electrons fill the 1s orbital, two more fill the 2s, and four occupy the 2p orbital.
-    </div>
-  </div>
-
-  <div class="video">
-    <h3>🎥 Watch: Electron Configuration - Basic introduction</h3>
-    <iframe
-      src="https://www.youtube.com/embed/NIwcDnFjj98"
-      title="Electron Configuration - Basic introduction"
-      allowfullscreen></iframe>
-  </div>
-
-  <h2>4. Key Takeaways</h2>
-  <ul>
-    <li>Atoms are composed of protons, neutrons, and electrons.</li>
-    <li>Atomic number = number of protons = number of electrons (in a neutral atom).</li>
-    <li>Electron configuration determines bonding and reactivity.</li>
-    <li>Isotopes have the same number of protons but different neutrons.</li>
-  </ul>
-
-  <p style="text-align:center; margin-top:40px;">
-    <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
-  </p>
 
   <script>
-    function toggleAnswer(btn) {
-      const answer = btn.nextElementSibling;
-      const isVisible = answer.style.display === "block";
-      answer.style.display = isVisible ? "none" : "block";
-      btn.textContent = isVisible ? "Show Answer" : "Hide Answer";
+    const quizData = [
+      {
+        q: "The atomic number of an element refers to the number of:",
+        c: ["Neutrons", "Protons", "Electrons", "Protons + Neutrons"],
+        a: 1
+      },
+      {
+        q: "Which particles are found in the nucleus of an atom?",
+        c: ["Electrons only", "Protons only", "Protons and neutrons", "Electrons and neutrons"],
+        a: 2
+      },
+      {
+        q: "A neutral atom of oxygen has 8 protons. How many electrons does it have?",
+        c: ["6", "8", "10", "16"],
+        a: 1
+      },
+      {
+        q: "What makes isotopes of an element different from each other?",
+        c: [
+          "They have different numbers of electrons",
+          "They have different numbers of neutrons",
+          "They have different atomic numbers",
+          "They have different charges"
+        ],
+        a: 1
+      },
+      {
+        q: "Which is the correct electron configuration for oxygen (atomic number 8)?",
+        c: [
+          "1s² 2s² 2p²",
+          "1s² 2s² 2p⁴",
+          "1s² 2p⁶",
+          "1s² 2s¹ 2p⁵"
+        ],
+        a: 1
+      },
+      {
+        q: "In the Bohr model, electrons:",
+        c: [
+          "Move freely anywhere around the nucleus",
+          "Have fixed orbits with quantized energy",
+          "Are located inside the nucleus",
+          "Do not determine chemical behavior"
+        ],
+        a: 1
+      },
+      {
+        q: "The mass number of an atom equals:",
+        c: [
+          "Protons – neutrons",
+          "Electrons + protons",
+          "Protons + neutrons",
+          "Electrons + neutrons"
+        ],
+        a: 2
+      },
+      {
+        q: "Which subatomic particle determines the identity of the element?",
+        c: ["Neutrons", "Electrons", "Protons", "Valence electrons"],
+        a: 2
+      },
+      {
+        q: "An atom with 11 protons, 11 electrons, and 12 neutrons is:",
+        c: ["Na-23", "Na-22", "Mg-23", "Mg-22"],
+        a: 0
+      },
+      {
+        q: "Isotopes of hydrogen include protium, deuterium, and tritium. What do they all have in common?",
+        c: [
+          "Same number of neutrons",
+          "Same number of protons",
+          "Same number of neutrons and protons",
+          "Same mass number"
+        ],
+        a: 1
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let selected = null;
+
+    const quizBox = document.getElementById("quizBox");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function showQuestion() {
+      const q = quizData[current];
+      quizBox.innerHTML = `
+        <div class="question">${current + 1}. ${q.q}</div>
+        <div class="choices"></div>
+      `;
+
+      const choicesContainer = quizBox.querySelector(".choices");
+      q.c.forEach((choice, i) => {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.textContent = choice;
+        btn.addEventListener("click", () => selectChoice(i));
+        choicesContainer.appendChild(btn);
+      });
+
+      nextBtn.style.display = "none";
+      selected = null;
     }
 
-    document.getElementById("takeQuizBtn").addEventListener("click", () => {
-      window.parent.postMessage({ type: "openQuiz", quiz: "chapter2_lesson1_quiz.html" }, "*");
+    function selectChoice(i) {
+      selected = i;
+      document.querySelectorAll(".choice").forEach((btn, index) => {
+        btn.classList.toggle("selected", index === i);
+      });
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (selected === quizData[current].a) score++;
+      current++;
+      if (current < quizData.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
     });
+
+    function showResult() {
+      const percent = Math.round((score / quizData.length) * 100);
+      const passed = percent >= 80;
+
+      quizBox.innerHTML = `
+        <div class="result">🎉 You scored ${score} out of ${quizData.length} (${percent}%)</div>
+        <div class="quiz-nav">
+          <button class="quiz-btn" id="backBtn">⬅ Back</button>
+          <button class="quiz-btn" id="retryBtn">🔁 Retry</button>
+          <button class="quiz-btn primary" id="nextLessonBtn" ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+        </div>
+      `;
+
+      nextBtn.style.display = "none";
+
+      // Send result to LMS
+      window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+
+      document.getElementById("retryBtn").addEventListener("click", retryQuiz);
+      document.getElementById("backBtn").addEventListener("click", () => {
+        window.parent.postMessage({ type: "quizBack" }, "*");
+      });
+
+      document.getElementById("nextLessonBtn").addEventListener("click", () => {
+        if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+      });
+    }
+
+    function retryQuiz() {
+      current = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    showQuestion();
   </script>
 
 </body>
