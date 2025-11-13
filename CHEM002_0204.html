@@ -4,22 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Chapter 2 – Lesson 4: Drawing Chemical Structures</title>
+
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #fafafa;
-      color: #222;
       margin: 0;
       padding: 24px;
-      line-height: 1.8;
-      font-size: 24px;
+      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
+      color: #222;
+      font-size: 22px;
+      line-height: 1.75;
     }
 
-    h1 { color: #136f63; font-size: 2.1em; margin-bottom: 0.4em; }
-    h2 { color: #136f63; font-size: 1.6em; margin-top: 1.4em; margin-bottom: 0.3em; }
-    h3 { color: #174ea6; font-size: 1.25em; margin: 0.6em 0; }
-    p { margin: 12px 0; }
-    .section { margin-bottom: 28px; }
+    h1 { font-size: 2.4em; color: #136f63; margin-bottom: 0.3em; }
+    h2 { font-size: 1.75em; color: #136f63; margin-top: 1.4em; }
+    h3 { font-size: 1.3em; color: #174ea6; margin-top: 0.5em; }
+
+    .section {
+      background: #ffffff;
+      padding: 24px 26px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+      margin: 28px 0;
+    }
+
+    ul { margin-left: 20px; }
 
     .image, .video {
       text-align: center;
@@ -27,146 +36,145 @@
     }
 
     img {
-      border-radius: 10px;
-      width: 80%;
-      max-width: 540px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      width: 85%;
+      max-width: 560px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
     }
 
     iframe {
-      width: 90%;
-      max-width: 760px;
-      height: 430px;
+      width: 95%;
+      max-width: 820px;
+      height: 440px;
       border-radius: 12px;
       border: none;
     }
 
-    /* Activity block */
+    /* Activity Block */
     .activity {
+      border-left: 6px solid #136f63;
       background: #ffffff;
-      border-radius: 12px;
-      padding: 16px 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      padding: 18px 20px;
       margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
     }
 
     .toggle-btn {
+      margin-top: 10px;
+      padding: 10px 18px;
       background: #136f63;
       color: #fff;
       border: none;
-      padding: 9px 16px;
       border-radius: 8px;
+      font-size: 17px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.18s;
-      margin-top: 8px;
+      transition: 0.2s;
     }
 
     .toggle-btn:hover {
       background: #0f5b52;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .answer {
       display: none;
-      margin-top: 12px;
-      background: #eef3ff;
+      margin-top: 14px;
+      background: #eef6ff;
       padding: 14px;
-      border-radius: 8px;
-      font-size: 17px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    .note {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      color: #555;
     }
 
     .quiz-button {
       display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 13px 26px;
-      border-radius: 10px;
-      border: none;
+      background: #136f63;
+      color: #fff;
+      padding: 14px 30px;
+      font-size: 19px;
       font-weight: bold;
-      font-size: 17px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: 0.2s;
-      margin-top: 22px;
+      border: none;
+      margin-top: 32px;
+      transition: 0.25s;
     }
 
     .quiz-button:hover {
-      background-color: #0f5b52;
+      background: #0f5b52;
     }
 
-    .note { font-size: 1.5rem; color: #555; margin-top: 6px; }
-
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
   </style>
 </head>
+
 <body>
 
   <h1>Drawing Chemical Structures</h1>
   <p class="note">
-    This lesson will help you understand how chemists represent molecules — from Lewis structures to condensed and skeletal formulas — and how to visualize these in 3D.
+    In organic chemistry, drawings are not just illustrations—they communicate how atoms are connected, how electrons are arranged, and how molecules behave. This lesson introduces Lewis, structural, condensed, and skeletal formulas, along with 3D visualization.
   </p>
 
   <!-- SECTION 1 -->
   <div class="section">
-    <h2>1. Why Draw Chemical Structures?</h2>
+    <h2>1. Why Do We Draw Chemical Structures?</h2>
     <p>
-      Chemical structures help us visualize how atoms are connected in a molecule. These diagrams reveal bonding, lone pairs, geometry, and functional groups — essential in organic chemistry.
+      Chemists use different types of structures depending on what information they want to emphasize. Each representation highlights a different aspect of a molecule:
     </p>
-    <p>There are several ways to represent molecules:</p>
+
     <ul>
-      <li><strong>Lewis structure:</strong> shows all valence electrons as dots.</li>
-      <li><strong>Structural formula:</strong> shows bonds between atoms explicitly.</li>
-      <li><strong>Condensed formula:</strong> groups atoms together without showing all bonds.</li>
-      <li><strong>Skeletal (line-angle) formula:</strong> used in organic chemistry to simplify complex carbon chains.</li>
+      <li><strong>Lewis structure:</strong> shows valence electrons using dots and lines.</li>
+      <li><strong>Structural formula:</strong> shows every covalent bond explicitly.</li>
+      <li><strong>Condensed formula:</strong> groups atoms without showing all bonds.</li>
+      <li><strong>Skeletal (line-angle) formula:</strong> the most efficient way to draw carbon chains.</li>
     </ul>
 
     <div class="image">
       <img src="https://www.shutterstock.com/image-vector/ethanol-ethyl-alcohol-structural-chemical-600nw-2499061483.jpg" alt="Different chemical structure representations">
-      <p class="note"><em>Different representations of the same molecule (ethanol) — Lewis, structural, and skeletal forms.</em></p>
+      <p class="note"><em>Ethanol represented as Lewis, structural, and skeletal formulas.</em></p>
     </div>
   </div>
 
   <!-- SECTION 2 -->
   <div class="section">
-    <h2>2. Lewis Structures: The Basics</h2>
+    <h2>2. Lewis Structures — Step-by-Step</h2>
     <p>
-      A Lewis structure shows valence electrons as dots. Shared pairs between atoms form covalent bonds (lines), and lone pairs remain as dots around the atom.
+      Lewis structures show electrons as dots and bonds as lines. They help identify bonding pairs, lone pairs, and formal charges.
     </p>
 
     <div class="activity">
-      <h3>Activity 1: Draw the Lewis Structure of H<sub>2</sub>O</h3>
-      <p>Try to draw it on paper first. How many bonding pairs and lone pairs are there around oxygen?</p>
+      <h3>Activity 1: Lewis Structure of H<sub>2</sub>O</h3>
+      <p>How many bonding pairs and lone pairs are around oxygen in a water molecule?</p>
+
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        Oxygen forms two single bonds with hydrogen atoms (two bonding pairs) and has two lone pairs. The structure looks like this:
-        <br>
-        <img src="https://www.chemicalbook.com/NewsImg/2023-11-14/6383554812321974948520038.jpg" alt="H2O Lewis structure">
+        Hydrogen atoms each form one single bond with oxygen → 2 bonding pairs.  
+        Oxygen has 2 additional lone pairs → total = 2 bonding + 2 lone pairs.
+        <br><br>
+        <img src="https://www.chemicalbook.com/NewsImg/2023-11-14/6383554812321974948520038.jpg" alt="H₂O Lewis structure">
       </div>
-      <p></p>
-      <p>Now let's try BF<sub>4</sub><sup>-</sup></p>
+
+      <p style="margin-top:20px;">Try this one: Draw BF<sub>4</sub><sup>−</sup>.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        Boron is the central atom because it’s less electronegative than fluorine (and in any case, halogens such as F almost never form more than one single bond).<br>
-        Boron has three valence electrons, fluorine has seven, and the charge on the molecule is –1, so the total number of valence electrons in this molecule is 3 + 7(4) + 1 = 32.<br>
-        Adding single bonds from boron to each of the four fluorines (for a total of eight electrons, two per bond) and adding the remaining 24 electrons to the fluorines as lone pairs gives the Lewis structure shown.<br>
-        Each atom has a full octet of electrons, so there’s no need to make multiple bonds.
-        <br>
-        <img src="https://pediabay.com/wp-content/uploads/2022/06/BrF4-lewis-structure.jpg" alt="BF4 Lewis structure">
+        Total electrons = 3 + 4×7 + 1 = 32.  
+        Boron forms four single bonds with fluorine; remaining electrons fill fluorine octets.
+        <br><br>
+        <img src="https://pediabay.com/wp-content/uploads/2022/06/BrF4-lewis-structure.jpg" alt="BF₄⁻ Lewis structure">
       </div>
-      <p></p>
-      <p>What about this?<br>Draw the Lewis Structure of NO<sub>2</sub><sup>-</sup></p>
+
+      <p style="margin-top:20px;">One more: Draw NO<sub>2</sub><sup>−</sup> (nitrite ion).</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        Nitrogen is the central atom in NO<sub>2</sub><sup>-</sup> because nitrogen is less electronegative than oxygen.<br>
-        Nitrogen has five valence electrons, oxygen has six, and the charge on the molecule is –1, so the molecule has 5 + 2(6) + 1 = 18 valence electrons.<br>
-        Making single bonds from N to both oxygens (for a total of four electrons, two per bond) leaves 14 electrons.<br>
-        Adding these electrons onto the oxygens until both oxygens have completed their octet still leaves two electrons left over.<br>
-        Place these two electrons on the central nitrogen.<br>
-        Examining this structure reveals that both oxygens have a complete octet, but nitrogen is still lacking two electrons.<br>
-        So a lone pair on one of the oxygens is pushed onto the nitrogen to form a nitrogen-oxygen double bond.<br>
-        Last, add the charge to complete the final structure.
-        <br>
+        Total electrons = 5 + 2×6 + 1 = 18.  
+        After placing bonds and octets, one oxygen forms a double bond; resonance is present.
+        <br><br>
         <img src="https://pediabay.com/wp-content/uploads/2022/06/NO2-lewis-structure.jpg" alt="Nitrite ion Lewis structure">
       </div>
     </div>
@@ -176,39 +184,40 @@
   <div class="section">
     <h2>3. Condensed and Skeletal Structures</h2>
     <p>
-      For organic molecules, condensed and skeletal formulas make complex structures easier to read. Carbon atoms and C–H bonds are often not shown in skeletal formulas — every line end or intersection represents a carbon.
+      In organic chemistry, long carbon chains are often drawn using <strong>skeletal structures</strong>. Each corner or endpoint is a carbon atom with enough hydrogens to complete its valence.
     </p>
+
     <div class="image">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyb8UhE8rtgzCgB2YSuO95qhUKOzy3NYelKA&s" alt="Skeletal structure of ethanol">
-      <p class="note"><em>Skeletal structure of ethanol (CH₃CH₂OH).</em></p>
+      <p class="note"><em>Ethanol skeletal formula (each vertex = carbon).</em></p>
     </div>
 
     <div class="activity">
       <h3>Activity 2: Identify the Molecule</h3>
-      <p>Look at the skeletal structure above. Write its condensed and molecular formula.</p>
+      <p>Convert the skeletal structure above into condensed and molecular formulas.</p>
+
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        <strong>Condensed:</strong> CH₃CH₂OH  
-        <br><strong>Molecular:</strong> C₂H₆O  
-        <br>This is ethanol — an alcohol with a hydroxyl (–OH) group.
+        <strong>Condensed:</strong> CH₃CH₂OH<br>
+        <strong>Molecular:</strong> C₂H₆O
       </div>
-      <p></p>
-      <p>Now let's try another molecule. Look this structure:<br>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Butane-skeletal.png" alt="Butane structure"><br></p>
+
+      <p style="margin-top:20px;">Try this one:</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Butane-skeletal.png" alt="Butane skeletal structure">
+
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        <strong>Condensed:</strong> CH₃CH₂CH₂CH₃  
-        <br><strong>Molecular:</strong>C<sub>4</sub>H<sub>10</sub>  
-        <br>This is butane a highly flammable, colorless gas.
+        <strong>Condensed:</strong> CH₃CH₂CH₂CH₃<br>
+        <strong>Molecular:</strong> C₄H₁₀
       </div>
-      <p></p>
-      <p>Finally let's check this structure:<br>
-        <img src="https://homework.study.com/cimages/multimages/16/screenshot_20211024-193709_kingdraw_chemical_structure_editor3645973064303132511.jpg" alt="Octane structure"><br></p>
+
+      <p style="margin-top:20px;">Another structure:</p>
+      <img src="https://homework.study.com/cimages/multimages/16/screenshot_20211024-193709_kingdraw_chemical_structure_editor3645973064303132511.jpg" alt="Octane skeletal structure">
+
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        <strong>Condensed:</strong> CH₃CH₂CH₂CH₂CH₂CH₂CH₂CH₃  
-        <br><strong>Molecular:</strong>C<sub>8</sub>H<sub>18</sub> 
-        <br>Octane is a colorless, highly flammable liquid hydrocarbon.
+        <strong>Condensed:</strong> CH₃CH₂CH₂CH₂CH₂CH₂CH₂CH₃<br>
+        <strong>Molecular:</strong> C₈H₁₈
       </div>
     </div>
   </div>
@@ -217,44 +226,56 @@
   <div class="section">
     <h2>4. Visualizing Molecules in 3D</h2>
     <p>
-      Two-dimensional drawings can’t fully show bond angles and spatial orientation. Use the interactive 3D model viewer below to explore molecular geometry.
+      2D drawings reveal connectivity, but real molecules exist in 3D. Use the interactive viewer to explore bond angles and geometry.
     </p>
 
     <div class="video">
-      <iframe src="https://embed.molview.org/v1/?mode=balls&cid=702" title="Ethanol 3D Viewer"></iframe>
+      <iframe src="https://embed.molview.org/v1/?mode=balls&cid=702" title="3D ethanol model"></iframe>
     </div>
 
     <p class="note">
-      Use your mouse or touch to rotate the molecule. You can zoom in/out and observe bond angles.<br>  
-      💡 To try building or searching other molecules interactively, 
-      <a href="https://molview.org" target="_blank" rel="noopener">open the full MolView 3D editor </a>
+      Rotate the molecule to observe geometry. To explore more molecules, visit the full MolView editor at <a href="https://molview.org" target="_blank">molview.org</a>.
     </p>
 
     <div class="activity">
-      <h3>Activity 3: Analyze Bond Geometry</h3>
-      <p>In the ethanol molecule, identify which carbon is sp³-hybridized and explain why the O–H bond is polar.</p>
+      <h3>Activity 3: Analyze Molecular Geometry</h3>
+      <p>Which atoms in ethanol are sp³-hybridized? Why is the O–H bond polar?</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+
       <div class="answer">
-        Both carbons are sp³-hybridized (each forms four sigma bonds).  
-        The O–H bond is polar because oxygen is more electronegative than hydrogen, pulling electron density toward itself.
+        Both carbon atoms are sp³-hybridized because each forms four sigma bonds.  
+        The O–H bond is polar because oxygen is significantly more electronegative than hydrogen.
       </div>
     </div>
   </div>
 
-  <div style="text-align:center; margin-top:18px;">
+  <!-- KEY TERMS -->
+  <div class="section">
+    <h2>Key Terms</h2>
+    <ul>
+      <li><strong>Lewis structure</strong> — electron-dot representation showing bonds and lone pairs.</li>
+      <li><strong>Structural formula</strong> — shows all bonds explicitly.</li>
+      <li><strong>Condensed formula</strong> — groups atoms without full bond display.</li>
+      <li><strong>Skeletal formula</strong> — simplified carbon skeleton representation.</li>
+      <li><strong>Valence electrons</strong> — outer electrons involved in bonding.</li>
+      <li><strong>Molecular geometry</strong> — 3D arrangement of atoms.</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;">
     <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
   </div>
 
   <script>
     function toggleAnswer(btn) {
-      const answer = btn.nextElementSibling;
-      const isVisible = answer.style.display === "block";
-      answer.style.display = isVisible ? "none" : "block";
-      btn.textContent = isVisible ? "Show Answer" : "Hide Answer";
+      const ans = btn.nextElementSibling;
+      const open = ans.style.display === "block";
+      ans.style.display = open ? "none" : "block";
+      btn.textContent = open ? "Show Answer" : "Hide Answer";
     }
 
-    document.getElementById('takeQuizBtn').addEventListener('click', () => {
-      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter2_lesson4_quiz.html' }, '*');
+    document.getElementById("takeQuizBtn").addEventListener("click", () => {
+      window.parent.postMessage({ type: "openQuiz", quiz: "chapter2_lesson4_quiz.html" }, "*");
     });
   </script>
 
