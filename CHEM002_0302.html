@@ -12,30 +12,13 @@
       margin: 0;
       padding: 24px;
       line-height: 1.8;
-      font-size: 24px; /* base font size consistent with your lessons */
+      font-size: 24px;
     }
 
-    h1 {
-      color: #136f63;
-      font-size: 2.1em;
-      margin-bottom: 0.4em;
-    }
-
-    h2 {
-      color: #136f63;
-      font-size: 1.6em;
-      margin-top: 1.4em;
-      margin-bottom: 0.3em;
-    }
-
-    h3 {
-      color: #174ea6;
-      font-size: 1.25em;
-      margin: 0.6em 0;
-    }
-
+    h1 { color: #136f63; font-size: 2.1em; margin-bottom: 0.4em; }
+    h2 { color: #136f63; font-size: 1.6em; margin-top: 1.4em; margin-bottom: 0.3em; }
+    h3 { color: #174ea6; font-size: 1.25em; margin: 0.6em 0; }
     p { margin: 12px 0; }
-
     .section { margin-bottom: 28px; }
 
     .image, .video { text-align: center; margin: 22px 0; }
@@ -86,7 +69,7 @@
       text-align: left;
     }
 
-    .note { font-size: 1rem; color: #555; margin-top: 6px; }
+    .note { font-size: 2rem; color: #555; margin-top: 6px; }
 
     .quiz-button {
       display: inline-block;
@@ -128,144 +111,159 @@
   <h1>Formal Charges</h1>
 
   <p class="note">
-    Formal charge is a bookkeeping tool chemists use to assign charges to atoms in Lewis structures. It helps decide the best Lewis structure (resonance contributors) and predict reactivity and stability.
+    Formal charge is a bookkeeping tool to assign charges to atoms in Lewis structures. It helps choose the best Lewis structure and predict where charges sit in molecules or ions.
   </p>
 
-  <!-- SECTION 1: Concept -->
+  <!-- SECTION 1 -->
   <div class="section">
-    <h2>1. What is Formal Charge?</h2>
+    <h2>1. Definition & Formula</h2>
     <p>
-      The <strong>formal charge (FC)</strong> on an atom is the hypothetical charge the atom would have if electrons in all bonds were shared equally between the bonded atoms.
-      It is not the same as the actual partial charge (which comes from electronegativity differences), but it helps compare Lewis structures.
+      <strong>Formal charge (FC)</strong> is the hypothetical charge an atom would have if all bonding electrons were shared equally.
+      Use this formula:
     </p>
-
-    <h3>Formula (simple and reliable)</h3>
-    <p><strong>Formal charge</strong> = <em>Valence electrons (free atom)</em> − <em>Nonbonding electrons</em> − ½ × <em>Bonding electrons</em></p>
-    <p>Or equivalently: <code>FC = V − (N + B/2)</code>, where V = valence electrons, N = nonbonding electrons, B = bonding electrons.</p>
+    <p><strong>FC = V − (N + B/2)</strong></p>
+    <ul>
+      <li><strong>V</strong> = valence electrons in the neutral atom</li>
+      <li><strong>N</strong> = nonbonding electrons (lone-pair electrons on that atom)</li>
+      <li><strong>B</strong> = bonding electrons around that atom (each bond = 2 electrons)</li>
+    </ul>
 
     <div class="activity">
-      <h3>Quick Example: Formal charge on oxygen in H<sub>2</sub>O (Lewis: H–O–H)</h3>
-      <p>Oxygen valence electrons V = 6. Nonbonding electrons N = 4 (two lone pairs). Bonding electrons B = 4 (two O–H bonds; 2 electrons each).</p>
+      <h3>Example: Formal charge on oxygen in H<sub>2</sub>O</h3>
+      <p>Calculate FC for the oxygen atom in H–O–H.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        Calculation: FC = 6 − (4 + 4/2) = 6 − (4 + 2) = 0.  
-        So oxygen has a formal charge of <strong>0</strong> in the neutral water molecule.
+        V = 6; N = 4 (two lone pairs → 4 electrons); B = 4 (two O–H bonds → 4 electrons).<br>
+        FC = 6 − (4 + 4/2) = 6 − (4 + 2) = 0. Oxygen formal charge = <strong>0</strong>.
       </div>
     </div>
   </div>
 
-  <!-- SECTION 2: Why it matters -->
+  <!-- SECTION 2 -->
   <div class="section">
-    <h2>2. Why Formal Charges Matter</h2>
+    <h2>2. Why formal charge matters</h2>
+    <p>
+      Use formal charges to:
+    </p>
     <ul>
-      <li>They help decide which Lewis structure (or resonance form) is most important — most stable structures have small (near zero) formal charges and place negative formal charges on the more electronegative atoms.</li>
-      <li>They explain where charges reside in ions and molecules and help predict reactive sites (nucleophiles/electrophiles).</li>
+      <li>Compare alternative Lewis structures (pick the one with smaller magnitude formal charges).</li>
+      <li>Ensure the sum of formal charges equals the overall molecular/ionic charge.</li>
+      <li>Predict likely sites for attack: negative FC often indicates nucleophilic sites; positive FC indicates electrophilic sites.</li>
     </ul>
 
-    <div class="image">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Resonance-%28benzene%29.png" alt="Resonance example (benzene)"> 
-      <p class="note"><em>Resonance structures often differ by electron placement; formal charge helps weigh contributors.</em></p>
+    <div class="activity">
+      <h3>Quick check</h3>
+      <p>If a neutral molecule has atoms with FCs that sum to +1, what’s wrong?</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        The sum must equal the overall charge. A neutral molecule must sum to 0; if you get +1, the Lewis structure or electron count is probably wrong.
+      </div>
     </div>
   </div>
 
-  <!-- SECTION 3: Step-by-step procedure -->
+  <!-- SECTION 3 -->
   <div class="section">
-    <h2>3. Step-by-step: How to assign formal charges</h2>
+    <h2>3. Step-by-step procedure</h2>
     <ol>
-      <li>Draw a reasonable Lewis structure (count total valence electrons and place bonds & lone pairs).</li>
-      <li>For each atom: find V (valence electrons in free atom).</li>
-      <li>Count N = nonbonding electrons (lone-pair electrons belonging to that atom).</li>
-      <li>Count B = total bonding electrons around that atom (each bond contributes 2 electrons).</li>
+      <li>Draw a Lewis structure (count total valence electrons first).</li>
+      <li>For each atom: find V (valence electrons for that free atom).</li>
+      <li>Count N = nonbonding electrons (lone pairs on that atom).</li>
+      <li>Count B = total bonding electrons around that atom (each bond = 2 electrons).</li>
       <li>Compute FC = V − (N + B/2).</li>
-      <li>Check that the sum of formal charges equals the overall molecular charge (0 for neutrals, ±n for ions).</li>
-      <li>Prefer structures with smaller magnitudes of formal charge, and with negative FC on more electronegative atoms.</li>
+      <li>Verify the sum of all FCs equals the molecule/ion charge.</li>
     </ol>
 
     <div class="activity">
-      <h3>Practice: Determine formal charges in CO<sub>2</sub> (structure O=C=O)</h3>
-      <p>Use the step-by-step method for each atom.</p>
+      <h3>Practice: CO<sub>2</sub> (O=C=O)</h3>
+      <p>Find FC for C and each O in the linear CO<sub>2</sub> drawn as O=C=O.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        For central C: V=4, N=0 (no lone pairs), B=8 (four bonds counted as electrons) → FC = 4 − (0 + 8/2) = 4 − 4 = 0.<br>
-        For each O (double-bonded): V=6, N=4 (two lone pairs), B=4 (two bonds) → FC = 6 − (4 + 4/2) = 6 − (4 + 2) = 0.  
-        All atoms have FC = 0; CO<sub>2</sub> is well represented by this structure.
+        Carbon: V=4, N=0, B=8 → FC = 4 − (0 + 8/2) = 0.<br>
+        Each oxygen (double-bonded): V=6, N=4, B=4 → FC = 6 − (4 + 4/2) = 0.<br>
+        All atoms have FC = 0 and total = 0 (neutral molecule).
       </div>
     </div>
   </div>
 
-  <!-- SECTION 4: Examples with resonance and ions -->
+  <!-- SECTION 4: Examples without resonance -->
   <div class="section">
-    <h2>4. Resonance and Formal Charges — Which is better?</h2>
-    <p>
-      Formal charges guide which resonance structures are more important. Example: nitrite ion (NO<sub>2</sub><sup>−</sup>) has resonance forms with a negative formal charge on one O in each form; both contributors matter.
-    </p>
+    <h2>4. Examples</h2>
 
     <div class="activity">
-      <h3>Example A: Nitrite, NO<sub>2</sub><sup>−</sup> (two resonance forms)</h3>
-      <p>Construct two resonance Lewis structures with one double-bonded O and one single-bonded O bearing the negative charge.</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        Structure 1: O(=)N–O(−) and Structure 2: O(−)–N(=)O.  
-        Formal charges: In the double-bond O: FC = 0; in the single-bond O: FC = −1; on N: FC = +1.  
-        The negative charge localizes on oxygen (more electronegative) — resonance spreads the negative charge over both oxygens, stabilizing the ion.
-      </div>
-    </div>
-
-    <div class="activity">
-      <h3>Example B: Ammonium, NH<sub>4</sub><sup>+</sup></h3>
+      <h3>Example A: Ammonium, NH<sub>4</sub><sup>+</sup></h3>
       <p>What are the formal charges on N and H in NH<sub>4</sub><sup>+</sup>?</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        Nitrogen: V=5, N=0 (no lone pairs), B=8 → FC = 5 − (0 + 8/2) = 5 − 4 = +1.  
-        Each H: V=1, N=0, B=2 → FC = 1 − (0 + 2/2) = 0.  
-        Sum = +1, matching the ion’s charge. Nitrogen bears the positive formal charge.
+        Nitrogen: V=5, N=0, B=8 → FC = 5 − (0 + 8/2) = +1.<br>
+        Each hydrogen: V=1, N=0, B=2 → FC = 1 − (0 + 2/2) = 0.<br>
+        Sum = +1, matching the ion's overall charge.
+      </div>
+    </div>
+
+    <div class="activity">
+      <h3>Example B: Methyl cation, CH<sub>3</sub><sup>+</sup> (challenge)</h3>
+      <p>Compute FC on carbon in CH<sub>3</sub><sup>+</sup> (structure: carbon bonded to three H, no lone pairs).</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        Carbon: V=4, N=0, B=6 → FC = 4 − (0 + 6/2) = 4 − 3 = +1.<br>
+        Each H: FC = 0. Sum = +1 consistent with CH<sub>3</sub><sup>+</sup>.
+      </div>
+    </div>
+
+    <div class="activity">
+      <h3>Example C: Hydrogen cyanide, H–C≡N</h3>
+      <p>Assign FC for H, C, and N in HCN (structure: H–C≡N).</p>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        Hydrogen: V=1, N=0, B=2 → FC = 0.<br>
+        Carbon: V=4, N=0, B=8 (triple bond to N plus single bond to H totals 4 bonds = 8 e⁻) → FC = 4 − (0 + 8/2) = 0.<br>
+        Nitrogen: V=5, N=2 (one lone pair), B=6 → FC = 5 − (2 + 6/2) = 5 − (2 + 3) = 0.<br>
+        All atoms FC = 0; structure consistent and neutral.
       </div>
     </div>
   </div>
 
-  <!-- SECTION 5: More practice (scaffolded) -->
+  <!-- SECTION 5: Additional practice -->
   <div class="section">
-    <h2>5. Practice Problems (scaffolded)</h2>
+    <h2>5. Practice problems (try first, then check answers)</h2>
 
     <div class="activity">
-      <h3>Problem 1: SO<sub>2</sub> (draw structure and assign formal charges)</h3>
-      <p>Try: one canonical structure has S with one double bond to each O; consider possible expanded octet for S.</p>
+      <h3>Problem 1</h3>
+      <p>Calculate FCs in NH<sub>3</sub> (ammonia). Draw Lewis structure first.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        One reasonable Lewis form: O=S=O with each O having two lone pairs; S has no lone pairs.  
-        For each O: V=6, N=4, B=4 → FC = 6 − (4 + 2) = 0. For S: V=6, N=0, B=8 → FC = 6 − (0 + 4) = +2.  
-        That gives +2 on S and 0 on O — but better representations include resonance and one structure with a S–O single bond and negative formal charge on O while S has a lower positive FC; sulfur can expand its octet (use carefully).  
-        Key idea: compare magnitudes and prefer structures that minimize large charges and place negative FC on more electronegative atoms.
+        Nitrogen: V=5, N=2 (one lone pair), B=6 → FC = 5 − (2 + 6/2) = 5 − (2 + 3) = 0.<br>
+        Each H: FC = 0. All FCs are zero for NH<sub>3</sub>.
       </div>
     </div>
 
     <div class="activity">
-      <h3>Problem 2: Calculate formal charges in HCOO<sup>−</sup> (formate ion)</h3>
-      <p>Draw resonance forms (one with double bond to one O and single to the other).</p>
+      <h3>Problem 2</h3>
+      <p>Compute FCs for O in H<sub>3</sub>O<sup>+</sup> (hydronium ion).</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        In each resonance form: one O is double-bonded (FC=0), the other O is single-bonded (FC=−1), C bears FC=+1, H is 0. Resonance distributes the negative charge between the two oxygens.
+        Oxygen: V=6, N=0 (no lone pairs in H<sub>3</sub>O<sup>+</sup> structure), B=8 → FC = 6 − (0 + 8/2) = 6 − 4 = +2.<br>
+        However, more commonly hydronium is drawn with one lone pair (N=2) and three bonds (B=6) giving FC = 6 − (2 + 6/2) = 6 − (2 + 3) = +1 — that is the correct representation: O has FC = +1, each H = 0, sum = +1.
       </div>
     </div>
 
     <div class="activity">
-      <h3>Problem 3 (challenge): In sulfate SO<sub>4</sub><sup>2−</sup>, what are the formal charges if every S–O is drawn as single bonds and you place the extra electrons on oxygen?</h3>
-      <p>Consider alternative Lewis forms that include S=O double bonds and compare.</p>
+      <h3>Problem 3 (challenge)</h3>
+      <p>For formal-charge practice only: draw CH<sub>4</sub>, CH<sub>3</sub><sup>−</sup>, and CH<sub>3</sub><sup>+</sup>, then compute FC on carbon in each.</p>
       <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
       <div class="answer">
-        If all S–O are single bonds and every O has three lone pairs: each O FC = −1 (four oxygens × −1 = −4) and S FC = +6 (to balance total −2). That gives large charges.  
-        Better resonance forms include two S=O double bonds and two S–O single bonds (or equivalent resonance), which distribute charges: typical formal charges become S = +2 and some O = 0 and some O = −1 across resonance contributors. Real structure is a resonance hybrid and is stabilized by charge delocalization.  
-        Takeaway: minimized and delocalized formal charges produce more stable descriptions.
+        CH<sub>4</sub>: C: V=4, N=0, B=8 → FC = 4 − 4 = 0.<br>
+        CH<sub>3</sub><sup>−</sup>: C has an extra lone pair: V=4, N=2, B=6 → FC = 4 − (2 + 3) = −1.<br>
+        CH<sub>3</sub><sup>+</sup>: (seen above) C FC = +1.
       </div>
     </div>
   </div>
 
-  <!-- SECTION 6: Short video (explanatory) -->
+  <!-- SECTION 6: Short explainer video -->
   <div class="section">
-    <h2>6. Short Video Explanation</h2>
-    <p class="note">If you prefer a quick visual walk-through, watch a concise tutorial on formal charges (Khan Academy style videos are reliable).</p>
+    <h2>6. Short video (optional)</h2>
     <div class="video">
-      <iframe src="https://www.youtube.com/embed/0r8dQL8Yg6k" title="Formal Charge explanation" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embedC2l-76VP8s0" title="Formal Charge explanation" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -274,14 +272,12 @@
     <h2>Key Terms & Definitions</h2>
     <table>
       <tr><th>Term</th><th>Definition</th></tr>
-      <tr><td>Formal charge</td><td>Hypothetical charge assigned to an atom in a Lewis structure using FC = V − (N + B/2).</td></tr>
-      <tr><td>Valence electrons (V)</td><td>Electrons in the outermost shell of a free atom used for bonding.</td></tr>
-      <tr><td>Nonbonding electrons (N)</td><td>Electrons as lone pairs on an atom in the Lewis structure.</td></tr>
-      <tr><td>Bonding electrons (B)</td><td>Total electrons shared in bonds around the atom (each bond counts as 2).</td></tr>
-      <tr><td>Resonance</td><td>Different valid Lewis structures for the same molecule; the actual structure is a hybrid of contributors.</td></tr>
-      <tr><td>Octet rule</td><td>The tendency for atoms (mainly second-row elements) to have eight electrons in their valence shell.</td></tr>
-      <tr><td>Electronegativity</td><td>Ability of an atom to attract shared electrons; helps decide where negative formal charges are best placed.</td></tr>
-      <tr><td>Delocalization</td><td>Spreading of electrons across multiple atoms (resonance), which stabilizes the molecule/ion.</td></tr>
+      <tr><td>Formal charge</td><td>Calculated charge on an atom in a Lewis structure using FC = V − (N + B/2).</td></tr>
+      <tr><td>Valence electrons (V)</td><td>Electrons in the outermost shell of the neutral atom used for bonding.</td></tr>
+      <tr><td>Nonbonding electrons (N)</td><td>Electrons present as lone pairs on an atom in the Lewis structure.</td></tr>
+      <tr><td>Bonding electrons (B)</td><td>Total electrons in bonds around the atom (each bond = 2 electrons).</td></tr>
+      <tr><td>Hydronium (H<sub>3</sub>O<sup>+</sup>)</td><td>A common ion where formal charge helps explain acidity: O carries a positive formal charge.</td></tr>
+      <tr><td>Carbocation / Carbanion</td><td>Species with positively or negatively charged carbon centers (FC helps confirm charge location).</td></tr>
     </table>
   </div>
 
