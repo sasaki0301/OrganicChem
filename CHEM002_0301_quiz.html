@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chapter 3 – Lesson 1 Quiz: Polar Covalent Bonds & Electronegativity</title>
-
 <style>
+  /* === BASE PAGE === */
   body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(135deg, #e8f9f1, #f7faff);
@@ -18,6 +18,7 @@
     min-height: 100vh;
   }
 
+  /* === QUIZ CONTAINER === */
   .quiz-container {
     background: #ffffff;
     border-radius: 18px;
@@ -35,6 +36,7 @@
     font-size: 1.8em;
   }
 
+  /* === PROGRESS BAR === */
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -59,6 +61,7 @@
     font-weight: 600;
   }
 
+  /* === QUESTION SECTION === */
   .question {
     font-size: 1.3em;
     font-weight: 600;
@@ -69,7 +72,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   .choice {
     background: #e8ecf8;
@@ -82,21 +85,19 @@
     transition: all 0.2s ease;
   }
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.correct { background: #136f63; color: #fff; }
-  .choice.incorrect { background: #e57373; color: #fff; }
-  .choice.selected { transform: scale(1.02); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
     border-radius: 10px;
     padding: 14px 18px;
-    text-align: left;
-    margin-bottom: 20px;
-    font-size: 0.95em;
-    color: #174ea6;
+    margin-top: 10px;
     display: none;
+    text-align: left;
+    font-size: 1.05em;
   }
 
+  /* === BUTTONS === */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -107,16 +108,17 @@
     cursor: pointer;
     font-weight: bold;
     transition: 0.2s;
+    margin-top: 15px;
   }
   .next-btn:hover { background: #0f5b52; }
 
+  /* === RESULT SECTION === */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
     margin-top: 20px;
   }
-
   .stars {
     font-size: 2.5em;
     margin-top: 10px;
@@ -130,7 +132,6 @@
     flex-wrap: wrap;
     gap: 10px;
   }
-
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
@@ -154,138 +155,181 @@
 </head>
 
 <body>
+  <div class="quiz-container">
+    <h2>Lesson 1 Quiz – Polar Covalent Bonds & Electronegativity</h2>
+    <div class="progress-text" id="progressText">Question 1 of 10</div>
+    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
 
-<h1>Lesson 1 Quiz: Polar Covalent Bonds & Electronegativity</h1>
-
-<div class="quiz-box" id="quizBox">
-
-  <!-- Question 1 -->
-  <div class="question">
-    <p>1. Which atom is the MOST electronegative?</p>
-    <label><input type="radio" name="q1" value="0"> Nitrogen (N)</label>
-    <label><input type="radio" name="q1" value="1"> Fluorine (F)</label>
-    <label><input type="radio" name="q1" value="0"> Carbon (C)</label>
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
   </div>
-
-  <!-- Question 2 -->
-  <div class="question">
-    <p>2. Which bond is the MOST polar?</p>
-    <label><input type="radio" name="q2" value="0"> C–H</label>
-    <label><input type="radio" name="q2" value="1"> H–F</label>
-    <label><input type="radio" name="q2" value="0"> C–C</label>
-  </div>
-
-  <!-- Question 3 -->
-  <div class="question">
-    <p>3. Electronegativity generally increases as you move:</p>
-    <label><input type="radio" name="q3" value="1"> Left → Right across a period</label>
-    <label><input type="radio" name="q3" value="0"> Down a group</label>
-    <label><input type="radio" name="q3" value="0"> From metals → non-metals only</label>
-  </div>
-
-  <!-- Question 4 -->
-  <div class="question">
-    <p>4. In the O–H bond, the dipole arrow should point:</p>
-    <label><input type="radio" name="q4" value="1"> From H to O</label>
-    <label><input type="radio" name="q4" value="0"> From O to H</label>
-    <label><input type="radio" name="q4" value="0"> Neither direction</label>
-  </div>
-
-  <!-- Question 5 -->
-  <div class="question">
-    <p>5. Which bond is considered NONPOLAR in organic chemistry?</p>
-    <label><input type="radio" name="q5" value="0"> O–H</label>
-    <label><input type="radio" name="q5" value="1"> C–H</label>
-    <label><input type="radio" name="q5" value="0"> H–Cl</label>
-  </div>
-
-  <!-- Question 6 -->
-  <div class="question">
-    <p>6. Water (H₂O) is polar mainly because:</p>
-    <label><input type="radio" name="q6" value="1"> It has a bent shape that prevents dipole cancellation</label>
-    <label><input type="radio" name="q6" value="0"> The O–H bonds are nonpolar</label>
-    <label><input type="radio" name="q6" value="0"> The molecule has no lone pairs</label>
-  </div>
-
-  <!-- Question 7 -->
-  <div class="question">
-    <p>7. Which molecule is NONPOLAR overall?</p>
-    <label><input type="radio" name="q7" value="1"> CO₂</label>
-    <label><input type="radio" name="q7" value="0"> H₂O</label>
-    <label><input type="radio" name="q7" value="0"> NH₃</label>
-  </div>
-
-  <!-- Question 8 -->
-  <div class="question">
-    <p>8. A large difference in electronegativity between two bonded atoms usually results in:</p>
-    <label><input type="radio" name="q8" value="0"> A weaker bond</label>
-    <label><input type="radio" name="q8" value="1"> A more polar bond</label>
-    <label><input type="radio" name="q8" value="0"> A longer bond</label>
-  </div>
-
-  <!-- Question 9 -->
-  <div class="question">
-    <p>9. Why is ethanol (CH₃CH₂OH) soluble in water?</p>
-    <label><input type="radio" name="q9" value="1"> It contains an O–H group that can hydrogen bond with water</label>
-    <label><input type="radio" name="q9" value="0"> Its carbon chain is fully nonpolar</label>
-    <label><input type="radio" name="q9" value="0"> It has no polar bonds</label>
-  </div>
-
-  <!-- Question 10 -->
-  <div class="question">
-    <p>10. Which pair shows a NONPOLAR covalent bond?</p>
-    <label><input type="radio" name="q10" value="1"> Br–Br</label>
-    <label><input type="radio" name="q10" value="0"> H–Cl</label>
-    <label><input type="radio" name="q10" value="0"> O–H</label>
-  </div>
-
-  <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
-</div>
-
-<!-- RESULT -->
-<div class="result-box" id="resultBox">
-  <h2 id="resultMessage"></h2>
-  <p id="scoreMessage"></p>
-
-  <button class="retry-btn" onclick="location.reload()">Retry Quiz</button>
-  <button class="next-btn" onclick="goNext()">Next Lesson →</button>
-</div>
 
 <script>
-function submitQuiz() {
-  let score = 0;
-
-  for (let i = 1; i <= 10; i++) {
-    const answer = document.querySelector(`input[name="q${i}"]:checked`);
-    if (answer) score += Number(answer.value);
+const quizData = [
+  {
+    q: "1. Which atom is the most electronegative?",
+    c: ["Oxygen (O)", "Fluorine (F)", "Nitrogen (N)", "Chlorine (Cl)"],
+    a: 1,
+    e: "Fluorine is the most electronegative element, making it the strongest electron attractor."
+  },
+  {
+    q: "2. Which bond is the MOST polar?",
+    c: ["C–H", "C–C", "H–F", "H–Br"],
+    a: 2,
+    e: "H–F has the largest electronegativity difference, producing the strongest dipole."
+  },
+  {
+    q: "3. Electronegativity increases as you move:",
+    c: ["Down a group", "Left to right across a period", "From nonmetals to metals", "Randomly in the table"],
+    a: 1,
+    e: "Across a period, nuclear charge increases, pulling electrons more strongly."
+  },
+  {
+    q: "4. In the O–H bond, the dipole arrow (δ→) points:",
+    c: ["Toward H", "Toward O", "In both directions", "It has no dipole"],
+    a: 1,
+    e: "Oxygen is more electronegative, so the dipole points from H to O."
+  },
+  {
+    q: "5. Which organic bond is considered mostly NONPOLAR?",
+    c: ["C–O", "O–H", "C–H", "N–H"],
+    a: 2,
+    e: "C–H has a very small electronegativity difference (≈0.4), so it is treated as nonpolar."
+  },
+  {
+    q: "6. Water (H₂O) is polar because:",
+    c: ["It is linear", "H–O bonds are nonpolar", "It has a bent shape causing dipoles not to cancel", "Hydrogen is more electronegative than oxygen"],
+    a: 2,
+    e: "The bent geometry results in a net dipole pointing toward oxygen."
+  },
+  {
+    q: "7. Which molecule is NONPOLAR overall?",
+    c: ["H₂O", "NH₃", "CO₂", "CH₃OH"],
+    a: 2,
+    e: "CO₂ is linear, and its dipoles cancel out, giving no net polarity."
+  },
+  {
+    q: "8. A larger electronegativity difference between two atoms results in:",
+    c: ["A less polar bond", "A more polar bond", "A weaker bond", "A shorter bond"],
+    a: 1,
+    e: "As electronegativity difference grows, the bond becomes more polar."
+  },
+  {
+    q: "9. Why is ethanol (CH₃CH₂OH) soluble in water?",
+    c: ["It contains no polar bonds", "It is completely nonpolar", "Its O–H group can hydrogen bond with water", "Carbon atoms attract water molecules strongly"],
+    a: 2,
+    e: "The O–H bond forms hydrogen bonds, allowing strong attraction to water."
+  },
+  {
+    q: "10. Which pair forms a NONPOLAR covalent bond?",
+    c: ["H–Cl", "O–H", "Br–Br", "C–O"],
+    a: 2,
+    e: "Br–Br has zero electronegativity difference, so the bond is fully nonpolar."
   }
+];
 
-  const resultBox = document.getElementById("resultBox");
-  const resultMessage = document.getElementById("resultMessage");
-  const scoreMessage = document.getElementById("scoreMessage");
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
 
-  resultBox.style.display = "block";
-
-  if (score >= 7) {
-    resultMessage.innerHTML = "🎉 Passed!";
-    resultMessage.className = "pass";
-  } else {
-    resultMessage.innerHTML = "❌ Try Again!";
-    resultMessage.className = "fail";
-  }
-
-  scoreMessage.textContent = `You scored ${score} out of 10.`;
-
-  document.getElementById("quizBox").style.display = "none";
-
-  // Send score back to parent LMS (same system you already use)
-  window.parent.postMessage({ type: "quizScore", score: score, total: 10 }, "*");
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
 }
 
-function goNext() {
-  window.parent.postMessage({ type: "openLesson", lesson: "chapter3_lesson2.html" }, "*");
+function selectChoice(i) {
+  if (showingExplanation) return;
+  selected = i;
+  document.querySelectorAll(".choice").forEach((btn, idx) => {
+    btn.classList.toggle("selected", idx === i);
+    btn.disabled = true;
+  });
+  const q = quizData[current];
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
 }
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn'>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn'>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+
+  document.getElementById("retryBtn").addEventListener("click", retryQuiz);
+  document.getElementById("backBtn").addEventListener("click", () =>
+    window.parent.postMessage({ type: "quizBack" }, "*")
+  );
+  document.getElementById("nextLessonBtn").addEventListener("click", () => {
+    if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+  });
+}
+
+function retryQuiz() {
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
 </script>
-
 </body>
 </html>
