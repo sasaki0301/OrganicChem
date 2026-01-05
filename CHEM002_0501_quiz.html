@@ -17,13 +17,6 @@
     justify-content: center;
     min-height: 100vh;
   }
-  img {
-    width: 70%;
-    max-width: 380px;
-    margin: 15px auto;
-    display: block;
-    border-radius: 10px;
-  }
 
   .quiz-container {
     background: #ffffff;
@@ -85,18 +78,26 @@
     cursor: pointer;
     text-align: left;
     font-size: 1.05em;
-    transition: 0.2s;
+    transition: all 0.2s ease;
   }
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; }
+  .choice.selected { background: #174ea6; color: white; transform: scale(1.02); }
+
+  img {
+    width: 70%;
+    max-width: 380px;
+    margin: 15px auto;
+    display: block;
+    border-radius: 10px;
+  }
 
   .explanation {
     background: #eef3ff;
     border-radius: 10px;
     padding: 14px 18px;
     display: none;
-    font-size: 1.05em;
     text-align: left;
+    font-size: 1.05em;
   }
 
   .next-btn {
@@ -109,7 +110,7 @@
     cursor: pointer;
     font-weight: bold;
     display: none;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   .next-btn:hover { background: #0f5b52; }
 
@@ -119,7 +120,6 @@
     color: #174ea6;
     margin-top: 20px;
   }
-
   .stars {
     font-size: 2.5em;
     margin-top: 10px;
@@ -130,37 +130,36 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;
   }
+
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
-    padding: 10px 20px;
     border: none;
     border-radius: 8px;
+    padding: 10px 20px;
     cursor: pointer;
   }
-  .quiz-btn:hover { background: #d3dbf8; }
   .quiz-btn.primary {
     background: #136f63;
-    color: #fff;
+    color: white;
   }
-  .quiz-btn.primary:hover { background:#0f5b52; }
+
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
+  <h2>Lesson 1 Quiz – Naming Alkenes</h2>
 
-<h2>Lesson 1 Quiz – Naming Alkenes</h2>
+  <div class="progress-text" id="progressText">Question 1 of 10</div>
+  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
 
-<div class="progress-text" id="progressText">Question 1 of 10</div>
-<div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-<div id="quizBox"></div>
-<button id="nextBtn" class="next-btn">Next</button>
-
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn">Next</button>
 </div>
+
 
 <script>
 const quizData = [
@@ -255,16 +254,16 @@ function showQuestion() {
 
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
+    ${q.img ? `<img src="${q.img}" />` : ""}
     <div class='choices'></div>
     <div class='explanation' id='explanationBox'></div>
   `;
 
   const choicesContainer = quizBox.querySelector(".choices");
-
   q.c.forEach((choice, i) => {
     const btn = document.createElement("button");
     btn.className = "choice";
-    btn.textContent = choice;
+    btn.innerHTML = choice;
     btn.addEventListener("click", () => selectChoice(i));
     choicesContainer.appendChild(btn);
   });
@@ -276,22 +275,20 @@ function showQuestion() {
 
 function selectChoice(i) {
   if (showingExplanation) return;
-  selected = i;
 
+  selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
     btn.disabled = true;
   });
 
   const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
+  const exp = document.getElementById("explanationBox");
   const correct = i === q.a;
-
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-
+  exp.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  exp.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
 }
@@ -308,19 +305,17 @@ function updateProgress() {
   progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
 }
 
-function getStars(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  if (percent >= 90) return "⭐️⭐️☆";
-  if (percent >= 80) return "⭐️☆☆";
+function getStars(scorePct) {
+  if (scorePct === 100) return "⭐️⭐️⭐️";
+  if (scorePct >= 90) return "⭐️⭐️☆";
+  if (scorePct >= 80) return "⭐️☆☆";
   return "☆☆☆";
 }
 
 function showResult() {
+  const percent = Math.round((score / quizData.length) * 100);
   progressBar.style.width = "100%";
   progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
 
   quizBox.innerHTML = `
     <div class='stars'>${getStars(percent)}</div>
@@ -329,20 +324,21 @@ function showResult() {
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn'>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn'>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' ${percent >= 80 ? "" : "disabled"}>➡ Next Lesson</button>
     </div>
   `;
 
   nextBtn.style.display = "none";
 
-  window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  // Send result to parent (for scoring system)
+  window.parent.postMessage({ type: "quizResult", score: percent, passed: percent >= 80 }, "*");
 
   document.getElementById("retryBtn").addEventListener("click", retryQuiz);
   document.getElementById("backBtn").addEventListener("click", () =>
     window.parent.postMessage({ type: "quizBack" }, "*")
   );
   document.getElementById("nextLessonBtn").addEventListener("click", () => {
-    if (passed)
+    if (percent >= 80)
       window.parent.postMessage({ type: "quizNextLesson" }, "*");
   });
 }
