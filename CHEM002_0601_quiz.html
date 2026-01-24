@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 6 – Lesson 1 Quiz: Alcohols and Naming Alcohols</title>
+
+<style>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+
+h2 {
+  color: #136f63;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.progress-wrapper {
+  background: #e9f5ef;
+  border-radius: 8px;
+  height: 14px;
+  width: 100%;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #136f63, #2b7de9);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  text-align: right;
+  font-size: 0.95em;
+  color: #174ea6;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.question {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #174ea6;
+  margin-bottom: 20px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.choice {
+  background: #e8ecf8;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.05em;
+  transition: all 0.2s ease;
+}
+
+.choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+.choice.selected { background: #174ea6; color: #fff; }
+
+.explanation {
+  background: #eef3ff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 10px;
+  display: none;
+  text-align: left;
+  font-size: 1.05em;
+}
+
+.next-btn {
+  background: #136f63;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-size: 1.05em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  margin-top: 15px;
+}
+
+.next-btn:hover { background: #0f5b52; }
+
+.result {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #174ea6;
+  margin-top: 20px;
+}
+
+.stars {
+  font-size: 2.5em;
+  margin-top: 10px;
+}
+
+.quiz-nav {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quiz-btn {
+  background: #e8ecf8;
+  color: #174ea6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.quiz-btn.primary {
+  background: #136f63;
+  color: #fff;
+}
+.quiz-btn.primary:hover { background: #0f5b52; }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+  <h2>Lesson 1 Quiz – Alcohols and Naming Alcohols</h2>
+  <div class="progress-text" id="progressText">Question 1 of 5</div>
+  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+{
+  q: "1. What is the correct IUPAC name for CH₃CH₂CH₂CH₂OH?",
+  c: ["butanol", "butan-1-ol", "2-butanol", "butane-1-ol"],
+  a: 1,
+  e: "The –OH group is on carbon 1 of a four-carbon chain → butan-1-ol."
+},
+{
+  q: "2. Which of the following represents a secondary alcohol?",
+  c: ["CH₃CH₂CH₂OH", "CH₃CH(OH)CH₃", "CH₃OH", "(CH₃)₃COH"],
+  a: 1,
+  e: "In CH₃CH(OH)CH₃, the –OH carbon is attached to two other carbons, making it secondary."
+},
+{
+  q: "3. What is the correct name of CH₃CH(CH₃)CH₂CH₂OH?",
+  c: ["3-methylbutanol", "2-methylbutan-1-ol", "3-methylbutan-2-ol", "2-ethylpropanol"],
+  a: 1,
+  e: "Longest chain = 4 carbons; –OH on carbon 1; methyl substituent on carbon 2 → 2-methylbutan-1-ol."
+},
+{
+  q: "4. Which rule is applied first when naming alcohols?",
+  c: [
+    "Alphabetize substituents",
+    "Locate the double bond",
+    "Give the –OH group the lowest possible number",
+    "Assign substituent positions"
+  ],
+  a: 2,
+  e: "The hydroxyl (–OH) group has priority and must receive the lowest possible locant."
+},
+{
+  q: "5. Which compound is a tertiary alcohol?",
+  c: [
+    "CH₃CH₂OH",
+    "CH₃CH(OH)CH₃",
+    "(CH₃)₃COH",
+    "CH₃OH"
+  ],
+  a: 2,
+  e: "(CH₃)₃COH has the –OH carbon attached to three other carbons → tertiary alcohol."
+}
+];
+
+let current = 0, score = 0, selected = null;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+  progressBar.style.width = (current / quizData.length) * 100 + "%";
+
+  quizBox.innerHTML = `
+    <div class="question">${q.q}</div>
+    <div class="choices"></div>
+    <div class="explanation" id="explanation"></div>
+  `;
+
+  const choicesDiv = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.textContent = choice;
+    btn.onclick = () => selectChoice(i);
+    choicesDiv.appendChild(btn);
+  });
+
+  nextBtn.style.display = "none";
+}
+
+function selectChoice(i) {
+  if (selected !== null) return;
+  selected = i;
+  const q = quizData[current];
+  const exp = document.getElementById("explanation");
+
+  document.querySelectorAll(".choice").forEach((btn, idx) => {
+    btn.classList.toggle("selected", idx === i);
+    btn.disabled = true;
+  });
+
+  if (i === q.a) score++;
+
+  exp.innerHTML = `<strong>${i === q.a ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  exp.style.display = "block";
+  nextBtn.style.display = "inline-block";
+}
+
+nextBtn.onclick = () => {
+  selected = null;
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+};
+
+function showResult() {
+  const percent = Math.round((score / quizData.length) * 100);
+  const stars = percent === 100 ? "⭐️⭐️⭐️" : percent >= 80 ? "⭐️⭐️☆" : "⭐️☆☆";
+
+  quizBox.innerHTML = `
+    <div class="stars">${stars}</div>
+    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+    <div class="quiz-nav">
+      <button class="quiz-btn" onclick="location.reload()">🔁 Retry</button>
+      <button class="quiz-btn primary" ${percent >= 80 ? "" : "disabled"}
+        onclick="window.parent.postMessage({type:'quizNextLesson'}, '*')">
+        ➡ Next Lesson
+      </button>
+    </div>
+  `;
+
+  progressBar.style.width = "100%";
+  window.parent.postMessage({ type: "quizResult", score: percent, passed: percent >= 80 }, "*");
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
