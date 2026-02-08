@@ -22,7 +22,7 @@ body {
   background: #ffffff;
   border-radius: 18px;
   padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
   width: 95%;
   max-width: 850px;
   text-align: center;
@@ -34,6 +34,14 @@ h2 {
   font-size: 1.8em;
 }
 
+.progress-text {
+  text-align: right;
+  font-size: 0.95em;
+  color: #174ea6;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
 .progress-wrapper {
   background: #e9f5ef;
   border-radius: 8px;
@@ -42,19 +50,12 @@ h2 {
   margin-bottom: 25px;
   overflow: hidden;
 }
+
 .progress-bar {
   height: 100%;
   background: linear-gradient(to right, #136f63, #2b7de9);
   width: 0%;
   transition: width 0.4s ease;
-}
-
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
 }
 
 .question {
@@ -79,10 +80,9 @@ h2 {
   cursor: pointer;
   text-align: left;
   font-size: 1.05em;
-  transition: all 0.2s ease;
 }
 
-.choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+.choice:hover { background: #d3dbf8; }
 .choice.selected { background: #174ea6; color: #fff; }
 
 .explanation {
@@ -92,7 +92,6 @@ h2 {
   margin-top: 10px;
   display: none;
   text-align: left;
-  font-size: 1.05em;
 }
 
 .next-btn {
@@ -104,11 +103,8 @@ h2 {
   font-size: 1.05em;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.2s;
   margin-top: 15px;
 }
-
-.next-btn:hover { background: #0f5b52; }
 
 .result {
   font-size: 1.4em;
@@ -142,7 +138,6 @@ h2 {
   background: #136f63;
   color: #fff;
 }
-.quiz-btn.primary:hover { background: #0f5b52; }
 </style>
 </head>
 
@@ -150,8 +145,10 @@ h2 {
 
 <div class="quiz-container">
   <h2>Lesson 1 Quiz – Alcohols and Naming Alcohols</h2>
-  <div class="progress-text" id="progressText">Question 1 of 5</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="progress-text" id="progressText">Question 1 of 10</div>
+  <div class="progress-wrapper">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
 
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
@@ -160,44 +157,69 @@ h2 {
 <script>
 const quizData = [
 {
-  q: "1. What is the correct IUPAC name for CH₃CH₂CH₂CH₂OH?",
-  c: ["butanol", "butan-1-ol", "2-butanol", "butane-1-ol"],
+  q: "1. Which functional group defines an alcohol?",
+  c: ["–COOH", "–OH", "–NH₂", "–CHO"],
   a: 1,
-  e: "The –OH group is on carbon 1 of a four-carbon chain → butan-1-ol."
+  e: "Alcohols are characterized by the hydroxyl (–OH) functional group."
 },
 {
-  q: "2. Which of the following represents a secondary alcohol?",
-  c: ["CH₃CH₂CH₂OH", "CH₃CH(OH)CH₃", "CH₃OH", "(CH₃)₃COH"],
+  q: "2. What is the correct IUPAC name for CH₃CH₂CH₂OH?",
+  c: ["propanol", "propan-1-ol", "2-propanol", "propyl alcohol"],
   a: 1,
-  e: "In CH₃CH(OH)CH₃, the –OH carbon is attached to two other carbons, making it secondary."
+  e: "The –OH group is on carbon 1 of a three-carbon chain → propan-1-ol."
 },
 {
-  q: "3. What is the correct name of CH₃CH(CH₃)CH₂CH₂OH?",
-  c: ["3-methylbutanol", "2-methylbutan-1-ol", "3-methylbutan-2-ol", "2-ethylpropanol"],
-  a: 1,
-  e: "Longest chain = 4 carbons; –OH on carbon 1; methyl substituent on carbon 2 → 2-methylbutan-1-ol."
+  q: "3. Which compound is a primary alcohol?",
+  c: ["CH₃OH", "CH₃CH(OH)CH₃", "(CH₃)₃COH", "CH₃C(CH₃)₂OH"],
+  a: 0,
+  e: "In CH₃OH, the –OH carbon is attached to no other carbon atoms → primary alcohol."
 },
 {
-  q: "4. Which rule is applied first when naming alcohols?",
+  q: "4. What is the correct name of CH₃CH(OH)CH₃?",
+  c: ["propan-1-ol", "propan-2-ol", "ethanol", "2-methylethanol"],
+  a: 1,
+  e: "The –OH group is on the second carbon of propane → propan-2-ol."
+},
+{
+  q: "5. Which alcohol is classified as secondary?",
+  c: ["CH₃OH", "CH₃CH₂OH", "CH₃CH(OH)CH₃", "(CH₃)₃COH"],
+  a: 2,
+  e: "The –OH carbon in CH₃CH(OH)CH₃ is attached to two other carbons → secondary alcohol."
+},
+{
+  q: "6. What is the correct IUPAC name for (CH₃)₂CHCH₂OH?",
+  c: ["2-methylpropan-2-ol", "butan-1-ol", "2-methylpropan-1-ol", "isobutanol"],
+  a: 2,
+  e: "Longest chain has 3 carbons with a methyl substituent → 2-methylpropan-1-ol."
+},
+{
+  q: "7. Which rule is MOST important when numbering an alcohol?",
   c: [
     "Alphabetize substituents",
-    "Locate the double bond",
     "Give the –OH group the lowest possible number",
-    "Assign substituent positions"
+    "Number the longest chain only",
+    "Minimize substituent numbers first"
   ],
-  a: 2,
-  e: "The hydroxyl (–OH) group has priority and must receive the lowest possible locant."
+  a: 1,
+  e: "The hydroxyl group has priority and must receive the lowest possible locant."
 },
 {
-  q: "5. Which compound is a tertiary alcohol?",
-  c: [
-    "CH₃CH₂OH",
-    "CH₃CH(OH)CH₃",
-    "(CH₃)₃COH",
-    "CH₃OH"
-  ],
+  q: "8. Which compound is a tertiary alcohol?",
+  c: ["CH₃CH₂OH", "CH₃CH(OH)CH₃", "(CH₃)₃COH", "CH₃OH"],
   a: 2,
-  e: "(CH₃)₃COH has the –OH carbon attached to three other carbons → tertiary alcohol."
+  e: "The –OH carbon in (CH₃)₃COH is bonded to three other carbons → tertiary alcohol."
+},
+{
+  q: "9. What suffix is used in IUPAC names for alcohols?",
+  c: ["–ane", "–ene", "–ol", "–one"],
+  a: 2,
+  e: "Alcohols are named using the suffix –ol."
+},
+{
+  q: "10. Which name is INCORRECT?",
+  c: ["butan-2-ol", "ethanol", "2-propanol", "methan-2-ol"],
+  a: 3,
+  e: "Methanol has only one carbon; methan-2-ol is impossible."
 }
 ];
 
@@ -233,6 +255,7 @@ function showQuestion() {
 function selectChoice(i) {
   if (selected !== null) return;
   selected = i;
+
   const q = quizData[current];
   const exp = document.getElementById("explanation");
 
@@ -261,7 +284,7 @@ function showResult() {
 
   quizBox.innerHTML = `
     <div class="stars">${stars}</div>
-    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+    <div class="result">You scored ${score}/${quizData.length} (${percent}%)</div>
     <div class="quiz-nav">
       <button class="quiz-btn" onclick="location.reload()">🔁 Retry</button>
       <button class="quiz-btn primary" ${percent >= 80 ? "" : "disabled"}
