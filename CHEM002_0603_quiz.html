@@ -6,156 +6,148 @@
 <title>Chapter 6 – Comprehensive Assessment: Alcohols</title>
 
 <style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 900px;
-    text-align: center;
-  }
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 900px;
+  text-align: center;
+}
 
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
+h2 {
+  color: #136f63;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
 
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
+.progress-wrapper {
+  background: #e9f5ef;
+  border-radius: 8px;
+  height: 14px;
+  width: 100%;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #136f63, #2b7de9);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+.progress-text {
+  text-align: right;
+  font-size: 0.95em;
+  color: #174ea6;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 
-  .question {
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
+.question {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #174ea6;
+  margin-bottom: 20px;
+}
 
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
+.choice {
+  background: #e8ecf8;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.05em;
+  transition: all 0.2s ease;
+}
+.choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+.choice.selected { background: #174ea6; color: #fff; }
 
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; }
+.explanation {
+  background: #eef3ff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 10px;
+  display: none;
+  text-align: left;
+}
 
-  .explanation {
-    background: #eef3ff;
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-top: 10px;
-    display: none;
-    text-align: left;
-  }
+.next-btn {
+  background: #136f63;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-size: 1.05em;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.next-btn:hover { background: #0f5b52; }
 
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-  }
+.result {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #174ea6;
+  margin-top: 20px;
+}
+.stars {
+  font-size: 2.5em;
+  margin-top: 10px;
+}
 
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
-  }
+.quiz-nav {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.quiz-btn {
+  background: #e8ecf8;
+  color: #174ea6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.quiz-btn.primary {
+  background: #136f63;
+  color: #fff;
+}
 </style>
 </head>
 
 <body>
 <div class="quiz-container">
   <h2>Chapter 6 Assessment – Alcohols</h2>
-
   <div class="progress-text" id="progressText"></div>
-  <div class="progress-wrapper">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
+  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
 const quizData = [
-  { q:"1. Which functional group defines alcohols?", c:["–COOH","–OH","–NH₂","–CHO"], a:1, e:"Alcohols are defined by the hydroxyl (–OH) group."},
+{ q:"1. Which functional group defines alcohols?", c:["–COOH","–OH","–NH₂","–CHO"], a:1, e:"Alcohols are defined by the hydroxyl (–OH) group."},
   { q:"2. What is the general formula of alcohols?", c:["R–COOH","R–OH","R–NH₂","R–CHO"], a:1, e:"Alcohols have the general structure R–OH."},
   { q:"3. Which bond makes alcohols polar?", c:["C–C","C–H","O–H","C–O"], a:2, e:"The O–H bond is highly polar due to electronegativity difference."},
   { q:"4. Why do alcohols have higher boiling points than alkanes?", c:["Larger size","Hydrogen bonding","Stronger covalent bonds","Higher molar mass"], a:1, e:"Hydrogen bonding increases intermolecular attraction."},
@@ -182,66 +174,62 @@ const quizData = [
   { q:"25. Which feature most influences alcohol properties?", c:["Carbon chain","Hydroxyl group","Molecular mass","Bond angle"], a:1, e:"The –OH group controls polarity, bonding, and acidity."}
 ];
 
-let current=0, score=0, selected=null;
+let current=0, score=0, selected=null, showing=false;
 const quizBox=document.getElementById("quizBox");
 const nextBtn=document.getElementById("nextBtn");
 const progressText=document.getElementById("progressText");
 const progressBar=document.getElementById("progressBar");
 
 function showQuestion(){
-  const q=quizData[current];
-  progressText.textContent=`Question ${current+1} of ${quizData.length}`;
-  progressBar.style.width=(current/quizData.length*100)+"%";
-  quizBox.innerHTML=`
-    <div class="question">${q.q}</div>
-    <div class="choices"></div>
-    <div class="explanation" id="exp"></div>`;
-  const choices=quizBox.querySelector(".choices");
-  q.c.forEach((c,i)=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.textContent=c;
-    b.onclick=()=>selectChoice(i);
-    choices.appendChild(b);
-  });
-  nextBtn.style.display="none";
+ const q=quizData[current];
+ progressText.textContent=`Question ${current+1} of ${quizData.length}`;
+ progressBar.style.width=`${(current/quizData.length)*100}%`;
+ quizBox.innerHTML=`<div class="question">${q.q}</div><div class="choices"></div><div class="explanation"></div>`;
+ const choices=quizBox.querySelector(".choices");
+ q.c.forEach((c,i)=>{
+  const b=document.createElement("button");
+  b.className="choice";
+  b.textContent=c;
+  b.onclick=()=>selectChoice(i);
+  choices.appendChild(b);
+ });
+ nextBtn.style.display="none";
+ showing=false;
 }
 
 function selectChoice(i){
-  if(selected!==null)return;
-  selected=i;
-  document.querySelectorAll(".choice").forEach((b,idx)=>{
-    b.classList.toggle("selected",idx===i);
-    b.disabled=true;
-  });
-  const q=quizData[current];
-  const correct=i===q.a;
-  if(correct)score++;
-  const exp=document.getElementById("exp");
-  exp.innerHTML=`<strong>${correct?"✅ Correct":"❌ Incorrect"}</strong><br>${q.e}`;
-  exp.style.display="block";
-  nextBtn.style.display="inline-block";
+ if(showing) return;
+ const q=quizData[current];
+ const exp=quizBox.querySelector(".explanation");
+ document.querySelectorAll(".choice").forEach((b,idx)=>{
+  b.classList.toggle("selected",idx===i);
+  b.disabled=true;
+ });
+ if(i===q.a) score++;
+ exp.innerHTML=`<strong>${i===q.a?"✅ Correct":"❌ Incorrect"}</strong><br>${q.e}`;
+ exp.style.display="block";
+ nextBtn.style.display="inline-block";
+ showing=true;
 }
 
 nextBtn.onclick=()=>{
-  current++;
-  if(current<quizData.length)showQuestion();
-  else showResult();
+ current++;
+ if(current<quizData.length) showQuestion();
+ else showResult();
 };
 
 function showResult(){
-  const percent=Math.round(score/quizData.length*100);
-  const passed=percent>=80;
-  quizBox.innerHTML=`
-    <div class="stars">${percent>=90?"⭐️⭐️⭐️":percent>=80?"⭐️⭐️☆":"⭐️☆☆"}</div>
-    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
-    <div class="quiz-nav">
-      <button class="quiz-btn" onclick="location.reload()">🔁 Retry</button>
-      <button class="quiz-btn primary" ${passed?"":"disabled"} onclick="window.parent.postMessage({type:'quizNextLesson'},'*')">➡ Next Chapter</button>
-    </div>`;
-  progressBar.style.width="100%";
-  progressText.textContent="Quiz Completed";
-  window.parent.postMessage({type:"quizResult",score:percent,passed}, "*");
+ progressBar.style.width="100%";
+ const percent=Math.round(score/quizData.length*100);
+ const passed=percent>=80;
+ quizBox.innerHTML=`
+ <div class="stars">${percent===100?"⭐️⭐️⭐️":percent>=90?"⭐️⭐️☆":percent>=80?"⭐️☆☆":"☆☆☆"}</div>
+ <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+ <div class="quiz-nav">
+  <button class="quiz-btn" onclick="location.reload()">Retry</button>
+  <button class="quiz-btn primary" ${passed?"":"disabled"} onclick="window.parent.postMessage({type:'quizNextLesson'},'*')">Next Chapter</button>
+ </div>`;
+ window.parent.postMessage({type:"quizResult",score:percent,passed}, "*");
 }
 
 showQuestion();
