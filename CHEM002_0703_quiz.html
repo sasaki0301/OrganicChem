@@ -184,62 +184,127 @@ const quizData = [
 {q:"30. What is the main learning focus of this chapter?",c:["Alkane reactions","Aromatic stability and naming","Alkene isomerism","Carboxylic acids"],a:1,e:"Chapter 7 focuses on aromatic compounds and phenols."}
 ];
 
-let current=0, score=0, selected=null, showing=false;
-const quizBox=document.getElementById("quizBox");
-const nextBtn=document.getElementById("nextBtn");
-const progressText=document.getElementById("progressText");
-const progressBar=document.getElementById("progressBar");
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
 
-function showQuestion(){
- const q=quizData[current];
- progressText.textContent=`Question ${current+1} of ${quizData.length}`;
- progressBar.style.width=`${(current/quizData.length)*100}%`;
- quizBox.innerHTML=`<div class="question">${q.q}</div><div class="choices"></div><div class="explanation"></div>`;
- const choices=quizBox.querySelector(".choices");
- q.c.forEach((c,i)=>{
-  const b=document.createElement("button");
-  b.className="choice";
-  b.textContent=c;
-  b.onclick=()=>selectChoice(i);
-  choices.appendChild(b);
- });
- nextBtn.style.display="none";
- showing=false;
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
 }
 
-function selectChoice(i){
- if(showing) return;
- const q=quizData[current];
- const exp=quizBox.querySelector(".explanation");
- document.querySelectorAll(".choice").forEach((b,idx)=>{
-  b.classList.toggle("selected",idx===i);
-  b.disabled=true;
- });
- if(i===q.a) score++;
- exp.innerHTML=`<strong>${i===q.a?"✅ Correct":"❌ Incorrect"}</strong><br>${q.e}`;
- exp.style.display="block";
- nextBtn.style.display="inline-block";
- showing=true;
+function selectChoice(i) {
+  if (showingExplanation) return;
+  selected = i;
+  document.querySelectorAll(".choice").forEach((btn, idx) => {
+    btn.classList.toggle("selected", idx === i);
+    btn.disabled = true;
+  });
+  const q = quizData[current];
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
 }
 
-nextBtn.onclick=()=>{
- current++;
- if(current<quizData.length) showQuestion();
- else showResult();
-};
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
 
-function showResult(){
- progressBar.style.width="100%";
- const percent=Math.round(score/quizData.length*100);
- const passed=percent>=80;
- quizBox.innerHTML=`
- <div class="stars">${percent===100?"⭐️⭐️⭐️":percent>=90?"⭐️⭐️☆":percent>=80?"⭐️☆☆":"☆☆☆"}</div>
- <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
- <div class="quiz-nav">
-  <button class="quiz-btn" onclick="location.reload()">Retry</button>
-  <button class="quiz-btn primary" ${passed?"":"disabled"} onclick="window.parent.postMessage({type:'quizNextLesson'},'*')">Next Chapter</button>
- </div>`;
- window.parent.postMessage({type:"quizResult",score:percent,passed}, "*");
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
 }
 
 showQuestion();
