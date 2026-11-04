@@ -1,311 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 – Lesson 1 Quiz</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 – Lesson 1 Quiz: Definition and Brief History of Organic Chemistry</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-   <div class="quiz-container">
-    <h2>Definition and Brief History of Organic Chemistry – Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "What does organic chemistry primarily study?", c: ["Metals and alloys", "Carbon-containing compounds", "Salts and minerals", "Radioactive elements"], a: 1 },
-      { q: "What ancient theory claimed that organic compounds could only be made by living organisms?", c: ["Atomic theory", "Vitalism", "Cell theory", "Resonance theory"], a: 1 },
-      { q: "Who synthesized urea from ammonium cyanate in 1828?", c: ["Lavoisier", "Kekulé", "Wöhler", "Dalton"], a: 2 },
-      { q: "What was significant about Wöhler’s urea synthesis?", c: ["It proved that carbon is a metal", "It disproved vitalism", "It discovered benzene", "It created alcohol"], a: 1 },
-      { q: "In what year did Friedrich Wöhler synthesize urea?", c: ["1808", "1828", "1845", "1901"], a: 1 },
-      { q: "Which century focused heavily on developing structural theories in organic chemistry?", c: ["18th century", "19th century", "20th century", "21st century"], a: 1 },
-      { q: "What key concept did early chemists like Kekulé contribute?", c: ["Electron theory", "Atomic weights", "Structural theory of bonding", "Radioactivity"], a: 2 },
-      { q: "Which of the following best describes the modern view of organic chemistry?", c: ["Only related to biology", "Study of carbon compounds and their reactions", "Study of inorganic salts", "Study of metallic alloys"], a: 1 },
-      { q: "Which of the following is an organic compound?", c: ["NaCl", "CO₂", "C₂H₆", "Fe₂O₃"], a: 2 },
-      { q: "Which historical event marks the start of modern organic chemistry?", c: ["Discovery of benzene", "Synthesis of urea", "Development of the periodic table", "Discovery of the electron"], a: 1 }
-    ];
-
-  let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  const explanation = q.e || q.explanation || "No explanation provided.";
-expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${explanation}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1 · Lesson 1</div>
+  <h1 id="quizTitle">Definition and Brief History of Organic Chemistry — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    id:'c1l1q01', topic:'Scope and classification', difficulty:'Easy',
+    q:'Which research focus best represents the modern scope of organic chemistry?',
+    c:[
+      'Studying substances from organisms while excluding laboratory-made versions.',
+      'Studying the structures, preparation, and reactions of organic carbon compounds.',
+      'Studying every carbon-containing substance as part of one organic category.',
+      'Studying carbon compounds only when they are involved in living processes.'
+    ], a:1,
+    e:'Organic chemistry examines organic compounds and their transformations, whether the compounds occur naturally or are prepared synthetically. Certain carbon-containing families remain conventionally inorganic.',
+    why:[
+      'Synthetic versions of organic compounds are included; a biological source is not required.',
+      'This focus includes structure, preparation, and reactions without restricting the source.',
+      'The presence of carbon alone is not sufficient: carbon oxides and carbonates are familiar inorganic exceptions.',
+      'Organic chemistry also includes applications outside living systems, such as fuels and plastics.'
+    ]
+  },
+  {
+    id:'c1l1q02', topic:'History and evidence', difficulty:'Easy',
+    q:'A chemist proposes making an organic compound from inorganic materials without a living organism. What would vitalism, as discussed in this lesson, predict?',
+    c:[
+      'It should succeed if the starting materials contain carbon.',
+      'It should succeed because the starting atoms can rearrange.',
+      'It should fail because inorganic compounds cannot contain carbon.',
+      'It should fail because a vital force from living things is required.'
+    ], a:3,
+    e:'The relevant vitalist claim was that producing organic compounds required a special force associated with living organisms. It was a claim about their formation, not simply their elemental composition.',
+    why:[
+      'Carbon alone would not satisfy vitalism’s proposed requirement for a vital force.',
+      'Ordinary chemical rearrangement without a living organism challenges, rather than expresses, this vitalist claim.',
+      'Inorganic compounds can contain carbon; this is not the basis of the vitalist prediction.',
+      'This states the proposed requirement for a vital force in the production of organic compounds.'
+    ]
+  },
+  {
+    id:'c1l1q03', topic:'History and evidence', difficulty:'Easy',
+    q:'Which laboratory record correctly identifies the historical experiment discussed in Lesson 1?',
+    c:[
+      'Friedrich Wöhler — ammonium cyanate to urea, 1828.',
+      'Friedrich Wöhler — urea to ammonium cyanate, 1828.',
+      'August Kekulé — ammonium cyanate to urea, 1828.',
+      'Friedrich Wöhler — ammonium cyanate to urea, 1928.'
+    ], a:0,
+    e:'In 1828, Friedrich Wöhler prepared urea from ammonium cyanate. The result became important evidence against the need for a vital force in organic synthesis.',
+    why:[
+      'The chemist, direction of conversion, and year all match the historical experiment.',
+      'This reverses the starting compound and product in the experiment.',
+      'Kekulé contributed to structural theory, but Wöhler performed the urea experiment discussed here.',
+      'The experiment was reported in 1828, a century before the year given here.'
+    ]
+  },
+  {
+    id:'c1l1q04', topic:'Scope and classification', difficulty:'Moderate',
+    q:'Sample X is purified CO₂ collected from exhaled air. Sample Y is purified CO₂ collected from a laboratory reaction. Which classification is justified?',
+    c:[
+      'X and Y are both organic because both contain carbon.',
+      'X is organic and Y is inorganic because their sources differ.',
+      'X and Y are both inorganic because both are carbon dioxide.',
+      'X is inorganic and Y is organic because Y was made in a laboratory.'
+    ], a:2,
+    e:'Carbon dioxide is a simple oxide of carbon, conventionally classified as inorganic. Changing the source does not change the identity or classification of the purified compound.',
+    why:[
+      'Carbon dioxide is one of the carbon-containing exceptions to the organic category.',
+      'A biological source does not make carbon dioxide organic.',
+      'Both samples contain the same conventionally inorganic compound.',
+      'Laboratory preparation does not make carbon dioxide organic.'
+    ]
+  },
+  {
+    id:'c1l1q05', topic:'Scope and classification', difficulty:'Moderate',
+    q:'Urea is organic and has the structure H₂N–C(=O)–NH₂. Its hydrogens are bonded to nitrogen. Which conclusion follows?',
+    c:[
+      'Its carbon-bound hydrogen atoms are what make it organic.',
+      'An organic compound need not contain a carbon–hydrogen bond.',
+      'Its number of nitrogen atoms determines its organic classification.',
+      'Each NH₂ group contains a carbon–hydrogen bond in the structure.'
+    ], a:1,
+    e:'Urea is an organic compound without a C–H bond. Its carbon is bonded to oxygen and nitrogen, so it is a counterexample to the claim that every organic compound must contain C–H bonds.',
+    why:[
+      'There are no carbon-bound hydrogens in the displayed structure.',
+      'An organic compound with no C–H bonds is sufficient to disprove that proposed requirement.',
+      'Counting nitrogen atoms is not a rule for classifying a compound as organic.',
+      'NH₂ denotes nitrogen bonded to hydrogen; it does not contain a carbon atom.'
+    ]
+  },
+  {
+    id:'c1l1q06', topic:'History and evidence', difficulty:'Moderate',
+    q:'Why was preparing urea from ammonium cyanate stronger evidence against vitalism than extracting urea from urine?',
+    c:[
+      'The preparation formed urea without an organism; extraction only separated urea already present.',
+      'The preparation added a new element; extraction kept the original elements in urea.',
+      'The preparation made a carbon-free product; extraction recovered a carbon-containing product.',
+      'The preparation preserved a vital force; extraction removed that force from the sample.'
+    ], a:0,
+    e:'Extracting urea from a biological source is consistent with the claim that it was made by a living organism. Preparing it from an inorganic starting compound without an organism directly challenges that claimed requirement.',
+    why:[
+      'This identifies the key difference between making the compound and separating an existing sample.',
+      'The transformation rearranged existing atoms; it did not create a new chemical element.',
+      'Urea contains carbon regardless of how it is obtained.',
+      'The experiment did not establish the presence or preservation of a vital force.'
+    ]
+  },
+  {
+    id:'c1l1q07', topic:'Structure and formulas', difficulty:'Moderate',
+    q:'Ethanol is CH₃–CH₂–OH and dimethyl ether is CH₃–O–CH₃. Both have molecular formula C₂H₆O. Which observation explains why they can be different substances?',
+    c:[
+      'The two structures contain different total numbers of oxygen atoms.',
+      'The second structure represents a mixture rather than a single compound.',
+      'Oxygen must form an ionic bond in one of the two structures.',
+      'Oxygen is attached to different atoms in the two structures.'
+    ], a:3,
+    e:'In ethanol, oxygen is attached to carbon and hydrogen; in dimethyl ether, it is attached to two carbons. The molecular formula gives atom counts, while the structural formulas reveal different connections.',
+    why:[
+      'Both formulas contain exactly one oxygen atom.',
+      'CH₃–O–CH₃ represents the connectivity of one compound, dimethyl ether.',
+      'Both structures show covalent molecular compounds; ionic bonding is not the difference.',
+      'Different connectivity can produce different substances despite matching atom counts.'
+    ]
+  },
+  {
+    id:'c1l1q08', topic:'Scope and classification', difficulty:'Moderate',
+    q:'A product consists of ethanol and water mixed together. Which report correctly classifies the named components and the product?',
+    c:[
+      'Ethanol is inorganic; water is organic; the product is a mixture.',
+      'Both components are organic; mixing them changes water’s classification.',
+      'Ethanol is organic; water is inorganic; the product is a mixture.',
+      'Ethanol is organic; water is inorganic; the product is one compound.'
+    ], a:2,
+    e:'Ethanol is an organic alcohol and water is inorganic. A product containing both is a mixture; mixing does not make water organic or turn the whole product into a single compound.',
+    why:[
+      'This reverses the classifications of ethanol and water.',
+      'Water remains inorganic when mixed with an organic compound.',
+      'This correctly identifies each component and distinguishes a mixture from a compound.',
+      'The component classifications are right, but a mixture of ethanol and water is not one compound.'
+    ]
+  },
+  {
+    id:'c1l1q09', topic:'Structure and formulas', difficulty:'Difficult',
+    q:'Compare NH₄OCN (ammonium cyanate) with CO(NH₂)₂ (urea). Which interpretation correctly combines atom counting with structural reasoning?',
+    c:[
+      'Both contain C₁H₂N₂O₁, so the conversion must release two hydrogen atoms.',
+      'Both contain C₁H₄N₂O₁, so the formulas must represent the same substance.',
+      'Both contain C₁H₄N₁O₁, so a nitrogen atom is absent from each formula.',
+      'Both contain C₁H₄N₂O₁, but their atoms can be arranged in different ways.'
+    ], a:3,
+    e:'NH₄OCN has one N in NH₄ and another in OCN: C₁H₄N₂O₁ overall. In CO(NH₂)₂, the subscript 2 gives two N and four H, again C₁H₄N₂O₁. Equal composition does not imply the same arrangement: ammonium cyanate is an ionic salt and urea is molecular.',
+    why:[
+      'Both formulas contain four hydrogen atoms; the count does not require loss of hydrogen.',
+      'The atom counts are correct, but the inference is not: matching composition does not establish identical structure.',
+      'Each formula contains two nitrogen atoms, not one.',
+      'Both the atom count and the distinction between composition and arrangement are correct.'
+    ]
+  },
+  {
+    id:'c1l1q10', topic:'History and evidence', difficulty:'Difficult',
+    q:'A museum caption makes two claims about Wöhler’s experiment: (I) it showed that urea could be made without a living organism; (II) it immediately ended vitalism and established a method for making every organic compound. Which evaluation is best?',
+    c:[
+      'I is supported; II goes beyond what the experiment established.',
+      'Both are supported; one successful synthesis establishes a universal method.',
+      'I is unsupported; II follows from urea’s importance in living organisms.',
+      'Neither is supported; urea’s biological occurrence makes the result irrelevant.'
+    ], a:0,
+    e:'The experiment supported the preparation of this organic compound without an organism. It did not demonstrate a method for every organic compound or cause immediate universal rejection of vitalism. The wider historical change developed as evidence accumulated.',
+    why:[
+      'This separates the demonstrated result from an unsupported generalization and an overstated historical claim.',
+      'A successful preparation of one compound does not establish a universal method or immediate acceptance.',
+      'Claim I is the demonstrated result; biological importance does not establish claim II.',
+      'Urea’s biological occurrence helped make the laboratory result relevant to the vitalist claim.'
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(element('span','letter',letters[i]+'.'),body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading, choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','result');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
-
+</script>
 </body>
 </html>
