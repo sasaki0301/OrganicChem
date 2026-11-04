@@ -1,285 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 – Lesson 3: Applications of Organic Chemistry in Daily Life</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-      color: #222;
-      margin: 0;
-      padding: 32px 24px;
-      line-height: 1.75;
-      font-size: 20px;
-    }
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chapter 1 – Lesson 3: Applications of Organic Chemistry in Daily Life</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-    h1 {
-      color: #136f63;
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
-
-    h2 {
-      color: #136f63;
-      font-size: 1.6em;
-      margin-top: 1.3em;
-      margin-bottom: 0.4em;
-    }
-
-    h3 {
-      color: #174ea6;
-      font-size: 1.25em;
-      margin-top: 0.7em;
-    }
-
-    p { margin: 12px 0; }
-    ul { margin-left: 28px; }
-
-    /* Section cards */
-    .section {
-      background: #ffffff;
-      padding: 24px 30px;
-      margin-bottom: 30px;
-      border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .image, .video {
-      text-align: center;
-      margin: 22px 0;
-    }
-
-    img {
-      width: 90%;
-      max-width: 650px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    iframe {
-      width: 90%;
-      max-width: 760px;
-      height: 430px;
-      border-radius: 12px;
-    }
-
-    /* Activity block */
-    .activity {
-      background: #f9fbff;
-      border-left: 5px solid #136f63;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin: 22px 0;
-    }
-
-    .toggle-btn {
-      background: #136f63;
-      color: #fff;
-      border: none;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.2s;
-    }
-
-    .toggle-btn:hover {
-      background: #0f5b52;
-      transform: translateY(-1px);
-    }
-
-    .answer {
-      display: none;
-      background: #eef3ff;
-      padding: 14px;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-size: 18px;
-    }
-
-    /* Table for Key Terms */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      margin-top: 16px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-
-    th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-      font-size: 18px;
-    }
-
-    th {
-      background: #f3f7ff;
-      color: #174ea6;
-      font-weight: bold;
-    }
-
-    /* Quiz button */
-    .quiz-button {
-      display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 13px 26px;
-      border-radius: 10px;
-      border: none;
-      font-weight: bold;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 30px;
-    }
-
-    .quiz-button:hover { background-color: #0f5b52; }
-  </style>
-</head>
-
-<body>
-
+.wide-table{min-width:580px}.equation{background:#f5f8ff;border:1px solid var(--line);border-radius:10px;padding:20px;text-align:center;overflow-wrap:anywhere;font-weight:600}.steps li strong{color:var(--green)}
+.diagram{width:100%;height:auto;display:block;max-width:600px;margin:12px auto}.table-wrap{max-width:100%}.worksheet{min-height:70px;border-bottom:1px dashed #a6b9bd;margin:14px 0}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}.worksheet{min-height:45px}}
+</style></head><body><a href="#lesson" class="skip">Skip to lesson</a><main id="lesson"><header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1</div>
 <h1>Lesson 3: Applications of Organic Chemistry in Daily Life</h1>
-
-<div class="section">
-  <p>
-    Organic chemistry is deeply connected to everyday living. From the food we consume to the
-    medicines we take and the materials we rely on, organic compounds shape our modern world.
-  </p>
-</div>
-
-<!-- SECTION 1 -->
-<div class="section">
-  <h2>1. Medicine and Pharmaceuticals</h2>
-  <p>
-    Many medicines are organic molecules. Aspirin, paracetamol, antibiotics, and countless modern drugs
-    are products of organic synthesis. Organic chemistry helps design safer, more effective medications
-    by understanding how molecules interact within the body.
-  </p>
-
-  <div class="image">
-    <img src="https://news.harvard.edu/wp-content/uploads/2024/03/Aspirin.jpg" alt="Aspirin molecule structure" />
-    <p><em>Aspirin (C₉H₈O₄) – one of the most commonly used organic medicines.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity: Why are drugs organic?</h3>
-    <p>Explain why most medicines are organic molecules rather than inorganic ions.</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      Because the body is made of organic molecules (proteins, lipids, DNA), medicines must also be
-      organic to interact correctly with biological systems.
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 2 -->
-<div class="section">
-  <h2>2. Fuels and Energy</h2>
-  <p>
-    Organic compounds such as methane, propane, gasoline, and kerosene power transportation,
-    heating, and electricity generation. Even renewable fuels like ethanol and biodiesel come
-    from organic agricultural sources.
-  </p>
-
-  <div class="image">
-    <img src="https://www.shalom-education.com/wp-content/uploads/2022/03/image-164.png" alt="Burning hydrocarbon flame" />
-    <p><em>Combustion of hydrocarbons releases energy used for cooking, transport, and electricity.</em></p>
-  </div>
-</div>
-
-<!-- SECTION 3 -->
-<div class="section">
-  <h2>3. Food and Nutrition</h2>
-  <p>
-    Our essential nutrients — carbohydrates, fats, proteins, vitamins — are all organic compounds.
-    Organic chemistry explains metabolism, digestion, and how nutrients support life processes.
-  </p>
-
-  <div class="image">
-    <img src="https://lmu.pressbooks.pub/app/uploads/sites/16/2024/09/1C-J-3.1-Figure-quaternary-structure.jpg" alt="Protein structure" />
-    <p><em>Proteins: complex organic molecules folded into functional shapes.</em></p>
-  </div>
-</div>
-
-<!-- SECTION 4 -->
-<div class="section">
-  <h2>4. Polymers and Plastics</h2>
-  <p>
-    Organic chemistry is central to creating plastics, rubber, synthetic fibers, adhesives,
-    paints, and countless household materials. Polymers are long chains of repeating organic units.
-  </p>
-
-  <div class="image">
-    <img src="https://images.prismic.io/xometry-marketing/Zqf9LB5LeNNTxk66_polyethylene-molecular-structure.png?auto=format%2Ccompress&w=600&h=600&fit=max" alt="Polyethylene structure" />
-    <p><em>Polyethylene – one of the most widely used plastics.</em></p>
-  </div>
-</div>
-
-<!-- SECTION 5 -->
-<div class="section">
-  <h2>5. Agriculture and the Environment</h2>
-  <p>
-    Fertilizers, pesticides, herbicides, and even plant hormones involve organic chemistry.
-    Environmentally friendly organic compounds are now being developed to reduce pollution
-    and create biodegradable materials.
-  </p>
-
-  <div class="image">
-    <img src="https://lirp.cdn-website.com/a652d47c/dms3rep/multi/opt/file-b2484315-640w.png" alt="Fertilizers in agriculture" />
-    <p><em>Organic agricultural chemicals improve productivity and sustainability.</em></p>
-  </div>
-</div>
-
-<!-- VIDEO -->
-<div class="section">
-  <h2>Video: Organic Chemistry in Daily Life</h2>
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/X0Pr67L1Xqc" allowfullscreen></iframe>
-  </div>
-</div>
-
-<!-- SUMMARY -->
-<div class="section">
-  <h2>Summary</h2>
-  <ul>
-    <li>Organic chemistry explains the structure and behavior of carbon-based compounds.</li>
-    <li>It is essential to medicine, energy, food, materials, and the environment.</li>
-    <li>Organic compounds make up nutrients, fuels, plastics, and many parts of modern technology.</li>
-  </ul>
-
-  <h3>Key Terms</h3>
-  <table>
-    <tr><th>Term</th><th>Definition</th></tr>
-    <tr><td>Hydrocarbon</td><td>Organic compound containing only hydrogen and carbon.</td></tr>
-    <tr><td>Polymer</td><td>Large molecule made of repeating organic units.</td></tr>
-    <tr><td>Nutrient</td><td>Organic molecules the body uses for energy and function.</td></tr>
-    <tr><td>Pharmaceutical</td><td>Organic compound used as medicine.</td></tr>
-    <tr><td>Biofuel</td><td>Fuel derived from organic biological sources.</td></tr>
-  </table>
-</div>
-
-<div style="text-align:center;">
-  <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
-</div>
-
-<script>
-  function toggleAnswer(btn) {
-    const ans = btn.nextElementSibling;
-    ans.style.display = ans.style.display === "block" ? "none" : "block";
-    btn.textContent = ans.style.display === "block" ? "Hide Answer" : "Show Answer";
-  }
-
-  document.getElementById("takeQuizBtn").addEventListener("click", () => {
-    window.parent.postMessage({ type: "openQuiz", quiz: "chapter1_lesson3_quiz.html" }, "*");
+<p class="intro">A plate of rice, an LPG stove, a medicine tablet, and a plastic container all involve organic chemistry. The useful question is not only “Does it contain carbon?” but also “What does the compound do, and why?”</p>
+<p class="meta">Allow about 30–40 minutes. Use paper for the drills and practice.</p>
+<nav aria-label="Lesson sections"><a href="#goals">Goals</a><a href="#medicine">Medicine</a><a href="#fuels">Fuels</a><a href="#food">Food</a><a href="#materials">Materials</a><a href="#environment">Agriculture</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav></header><section class="section" id="goals" aria-labelledby="goals-title"><h2 id="goals-title">What you will learn</h2><ul><li>Identify organic compounds used in medicine, fuels, food, materials, and agriculture.</li><li>Connect a compound’s properties or reactions to its everyday function.</li><li>Distinguish a pure compound from a product containing several substances.</li><li>Evaluate claims such as “natural means safe” and “plant-based means biodegradable.”</li></ul>
+<div class="note"><strong>Use this four-part explanation:</strong><ol class="steps"><li><strong>Compound:</strong> What substance is involved?</li><li><strong>Property or reaction:</strong> What chemical feature matters?</li><li><strong>Application:</strong> How does that feature serve the purpose?</li><li><strong>Limit:</strong> What should we avoid assuming?</li></ol></div>
+<p class="small">This builds on Lessons 1 and 2: organic/inorganic classification does not by itself determine safety, solubility, or usefulness. Names are provided here; systematic naming will be developed in later lessons.</p></section><section class="section" id="medicine" aria-labelledby="medicine-title"><h2 id="medicine-title">1. Medicine: chemical structure affects biological activity</h2>
+<p>Many active ingredients in medicines are organic compounds. Examples include <strong>paracetamol, C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub></strong>, and <strong>aspirin, C<sub>9</sub>H<sub>8</sub>O<sub>4</sub></strong>. A medicine product may contain an active ingredient together with other ingredients used to make the tablet, capsule, or liquid.</p>
+<p>Organic chemistry helps researchers prepare molecules and study how their <strong>shape, charge, and chemical groups</strong> affect interactions with biological targets. Changes in structure can change activity, absorption, or breakdown. A useful medicine must also be evaluated for effectiveness and safety.</p>
+<div class="worked"><div class="label">Worked example 1</div><h3>Must a medicine be organic?</h3><p>Compare <strong>paracetamol</strong>, an organic active ingredient used for pain and fever, with <strong>calcium carbonate, CaCO<sub>3</sub></strong>, an inorganic ingredient used in some antacids.</p><ol><li><strong>Identify:</strong> these are different compounds with different actions.</li><li><strong>Explain:</strong> calcium carbonate reacts with acid, which explains its antacid use. It does not need to be organic to act in the body.</li><li><strong>Conclude:</strong> chemical behavior—not the organic label alone—determines whether a substance can serve a medicinal purpose.</li></ol></div><div class="activity"><h3>Guided drill 1 · Correct the reasoning</h3><p>A student says, “The body contains organic molecules, so every medicine must be organic to interact with it.” Identify the error and give a counterexample.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The body also contains water and inorganic ions, and interactions depend on chemical properties. Calcium carbonate is inorganic yet is used in some antacids because it reacts with acid. Medicines do not have to be organic.</p></div></details></div>
+<p class="small">The examples explain chemical applications; they are not instructions for choosing or taking a medicine.</p></section><section class="section" id="fuels" aria-labelledby="fuels-title"><h2 id="fuels-title">2. Fuels: reactions transfer chemical energy</h2>
+<p><strong>Hydrocarbons</strong> contain only carbon and hydrogen. Methane, CH<sub>4</sub>, and propane, C<sub>3</sub>H<sub>8</sub>, are examples. LPG commonly contains propane and butane; gasoline and kerosene are mixtures of many hydrocarbons, not single compounds with one formula.</p>
+<p>During combustion, fuel reacts with oxygen. For complete combustion of a hydrocarbon, the products are carbon dioxide and water. The overall reaction releases energy that can be transferred as heat.</p>
+<div class="equation" aria-label="Methane plus two oxygen molecules produces carbon dioxide and two water molecules, releasing energy">CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O<br><span class="small">Complete combustion; energy is released overall.</span></div>
+<p><strong>Why energy is released:</strong> breaking reactant bonds requires energy, while forming product bonds releases energy. In combustion, the latter release is greater, giving a net energy release.</p>
+<div class="worked"><div class="label">Worked example 2</div><h3>Explain why LPG can heat a cooking pot</h3><ol><li><strong>Compound:</strong> propane is one of the hydrocarbons in LPG.</li><li><strong>Reaction:</strong> propane reacts with oxygen, releasing energy overall.</li><li><strong>Application:</strong> energy transfers from the flame and hot gases to the pot and its contents.</li><li><strong>Limit:</strong> combustion is not emission-free. Complete combustion produces CO<sub>2</sub>; insufficient oxygen can lead to carbon monoxide and soot.</li></ol></div>
+<h3>Biofuels: source and emissions are different questions</h3><p>A <strong>biofuel</strong> is a fuel produced from biomass—material from living or recently living organisms. Ethanol produced from fermented plant sugars and biodiesel produced from suitable oils or fats are examples.</p><p>Bioethanol still releases CO<sub>2</sub> when burned. Evaluating its environmental impact also requires considering feedstock production, processing, transport, and land use. A renewable source does not automatically mean zero emissions.</p>
+<div class="activity"><h3>Guided drill 2 · Read the reaction</h3><p>Using the methane equation, answer: (a) How many oxygen atoms are on each side? (b) Which product contains carbon? (c) Does complete combustion mean that no CO<sub>2</sub> is produced?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>(a)</strong> Four oxygen atoms on each side: 2O<sub>2</sub> gives four; CO<sub>2</sub> plus 2H<sub>2</sub>O also gives four. <strong>(b)</strong> CO<sub>2</sub>. <strong>(c)</strong> No. Carbon dioxide is a product of complete combustion, so complete combustion is not carbon-free combustion.</p></div></details></div></section><section class="section" id="food" aria-labelledby="food-title"><h2 id="food-title">3. Food: organic and inorganic nutrients work together</h2>
+<p>Food is a mixture. Carbohydrates, fats, proteins, and vitamins are organic substances, while water and mineral nutrients are inorganic. <strong>Not all nutrients are organic, and not all nutrients supply energy.</strong></p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Nutrients and functions table"><table class="wide-table"><caption>Examples and roles—not a complete nutrition guide</caption><thead><tr><th scope="col">Nutrient group</th><th scope="col">Example</th><th scope="col">Chemical connection</th></tr></thead><tbody>
+<tr><th scope="row">Carbohydrates</th><td>Starch in rice; glucose</td><td>Digestible carbohydrates supply sugars that cells can use in energy-releasing reactions.</td></tr>
+<tr><th scope="row">Fats</th><td>Triglycerides in cooking oil</td><td>Store chemical energy; their digestion produces smaller components that can be absorbed.</td></tr>
+<tr><th scope="row">Proteins</th><td>Proteins in eggs, fish, and beans</td><td>Digestion releases amino acids used to build the body’s proteins.</td></tr>
+<tr><th scope="row">Vitamins</th><td>Vitamin C, C<sub>6</sub>H<sub>8</sub>O<sub>6</sub></td><td>Organic micronutrients with specific biological roles; they do not supply dietary energy like fats or carbohydrates.</td></tr>
+<tr><th scope="row">Water and minerals</th><td>H<sub>2</sub>O; calcium and sodium ions</td><td>Inorganic nutrients needed for functions such as transport, structure, and fluid balance.</td></tr>
+</tbody></table></div>
+<div class="worked"><div class="label">Worked example 3</div><h3>Follow starch from a meal to usable building blocks</h3><ol><li><strong>Identify:</strong> rice contains starch, an organic carbohydrate made of many linked glucose units.</li><li><strong>Explain the transformation:</strong> digestive enzymes help break digestible starch into smaller sugars, ultimately including glucose.</li><li><strong>Connect to use:</strong> absorbed glucose can participate in cellular reactions that release energy.</li><li><strong>State the limit:</strong> rice is not pure starch, and digestion is not the same process as burning food in a flame.</li></ol></div><div class="activity"><h3>Guided drill 3 · Read a drink’s ingredients</h3><p>A drink contains water, sucrose, and dissolved sodium chloride. Identify the organic compound and the inorganic components. Which listed ingredient is a source of dietary energy?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Organic:</strong> sucrose. <strong>Inorganic:</strong> water and sodium chloride. Sucrose supplies dietary energy. Water and the salt have other physiological roles; being a nutrient does not automatically mean supplying calories.</p></div></details></div></section><section class="section" id="materials" aria-labelledby="materials-title"><h2 id="materials-title">4. Materials and cleaning: structure explains function</h2>
+<p>A <strong>polymer</strong> is a substance made of macromolecules—very large molecules containing many repeated structural units. A <strong>monomer</strong> is a small molecule that can react to contribute units to a polymer chain or network.</p>
+<p>Many familiar polymers are organic: polyethylene in packaging, cellulose in cotton and paper, natural rubber, and nylon. Polymers can be natural or synthetic. The general term “polymer” is broader than organic chemistry; not every polymer has a carbon-based backbone.</p>
+<figure><svg xmlns="http://www.w3.org/2000/svg" class="diagram" viewBox="0 0 560 235" role="img" aria-label="Ethene monomers form a polyethylene chain"><desc>Ethene contains a carbon-carbon double bond. In polyethylene, the carbon chain contains single bonds and a repeating CH2 CH2 unit. The bracket and n indicate many repeats.</desc>
+<rect x="10" y="8" width="540" height="85" rx="12" fill="#f0faf6" stroke="#c8e6d9"/>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" fill="#24323d"><text x="280" y="35" font-size="18" fill="#136f63">Monomer: ethene</text><text x="280" y="73" font-size="30">n CH₂=CH₂</text>
+<text x="280" y="125" font-size="18" fill="#136f63">polymerization ↓</text></g>
+<rect x="10" y="142" width="540" height="85" rx="12" fill="#f3f7ff" stroke="#dce6eb"/>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" fill="#24323d"><text x="280" y="170" font-size="18" fill="#174ea6">Polymer: polyethylene</text><text x="280" y="208" font-size="30">[—CH₂—CH₂—]ₙ</text></g></svg>
+<figcaption>Simplified polymerization scheme. Each repeat is bonded to the next; the lines at the brackets show the continuing chain. End groups are omitted.</figcaption></figure>
+<h3>Read the polymer scheme</h3><ol><li><strong>Start with ethene:</strong> CH<sub>2</sub>=CH<sub>2</sub> has a C=C double bond.</li><li><strong>Connect many units:</strong> during polymerization, new bonds join the units into a chain; the polyethylene backbone has C–C single bonds.</li><li><strong>Read the brackets:</strong> [–CH<sub>2</sub>–CH<sub>2</sub>–]<sub>n</sub> means the unit repeats many times. The symbol <em>n</em> is not one fixed number for every chain.</li></ol>
+<div class="worked"><div class="label">Worked example 4</div><h3>Why use polyethylene for packaging?</h3><ol><li><strong>Structure:</strong> polyethylene consists of long hydrocarbon chains.</li><li><strong>Properties:</strong> it is lightweight and resists water. Chain branching and packing help determine stiffness and flexibility.</li><li><strong>Use:</strong> different grades can be used for flexible films or more rigid containers.</li><li><strong>Trade-off:</strong> durability is useful during service, but discarded polyethylene can persist in the environment.</li></ol></div>
+<h3>A connection to Lesson 2: how soap helps remove grease</h3>
+<figure><svg xmlns="http://www.w3.org/2000/svg" class="diagram" viewBox="0 0 560 215" role="img" aria-label="Two regions of a soap ion"><desc>A long nonpolar hydrocarbon tail interacts with oil. A charged carboxylate head interacts with water. This is a schematic, not a full structural formula.</desc>
+<rect x="8" y="8" width="544" height="199" rx="12" fill="#f8fbff" stroke="#dce6eb"/>
+<path d="M42 99L70 79L98 99L126 79L154 99L182 79L210 99L238 79L266 99L294 79L322 99L350 79L383 92" fill="none" stroke="#9c6f1b" stroke-width="5"/>
+<circle cx="428" cy="92" r="43" fill="#e0f1f9" stroke="#174ea6" stroke-width="3"/>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" fill="#24323d"><text x="428" y="100" font-size="25">COO⁻</text><text x="197" y="151" font-size="20" fill="#805b16">Hydrocarbon tail</text><text x="197" y="181" font-size="17">interacts with oil</text><text x="432" y="151" font-size="20" fill="#174ea6">Charged head</text><text x="432" y="181" font-size="17">interacts with water</text></g></svg><figcaption>A soap ion has two regions with different interactions. A counterion, such as Na⁺, is present in the soap but omitted from this schematic.</figcaption></figure>
+<p>Soap is a <strong>surfactant</strong>: a substance that acts at interfaces, such as between oil and water. Its nonpolar tail associates with oily material, while its charged head interacts with water. With washing and rinsing, soap helps disperse grease so it can be carried away.</p>
+<p>Soap is not simply “making oil become water-soluble molecules.” It helps organize and disperse oily material in water. This is a practical application of molecular regions having different interactions.</p>
+<div class="activity"><h3>Guided drill 4 · Explain using structure</h3><p>Water alone does not remove a greasy film well. Explain why adding soap can help. Mention both the head and the tail.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The hydrocarbon tails associate with the grease, while the charged heads interact with water. Soap helps disperse the oily material into the wash water, allowing it to be removed during rinsing. The two regions serve different roles.</p></div></details></div></section><section class="section" id="environment" aria-labelledby="environment-title"><h2 id="environment-title">5. Agriculture and the environment: usefulness has conditions</h2>
+<p>Organic chemistry contributes to fertilizers, plant-growth regulators, pest-control products, and materials used in agriculture. These products are not all organic compounds, and their environmental effects depend on their identities and how they are used.</p>
+<div class="grid"><div class="card"><h3>Urea: organic nitrogen source</h3><p>Urea, CO(NH<sub>2</sub>)<sub>2</sub>, contains nitrogen. In soil, it can be converted to ammonium; further transformations can produce nitrate, forms plants can use.</p></div><div class="card"><h3>Ammonium sulfate: inorganic nitrogen source</h3><p>Ammonium sulfate, (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>, is an inorganic salt that supplies ammonium ions. An inorganic compound can also serve an agricultural purpose.</p></div></div>
+<p>Here, “urea is organic” is a <strong>chemical classification</strong>. It does not establish whether a fertilizer is allowed under an organic-farming certification system.</p>
+<h3>Read environmental claims carefully</h3>
+<div class="table-wrap"><table><thead><tr><th scope="col">Term</th><th scope="col">What it describes</th><th scope="col">What to check</th></tr></thead><tbody><tr><th scope="row">Biobased</th><td>Material made partly or wholly from biological feedstocks.</td><td>Its source does not by itself establish how fast it breaks down.</td></tr><tr><th scope="row">Biodegradable</th><td>Can be broken down by biological activity under specified conditions.</td><td>Environment, time, and evidence of breakdown.</td></tr><tr><th scope="row">Compostable</th><td>Can meet specified breakdown and quality requirements in composting conditions.</td><td>Whether the claim is for home or industrial composting and whether the relevant facility accepts it.</td></tr></tbody></table></div>
+<div class="worked"><div class="label">Worked example 5</div><h3>Evaluate “plant-based means it disappears anywhere”</h3><p>A cup is described as plant-based and suitable for industrial composting.</p><ol><li><strong>Identify the claims:</strong> “plant-based” concerns feedstock; “industrial composting” concerns an end-of-life process.</li><li><strong>Check the conditions:</strong> industrial composting uses controlled conditions that may differ greatly from a garden, beach, or ocean.</li><li><strong>Conclude:</strong> these claims do not show that the cup rapidly breaks down wherever it is discarded.</li></ol></div><div class="activity"><h3>Guided drill 5 · Ask for useful evidence</h3><p>A packaging advertisement says only “100% natural and eco-friendly.” Name two additional pieces of information needed to evaluate its disposal claim.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Possible answers include the exact material, the specified breakdown environment and time, evidence supporting compostability, and whether a local collection or processing facility accepts it. “Natural” alone does not establish an appropriate disposal route.</p></div></details></div>
+<div class="note"><strong>Keep the categories separate:</strong> organic ≠ harmless; natural ≠ automatically safe; biobased ≠ automatically biodegradable. Evaluate the particular substance, exposure, use, and disposal conditions.</div></section><section class="section" id="practice" aria-labelledby="practice-title"><h2 id="practice-title">6. Independent practice</h2><p>Answer on paper first. For application questions, connect a compound to its function and explain why. For claim-evaluation questions, identify what evidence is missing.</p>
+<h3>A. Match the compound to the application</h3><p>For items 1–5, use each candidate once: <strong>urea, polyethylene, propane, calcium carbonate, starch.</strong> Add one sentence explaining each match.</p>
+<ol><li>A hydrocarbon component of LPG used for cooking.</li><li>An organic fertilizer compound whose nitrogen can become available to plants.</li><li>A polymer used in water-resistant packaging.</li><li>An inorganic ingredient in some antacids.</li><li>A food polymer digested to smaller sugars, including glucose.</li></ol>
+<details><summary><span class="show">Show answers and reasons</span><span class="hide">Hide answers and reasons</span></summary><div class="answer"><ol><li><strong>Propane:</strong> its combustion releases energy that can heat cookware.</li><li><strong>Urea:</strong> soil processes convert its nitrogen into forms plants can use.</li><li><strong>Polyethylene:</strong> its long hydrocarbon chains give useful material properties, including water resistance.</li><li><strong>Calcium carbonate:</strong> it reacts with acid, explaining its antacid role.</li><li><strong>Starch:</strong> digestive enzymes break its chains into smaller carbohydrate units.</li></ol></div></details>
+<h3>B. Explain, compare, and evaluate</h3>
+<div class="activity"><h3>6. Product or pure compound?</h3><p>A student writes, “Gasoline is one organic compound, so it has one molecular formula.” Correct the statement.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Gasoline is a mixture of many compounds, mainly hydrocarbons, and may include additives. Individual components have formulas, but gasoline as a whole does not have one molecular formula.</p></div></details></div><div class="activity"><h3>7. Compare useful materials</h3><p>Both starch and polyethylene are polymers. Does that mean they must have the same digestibility or environmental behavior? Explain.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>No. “Polymer” describes the presence of macromolecules with repeated units. Their chemical structures and bonds differ. Human digestive enzymes can act on digestible starch, but do not digest polyethylene in the same way. Shared membership in a broad category does not imply identical behavior.</p></div></details></div><div class="activity"><h3>8. Evaluate a fuel claim</h3><p>A poster states, “Bioethanol comes from plants, so burning it releases no carbon dioxide.” Correct the claim and identify one other stage to consider when evaluating environmental impact.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Burning bioethanol releases CO<sub>2</sub>. Its biological origin does not eliminate combustion emissions. Relevant additional stages include growing the feedstock, processing it into fuel, transporting it, and changes in land use.</p></div></details></div><div class="activity"><h3>9. Interpret a material’s specifications</h3><p>Two hypothetical packaging samples have these supplier descriptions:</p><div class="table-wrap"><table><thead><tr><th scope="col">Sample</th><th scope="col">Feedstock</th><th scope="col">End-of-life information</th></tr></thead><tbody><tr><td>A</td><td>Plant-derived</td><td>No biodegradation or composting evidence supplied</td></tr><tr><td>B</td><td>Plant-derived</td><td>Evidence supplied for industrial composting under specified conditions</td></tr></tbody></table></div><p>(a) Which has evidence for industrial composting? (b) Can either description establish rapid breakdown in seawater? (c) What local information is still needed for disposal?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>(a)</strong> B. <strong>(b)</strong> Neither; industrial composting evidence cannot simply be transferred to seawater, and A provides no breakdown evidence. <strong>(c)</strong> Whether an appropriate local collection system or industrial composting facility accepts the particular material.</p></div></details></div><div class="activity"><h3>10. Build a complete explanation</h3><p>Use the four-part pattern to explain one of these: <strong>soap for greasy dishes, propane for cooking, or urea as fertilizer</strong>. Include a limitation, not just a benefit.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Sample—soap:</strong> Soap contains ions with a nonpolar hydrocarbon tail and a charged head. The tail associates with grease while the head interacts with water, helping disperse grease for rinsing away. This does not mean a soap solution is safe for every surface or that cleaning performance alone establishes environmental harmlessness.</p><p>Other answers are acceptable if the compound, chemical explanation, use, and limitation are accurate.</p></div></details></div>
+<h3>Optional transfer task · Read three familiar labels</h3><p>Choose three available product labels or photographs of labels. Identify a named ingredient or material and record its function. Use the names on the label; if a function is not stated or established in this lesson, mark it “needs verification.”</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Product</th><th scope="col">Named ingredient/material</th><th scope="col">Function and chemical explanation</th></tr></thead><tbody><tr><td>Example: a sugar packet</td><td>Sucrose</td><td>Sweetener; dissolves in drinks and supplies dietary energy.</td></tr><tr><td>1. __________</td><td>__________</td><td>__________</td></tr><tr><td>2. __________</td><td>__________</td><td>__________</td></tr><tr><td>3. __________</td><td>__________</td><td>__________</td></tr></tbody></table></div>
+<p class="small">This is a label-reading activity. No tasting, heating, or mixing is needed.</p></section><section class="section" id="summary" aria-labelledby="summary-title"><h2 id="summary-title">7. What to remember</h2>
+<ul><li><strong>Medicine:</strong> molecular structure and chemical behavior help explain activity. Some medicines contain inorganic active ingredients.</li><li><strong>Energy:</strong> organic fuels can release energy through combustion; their source and emissions must be considered separately.</li><li><strong>Food:</strong> organic nutrients work alongside inorganic water and minerals.</li><li><strong>Materials:</strong> polymer structure affects properties; surfactants combine regions that interact differently with oil and water.</li><li><strong>Agriculture and environment:</strong> useful applications require attention to conditions, effects, and disposal—not just labels.</li></ul>
+<h3>Key terms</h3><div class="table-wrap"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning in this lesson</th></tr></thead><tbody>
+<tr><th scope="row">Active ingredient</th><td>The component responsible for a medicine’s intended therapeutic action.</td></tr>
+<tr><th scope="row">Hydrocarbon</th><td>A compound containing only carbon and hydrogen.</td></tr>
+<tr><th scope="row">Combustion</th><td>A reaction with oxygen that releases energy overall in the fuel examples considered here.</td></tr>
+<tr><th scope="row">Nutrient</th><td>A substance needed for normal growth, maintenance, or function; nutrients include organic and inorganic substances.</td></tr>
+<tr><th scope="row">Polymer</th><td>A substance composed of macromolecules with many repeated structural units.</td></tr>
+<tr><th scope="row">Monomer</th><td>A small molecule that can react to contribute units to a macromolecule.</td></tr>
+<tr><th scope="row">Surfactant</th><td>A substance that acts at interfaces and lowers surface or interfacial tension; many help disperse oil in water.</td></tr>
+<tr><th scope="row">Biofuel</th><td>A fuel produced from biomass.</td></tr>
+<tr><th scope="row">Biodegradable</th><td>Capable of being broken down by biological activity under particular conditions.</td></tr>
+</tbody></table></div>
+<div class="activity"><h3>Before taking the quiz</h3><p>Choose one product from your daily life. Explain <strong>what compound or material is involved, why it is useful, and one claim about it that would need more evidence</strong>.</p></div></section><section class="section" id="references" aria-labelledby="references-title"><h2 id="references-title">Sources and further reading</h2><div class="references"><p>The examples, diagrams, and activities are newly prepared. These sources support the background explanations:</p><ul>
+<li><a href="https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=28d9b359-ae44-2c87-e063-6394a90a22f0" target="_blank" rel="noopener noreferrer">DailyMed: calcium carbonate and magnesium hydroxide antacid label</a> — an example of inorganic active ingredients.</li>
+<li><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/digestive-system-how-it-works" target="_blank" rel="noopener noreferrer">NIDDK: Your Digestive System &amp; How It Works</a> — nutrient categories and digestion.</li>
+<li><a href="https://iupac.org/polymer-edu/what-are-polymers/" target="_blank" rel="noopener noreferrer">IUPAC: What are polymers?</a> — polymers and macromolecules.</li>
+<li><a href="https://www.cleaninginstitute.org/understanding-products/science-soap/chemistry-cleaning" target="_blank" rel="noopener noreferrer">American Cleaning Institute: The Chemistry of Cleaning</a> — surfactant structure and cleaning.</li>
+<li><a href="https://www.eia.gov/energyexplained/biomass/biomass-and-the-environment.php" target="_blank" rel="noopener noreferrer">U.S. Energy Information Administration: Biomass and the environment</a> — biofuels and environmental effects.</li>
+<li><a href="https://www.acs.org/molecule-of-the-week/archive/u/urea.html" target="_blank" rel="noopener noreferrer">American Chemical Society: Urea</a> — urea’s use as fertilizer.</li>
+<li><a href="https://www.epa.gov/trash-free-waters/frequently-asked-questions-about-plastic-recycling-and-composting" target="_blank" rel="noopener noreferrer">U.S. EPA: Plastic Recycling and Composting FAQs</a> — biobased, biodegradable, and compostable materials.</li>
+</ul></div></section><div class="quiz-area"><p>Ready to check your understanding?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Quiz →</button><p id="quizNotice" class="small" role="status"></p></div></main><script>
+  document.getElementById('takeQuizBtn').addEventListener('click', function () {
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter1_lesson3_quiz.html' }, '*');
+    } else {
+      document.getElementById('quizNotice').textContent = 'Open this lesson inside LearnTrack to launch its quiz.';
+    }
   });
-</script>
-
-</body>
-</html>
+  // Include all answer explanations when printing, then restore the learner’s view.
+  let openBeforePrint = [];
+  window.addEventListener('beforeprint', function () {
+    openBeforePrint = Array.from(document.querySelectorAll('details')).map(function (item) {
+      const previous = item.open; item.open = true; return previous;
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    document.querySelectorAll('details').forEach(function (item, index) { item.open = Boolean(openBeforePrint[index]); });
+  });
+</script></body></html>
