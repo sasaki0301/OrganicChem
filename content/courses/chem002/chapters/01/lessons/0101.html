@@ -1,238 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 – Lesson 1: Definition and Brief History of Organic Chemistry</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-      color: #222;
-      margin: 0;
-      padding: 32px 24px;
-      line-height: 1.75;
-      font-size: 20px;
-    }
-
-    h1 {
-      color: #136f63;
-      font-size: 2.2em;
-      margin-bottom: 0.4em;
-      text-align: left;
-    }
-
-    h2 {
-      color: #136f63;
-      font-size: 1.6em;
-      margin-top: 1.4em;
-      margin-bottom: 0.3em;
-    }
-
-    h3 {
-      color: #174ea6;
-      font-size: 1.25em;
-      margin-top: 0.6em;
-    }
-
-    p { margin: 12px 0; }
-    ul { margin-left: 28px; }
-
-    /* Section Cards */
-    .section {
-      background: #ffffff;
-      padding: 24px 30px;
-      margin-bottom: 30px;
-      border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .image, .video {
-      text-align: center;
-      margin: 22px 0;
-    }
-
-    img {
-      width: 90%;
-      max-width: 650px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    iframe {
-      width: 90%;
-      max-width: 760px;
-      height: 430px;
-      border-radius: 12px;
-    }
-
-    /* Activity */
-    .activity {
-      background: #f9fbff;
-      border-left: 5px solid #136f63;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin-top: 18px;
-    }
-
-    .toggle-btn {
-      background: #136f63;
-      color: #fff;
-      border: none;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.2s;
-    }
-
-    .toggle-btn:hover {
-      background: #0f5b52;
-      transform: translateY(-1px);
-    }
-
-    .answer {
-      display: none;
-      background: #eef3ff;
-      padding: 14px;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-size: 18px;
-    }
-
-    /* Quiz button */
-    .quiz-button {
-      display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 13px 26px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 18px;
-      border: none;
-      cursor: pointer;
-      margin-top: 30px;
-      transition: 0.2s;
-    }
-
-    .quiz-button:hover { background-color: #0f5b52; }
-
-    /* Table for Key Terms */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      margin-top: 16px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-
-    th, td {
-      padding: 12px 16px;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-      font-size: 18px;
-    }
-
-    th {
-      background: #f3f7ff;
-      color: #174ea6;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 – Lesson 1: Definition and Brief History of Organic Chemistry</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
+</style>
 </head>
-
 <body>
+<a href="#lesson" class="skip">Skip to lesson</a>
+<main id="lesson">
+<header>
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1</div>
+  <h1>Lesson 1: Definition and Brief History of Organic Chemistry</h1>
+  <p class="intro">What do sugar, cooking gas, and a plastic container have in common? Their chemistry involves carbon compounds. But does every compound containing carbon belong to organic chemistry?</p>
+  <p class="meta">Allow about 25–35 minutes. Have paper ready for the drills.</p>
+  <nav aria-label="Lesson sections"><a href="#goals">Learning goals</a><a href="#definition">Meaning and examples</a><a href="#history">Wöhler’s experiment</a><a href="#development">Development</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+</header>
 
-<h1>Lesson 1: Definition and Brief History of Organic Chemistry</h1>
+<section class="section" id="goals" aria-labelledby="goals-title">
+  <h2 id="goals-title">What you will learn</h2>
+  <p>By the end of this lesson, you should be able to:</p>
+  <ul><li>Describe what organic chemistry studies.</li><li>Classify familiar compounds as organic or inorganic and explain your choice.</li><li>Explain what Wöhler’s urea synthesis showed and how it challenged vitalism.</li><li>Connect organic chemistry with everyday materials and scientific progress.</li></ul>
+  <p class="small"><strong>How to use this lesson:</strong> Read each example, write your own response to the drill, and then open the explanation. If your answer differs, identify which idea needs correcting.</p>
+</section>
 
-<div class="section">
-  <p>
-    Organic chemistry is the branch of chemistry that focuses on compounds containing carbon—
-    especially those with carbon–hydrogen (C–H) bonds. These compounds form the basis of all life
-    and are essential in fields such as medicine, fuels, plastics, and food science.
-  </p>
-</div>
-
-<div class="section">
-  <h2>1. Historical Background</h2>
-  <p>
-    For centuries, scientists believed organic compounds could only originate from living organisms.
-    This belief was called <strong>vitalism</strong>, which claimed organic molecules required a “vital force.”
-  </p>
-
-  <div class="image">
-    <img src="https://static.tildacdn.net/tild3132-3537-4364-b038-383362626633/Fig_4-2.png" alt="Wöhler’s Urea Synthesis Diagram" />
-    <p><em>Wöhler’s urea synthesis proved organic molecules could be created from inorganic substances.</em></p>
+<section class="section" id="definition" aria-labelledby="definition-title">
+  <h2 id="definition-title">1. What is organic chemistry?</h2>
+  <p><strong>Organic chemistry studies the structures, properties, preparation, and reactions of organic compounds.</strong> These are carbon compounds, with certain carbon-containing substances traditionally studied as inorganic compounds.</p>
+  <p>Many organic compounds contain carbon–hydrogen (<strong>C–H</strong>) bonds. They may also contain oxygen, nitrogen, sulfur, or other elements. However, <strong>a C–H bond is common, not required</strong>.</p>
+  <div class="note"><strong>Two shortcuts to avoid</strong><ul><li>“It contains carbon, so it must be organic.” Carbon dioxide and carbonates are familiar exceptions.</li><li>“It comes from nature, so it must be organic.” Water is natural, but it is an inorganic compound.</li></ul></div>
+  <h3>Everyday connections</h3>
+  <div class="grid">
+    <div class="card"><h3>Food and fuel</h3><p>Sucrose in table sugar is an organic compound. Propane and butane, common components of LPG, are also organic compounds.</p></div>
+    <div class="card"><h3>Medicines and materials</h3><p>Paracetamol is an organic compound. Polyethylene, used in many plastic bags and containers, is an organic polymer—a substance made of long chains of repeating units.</p></div>
   </div>
+  <p class="small">Classify the named substance, not an entire product. Foods, medicines, and household products may be mixtures of organic and inorganic substances.</p>
+  <h3>A useful starting guide</h3>
+  <ol><li><strong>Read the formula.</strong> Is carbon, represented by C, present? If no carbon is present, the compound is inorganic.</li><li><strong>Check familiar exceptions.</strong> Carbon monoxide (CO), carbon dioxide (CO<sub>2</sub>), carbonates, and hydrogen carbonates are conventionally inorganic.</li><li><strong>Use what you know about the compound.</strong> Do not decide from its source or the presence of C–H bonds alone. A formula is a starting clue, not a universal classification test.</li></ol>
+  <div class="worked"><div class="label">Worked example 1 · Use the formula</div><h3>Methane, CH<sub>4</sub></h3><p><strong>Observe:</strong> It contains carbon bonded to hydrogen.</p><p><strong>Interpret:</strong> Methane belongs to the hydrocarbons, compounds containing only carbon and hydrogen.</p><p><strong>Conclude:</strong> Methane is <strong>organic</strong>. Its classification does not depend on where it was obtained.</p></div>
+  <div class="worked"><div class="label">Worked example 2 · Check the exception</div><h3>Carbon dioxide, CO<sub>2</sub></h3><p><strong>Observe:</strong> Carbon is present.</p><p><strong>Interpret:</strong> Carbon dioxide is a simple oxide of carbon, conventionally classified as inorganic.</p><p><strong>Conclude:</strong> CO<sub>2</sub> is <strong>inorganic</strong>, even when released by a living organism during respiration.</p></div>
+  <div class="worked"><div class="label">Worked example 3 · Look at the bonds</div><h3>Urea, CO(NH<sub>2</sub>)<sub>2</sub></h3>
+    <figure><svg class="structure" width="340" height="160" viewBox="0 0 340 160" role="img" aria-labelledby="urea-title urea-desc"><title id="urea-title">The structure of urea</title><desc id="urea-desc">A central carbon is double bonded to oxygen and single bonded to two NH2 groups. The hydrogen atoms are bonded to nitrogen, not carbon.</desc><g stroke="#24323d" stroke-width="2.5"><path d="M164 55V88 M176 55V88 M150 105H98 M190 105H242"/></g><g font-family="Segoe UI,Arial,sans-serif" font-size="28" text-anchor="middle"><text x="170" y="43" fill="#174ea6">O</text><text x="170" y="115" fill="#136f63">C</text><text x="66" y="115" fill="#24323d">H₂N</text><text x="276" y="115" fill="#24323d">NH₂</text></g></svg><figcaption>One line represents a single bond; two parallel lines represent a double bond. In urea, all four hydrogen atoms are attached to nitrogen.</figcaption></figure>
+    <p><strong>Observe:</strong> Urea contains carbon and hydrogen, but no C–H bonds.</p><p><strong>Conclude:</strong> Urea is still <strong>organic</strong>. Therefore, requiring every organic compound to have a C–H bond would incorrectly exclude urea.</p>
+  </div>
+  <div class="activity"><h3>Guided drill 1 · Classify and justify</h3><p>For each compound, write <strong>organic</strong> or <strong>inorganic</strong>, then give one reason. Use the guide above.</p><ol><li>Ethanol, CH<sub>3</sub>CH<sub>2</sub>OH — an alcohol used in some sanitizers.</li><li>Calcium carbonate, CaCO<sub>3</sub> — a main component of limestone.</li><li>Water, H<sub>2</sub>O — obtained from a coconut.</li></ol>
+    <details><summary><span class="show">Show answers and reasons</span><span class="hide">Hide answers and reasons</span></summary><div class="answer"><ol><li><strong>Organic.</strong> Ethanol is a carbon-based alcohol; oxygen in its formula does not make it inorganic.</li><li><strong>Inorganic.</strong> Calcium carbonate is a carbonate, one of the familiar carbon-containing exceptions.</li><li><strong>Inorganic.</strong> Water contains no carbon. Its biological source does not change its classification.</li></ol></div></details>
+  </div>
+  <div class="note"><strong>“Organic” is not a safety label.</strong> In chemistry, the word does not automatically mean natural, harmless, edible, or environmentally friendly. For example, methane is organic and flammable. The term “organic” in food production has a different context.</div>
+</section>
 
-  <p>
-    In 1828, <strong>Friedrich Wöhler</strong> synthesized urea—an organic compound—from ammonium cyanate.
-    This experiment disproved vitalism and launched the era of modern organic chemistry.
-  </p>
-
-  <h3>Activity: Understanding Vitalism</h3>
-  <div class="activity">
-    <p>In your own words, explain why Wöhler’s experiment was important to chemistry.</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      Wöhler showed that organic compounds are not “magical” substances from life only.
-      They follow the same chemical principles as inorganic compounds.
+<section class="section" id="history" aria-labelledby="history-title">
+  <h2 id="history-title">2. How did the meaning of “organic” change?</h2>
+  <h3>The earlier belief: vitalism</h3>
+  <p>Early chemists distinguished substances obtained from living organisms from those obtained from minerals. One influential belief was that making organic substances required a special <strong>“vital force”</strong> found only in living things.</p>
+  <p>In this context, <strong>vitalism</strong> predicted that an organic substance could not be prepared from inorganic starting materials without the involvement of a living organism.</p>
+  <h3>The evidence: Wöhler’s urea synthesis in 1828</h3>
+  <p><strong>Friedrich Wöhler</strong> prepared urea from ammonium cyanate, an inorganic salt. Urea was already known as a substance found in urine, but his preparation did not require a living organism.</p>
+  <figure>
+    <div class="reaction" aria-label="On heating, ammonium cyanate is converted into urea.">
+      <div class="compound"><div class="formula">NH<sub>4</sub><sup>+</sup> OCN<sup>−</sup></div><div class="name">Ammonium cyanate</div><span class="tag">Inorganic starting compound</span></div>
+      <div class="arrow"><small>heat</small><span class="symbol" aria-hidden="true">→</span></div>
+      <div class="compound"><div class="formula">H<sub>2</sub>N–C(=O)–NH<sub>2</sub></div><div class="name">Urea</div><span class="tag">Organic product</span></div>
     </div>
+    <figcaption>Simplified representation of Wöhler’s conversion. The charges identify the ions in ammonium cyanate; C(=O) shows carbon double bonded to oxygen in urea.</figcaption>
+  </figure>
+  <h3>Read the reaction in three steps</h3>
+  <ol><li><strong>Identify the starting compound:</strong> ammonium cyanate, shown on the left.</li><li><strong>Identify the product:</strong> urea, shown on the right.</li><li><strong>Connect the result to the claim:</strong> an organic product formed without a living organism, challenging the claim that a vital force was required.</li></ol>
+  <div class="note"><strong>Historical accuracy:</strong> Wöhler’s experiment was an important challenge to vitalism. It did not immediately end the belief or establish the whole field by itself; acceptance changed as further evidence accumulated.</div>
+  <div class="activity"><h3>Guided drill 2 · Check the atoms</h3><p>Count the C, H, N, and O atoms on each side of the reaction. Did the reaction create a new element, or change how existing atoms are arranged?</p><p class="small">Hint: NH<sub>4</sub><sup>+</sup> contributes one nitrogen and four hydrogens; OCN<sup>−</sup> contributes the other nitrogen.</p>
+    <details><summary><span class="show">Show atom count and explanation</span><span class="hide">Hide atom count and explanation</span></summary><div class="answer"><div class="table-wrap"><table><caption>Atom count per formula unit or molecule</caption><thead><tr><th scope="col">Element</th><th scope="col">Ammonium cyanate</th><th scope="col">Urea</th></tr></thead><tbody><tr><th scope="row">C</th><td>1</td><td>1</td></tr><tr><th scope="row">H</th><td>4</td><td>4</td></tr><tr><th scope="row">N</th><td>2</td><td>2</td></tr><tr><th scope="row">O</th><td>1</td><td>1</td></tr></tbody></table></div><p><strong>The atoms are conserved.</strong> Their arrangement changes. The starting material is an ionic salt; the product consists of urea molecules. The same overall elemental composition does not guarantee the same substance.</p></div></details>
   </div>
-</div>
-
-<div class="section">
-  <h2>2. Evolution of Organic Chemistry</h2>
-  <ul>
-    <li><strong>19th Century:</strong> Development of structural theory (Kekulé, Couper).</li>
-    <li><strong>20th Century:</strong> Advances in synthesis, mechanisms, and spectroscopy.</li>
-    <li><strong>Modern Era:</strong> Organic chemistry integrated with biology, materials science, and medicine.</li>
-  </ul>
-
-  <div class="video">
-    <h3>🎥 Watch: The Birth of Organic Chemistry</h3>
-    <iframe src="https://www.youtube.com/embed/NVbvyApu0-Y" allowfullscreen></iframe>
+  <div class="activity"><h3>Guided drill 3 · Claim, evidence, reasoning</h3><p>Complete these three statements in your own words:</p><ol><li>Vitalism predicted that…</li><li>Wöhler observed that…</li><li>This challenged the prediction because…</li></ol>
+    <details><summary><span class="show">Show a sample response</span><span class="hide">Hide the sample response</span></summary><div class="answer"><p>Vitalism predicted that producing an organic compound required a vital force from a living organism. Wöhler obtained urea from ammonium cyanate without a living organism. The result showed that this organic compound could form through an ordinary chemical transformation.</p><p><strong>Limit of the evidence:</strong> He demonstrated the preparation of urea, not the laboratory preparation of every organic compound.</p></div></details>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <h2>3. Lesson Summary</h2>
-  <ul>
-    <li>Organic chemistry studies carbon-based compounds and their transformations.</li>
-    <li>Vitalism suggested organic compounds came only from living organisms.</li>
-    <li>Wöhler’s 1828 synthesis of urea disproved vitalism.</li>
-    <li>Organic chemistry has evolved into a central science for medicine, polymers, materials, and biotechnology.</li>
-  </ul>
+<section class="section" id="development" aria-labelledby="development-title">
+  <h2 id="development-title">3. From identifying substances to understanding structures</h2>
+  <ol class="timeline"><li><strong>Early study · Where did it come from?</strong><br>Substances were grouped largely by their sources, such as organisms or minerals.</li><li><strong>1828 · Can it be made in a laboratory?</strong><br>Wöhler’s urea synthesis became an important example of preparing an organic substance from an inorganic starting material.</li><li><strong>19th century · How are the atoms connected?</strong><br>Structural theory developed through contributions from chemists including Kekulé, Couper, and Butlerov. Chemists increasingly connected a substance’s behavior with the arrangement of its atoms.</li><li><strong>20th century to today · How can we identify and design molecules?</strong><br>Improved synthesis and methods such as spectroscopy expanded the study of molecular structure and reactions, supporting work in medicine, biology, and materials science.</li></ol>
+  <div class="worked"><h3>Why structure matters: ethanol and dimethyl ether</h3><p>Both have the molecular formula <strong>C<sub>2</sub>H<sub>6</sub>O</strong>, but their atoms connect differently:</p><div class="grid"><div class="card"><strong>Ethanol</strong><p class="formula">CH<sub>3</sub>–CH<sub>2</sub>–OH</p><p>Oxygen is bonded to a carbon and a hydrogen.</p></div><div class="card"><strong>Dimethyl ether</strong><p class="formula">CH<sub>3</sub>–O–CH<sub>3</sub></p><p>Oxygen is bonded to two carbons.</p></div></div><p><strong>Meaning:</strong> A molecular formula tells us the number of each kind of atom. A structural formula also shows connections. Different connections can produce different properties.</p><p class="small">You do not need to name these structures yet. This distinction prepares you for later lessons on structures and nomenclature.</p></div>
+  <div class="activity"><h3>Guided drill 4 · Correct the explanation</h3><p>A student says, “Ethanol and dimethyl ether must be the same substance because both are C<sub>2</sub>H<sub>6</sub>O.” Identify what is correct in the statement and what needs correcting.</p><details><summary><span class="show">Show explanation</span><span class="hide">Hide explanation</span></summary><div class="answer"><p>The atom counts are the same. However, the connections differ: ethanol has an O–H bond, while dimethyl ether has oxygen between two carbons. They are different substances. Atom counts alone do not specify a unique structure.</p></div></details></div>
+</section>
 
-  <h3>Key Terms</h3>
-  <table>
-    <tr><th>Term</th><th>Definition</th></tr>
-    <tr><td>Organic Chemistry</td><td>Study of carbon-containing compounds, especially those with C–H bonds.</td></tr>
-    <tr><td>Vitalism</td><td>Disproven theory claiming organic compounds can only come from living organisms.</td></tr>
-    <tr><td>Urea Synthesis</td><td>Wöhler’s experiment demonstrating organic compounds can be made artificially.</td></tr>
-    <tr><td>Carbon</td><td>A versatile element capable of forming millions of compounds.</td></tr>
-    <tr><td>Structural Theory</td><td>Concept that atoms connect in defined arrangements, forming molecular structure.</td></tr>
-  </table>
-</div>
+<section class="section" id="practice" aria-labelledby="practice-title">
+  <h2 id="practice-title">4. Independent practice</h2>
+  <p><strong>Work before revealing:</strong> Answer on paper. For classification questions, include one reason. For explanation questions, use one or two clear sentences.</p>
+  <h3>A. Classify familiar compounds</h3>
+  <div class="table-wrap"><table><caption>Write organic or inorganic for each named compound.</caption><thead><tr><th scope="col">Item</th><th scope="col">Compound</th><th scope="col">Context</th></tr></thead><tbody><tr><td>1</td><td>Propane, C<sub>3</sub>H<sub>8</sub></td><td>A component of LPG</td></tr><tr><td>2</td><td>Sodium hydrogen carbonate, NaHCO<sub>3</sub></td><td>Baking soda</td></tr><tr><td>3</td><td>Sodium chloride, NaCl</td><td>Table salt</td></tr><tr><td>4</td><td>Sucrose, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub></td><td>Table sugar</td></tr><tr><td>5</td><td>Carbon monoxide, CO</td><td>A gas produced during incomplete combustion</td></tr><tr><td>6</td><td>Urea, CO(NH<sub>2</sub>)<sub>2</sub></td><td>Prepared in a factory</td></tr></tbody></table></div>
+  <details><summary><span class="show">Show classification answers</span><span class="hide">Hide classification answers</span></summary><div class="answer"><ol><li><strong>Organic:</strong> propane is a hydrocarbon.</li><li><strong>Inorganic:</strong> hydrogen carbonates, also called bicarbonates, are carbon-containing exceptions.</li><li><strong>Inorganic:</strong> sodium chloride contains no carbon.</li><li><strong>Organic:</strong> sucrose is a carbohydrate, one of the organic compound families.</li><li><strong>Inorganic:</strong> carbon monoxide is a simple oxide of carbon.</li><li><strong>Organic:</strong> urea remains organic when manufactured. Source does not determine classification.</li></ol></div></details>
+  <h3>B. Explain and apply</h3>
+  <div class="activity"><p><strong>7.</strong> “CO<sub>2</sub> exhaled by a person is organic, but CO<sub>2</sub> from a fire is inorganic.” Correct this claim.</p><details><summary><span class="show">Show explanation</span><span class="hide">Hide explanation</span></summary><div class="answer"><p>Both samples contain the same inorganic compound, carbon dioxide. A biological source does not change its classification.</p></div></details></div>
+  <div class="activity"><p><strong>8.</strong> A student says, “All organic compounds contain C–H bonds.” Use a structure from the lesson to evaluate the claim.</p><details><summary><span class="show">Show explanation</span><span class="hide">Hide explanation</span></summary><div class="answer"><p>The claim is incorrect. Urea is organic, but its hydrogen atoms are bonded to nitrogen. Its carbon is bonded only to oxygen and nitrogen.</p></div></details></div>
+  <div class="activity"><p><strong>9.</strong> Why was producing urea from ammonium cyanate stronger evidence against vitalism than simply extracting urea from urine?</p><details><summary><span class="show">Show explanation</span><span class="hide">Hide explanation</span></summary><div class="answer"><p>Extraction only separates urea already produced by an organism, so it is consistent with vitalism. Preparing urea from an inorganic starting compound without an organism challenges the proposed need for a vital force.</p></div></details></div>
+  <div class="activity"><p><strong>10.</strong> Rewrite this historical statement more accurately: “In 1828, one experiment immediately convinced every scientist that vitalism was wrong.”</p><details><summary><span class="show">Show a sample correction</span><span class="hide">Hide the sample correction</span></summary><div class="answer"><p>In 1828, Wöhler’s preparation of urea provided important evidence against the need for a vital force in organic synthesis. The rejection of vitalism developed over time as evidence accumulated.</p></div></details></div>
+  <div class="activity"><p><strong>11.</strong> Two compounds have identical numbers of carbon, hydrogen, and oxygen atoms. What further information would help determine whether they are the same compound? Use the lesson’s example.</p><details><summary><span class="show">Show explanation</span><span class="hide">Hide explanation</span></summary><div class="answer"><p>We need information about how the atoms are connected. Ethanol and dimethyl ether both have formula C<sub>2</sub>H<sub>6</sub>O but different connections, making them different compounds. Later lessons will also consider spatial arrangement.</p></div></details></div>
+  <div class="note"><strong>Use your results:</strong> If items 1–8 were difficult, revisit the definition and worked examples. For items 9–10, review the claim and evidence in Wöhler’s experiment. For item 11, compare the two structural formulas.</div>
+</section>
 
-<div style="text-align:center;">
-  <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
-</div>
+<section class="section" id="summary" aria-labelledby="summary-title">
+  <h2 id="summary-title">5. What to remember</h2>
+  <ul><li><strong>Scope:</strong> Organic chemistry examines organic compounds—their structures, properties, preparation, and reactions.</li><li><strong>Classification:</strong> Organic compounds contain carbon, but certain carbon compounds are conventionally inorganic. C–H bonds are common, not essential.</li><li><strong>Source:</strong> Organic compounds can occur naturally or be prepared in a laboratory or factory.</li><li><strong>Historical evidence:</strong> Wöhler prepared urea from ammonium cyanate in 1828, challenging the need for a vital force.</li><li><strong>Structure:</strong> Knowing which atoms are present is not enough; their connections also matter.</li></ul>
+  <h3>Key terms</h3><div class="table-wrap"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning in this lesson</th></tr></thead><tbody><tr><th scope="row">Organic chemistry</th><td>The study of organic compounds and their transformations.</td></tr><tr><th scope="row">Vitalism</th><td>Here, the historical belief that a special force in living organisms was necessary to produce organic compounds.</td></tr><tr><th scope="row">Synthesis</th><td>Preparation of a compound through chemical reactions.</td></tr><tr><th scope="row">Molecular formula</th><td>A formula giving the number of each kind of atom in a molecule.</td></tr><tr><th scope="row">Structural formula</th><td>A representation showing how atoms are connected.</td></tr><tr><th scope="row">Structural theory</th><td>The idea that atoms have definite connections and that molecular structure helps explain chemical behavior.</td></tr></tbody></table></div>
+  <div class="activity"><h3>Before taking the quiz</h3><p>Without looking back, explain: <strong>What does organic chemistry study, and how did Wöhler’s experiment change the way chemists thought about organic compounds?</strong></p><p class="small">A complete response should mention carbon compounds and their exceptions, urea made from ammonium cyanate, and the challenge to vitalism.</p></div>
+</section>
 
+<section class="section references" aria-labelledby="references-title"><h2 id="references-title">Sources and further reading</h2><p>The explanations, diagrams, and activities in this lesson are newly written. These sources support the scientific and historical background:</p><ul><li><a href="https://openstax.org/books/chemistry-2e/pages/20-introduction" target="_blank" rel="noopener noreferrer">OpenStax, Chemistry 2e: Introduction to Organic Chemistry</a> — scope and conventional carbon-containing exceptions.</li><li><a href="https://www.acs.org/molecule-of-the-week/archive/u/urea.html" target="_blank" rel="noopener noreferrer">American Chemical Society: Urea</a> — Wöhler’s conversion of ammonium cyanate to urea.</li><li><a href="https://doi.org/10.1021/ed041p452" target="_blank" rel="noopener noreferrer">Lipman (1964), “Wohler’s preparation of urea and the fate of vitalism,” Journal of Chemical Education</a> — why the historical change was gradual.</li></ul></section>
+
+<div class="quiz-area"><p>Ready to check your understanding?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Quiz →</button><p id="quizNotice" class="small" role="status"></p></div>
+</main>
 <script>
-  function toggleAnswer(btn) {
-    const ans = btn.nextElementSibling;
-    ans.style.display = ans.style.display === "block" ? "none" : "block";
-    btn.textContent = ans.style.display === "block" ? "Hide Answer" : "Show Answer";
-  }
-
-  document.getElementById("takeQuizBtn").addEventListener("click", () => {
-    window.parent.postMessage({ type: "openQuiz", quiz: "chapter1_lesson1_quiz.html" }, "*");
+  document.getElementById('takeQuizBtn').addEventListener('click', function () {
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter1_lesson1_quiz.html' }, '*');
+    } else {
+      document.getElementById('quizNotice').textContent = 'Open this lesson inside LearnTrack to launch its quiz.';
+    }
+  });
+  // Include all answer explanations when printing, then restore the learner’s view.
+  let openBeforePrint = [];
+  window.addEventListener('beforeprint', function () {
+    openBeforePrint = Array.from(document.querySelectorAll('details')).map(function (item) {
+      const previous = item.open; item.open = true; return previous;
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    document.querySelectorAll('details').forEach(function (item, index) { item.open = Boolean(openBeforePrint[index]); });
   });
 </script>
-
 </body>
 </html>
