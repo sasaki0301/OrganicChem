@@ -1,290 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 – Lesson 2: Organic vs Inorganic Compounds</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-      color: #222;
-      margin: 0;
-      padding: 32px 24px;
-      line-height: 1.75;
-      font-size: 20px;
-    }
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chapter 1 – Lesson 2: Organic vs Inorganic Compounds</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-    h1 {
-      color: #136f63;
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
-
-    h2 {
-      color: #136f63;
-      font-size: 1.6em;
-      margin-top: 1.3em;
-      margin-bottom: 0.3em;
-    }
-
-    h3 {
-      color: #174ea6;
-      font-size: 1.25em;
-      margin-top: 0.7em;
-    }
-
-    p { margin: 12px 0; }
-    ul { margin-left: 28px; }
-
-    /* Section cards */
-    .section {
-      background: #ffffff;
-      padding: 24px 30px;
-      margin-bottom: 30px;
-      border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .image, .video {
-      text-align: center;
-      margin: 22px 0;
-    }
-
-    img {
-      width: 90%;
-      max-width: 650px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    iframe {
-      width: 90%;
-      max-width: 760px;
-      height: 430px;
-      border-radius: 12px;
-    }
-
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-
-    th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid #eee;
-      text-align: center;
-      font-size: 18px;
-    }
-
-    th {
-      background-color: #136f63;
-      color: white;
-      font-weight: bold;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f8fafa;
-    }
-
-    /* Activity block */
-    .activity {
-      background: #f9fbff;
-      border-left: 5px solid #136f63;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin: 24px 0;
-    }
-
-    .toggle-btn {
-      background: #136f63;
-      color: #fff;
-      border: none;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.2s;
-    }
-
-    .toggle-btn:hover {
-      background: #0f5b52;
-      transform: translateY(-1px);
-    }
-
-    .answer {
-      display: none;
-      padding: 14px;
-      background: #eef3ff;
-      margin-top: 10px;
-      border-radius: 8px;
-    }
-
-    /* Quiz button */
-    .quiz-button {
-      display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 13px 26px;
-      border-radius: 10px;
-      border: none;
-      font-weight: bold;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 30px;
-    }
-
-    .quiz-button:hover { background-color: #0f5b52; }
-  </style>
-</head>
-
-<body>
-
+  .compare-table{min-width:650px}.table-wrap{max-width:100%}.table-wrap:focus-visible{outline-offset:1px}
+  .equation{padding:14px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow-wrap:anywhere}
+  .particle-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.particle-grid .card{padding:14px}.particle-grid h3{font-size:1em}
+  @media(max-width:760px){.particle-grid{grid-template-columns:1fr}}
+  @media print{.compare-table{min-width:0}.table-wrap{overflow:visible}.particle-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style></head><body><a href="#lesson" class="skip">Skip to lesson</a><main id="lesson">
+<header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1</div>
 <h1>Lesson 2: Organic vs Inorganic Compounds</h1>
-
-<div class="section">
-  <p>
-    Organic and inorganic compounds differ mainly in their composition, bonding, and physical properties.
-    Organic compounds are built around carbon atoms—often bonded to hydrogen—while inorganic compounds
-    typically do not include carbon–hydrogen bonds and often involve metals or ionic structures.
-  </p>
-</div>
-
-<div class="section">
-  <h2>1. Key Differences Between Organic and Inorganic Compounds</h2>
-
-  <table>
-    <tr>
-      <th>Property</th>
-      <th>Organic Compounds</th>
-      <th>Inorganic Compounds</th>
-    </tr>
-    <tr>
-      <td>Main Elements</td>
-      <td>C, H, O, N, S</td>
-      <td>Metals, nonmetals, ionic compounds</td>
-    </tr>
-    <tr>
-      <td>Bond Type</td>
-      <td>Covalent bonds</td>
-      <td>Often ionic bonds</td>
-    </tr>
-    <tr>
-      <td>Physical State</td>
-      <td>Gases, liquids, low-melting solids</td>
-      <td>High-melting solids</td>
-    </tr>
-    <tr>
-      <td>Flammability</td>
-      <td>Often flammable</td>
-      <td>Usually nonflammable</td>
-    </tr>
-    <tr>
-      <td>Solubility</td>
-      <td>Nonpolar solvents</td>
-      <td>Water & polar solvents</td>
-    </tr>
-    <tr>
-      <td>Electrical Conductivity</td>
-      <td>Poor conductors</td>
-      <td>Good conductors (salts in solution)</td>
-    </tr>
-    <tr>
-      <td>Complexity</td>
-      <td>Long, complex structures</td>
-      <td>Simpler formulas</td>
-    </tr>
-  </table>
-
-  <div class="image">
-    <img src="https://www.researchgate.net/profile/Tina-Treude/publication/37933238/figure/fig1/AS:669439913644036@1536618321396/Different-representations-of-the-methane-molecule.ppm" alt="Methane molecule" />
-    <p><em>Methane (CH₄) – a simple organic molecule.</em></p>
-  </div>
-
-  <div class="image">
-    <img src="https://cdn.vectorstock.com/i/1000v/24/33/sodium-chloride-molecular-structure-nacl-skeletal-vector-41102433.jpg" alt="Sodium Chloride structure" />
-    <p><em>Sodium chloride (NaCl) – a common inorganic ionic compound.</em></p>
-  </div>
-</div>
-
-<div class="section">
-  <h2>2. Activity – Identify the Compound Type</h2>
-
-  <div class="activity">
-    <p>
-      Classify each as <strong>organic</strong> or <strong>inorganic</strong>:  
-      <br><br>
-      1. C₂H₆O  
-      <br>
-      2. NaBr  
-      <br>
-      3. CO₂  
-      <br>
-      4. CH₃COOH
-    </p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      1. Organic  
-      <br>
-      2. Inorganic  
-      <br>
-      3. Inorganic (no C–H bond)  
-      <br>
-      4. Organic
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>3. Video Lesson</h2>
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/lC57cJzM8OA" allowfullscreen></iframe>
-  </div>
-</div>
-
-<div class="section">
-  <h2>4. Summary</h2>
-  <ul>
-    <li>Organic compounds contain carbon–hydrogen bonds; inorganic compounds generally do not.</li>
-    <li>Organic molecules often have covalent bonds and complex structures.</li>
-    <li>Inorganic compounds are often ionic and have higher melting points.</li>
-    <li>Examples: Organic – methane, glucose; Inorganic – NaCl, H₂O.</li>
-  </ul>
-
-  <h3>Key Terms</h3>
-  <table>
-    <tr><th>Term</th><th>Definition</th></tr>
-    <tr><td>Organic compound</td><td>Carbon-based compound with C–H bonds.</td></tr>
-    <tr><td>Inorganic compound</td><td>Compound typically lacking C–H bonds.</td></tr>
-    <tr><td>Covalent bond</td><td>Bond formed by sharing electrons between atoms.</td></tr>
-    <tr><td>Ionic bond</td><td>Bond formed by transfer of electrons.</td></tr>
-    <tr><td>Solubility</td><td>Ability of a substance to dissolve in a solvent.</td></tr>
-  </table>
-</div>
-
-<div style="text-align:center;">
-  <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
-</div>
-
-<script>
-  function toggleAnswer(btn) {
-    const ans = btn.nextElementSibling;
-    ans.style.display = ans.style.display === "block" ? "none" : "block";
-    btn.textContent = ans.style.display === "block" ? "Hide Answer" : "Show Answer";
-  }
-
-  document.getElementById("takeQuizBtn").addEventListener("click", () => {
-    window.parent.postMessage({ type: "openQuiz", quiz: "chapter1_lesson2_quiz.html" }, "*");
+<p class="intro">Sugar and salt can both dissolve in water. Does that make them the same kind of compound? In this lesson, use composition, bonding, and particle behavior to explain their similarities and differences.</p>
+<p class="meta">Allow about 30–40 minutes. Prepare paper for your answers.</p>
+<nav aria-label="Lesson sections"><a href="#goals">Goals</a><a href="#classify">Classification</a><a href="#bonding">Bonding</a><a href="#properties">Properties</a><a href="#conductivity">Particle behavior</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav></header><section class="section" id="goals" aria-labelledby="goals-title"><h2 id="goals-title">What you will learn</h2>
+<ul><li>Classify familiar compounds and explain carbon-containing exceptions.</li><li>Distinguish organic/inorganic classification from ionic/covalent bonding.</li><li>Explain why solubility and conductivity depend on particles and structure.</li><li>Use property evidence carefully without treating a trend as a universal rule.</li></ul>
+<p><strong>Connection to Lesson 1:</strong> Organic does not mean “from a living thing,” and a C–H bond is not required in every organic compound. We will now apply these ideas to familiar substances.</p>
+<p class="small"><strong>Study routine:</strong> Read the worked example → answer the nearby drill → reveal the explanation → correct your reasoning.</p></section><section class="section" id="classify" aria-labelledby="classify-title"><h2 id="classify-title">1. Classify the compound, then explain why</h2>
+<p><strong>Organic compounds</strong> are carbon compounds belonging to the families studied in organic chemistry, such as hydrocarbons, alcohols, sugars, and organic acids. Their structures commonly contain C–H bonds, but some do not.</p>
+<p><strong>Inorganic compounds</strong> include water, many salts and minerals, and certain carbon-containing families traditionally treated as inorganic. Familiar exceptions include carbon monoxide, carbon dioxide, carbonates, and hydrogen carbonates.</p>
+<div class="note"><strong>A useful sequence—not a perfect formula test</strong><ol><li><strong>Identify the substance.</strong> Use its name and formula. Decide whether the sample is a compound or a mixture.</li><li><strong>Check for carbon.</strong> A compound without carbon is inorganic.</li><li><strong>If carbon is present, check the family or exception.</strong> Do not decide from C–H bonds, source, or one physical property alone.</li></ol></div>
+<div class="worked"><div class="label">Worked example 1 · Compare two carbon compounds</div><h3>Acetic acid and sodium hydrogen carbonate</h3>
+<p><strong>Acetic acid, CH<sub>3</sub>COOH:</strong> Identify the substance → recognize an organic acid → classify it as <strong>organic</strong>.</p>
+<p><strong>Sodium hydrogen carbonate, NaHCO<sub>3</sub>:</strong> Identify the hydrogen carbonate family → recognize a conventional exception → classify it as <strong>inorganic</strong>.</p>
+<p><strong>Reasoning:</strong> Both contain C, H, and O. Those element symbols alone do not place them in the same category. In NaHCO<sub>3</sub>, hydrogen is bonded to oxygen, not carbon.</p></div>
+<div class="worked"><div class="label">Worked example 2 · Avoid the C–H shortcut</div><h3>Urea, H<sub>2</sub>N–C(=O)–NH<sub>2</sub></h3>
+<ol><li>Locate the carbon: it is bonded to oxygen and two nitrogens.</li><li>Locate the hydrogens: they are attached to nitrogen.</li><li>Recall the compound: urea is organic even though it has no C–H bond.</li></ol>
+<p><strong>Conclusion:</strong> “No C–H bond” is not a sufficient reason to classify a compound as inorganic.</p></div>
+<div class="activity"><h3>Guided drill 1 · Classify with a reason</h3><p>Write <strong>organic</strong> or <strong>inorganic</strong> for each. Explain your decision in one sentence.</p><ol><li>Ethanol, CH<sub>3</sub>CH<sub>2</sub>OH</li><li>Sodium bromide, NaBr</li><li>Carbon dioxide, CO<sub>2</sub></li><li>Urea, CO(NH<sub>2</sub>)<sub>2</sub></li></ol><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol><li><strong>Organic:</strong> ethanol is a carbon-based alcohol.</li><li><strong>Inorganic:</strong> sodium bromide is a salt with no carbon.</li><li><strong>Inorganic:</strong> carbon dioxide is a simple oxide of carbon, a conventional exception. Lack of a C–H bond alone is not the reason.</li><li><strong>Organic:</strong> urea is an organic compound despite lacking a C–H bond.</li></ol></div></details></div>
+<div class="note"><strong>Compound or mixture?</strong> Vinegar is a mixture containing water, an inorganic compound, and acetic acid, an organic compound. Classify the named components rather than forcing the whole mixture into one category.</div></section><section class="section" id="bonding" aria-labelledby="bonding-title"><h2 id="bonding-title">2. Classification and bonding answer different questions</h2>
+<p><strong>Organic or inorganic?</strong> asks which chemical category a compound belongs to. <strong>Ionic or covalent?</strong> asks how its particles are held together. These two comparisons are related, but they are not interchangeable.</p>
+<div class="grid"><div class="card"><h3>Covalent bonding</h3><p>Atoms share electron pairs. Many familiar organic compounds consist of molecules with covalent bonds.</p><svg xmlns="http://www.w3.org/2000/svg" class="structure" width="280" height="190" viewBox="0 0 280 190" role="img" aria-label="Methane structural formula"><desc>Carbon is joined to four hydrogens by four single covalent bonds. This flat drawing shows connections, not the three-dimensional tetrahedral geometry.</desc><g stroke="#24323d" stroke-width="3"><path d="M140 55V77 M140 111V139 M100 95H122 M158 95H180"/></g><g font-family="Segoe UI,Arial,sans-serif" font-size="28" text-anchor="middle" fill="#24323d"><text x="140" y="104" fill="#136f63">C</text><text x="140" y="46">H</text><text x="140" y="165">H</text><text x="83" y="104">H</text><text x="197" y="104">H</text></g></svg><p class="small"><strong>Methane:</strong> CH<sub>4</sub> is organic and molecular. The drawing shows connectivity; the actual molecule is tetrahedral.</p></div><div class="card"><h3>Ionic bonding</h3><p>Oppositely charged ions attract one another. In a solid salt, the ions form an extended crystal lattice.</p><svg xmlns="http://www.w3.org/2000/svg" class="structure" width="280" height="190" viewBox="0 0 280 190" role="img" aria-label="A schematic portion of a sodium chloride crystal"><desc>Alternating sodium and chloride ions form an extended array, rather than separate NaCl molecules.</desc><circle cx="55" cy="40" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="55" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="110" cy="40" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="110" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="165" cy="40" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="165" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="220" cy="40" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="220" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="55" cy="95" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="55" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="110" cy="95" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="110" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="165" cy="95" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="165" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="220" cy="95" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="220" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="55" cy="150" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="55" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="110" cy="150" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="110" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="165" cy="150" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="165" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="220" cy="150" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="220" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text></svg><p class="small"><strong>Sodium chloride:</strong> NaCl is inorganic and ionic. This is a schematic slice of a three-dimensional crystal. NaCl gives the 1:1 ratio of ions, not a separate molecule in the solid.</p></div></div>
+<p><strong>Water is a useful counterexample:</strong> H<sub>2</sub>O is inorganic, but its O–H bonds are covalent. Being inorganic does not require ionic bonding.</p>
+<details><summary><span class="show">Explore an organic salt</span><span class="hide">Hide the organic salt example</span></summary><div class="answer"><p><strong>Sodium acetate, CH<sub>3</sub>COONa,</strong> is a salt of the organic acid acetic acid. It contains Na<sup>+</sup> ions and CH<sub>3</sub>COO<sup>−</sup> ions. Ionic attractions act between ions; covalent bonds hold the atoms together within each acetate ion. Organic chemistry therefore also includes compounds that contain ions.</p></div></details>
+<div class="activity"><h3>Guided drill 2 · Separate the two ideas</h3><p>Complete both descriptions for each compound: <strong>(a) organic/inorganic</strong> and <strong>(b) molecular with covalent bonds/ionic solid</strong>.</p><ol><li>Methane, CH<sub>4</sub></li><li>Water, H<sub>2</sub>O</li><li>Sodium chloride, NaCl</li></ol><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol><li><strong>Methane:</strong> organic; molecular with covalent bonds.</li><li><strong>Water:</strong> inorganic; molecular with covalent bonds.</li><li><strong>Sodium chloride:</strong> inorganic; an ionic solid.</li></ol><p>Water and methane share a bonding description even though their organic/inorganic classifications differ.</p></div></details></div></section><section class="section" id="properties" aria-labelledby="properties-title"><h2 id="properties-title">3. Compare properties without overgeneralizing</h2>
+<p>Properties depend on bonding, particle arrangement, and attractions between particles. The following are <strong>patterns to explain</strong>, not tests that classify every compound.</p>
+<p class="small">On a small screen, swipe the table sideways to read all columns.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Property comparison table, scroll horizontally if needed"><table class="compare-table"><caption>Common patterns and their limits</caption><thead><tr><th scope="col">Property</th><th scope="col">Organic examples</th><th scope="col">Inorganic examples</th><th scope="col">What to remember</th></tr></thead><tbody>
+<tr><th scope="row">Composition</th><td>Carbon with H and often O, N, S, halogens, or other elements.</td><td>A wide range of elements, including carbon in some families.</td><td>Carbon is necessary for an organic compound, but its presence is not sufficient.</td></tr>
+<tr><th scope="row">Bonding</th><td>Many are molecular; organic salts also exist.</td><td>Can be ionic, molecular, or network covalent.</td><td>Water is inorganic and covalent.</td></tr>
+<tr><th scope="row">State and melting behavior</th><td>Methane is a gas, ethanol a liquid, and sucrose a solid at room conditions.</td><td>CO<sub>2</sub> is a gas, water a liquid, and NaCl a solid at room conditions.</td><td>Many ionic solids melt at high temperatures; molecular compounds often melt at lower temperatures. Exceptions and decomposition occur.</td></tr>
+<tr><th scope="row">Water solubility</th><td>Sugar dissolves readily; many hydrocarbons dissolve poorly.</td><td>NaCl dissolves readily; CaCO<sub>3</sub> dissolves only slightly in ordinary water.</td><td>Neither category is uniformly soluble or insoluble.</td></tr>
+<tr><th scope="row">Conductivity</th><td>Sugar solution conducts very poorly; acetic acid solution conducts because some ions form.</td><td>Solid NaCl does not conduct appreciably; dissolved or molten NaCl conducts.</td><td>Ask whether charged particles can move.</td></tr>
+<tr><th scope="row">Flammability</th><td>Many fuels, such as propane, are flammable; not all organic compounds are easily ignited.</td><td>Many familiar salts are nonflammable, but flammability varies across inorganic substances.</td><td>Flammability cannot establish organic/inorganic identity.</td></tr>
+<tr><th scope="row">Size and complexity</th><td>Can be as small as CH<sub>4</sub> or as large as a polymer.</td><td>Can be small molecules or extended structures such as mineral networks.</td><td>“Organic = complex” and “inorganic = simple” are unreliable shortcuts.</td></tr>
+</tbody></table></div>
+<h3>Why do sugar and oil behave differently in water?</h3>
+<p>Water is <strong>polar</strong>: its electrical charge is unevenly distributed. Sucrose has many O–H groups that can interact strongly with water. Oil molecules contain large nonpolar hydrocarbon regions, so oils do not mix well with water.</p>
+<p>The phrase <strong>“like dissolves like”</strong> is a useful first guide: substances tend to mix more readily when their intermolecular interactions are compatible. It is not an absolute rule; molecule size, structure, temperature, and the particular solvent matter.</p>
+<div class="worked"><div class="label">Worked example 3 · Explain the observation</div><h3>Sugar dissolves in water, but cooking oil forms a layer</h3><ol><li><strong>Identify the substances:</strong> sucrose is organic; cooking oil is a mixture mainly of organic compounds.</li><li><strong>Consider interactions:</strong> sucrose interacts favorably with water; the large nonpolar regions of oil molecules do not.</li><li><strong>Conclude:</strong> the different behavior follows from molecular structure and interactions, not from one being organic and the other inorganic.</li></ol></div>
+<div class="activity"><h3>Guided drill 3 · Evaluate the evidence</h3><p>A student observes that a white solid dissolves in water and concludes, “It must be inorganic.” Is the evidence sufficient? Give a counterexample and explain what information is still needed.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>No.</strong> Both sucrose (organic) and sodium chloride (inorganic) dissolve in water. The observation establishes that the sample dissolves under those conditions, not its category. Its chemical identity, composition, or structure is needed for a justified classification.</p></div></details></div></section><section class="section" id="conductivity" aria-labelledby="conductivity-title"><h2 id="conductivity-title">4. Dissolving is not the same as forming ions</h2>
+<p>Electrical conduction requires mobile charged particles. In solutions, these are usually <strong>ions</strong>. A substance may dissolve as neutral molecules or produce separated ions; these lead to different electrical behavior.</p>
+<div class="particle-grid"><div class="card"><h3>Solid sodium chloride</h3><svg xmlns="http://www.w3.org/2000/svg" class="structure" width="280" height="190" viewBox="0 0 280 190" role="img" aria-label="A schematic portion of a sodium chloride crystal"><desc>Alternating sodium and chloride ions form an extended array, rather than separate NaCl molecules.</desc><circle cx="55" cy="40" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="55" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="110" cy="40" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="110" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="165" cy="40" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="165" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="220" cy="40" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="220" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="55" cy="95" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="55" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="110" cy="95" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="110" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="165" cy="95" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="165" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="220" cy="95" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="220" y="101" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="55" cy="150" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="55" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="110" cy="150" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="110" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="165" cy="150" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="165" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="220" cy="150" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="220" y="156" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text></svg><p>Ions are present, but held in lattice positions. They cannot move freely through the solid.</p><p><strong>Result:</strong> no appreciable ionic conduction.</p></div><div class="card"><h3>Salt dissolved in water</h3><svg xmlns="http://www.w3.org/2000/svg" class="structure" width="280" height="190" viewBox="0 0 280 190" role="img" aria-label="Sodium chloride dissolved in water"><desc>Three sodium ions and three chloride ions are separated and dispersed. Water molecules are omitted.</desc><path d="M12 15V175H268V15" fill="#f2f8ff" stroke="#8ea8ba" stroke-width="2"/><circle cx="55" cy="48" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="55" y="54" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="158" cy="43" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="158" y="49" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="226" cy="91" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="226" y="97" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="65" cy="139" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="65" y="145" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text><circle cx="143" cy="123" r="23" fill="#d9f2e9" stroke="#136f63" stroke-width="2"/><text x="143" y="129" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Na⁺</text><circle cx="221" cy="149" r="23" fill="#e4ecff" stroke="#174ea6" stroke-width="2"/><text x="221" y="155" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#24323d">Cl⁻</text></svg><p>Na<sup>+</sup> and Cl<sup>−</sup> ions separate and move through the solution.</p><p><strong>Result:</strong> the solution conducts.</p></div><div class="card"><h3>Sugar dissolved in water</h3><svg xmlns="http://www.w3.org/2000/svg" class="structure" width="280" height="190" viewBox="0 0 280 190" role="img" aria-label="Sucrose dissolved in water"><desc>Four intact neutral sucrose molecules are dispersed. Each labelled oval represents one whole molecule. Water is omitted.</desc><path d="M12 15V175H268V15" fill="#f2f8ff" stroke="#8ea8ba" stroke-width="2"/><ellipse cx="74" cy="53" rx="49" ry="25" fill="#fff3d8" stroke="#9c6f1b" stroke-width="2"/><text x="74" y="58" font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" font-size="14" fill="#24323d">C₁₂H₂₂O₁₁</text><ellipse cx="202" cy="65" rx="49" ry="25" fill="#fff3d8" stroke="#9c6f1b" stroke-width="2"/><text x="202" y="70" font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" font-size="14" fill="#24323d">C₁₂H₂₂O₁₁</text><ellipse cx="82" cy="132" rx="49" ry="25" fill="#fff3d8" stroke="#9c6f1b" stroke-width="2"/><text x="82" y="137" font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" font-size="14" fill="#24323d">C₁₂H₂₂O₁₁</text><ellipse cx="207" cy="140" rx="49" ry="25" fill="#fff3d8" stroke="#9c6f1b" stroke-width="2"/><text x="207" y="145" font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" font-size="14" fill="#24323d">C₁₂H₂₂O₁₁</text></svg><p>Neutral sucrose molecules disperse without producing appreciable ions.</p><p><strong>Result:</strong> very poor conductivity.</p></div></div>
+<p class="small">Schematic particle diagrams: labels identify whole particles; sizes and spacing are not to scale. Water molecules are omitted from the solution diagrams, and each ion is actually surrounded by water.</p>
+<p class="equation"><strong>Salt:</strong> NaCl(s) → Na<sup>+</sup>(aq) + Cl<sup>−</sup>(aq)</p>
+<p class="equation"><strong>Sugar:</strong> C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>(s) → C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>(aq)</p>
+<p class="small">Here, (s) means solid and (aq) means dissolved in water. Compare the charges: the salt produces mobile ions; the dissolved sugar remains neutral.</p>
+<div class="worked"><div class="label">Worked example 4 · Link particles to conductivity</div><h3>Two clear solutions, different conductivity</h3><p>Solution A contains dissolved NaCl. Solution B contains dissolved sucrose.</p><ol><li><strong>Name the dissolved particles:</strong> A contains Na<sup>+</sup> and Cl<sup>−</sup>; B contains sucrose molecules.</li><li><strong>Check charge and mobility:</strong> A has mobile ions. B has mobile molecules, but these molecules are neutral.</li><li><strong>Explain:</strong> NaCl solution conducts much better. Dissolving alone does not guarantee electrical conductivity.</li></ol><p class="small">Pure water itself has a very small concentration of ions, so “very poor conductivity” is more accurate than an absolute claim of zero conductivity.</p></div>
+<h3>Can an organic compound produce a conducting solution?</h3>
+<p>Yes. Acetic acid reacts partly with water to produce ions. An <strong>electrolyte</strong> yields ions in solution; a <strong>nonelectrolyte</strong>, such as sucrose, dissolves without appreciably producing ions.</p>
+<p>Acetic acid is a <strong>weak electrolyte</strong> because only a fraction of its molecules ionize. Dissolved NaCl is a <strong>strong electrolyte</strong> because it is present essentially as separated ions in dilute water solution. “Weak” and “strong” describe the extent of ion production, not whether a solution is dilute or concentrated.</p>
+<details><summary><span class="show">See how acetic acid produces ions</span><span class="hide">Hide the equation</span></summary><div class="answer"><p class="equation">CH<sub>3</sub>COOH + H<sub>2</sub>O ⇌ CH<sub>3</sub>COO<sup>−</sup> + H<sub>3</sub>O<sup>+</sup></p><p>Acetate ions and hydronium ions form. The double arrow indicates that the reaction can occur in both directions; much of the acid remains as neutral molecules. You only need to recognize that ions form at this stage.</p></div></details>
+<div class="activity"><h3>Guided drill 4 · Explain the apparent contradiction</h3><p>“Sodium chloride contains charged ions, so a dry salt crystal should conduct electricity.” What is missing from this explanation? Predict what changes when the salt melts.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The explanation overlooks <strong>mobility</strong>. In the solid, ions occupy lattice positions. When NaCl melts, the ions can move and carry charge, so the molten salt conducts. This explanation concerns particle behavior, not the organic/inorganic label.</p></div></details></div>
+<div class="note"><strong>For this lesson:</strong> Use the diagrams and supplied observations for your reasoning. No burning, heating, or electrical testing of household substances is required.</div></section><section class="section" id="practice" aria-labelledby="practice-title"><h2 id="practice-title">5. Independent practice</h2>
+<p>Write your answers before revealing the explanations. For each classification, give a reason. For an evidence question, state both what the evidence supports and what it cannot establish.</p>
+<h3>A. Classify and justify</h3>
+<div class="table-wrap"><table><caption>Items 1–5: classify the named compound.</caption><thead><tr><th scope="col">Item</th><th scope="col">Compound</th><th scope="col">Context</th></tr></thead><tbody>
+<tr><td>1</td><td>Glucose, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></td><td>A sugar in living systems</td></tr>
+<tr><td>2</td><td>Calcium carbonate, CaCO<sub>3</sub></td><td>A main component of limestone</td></tr>
+<tr><td>3</td><td>Water, H<sub>2</sub>O</td><td>A molecular compound</td></tr>
+<tr><td>4</td><td>Propane, C<sub>3</sub>H<sub>8</sub></td><td>A component of LPG</td></tr>
+<tr><td>5</td><td>Urea, CO(NH<sub>2</sub>)<sub>2</sub></td><td>Manufactured for fertilizer</td></tr>
+</tbody></table></div><details><summary><span class="show">Show classification answers</span><span class="hide">Hide classification answers</span></summary><div class="answer"><ol><li><strong>Organic:</strong> glucose is a carbohydrate.</li><li><strong>Inorganic:</strong> carbonates are conventional carbon-containing exceptions.</li><li><strong>Inorganic:</strong> water contains no carbon. Its covalent bonds do not make it organic.</li><li><strong>Organic:</strong> propane is a hydrocarbon.</li><li><strong>Organic:</strong> urea’s industrial source does not change its classification; it need not contain a C–H bond.</li></ol></div></details>
+<h3>B. Read the evidence</h3>
+<p>Consider these <strong>qualitative classroom observations</strong> for dilute aqueous samples tested at comparable molar concentrations, at the same temperature, and with the same apparatus. These are teaching examples, not measurements collected from your class.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Sample observations table"><table><caption>Use this evidence for items 6–8.</caption><thead><tr><th scope="col">Sample</th><th scope="col">Behavior in water</th><th scope="col">Conductivity</th></tr></thead><tbody>
+<tr><td>A</td><td>Dissolves</td><td>High</td></tr><tr><td>B</td><td>Dissolves</td><td>Very low, near the pure-water baseline</td></tr><tr><td>C</td><td>Forms a uniform solution</td><td>Measurable, lower than A</td></tr>
+</tbody></table></div>
+<div class="activity"><h3>6. Match a known candidate set</h3><p>The candidates are <strong>sodium chloride, sucrose, and acetic acid</strong>, each used once. Match them to A, B, and C. Explain each match using particles.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>A = sodium chloride:</strong> dissolved salt supplies many mobile ions. <strong>B = sucrose:</strong> it dissolves as neutral molecules. <strong>C = acetic acid:</strong> partial ionization produces fewer ions than a comparable concentration of NaCl.</p><p>The matches use the supplied candidate list and controlled conditions. Conductivity alone would not identify an arbitrary unknown compound.</p></div></details></div><div class="activity"><h3>7. Evaluate a conclusion</h3><p>Suppose the identities were not provided. Could you conclude that B is organic just because it dissolves and has very low conductivity?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>No.</strong> The evidence is consistent with a dissolved molecular nonelectrolyte, but the organic/inorganic label requires chemical identity or composition and structure. Low conductivity is not a direct test for carbon or an organic compound family.</p></div></details></div><div class="activity"><h3>8. Check whether the comparison is fair</h3><p>A class compares concentrated acetic acid solution with extremely dilute NaCl solution. Can it reliably use conductivity alone to rank electrolyte strength? Explain.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>No.</strong> Conductivity depends on ion concentration and mobility as well as the extent of ion formation. Different solution concentrations confound this comparison. Use controlled conditions and known chemical behavior; do not assume every strong-electrolyte solution must conduct more than every weak-electrolyte solution.</p></div></details></div>
+<h3>C. Apply the ideas</h3>
+<div class="activity"><h3>9. Classify the components</h3><p>An oral rehydration mixture contains glucose and sodium chloride dissolved in water. Identify an organic component and two inorganic components. Which added component directly provides Na<sup>+</sup> and Cl<sup>−</sup> ions?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Organic:</strong> glucose. <strong>Inorganic:</strong> sodium chloride and water. Dissolved sodium chloride directly supplies Na<sup>+</sup> and Cl<sup>−</sup>; glucose remains mainly as neutral molecules. The drink is a mixture, not a single compound.</p></div></details></div><div class="activity"><h3>10. Repair two misconceptions</h3><p>Correct both statements using examples from the lesson:</p><ol type="a"><li>All inorganic compounds are ionic, high-melting solids.</li><li>If a compound dissolves in water, its solution conducts well.</li></ol><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol type="a"><li>Inorganic compounds have varied structures and states. Water is an inorganic covalent molecular liquid at room conditions, and CO<sub>2</sub> is an inorganic molecular gas.</li><li>Dissolving may disperse neutral molecules rather than ions. Sucrose dissolves but its solution conducts very poorly; NaCl solution conducts because it contains mobile ions.</li></ol></div></details></div>
+<div class="note"><strong>Review by need:</strong> For errors in items 1–5, revisit classification. For items 6–8, revisit particles and conductivity. For items 9–10, review mixtures and the limits of property trends.</div></section><section class="section" id="summary" aria-labelledby="summary-title"><h2 id="summary-title">6. What to remember</h2>
+<ul><li><strong>Classify by chemical identity and family.</strong> Carbon-containing exceptions exist; C–H bonds are common but not required in every organic compound.</li><li><strong>Separate category from bonding.</strong> Inorganic compounds can be covalent; organic salts can contain ions.</li><li><strong>Explain solubility through interactions.</strong> Both organic and inorganic compounds include water-soluble and poorly soluble examples.</li><li><strong>Explain conduction through mobile charge.</strong> Ions locked in a solid lattice differ from ions free to move in solution or a melt.</li><li><strong>Use patterns cautiously.</strong> No single observation of state, solubility, conductivity, or flammability reliably classifies every compound.</li></ul>
+<h3>Key terms</h3><div class="table-wrap"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning</th></tr></thead><tbody>
+<tr><th scope="row">Organic compound</th><td>A carbon compound within the families studied in organic chemistry; conventional inorganic carbon families are excluded.</td></tr>
+<tr><th scope="row">Inorganic compound</th><td>A compound outside the organic category, including many salts, minerals, water, and certain carbon compounds.</td></tr>
+<tr><th scope="row">Covalent bond</th><td>A bond involving shared electron pairs between atoms.</td></tr>
+<tr><th scope="row">Ionic bond</th><td>Electrostatic attraction between oppositely charged ions. Electron transfer can form ions; the attraction between them is the bond.</td></tr>
+<tr><th scope="row">Crystal lattice</th><td>An ordered, repeating arrangement of particles in a crystalline solid.</td></tr>
+<tr><th scope="row">Solubility</th><td>The maximum amount or concentration of a solute that can dissolve in a specified solvent under stated conditions at equilibrium.</td></tr>
+<tr><th scope="row">Electrolyte</th><td>A substance that yields ions when dissolved, allowing the solution to conduct electricity.</td></tr>
+<tr><th scope="row">Nonelectrolyte</th><td>A substance that dissolves without appreciably producing ions.</td></tr>
+</tbody></table></div>
+<div class="activity"><h3>Before taking the quiz</h3><p>Explain to a classmate: <strong>Why can sugar and salt both dissolve in water while their solutions conduct electricity differently?</strong></p><p class="small">Your explanation should identify neutral molecules, separated ions, and the need for mobile charged particles.</p></div></section><section class="section" id="references" aria-labelledby="references-title"><h2 id="references-title">Sources and further reading</h2>
+<div class="references"><p>The lesson’s diagrams, examples, and activities are newly prepared. Background reading:</p><ul>
+<li><a href="https://openstax.org/books/chemistry-2e/pages/20-introduction" target="_blank" rel="noopener noreferrer">OpenStax, Chemistry 2e: Introduction to Organic Chemistry</a> — classification and carbon-containing exceptions.</li>
+<li><a href="https://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds" target="_blank" rel="noopener noreferrer">OpenStax, Chemistry 2e: Ionic and Molecular Compounds</a> — bonding categories and particle organization.</li>
+<li><a href="https://openstax.org/books/chemistry-2e/pages/11-2-electrolytes" target="_blank" rel="noopener noreferrer">OpenStax, Chemistry 2e: Electrolytes</a> — mobile ions, dissociation, and ionization.</li>
+<li><a href="https://openstax.org/books/chemistry-2e/pages/11-3-solubility" target="_blank" rel="noopener noreferrer">OpenStax, Chemistry 2e: Solubility</a> — solvent interactions and conditions.</li>
+</ul></div></section><div class="quiz-area"><p>Ready to check your understanding?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Quiz →</button><p id="quizNotice" class="small" role="status"></p></div></main><script>
+  document.getElementById('takeQuizBtn').addEventListener('click', function () {
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter1_lesson2_quiz.html' }, '*');
+    } else {
+      document.getElementById('quizNotice').textContent = 'Open this lesson inside LearnTrack to launch its quiz.';
+    }
   });
-</script>
-
-</body>
-</html>
+  // Include all answer explanations when printing, then restore the learner’s view.
+  let openBeforePrint = [];
+  window.addEventListener('beforeprint', function () {
+    openBeforePrint = Array.from(document.querySelectorAll('details')).map(function (item) {
+      const previous = item.open; item.open = true; return previous;
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    document.querySelectorAll('details').forEach(function (item, index) { item.open = Boolean(openBeforePrint[index]); });
+  });
+</script></body></html>
