@@ -1,165 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 Summary – Introduction to Organic Chemistry</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-      color: #222;
-      margin: 0;
-      padding: 32px 24px;
-      line-height: 1.75;
-      font-size: 20px;
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chapter 1 – Lesson 4: Chapter Summary – Introduction to Organic Chemistry</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
+
+.wide-table{min-width:560px}.checklist{list-style:none;padding:0}.checklist label{display:flex;align-items:flex-start;gap:12px;padding:10px;border:1px solid var(--line);border-radius:8px;cursor:pointer}.checklist input{width:21px;height:21px;flex:0 0 21px;margin-top:7px;accent-color:var(--green)}.table-wrap{max-width:100%}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}}
+</style></head><body><a class="skip" href="#lesson">Skip to chapter review</a><main id="lesson"><header>
+<div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1 · Lesson 4</div>
+<h1>Chapter 1 Summary: Introduction to Organic Chemistry</h1>
+<p class="intro">Bring the chapter together: identify a compound, explain its behavior, and connect that behavior to an everyday use.</p>
+<p class="meta">Allow about 15–20 minutes. This review consolidates Lessons 1–3.</p>
+<nav aria-label="Chapter review sections"><a href="#lesson1">Lesson 1 recap</a><a href="#lesson2">Lesson 2 recap</a><a href="#lesson3">Lesson 3 recap</a><a href="#mistakes">Misconceptions</a><a href="#practice">Mixed practice</a><a href="#ready">Readiness check</a></nav>
+</header>
+<div class="section"><strong>How to review:</strong> Read the three recaps, work through the mixed practice without looking at the answers, then revisit the lesson associated with any error. Explain your reasoning, not just the final label.</div><section class="section" id="lesson1" aria-labelledby="lesson1-title"><h2 id="lesson1-title">Lesson 1 recap · Definition and history</h2>
+<ul><li><strong>Scope:</strong> organic chemistry studies organic compounds—their structures, properties, preparation, and reactions.</li><li><strong>Classification:</strong> organic compounds contain carbon, but some carbon compounds are conventionally inorganic. C–H bonds are common, not required.</li><li><strong>History:</strong> vitalism proposed that making organic compounds required a special force associated with living organisms.</li><li><strong>Evidence:</strong> in 1828, Friedrich Wöhler prepared urea from ammonium cyanate without a living organism. This challenged vitalism; its rejection developed gradually.</li><li><strong>Structure:</strong> a molecular formula gives atom counts. A structural formula shows connections, which help explain why substances behave differently.</li></ul>
+<div class="worked"><strong>Remember the counterexamples:</strong> CO<sub>2</sub> contains carbon but is inorganic. Urea, H<sub>2</sub>N–C(=O)–NH<sub>2</sub>, is organic but has no C–H bond: its hydrogens are bonded to nitrogen.</div></section><section class="section" id="lesson2" aria-labelledby="lesson2-title"><h2 id="lesson2-title">Lesson 2 recap · Classification and properties</h2>
+<p><strong>Keep two questions separate:</strong> “Organic or inorganic?” concerns chemical category. “Ionic or covalent?” concerns bonding.</p>
+<div class="table-wrap"><table><caption>Three examples that separate category from bonding</caption><thead><tr><th scope="col">Compound</th><th scope="col">Category</th><th scope="col">Particle description</th></tr></thead><tbody><tr><td>Methane, CH<sub>4</sub></td><td>Organic</td><td>Molecules with covalent bonds</td></tr><tr><td>Water, H<sub>2</sub>O</td><td>Inorganic</td><td>Molecules with covalent bonds</td></tr><tr><td>Sodium chloride, NaCl</td><td>Inorganic</td><td>Ions in a crystal lattice when solid</td></tr></tbody></table></div>
+<ul><li><strong>Solubility:</strong> both organic and inorganic compounds include water-soluble and poorly soluble examples. Consider interactions with the solvent.</li><li><strong>Conductivity:</strong> charged particles must be able to move. Solid NaCl does not conduct appreciably; dissolved or molten NaCl conducts.</li><li><strong>Dissolving:</strong> sucrose dissolves as neutral molecules, so its solution conducts very poorly. Acetic acid is organic but forms some ions in water.</li><li><strong>Limits:</strong> state, flammability, solubility, or conductivity alone cannot reliably classify every compound.</li></ul></section><section class="section" id="lesson3" aria-labelledby="lesson3-title"><h2 id="lesson3-title">Lesson 3 recap · Applications and their limits</h2>
+<p>Use this explanation pattern: <strong>compound → relevant property or reaction → application → limitation.</strong></p>
+<p class="small">On a small screen, swipe the table sideways to view all columns.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Applications summary table"><table class="wide-table"><thead><tr><th scope="col">Area</th><th scope="col">Example and chemical connection</th><th scope="col">Important limit</th></tr></thead><tbody>
+<tr><th scope="row">Medicine</th><td>Many active ingredients, such as paracetamol, are organic. Structure affects interactions in the body.</td><td>Some active ingredients, such as calcium carbonate in antacids, are inorganic.</td></tr>
+<tr><th scope="row">Energy</th><td>Propane combustion releases energy that can heat a cooking pot.</td><td>Complete combustion still produces CO<sub>2</sub>. Gasoline is a mixture, not one compound.</td></tr>
+<tr><th scope="row">Food</th><td>Carbohydrates, fats, proteins, and vitamins are organic nutrients.</td><td>Water and minerals are inorganic nutrients. Not all nutrients supply dietary energy.</td></tr>
+<tr><th scope="row">Materials and cleaning</th><td>Polyethylene’s structure gives useful packaging properties. Soap has regions that interact with oil and water.</td><td>Durability can contribute to persistence after disposal; polymers are not all synthetic or all organic.</td></tr>
+<tr><th scope="row">Agriculture and environment</th><td>Urea is an organic nitrogen fertilizer; ammonium sulfate is an inorganic one.</td><td>“Organic,” “natural,” and “plant-based” do not automatically establish safety or biodegradability.</td></tr>
+</tbody></table></div>
+<div class="worked"><h3>One example connecting all three lessons</h3><p>A drink contains <strong>sucrose, sodium chloride, and water</strong>.</p><ol><li><strong>Identify:</strong> sucrose is organic; sodium chloride and water are inorganic. The drink is a mixture.</li><li><strong>Explain:</strong> dissolved salt supplies mobile ions; dissolved sucrose remains mainly as neutral molecules.</li><li><strong>Connect to use:</strong> sucrose supplies dietary energy; water and the salt have other roles. The whole product cannot be treated as one organic compound.</li></ol></div></section><section class="section" id="mistakes" aria-labelledby="mistakes-title"><h2 id="mistakes-title">Misconception check · Replace the shortcut</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">Avoid this statement</th><th scope="col">Use this more accurate idea</th></tr></thead><tbody>
+<tr><td>“Every carbon compound is organic.”</td><td>CO, CO<sub>2</sub>, carbonates, and hydrogen carbonates are familiar inorganic exceptions.</td></tr>
+<tr><td>“An organic compound must contain a C–H bond.”</td><td>Urea is an organic counterexample.</td></tr>
+<tr><td>“Inorganic means ionic.”</td><td>Water and CO<sub>2</sub> are inorganic molecular compounds with covalent bonds.</td></tr>
+<tr><td>“If it dissolves, it conducts well.”</td><td>Dissolving may disperse neutral molecules rather than ions, as with sucrose.</td></tr>
+<tr><td>“Wöhler immediately ended vitalism.”</td><td>His experiment provided important evidence; scientific acceptance changed over time.</td></tr>
+<tr><td>“Plant-based plastic breaks down anywhere.”</td><td>Feedstock and breakdown behavior are different questions. Check the material and required conditions.</td></tr>
+</tbody></table></div></section><section class="section" id="practice" aria-labelledby="practice-title"><h2 id="practice-title">Mixed practice · Retrieve, explain, apply</h2>
+<p>Answer on paper before opening each explanation. These are review questions; the chapter assessment is opened separately at the end.</p>
+<div class="activity"><h3>1. Classify with reasons</h3><p>Classify <strong>ethanol (CH<sub>3</sub>CH<sub>2</sub>OH), calcium carbonate (CaCO<sub>3</sub>), and urea [CO(NH<sub>2</sub>)<sub>2</sub>]</strong>. Give a reason for each.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Ethanol:</strong> organic; it belongs to the alcohol family. <strong>Calcium carbonate:</strong> inorganic; carbonates are a conventional carbon-containing exception. <strong>Urea:</strong> organic despite lacking C–H bonds. Carbon or hydrogen symbols alone are not a complete classification test.</p></div></details></div><div class="activity"><h3>2. Explain the historical evidence</h3><p>Why did making urea from ammonium cyanate challenge vitalism more directly than extracting urea from urine?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Extraction only separates a substance already produced by an organism. Preparing urea from an inorganic starting material without a living organism challenged the proposed need for a vital force. It did not demonstrate that every organic compound could already be made in a laboratory.</p></div></details></div><div class="activity"><h3>3. Interpret structural information</h3><p>Ethanol, CH<sub>3</sub>–CH<sub>2</sub>–OH, and dimethyl ether, CH<sub>3</sub>–O–CH<sub>3</sub>, both have molecular formula C<sub>2</sub>H<sub>6</sub>O. Explain why the shared formula does not make them the same compound.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The numbers of atoms match, but the connections differ. In ethanol, oxygen is bonded to carbon and hydrogen; in dimethyl ether, it is bonded to two carbons. A molecular formula does not specify all structural information.</p></div></details></div><div class="activity"><h3>4. Reason from observations</h3><p>Two known samples—sucrose and NaCl—both dissolve in water. One solution conducts much better. Identify it and explain using particles. Why would conductivity alone be insufficient to identify a completely unknown substance?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The NaCl solution conducts much better because it contains mobile Na<sup>+</sup> and Cl<sup>−</sup> ions. Sucrose dissolves as neutral molecules. For an unknown, many different substances can produce mobile ions; conductivity neither uniquely identifies the compound nor determines whether it is organic.</p></div></details></div><div class="activity"><h3>5. Correct two application claims</h3><p>Give one counterexample to each: <strong>(a) all medicines have organic active ingredients; (b) all nutrients are organic and provide energy.</strong></p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>(a)</strong> Calcium carbonate is an inorganic active ingredient in some antacids. <strong>(b)</strong> Water and minerals are inorganic nutrients that do not supply dietary energy. Vitamins are organic nutrients, but they also do not supply energy in the way carbohydrates and fats do.</p></div></details></div><div class="activity"><h3>6. Connect fuel chemistry and emissions</h3><p>A student says, “A plant-derived fuel cannot release carbon dioxide.” Correct the claim. Then state why combustion releases energy overall.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Bioethanol releases CO<sub>2</sub> when burned; biological origin does not eliminate combustion emissions. Combustion releases energy overall because forming the product bonds releases more energy than is needed to break the reactant bonds.</p></div></details></div><div class="activity"><h3>7. Apply structure to function</h3><p>Explain how the two regions of a soap ion help remove grease from a plate.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The nonpolar hydrocarbon tail associates with grease, while the charged head interacts with water. Soap helps disperse oily material into the wash water so it can be rinsed away. The explanation depends on both regions, not simply the label “organic.”</p></div></details></div><div class="activity"><h3>8. Evaluate an environmental claim</h3><p>A package is labelled “plant-based; industrially compostable.” Does this establish rapid breakdown in a home compost pile or the sea? State what still needs checking.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>No. The feedstock label does not establish breakdown behavior, and industrial composting conditions differ from those in a garden or the sea. Check the specified conditions, evidence for the claimed disposal route, and whether a suitable local facility accepts the material.</p></div></details></div>
+<div class="note"><strong>Choose what to revisit:</strong><ul><li><strong>Items 1–3:</strong> Lesson 1—classification, history, and structure; review Lesson 2 for additional classification examples.</li><li><strong>Item 4:</strong> Lesson 2—particles, solubility, and conductivity.</li><li><strong>Items 5–8:</strong> Lesson 3—applications, mechanisms, and limits of claims.</li></ul></div></section><section class="section" id="terms" aria-labelledby="terms-title"><h2 id="terms-title">Key terms to keep</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">Term</th><th scope="col">Essential meaning</th></tr></thead><tbody>
+<tr><th scope="row">Organic compound</th><td>A carbon compound within organic chemistry’s families, excluding conventionally inorganic carbon families.</td></tr>
+<tr><th scope="row">Vitalism</th><td>Here, the historical belief that a vital force in living organisms was needed to produce organic compounds.</td></tr>
+<tr><th scope="row">Urea</th><td>An organic compound, CO(NH<sub>2</sub>)<sub>2</sub>, whose laboratory preparation by Wöhler challenged vitalism.</td></tr>
+<tr><th scope="row">Covalent / ionic bonding</th><td>Sharing electron pairs / electrostatic attraction between oppositely charged ions.</td></tr>
+<tr><th scope="row">Electrolyte</th><td>A substance that yields ions in solution, allowing electrical conduction.</td></tr>
+<tr><th scope="row">Hydrocarbon</th><td>A compound containing only carbon and hydrogen.</td></tr>
+<tr><th scope="row">Polymer / monomer</th><td>A substance composed of macromolecules with many repeated units / a small molecule that can react to contribute units to a macromolecule.</td></tr>
+<tr><th scope="row">Biofuel</th><td>A fuel produced from biomass.</td></tr>
+</tbody></table></div></section><section class="section" id="ready" aria-labelledby="ready-title"><h2 id="ready-title">Ready for the chapter assessment?</h2>
+<p>Tick each statement only if you can explain it without reading the answers. These checks are for your own review and do not affect access to the assessment.</p>
+<ul class="checklist"><li><label><input type="checkbox"><span>I can classify familiar compounds and explain at least two misleading shortcuts.</span></label></li><li><label><input type="checkbox"><span>I can explain what Wöhler’s experiment showed and why the historical change was gradual.</span></label></li><li><label><input type="checkbox"><span>I can distinguish organic/inorganic classification from bonding, solubility, and conductivity.</span></label></li><li><label><input type="checkbox"><span>I can connect a compound’s behavior to an application and identify a limit or unsupported claim.</span></label></li></ul>
+<p><strong>Final retrieval prompt:</strong> In three sentences, explain what organic chemistry studies, how evidence changed its historical definition, and why chemical structure matters in everyday applications.</p>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Organic chemistry studies organic compounds, including their structures, properties, preparation, and reactions, while recognizing conventional inorganic carbon exceptions. Wöhler’s preparation of urea from ammonium cyanate challenged the proposed need for a vital force, contributing to a gradual historical change. Structure affects behavior and helps explain uses in medicine, fuels, food, materials, and agriculture, but an organic label alone does not establish safety or environmental benefit.</p></div></details></section><details class="section references"><summary>Background sources</summary><p>This review consolidates the revised Chapter 1 lessons. Supporting references include:</p><ul><li><a href="https://openstax.org/books/chemistry-2e/pages/20-introduction" target="_blank" rel="noopener noreferrer">OpenStax: Introduction to Organic Chemistry</a></li><li><a href="https://doi.org/10.1021/ed041p452" target="_blank" rel="noopener noreferrer">Lipman: Wöhler’s preparation of urea and the fate of vitalism</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/11-2-electrolytes" target="_blank" rel="noopener noreferrer">OpenStax: Electrolytes</a></li><li><a href="https://www.epa.gov/trash-free-waters/frequently-asked-questions-about-plastic-recycling-and-composting" target="_blank" rel="noopener noreferrer">U.S. EPA: Plastic Recycling and Composting FAQs</a></li></ul></details>
+<div class="quiz-area"><button class="quiz-button" id="takeQuizBtn" type="button">Take Chapter 1 Assessment →</button><p id="quizNotice" class="small" role="status"></p></div></main><script>
+  document.getElementById('takeQuizBtn').addEventListener('click', function () {
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter1_assessment.html' }, '*');
+    } else {
+      document.getElementById('quizNotice').textContent = 'Open this chapter review inside LearnTrack to launch the Chapter 1 assessment.';
     }
-
-    h1 {
-      color: #136f63;
-      font-size: 2.2em;
-      margin-bottom: 0.7em;
-    }
-
-    h2 {
-      color: #136f63;
-      font-size: 1.6em;
-      margin: 0 0 0.4em 0;
-    }
-
-    h3 {
-      color: #174ea6;
-      margin-top: 0.8em;
-      font-size: 1.25em;
-    }
-
-    ul {
-      margin-left: 24px;
-    }
-
-    /* Section Card */
-    .section {
-      background: #ffffff;
-      padding: 24px 28px;
-      margin-bottom: 28px;
-      border-radius: 14px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-    }
-
-    /* Key Terms Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      margin-top: 16px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-
-    th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid #eee;
-      font-size: 18px;
-    }
-
-    th {
-      background: #f3f7ff;
-      color: #174ea6;
-      font-weight: bold;
-    }
-
-    /* Quiz button */
-    .quiz-button {
-      display: inline-block;
-      background-color: #136f63;
-      color: white;
-      padding: 14px 26px;
-      border-radius: 10px;
-      border: none;
-      font-weight: bold;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 35px;
-    }
-
-    .quiz-button:hover {
-      background-color: #0f5b52;
-    }
-  </style>
-</head>
-
-<body>
-
-<h1>Chapter 1 Summary – Introduction to Organic Chemistry</h1>
-
-<!-- LESSON 1 -->
-<div class="section">
-  <h2>Lesson 1: Definition and Brief History</h2>
-  <ul>
-    <li>Organic chemistry focuses on carbon-containing compounds, especially those with C–H bonds.</li>
-    <li>Vitalism claimed organic compounds could only originate from living organisms.</li>
-    <li>Friedrich Wöhler disproved vitalism in 1828 by synthesizing urea from inorganic materials.</li>
-    <li>This began the scientific foundation of modern organic chemistry.</li>
-  </ul>
-</div>
-
-<!-- LESSON 2 -->
-<div class="section">
-  <h2>Lesson 2: Organic vs Inorganic Compounds</h2>
-  <ul>
-    <li>Organic compounds contain carbon–hydrogen bonds; inorganic compounds generally do not.</li>
-    <li>Organic compounds are typically covalent, flammable, and structurally complex.</li>
-    <li>Inorganic compounds often have ionic bonds, are water-soluble, and have high melting points.</li>
-    <li>Examples: Organic → methane, ethanol; Inorganic → NaCl, water.</li>
-  </ul>
-</div>
-
-<!-- LESSON 3 -->
-<div class="section">
-  <h2>Lesson 3: Applications of Organic Chemistry in Daily Life</h2>
-  <ul>
-    <li><strong>Medicine:</strong> organic molecules form drugs such as aspirin, antibiotics, and anesthetics.</li>
-    <li><strong>Energy:</strong> hydrocarbons like gasoline and natural gas power modern society.</li>
-    <li><strong>Food:</strong> carbohydrates, proteins, fats, and vitamins are organic molecules essential for life.</li>
-    <li><strong>Polymers:</strong> plastics, rubber, and synthetic fibers are made of long-chain organic molecules.</li>
-    <li><strong>Agriculture:</strong> fertilizers, pesticides, and herbicides rely heavily on organic chemistry.</li>
-  </ul>
-</div>
-
-<!-- Key Takeaways -->
-<div class="section">
-  <h2>Key Takeaways</h2>
-  <ul>
-    <li>Organic chemistry explains how carbon forms millions of useful compounds.</li>
-    <li>It connects chemical principles with real-world applications in medicine, food, energy, and materials.</li>
-    <li>Carbon’s bonding flexibility makes life on Earth possible.</li>
-  </ul>
-
-  <h3>Key Terms</h3>
-  <table>
-    <tr><th>Term</th><th>Definition</th></tr>
-    <tr><td>Vitalism</td><td>The belief that organic compounds required a “life force” to be formed.</td></tr>
-    <tr><td>Urea</td><td>An organic compound whose artificial synthesis disproved vitalism.</td></tr>
-    <tr><td>Hydrocarbon</td><td>A compound containing only carbon and hydrogen.</td></tr>
-    <tr><td>Organic Compound</td><td>A compound containing carbon and typically C–H bonds.</td></tr>
-    <tr><td>Polymer</td><td>A long-chain molecule made of repeating units (monomers).</td></tr>
-  </table>
-</div>
-
-<div style="text-align:center;">
-  <button class="quiz-button" id="takeQuizBtn">Take Chapter 1 Assessment →</button>
-</div>
-
-<script>
-  document.getElementById("takeQuizBtn").addEventListener("click", () => {
-    window.parent.postMessage({ 
-      type: "openQuiz", 
-      quiz: "chapter1_assessment.html" 
-    }, "*");
   });
-</script>
-
-</body>
-</html>
+  // Include all answer explanations when printing, then restore the learner’s view.
+  let openBeforePrint = [];
+  window.addEventListener('beforeprint', function () {
+    openBeforePrint = Array.from(document.querySelectorAll('details')).map(function (item) {
+      const previous = item.open; item.open = true; return previous;
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    document.querySelectorAll('details').forEach(function (item, index) { item.open = Boolean(openBeforePrint[index]); });
+  });
+</script></body></html>
