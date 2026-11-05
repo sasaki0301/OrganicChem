@@ -1,332 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 Assessment – Introduction to Organic Chemistry</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-  
-  img {
-    max-width: 300px;
-    border-radius: 10px;
-    margin: 12px auto;
-    display: block;
-  }
-
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 Assessment – Introduction to Organic Chemistry</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-  <div class="quiz-container">
-    <h2>Introduction to Organic Chemistry Chapter Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "1. What branch of chemistry studies carbon compounds?", c: ["Inorganic chemistry", "Organic chemistry", "Analytical chemistry", "Physical chemistry"], a: 1 },
-      { q: "2. The early theory that organic substances required a 'life force' to form was called:", c: ["Vitalism", "Mechanism", "Stoichiometry", "Structural theory"], a: 0 },
-      { q: "3. Who synthesized urea from ammonium cyanate in 1828?", c: ["Wöhler", "Kekulé", "Lavoisier", "Dalton"], a: 0 },
-      { q: "4. Which compound below is <em>organic</em>?<br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b8/Methane-2D-flat.png' width='100'>", c: ["NaCl", "CH₄", "Fe₂O₃", "CaCO₃"], a: 1 },
-      { q: "5. Which element is the foundation of organic chemistry?", c: ["Oxygen", "Carbon", "Nitrogen", "Sulfur"], a: 1 },
-      { q: "6. Organic compounds are primarily bonded by:", c: ["Ionic bonds", "Covalent bonds", "Metallic bonds", "Hydrogen bonds"], a: 1 },
-      { q: "7. Which of the following is an inorganic compound?", c: ["Glucose", "Ethanol", "NaCl", "Propane"], a: 2 },
-      { q: "8. What property is typical of organic compounds?", c: ["High melting points", "Flammable and low-melting", "Good conductors", "Mostly metallic"], a: 1 },
-      { q: "9. Inorganic compounds are generally soluble in:", c: ["Non-polar solvents", "Polar solvents (water)", "Benzene", "Ether"], a: 1 },
-      { q: "10. Which of the following best describes modern organic chemistry?", c: ["Study of metals", "Study of carbon-based molecules", "Study of gases only", "Study of radioactivity"], a: 1 },
-      { q: "11. What organic compound serves as a pain reliever?<br><img src='https://upload.wikimedia.org/wikipedia/commons/d/d9/Aspirin-skeletal.svg' width='100'>", c: ["Aspirin", "NaOH", "NH₄NO₃", "KCl"], a: 0 },
-      { q: "12. Which organic compound is used as a fuel gas?", c: ["Methane", "Water", "Iron oxide", "Sodium chloride"], a: 0 },
-      { q: "13. Organic nutrients include:", c: ["Proteins, carbohydrates, and fats", "Metals and salts", "Water only", "Oxides"], a: 0 },
-      { q: "14. Polymers are:", c: ["Large organic molecules", "Simple ions", "Atomic nuclei", "Minerals"], a: 0 },
-      { q: "15. Organic chemistry contributes to agriculture by:", c: ["Producing fertilizers and pesticides", "Mining ores", "Building engines", "Designing circuits"], a: 0 },
-      { q: "16. Which 19th-century chemist proposed the structural theory of bonding?", c: ["Kekulé", "Wöhler", "Einstein", "Curie"], a: 0 },
-      { q: "17. The compound responsible for the aroma of fruits (esters) is an example of:", c: ["Inorganic compound", "Organic compound", "Metal", "Salt"], a: 1 },
-      { q: "18. Organic compounds mainly contain which two elements?", c: ["C and H", "Na and Cl", "Fe and O", "K and Br"], a: 0 },
-      { q: "19. Which characteristic is more typical of inorganic compounds?", c: ["Covalent bonding", "High melting points", "Flammability", "Low density"], a: 1 },
-      { q: "20. The process of creating plastics is part of:", c: ["Polymer chemistry", "Nuclear chemistry", "Electrochemistry", "Quantum mechanics"], a: 0 },
-      { q: "21. Organic chemistry is vital in developing which of the following?", c: ["Antibiotics", "Computer chips", "Alloys", "Cement"], a: 0 },
-      { q: "22. What gas is both organic and a greenhouse gas?", c: ["Methane (CH₄)", "Oxygen (O₂)", "Nitrogen (N₂)", "Argon (Ar)"], a: 0 },
-      { q: "23. The main difference between organic and inorganic compounds lies in:", c: ["Presence of C–H bonds", "Presence of oxygen", "Color", "Crystal shape"], a: 0 },
-      { q: "24. What historical event marks the birth of organic chemistry as a science?", c: ["Wöhler’s urea synthesis", "Discovery of oxygen", "Atomic theory", "Periodic law"], a: 0 },
-      { q: "25. Why is carbon so versatile in forming compounds?", c: ["It forms four covalent bonds", "It forms only ionic bonds", "It has low reactivity", "It is a noble gas"], a: 0 }
-    ];
-
-    let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1 · Chapter Assessment</div>
+  <h1 id="quizTitle">Introduction to Organic Chemistry — Chapter Assessment</h1>
+  <p class="instructions" id="instructions"><strong>25 questions · Pass: 20/25 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 25 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 25 correct = 3 · 23–24 = 2 · 20–22 = 1 · below 20 = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 8 easy, 12 moderate, 5 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    "id": "c1a01",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Easy",
+    "q": "Which project most directly addresses the central subject of organic chemistry?",
+    "c": [
+      "Comparing the electrical properties of pure copper and silver.",
+      "Relating ethanol’s molecular structure to its reactions.",
+      "Determining how temperature changes the pressure of argon.",
+      "Measuring the crystal spacing in a sodium chloride sample."
+    ],
+    "a": 1,
+    "e": "Organic chemistry studies organic compounds, including their structures, properties, preparation, and reactions. Ethanol is an organic compound.",
+    "why": [
+      "Pure metals are not organic compounds.",
+      "This investigates the structure and reactions of an organic compound.",
+      "Argon is an element, not an organic compound.",
+      "Sodium chloride is an inorganic salt."
+    ]
+  },
+  {
+    "id": "c1a02",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Easy",
+    "q": "In the historical debate about organic synthesis, what did vitalism propose?",
+    "c": [
+      "Organic compounds could be prepared using inorganic starting materials.",
+      "The connections between atoms determined an organic compound’s structure.",
+      "Chemical reactions rearranged atoms while conserving their numbers.",
+      "A special force associated with life was needed to make organic compounds."
+    ],
+    "a": 3,
+    "e": "In this historical context, vitalism proposed that producing organic compounds required a special force associated with living organisms.",
+    "why": [
+      "This describes evidence that challenged the proposed need for a vital force.",
+      "This concerns structural theory, not the vital-force claim.",
+      "This concerns atom conservation, not vitalism.",
+      "This describes the proposed vital force."
+    ]
+  },
+  {
+    "id": "c1a03",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Easy",
+    "q": "Which record correctly identifies the 1828 experiment discussed in this chapter?",
+    "c": [
+      "Wöhler prepared urea from ammonium cyanate.",
+      "Wöhler extracted ammonium cyanate from plants.",
+      "Kekulé prepared ethanol from ammonium cyanate.",
+      "Kekulé prepared urea from ethanol."
+    ],
+    "a": 0,
+    "e": "Friedrich Wöhler prepared urea from ammonium cyanate in 1828, providing important evidence against the proposed necessity of a vital force.",
+    "why": [
+      "This correctly identifies the chemist, starting material, and product.",
+      "The important event was laboratory preparation of urea, not extraction from plants.",
+      "This gives the wrong chemist, product, and transformation.",
+      "The chapter’s experiment was Wöhler’s preparation of urea from ammonium cyanate."
+    ]
+  },
+  {
+    "id": "c1a04",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Easy",
+    "q": "Which pair consists of carbon-containing compounds conventionally classified as inorganic?",
+    "c": [
+      "Methane (CH₄) and carbon dioxide (CO₂).",
+      "Ethanol (C₂H₅OH) and calcium carbonate (CaCO₃).",
+      "Carbon dioxide (CO₂) and calcium carbonate (CaCO₃).",
+      "Methane (CH₄) and ethanol (C₂H₅OH)."
+    ],
+    "a": 2,
+    "e": "Carbon dioxide and carbonates are familiar inorganic carbon compounds. Carbon content alone is not a complete classification rule.",
+    "why": [
+      "Methane is organic, so only one member fits.",
+      "Ethanol is organic, so only one member fits.",
+      "Both are conventional inorganic carbon compounds.",
+      "Both methane and ethanol are organic."
+    ]
+  },
+  {
+    "id": "c1a05",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Easy",
+    "q": "A diagram shows two atoms sharing an electron pair. Which type of bonding does it represent?",
+    "c": [
+      "Metallic bonding.",
+      "Ionic bonding.",
+      "Covalent bonding.",
+      "Hydrogen bonding."
+    ],
+    "a": 2,
+    "e": "A covalent bond involves a shared electron pair. Ionic bonding is the electrostatic attraction between oppositely charged ions.",
+    "why": [
+      "Metallic bonding involves delocalized electrons across a metal structure.",
+      "Ionic bonding involves attraction between ions, not this shared-pair model.",
+      "Sharing an electron pair is the defining feature shown.",
+      "Hydrogen bonding is a different interaction; the described pair-sharing bond is covalent."
+    ]
+  },
+  {
+    "id": "c1a06",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Easy",
+    "q": "Which ingredient is a hydrocarbon that can serve as a fuel?",
+    "c": [
+      "Butane, C₄H₁₀.",
+      "Sucrose, C₁₂H₂₂O₁₁.",
+      "Ethanol, C₂H₅OH.",
+      "Urea, CO(NH₂)₂."
+    ],
+    "a": 0,
+    "e": "Butane contains only carbon and hydrogen and is a fuel component of LPG. An organic compound containing another element is not a hydrocarbon.",
+    "why": [
+      "Butane satisfies both the composition and fuel-use requirements.",
+      "Sucrose contains oxygen and is not a hydrocarbon.",
+      "Ethanol can be a fuel, but its oxygen means it is not a hydrocarbon.",
+      "Urea contains nitrogen and oxygen and is not a hydrocarbon."
+    ]
+  },
+  {
+    "id": "c1a07",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Easy",
+    "q": "Which pair contains one organic nutrient and one inorganic nutrient, in that order?",
+    "c": [
+      "Water; glucose.",
+      "Water; sodium ions.",
+      "Glucose; vitamin C.",
+      "Glucose; water."
+    ],
+    "a": 3,
+    "e": "Glucose is an organic carbohydrate; water is an inorganic nutrient. Nutrient categories include both organic and inorganic substances.",
+    "why": [
+      "The order is reversed: water is inorganic and glucose is organic.",
+      "Both water and sodium ions are inorganic.",
+      "Both glucose and vitamin C are organic.",
+      "This gives an organic nutrient followed by an inorganic one."
+    ]
+  },
+  {
+    "id": "c1a08",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Easy",
+    "q": "Which description identifies a polymer by its structure?",
+    "c": [
+      "A substance whose molecules contain only a single repeating atom.",
+      "A substance made of macromolecules containing many repeated units.",
+      "A substance whose molecules all have the same small molecular mass.",
+      "A substance whose particles are exclusively independent metal ions."
+    ],
+    "a": 1,
+    "e": "Polymers are composed of macromolecules with many repeated structural units. They can be natural or synthetic, and the broad category is not limited to organic substances.",
+    "why": [
+      "A repeated structural unit is not necessarily a single atom.",
+      "This identifies the defining macromolecular structure.",
+      "Polymer macromolecules are large, and their chain lengths can vary.",
+      "Independent metal ions do not define a polymer."
+    ]
+  },
+  {
+    "id": "c1a09",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Moderate",
+    "q": "One researcher extracts urea from urine; another prepares it from ammonium cyanate without an organism. Why does the second procedure more directly challenge vitalism?",
+    "c": [
+      "It produces an organic compound without the proposed living source.",
+      "It separates a substance that an organism had already produced.",
+      "It shows that the purified product contains no carbon atoms.",
+      "It shows that every organic compound can be made by the same route."
+    ],
+    "a": 0,
+    "e": "Extraction separates an existing substance. Preparation from an inorganic starting material without an organism directly challenges the proposed requirement for a vital force. One successful synthesis does not establish a route to every organic compound.",
+    "why": [
+      "This explains why laboratory preparation is more relevant to the claim.",
+      "This describes extraction, which does not test the need for a living source in synthesis.",
+      "Urea contains carbon; removal of carbon is not the issue.",
+      "The experiment concerns urea, not a universal synthesis method."
+    ]
+  },
+  {
+    "id": "c1a10",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Moderate",
+    "q": "Ethanol is CH₃–CH₂–OH and dimethyl ether is CH₃–O–CH₃. Both have formula C₂H₆O. What does comparing the two representations show?",
+    "c": [
+      "The oxygen atom has been omitted from one of the molecular formulas.",
+      "Equal atom counts require identical chemical behavior.",
+      "The structural formulas represent the same compound in different states.",
+      "Equal atom counts can occur with different atom connections."
+    ],
+    "a": 3,
+    "e": "Both compounds have two carbons, six hydrogens, and one oxygen, but their connections differ. A molecular formula gives counts; structural information distinguishes the arrangements.",
+    "why": [
+      "The shared molecular formula includes oxygen in both cases.",
+      "Different connections can give different properties and reactions.",
+      "These are different compounds, not simply different physical states.",
+      "This correctly separates molecular composition from connectivity."
+    ]
+  },
+  {
+    "id": "c1a11",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Moderate",
+    "q": "Urea has the structure H₂N–C(=O)–NH₂ and is classified as organic. Which proposed rule does this example directly disprove?",
+    "c": [
+      "An organic compound may contain oxygen.",
+      "An organic compound must contain a C–H bond.",
+      "An organic compound contains carbon.",
+      "An organic compound may contain nitrogen."
+    ],
+    "a": 1,
+    "e": "Urea is organic, but its hydrogens are bonded to nitrogen, not carbon. C–H bonds are common in organic chemistry, yet they are not required in every organic compound.",
+    "why": [
+      "Urea supports, rather than disproves, the possibility of oxygen in organic compounds.",
+      "Urea is a counterexample because it is organic and has no C–H bond.",
+      "Urea contains carbon and does not contradict that statement.",
+      "Urea supports, rather than disproves, the possibility of nitrogen in organic compounds."
+    ]
+  },
+  {
+    "id": "c1a12",
+    "topic": "Lesson 1 · Scope, history, and structure",
+    "difficulty": "Moderate",
+    "q": "A timeline labels Wöhler’s experiment “the day every chemist abandoned vitalism.” Which revision best reflects the chapter’s historical account?",
+    "c": [
+      "It confirmed that living organisms were needed for all synthesis.",
+      "It had no relevance because urea contains nitrogen as well as carbon.",
+      "It challenged vitalism, while scientific acceptance changed gradually.",
+      "It established that every carbon compound should be called organic."
+    ],
+    "a": 2,
+    "e": "The preparation of urea was an important challenge to vitalism. It contributed to a gradual historical change rather than an immediate, universal rejection on a single date.",
+    "why": [
+      "Preparation without an organism challenged this claim.",
+      "Nitrogen in urea does not remove its relevance as an organic compound.",
+      "This distinguishes the experimental evidence from the pace of acceptance.",
+      "The experiment did not eliminate conventional inorganic carbon categories."
+    ]
+  },
+  {
+    "id": "c1a13",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Moderate",
+    "q": "Carbon dioxide is inorganic, but its C=O bonds involve shared electrons. What conclusion follows?",
+    "c": [
+      "Its classification and bonding describe different features.",
+      "Its inorganic classification requires a lattice of ions.",
+      "Its covalent bonds require reclassifying it as organic.",
+      "Its carbon atom prevents it from being a molecular compound."
+    ],
+    "a": 0,
+    "e": "An inorganic compound can have covalent bonds. Organic/inorganic classification and ionic/covalent bonding are separate descriptions.",
+    "why": [
+      "This correctly separates classification from bonding.",
+      "CO₂ is a molecular inorganic compound, not an ionic lattice.",
+      "Covalent bonding alone does not make a compound organic.",
+      "Carbon can form covalent molecular compounds, including CO₂."
+    ]
+  },
+  {
+    "id": "c1a14",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Moderate",
+    "q": "Sucrose crystals disappear into water, but the resulting solution conducts very poorly. Which particle explanation fits both observations?",
+    "c": [
+      "Sucrose becomes a metal, but its particles remain fixed in place.",
+      "Sucrose molecules disperse in water without producing many ions.",
+      "Sucrose releases many ions, but water prevents them from moving.",
+      "Sucrose cannot dissolve unless its molecules acquire a charge."
+    ],
+    "a": 1,
+    "e": "Dissolving does not necessarily create ions. Sucrose disperses as neutral molecules, so its solution contains few mobile charge carriers compared with a dissolved salt solution.",
+    "why": [
+      "Dissolving sugar does not transform it into a metal.",
+      "This explains dissolution and poor conductivity together.",
+      "Many mobile ions would increase conductivity; water does not generally immobilize dissolved ions.",
+      "Neutral molecules can dissolve through favorable interactions with water."
+    ]
+  },
+  {
+    "id": "c1a15",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Moderate",
+    "q": "A sample of NaCl conducts poorly as a solid but conducts when molten. What changes in the particle model?",
+    "c": [
+      "The ions become neutral atoms when the solid melts.",
+      "The salt acquires carbon atoms when it is heated.",
+      "The solid contains molecules, while the melt contains electrons only.",
+      "The ions become able to move and transport charge."
+    ],
+    "a": 3,
+    "e": "The solid already contains ions, but they are held in the lattice. Melting allows ions to move, providing mobile charge carriers.",
+    "why": [
+      "Melting does not neutralize the ions.",
+      "Heating NaCl does not add carbon atoms.",
+      "Solid NaCl is ionic, and the molten salt conducts through mobile ions.",
+      "This identifies the important change: mobility of existing charged particles."
+    ]
+  },
+  {
+    "id": "c1a16",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Moderate",
+    "q": "Ethanol mixes with water, whereas a hydrocarbon-rich cooking oil mixes poorly. Which explanation is most useful?",
+    "c": [
+      "Water dissolves inorganic substances and rejects organic substances.",
+      "Ethanol becomes inorganic when placed in water.",
+      "Their different molecular regions interact differently with water.",
+      "Oil contains no covalent bonds that water can interact with."
+    ],
+    "a": 2,
+    "e": "Solubility depends on interactions with the solvent. Ethanol’s –OH region can interact strongly with water, while oil has extensive nonpolar regions. Both materials involve organic compounds.",
+    "why": [
+      "Organic substances can be water-soluble; classification alone is not a solubility rule.",
+      "Dissolving does not change ethanol’s organic classification.",
+      "This relates molecular features to solvent interactions.",
+      "Oil contains covalent bonds; its nonpolar character helps explain poor mixing with water."
+    ]
+  },
+  {
+    "id": "c1a17",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Moderate",
+    "q": "Acetic acid is organic, yet an aqueous solution conducts electricity. Which explanation resolves the apparent contradiction?",
+    "c": [
+      "The solution’s conductivity changes the acid to an inorganic compound.",
+      "Some acetic acid molecules form ions in water.",
+      "Every dissolved acetic acid molecule becomes a free electron.",
+      "Covalent substances cannot produce any ions in solution."
+    ],
+    "a": 1,
+    "e": "Acetic acid partially ionizes in water. The ions can carry charge, so organic classification does not rule out electrical conductivity in solution.",
+    "why": [
+      "Conductivity is a property, not a reclassification process.",
+      "Partial ionization supplies mobile ions without changing the organic classification.",
+      "Molecules do not become free electrons on dissolving.",
+      "Acetic acid is a counterexample to that claim."
+    ]
+  },
+  {
+    "id": "c1a18",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Moderate",
+    "q": "A medicine contains an organic active ingredient and an inorganic ingredient. Which explanation of their possible usefulness is best?",
+    "c": [
+      "Each ingredient’s chemical behavior must be related to its intended role.",
+      "The inorganic ingredient must become organic before it can act.",
+      "Only the organic ingredient can react with substances in the body.",
+      "The organic label alone establishes the effectiveness of the product."
+    ],
+    "a": 0,
+    "e": "Chemical structure and behavior help explain an ingredient’s role. Both organic and inorganic substances can have useful medicinal applications, and classification alone does not establish effectiveness.",
+    "why": [
+      "This links usefulness to behavior rather than the category label alone.",
+      "Becoming organic is not a general requirement for an inorganic ingredient to act.",
+      "Inorganic substances can react in the body, as in antacid examples.",
+      "Effectiveness requires evidence beyond an organic classification."
+    ]
+  },
+  {
+    "id": "c1a19",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Moderate",
+    "q": "A fuel analysis identifies several hydrocarbons in one gasoline sample. How should the sample be described?",
+    "c": [
+      "One compound with a formula equal to the average of its components.",
+      "One polymer made by linking the listed hydrocarbons into a chain.",
+      "One element because all its hydrocarbons contain carbon atoms.",
+      "A mixture whose individual components have their own formulas."
+    ],
+    "a": 3,
+    "e": "Gasoline is a mixture of compounds, not a single molecule with one molecular formula. A shared element does not make different compounds the same substance.",
+    "why": [
+      "An average composition is not a molecular formula for a single gasoline compound.",
+      "A mixture does not require chemical linking into a polymer.",
+      "Hydrocarbons contain carbon and hydrogen; shared carbon does not make the mixture an element.",
+      "This correctly distinguishes the product from its component compounds."
+    ]
+  },
+  {
+    "id": "c1a20",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Moderate",
+    "q": "A crop can obtain nitrogen from urea after soil transformations and from ammonium sulfate. Which statement explains the shared use without confusing chemical categories?",
+    "c": [
+      "Both fertilizers must be classified as organic because plants use them.",
+      "Both fertilizers supply nitrogen by first becoming polyethylene.",
+      "Different organic and inorganic compounds can supply usable nitrogen.",
+      "Their usefulness establishes that either amount is environmentally harmless."
+    ],
+    "a": 2,
+    "e": "Urea is organic; ammonium sulfate is inorganic. Both can supply nitrogen in usable forms. A useful agricultural role does not establish that every amount or use is harmless.",
+    "why": [
+      "A substance’s use by plants does not determine its organic/inorganic classification.",
+      "Polyethylene is not the nitrogen-supply pathway described.",
+      "This connects nutrient function with different chemical categories.",
+      "Environmental effects depend on identity, amount, use, and conditions."
+    ]
+  },
+  {
+    "id": "c1a21",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Difficult",
+    "q": "Equal-concentration solutions are tested with the same apparatus at the same temperature. Which conclusion follows from all three observations?",
+    "c": [
+      "The two conducting solutions must both contain inorganic solutes.",
+      "The poorly conducting solution must contain an undissolved solid.",
+      "The shared solvent requires all three solutions to conduct equally well.",
+      "Ion formation and mobility explain conductivity better than organic/inorganic labels."
+    ],
+    "a": 3,
+    "e": "NaCl supplies mobile ions; sucrose dissolves mainly as neutral molecules; acetic acid forms some ions. The organic acid’s conductivity and the organic sugar’s poor conductivity show why category alone does not explain the results.",
+    "why": [
+      "Acetic acid is an organic solute that forms ions, so conductivity does not imply inorganic classification.",
+      "The stated observation says sucrose is dissolved; neutral molecules explain the poor conductivity.",
+      "Solute identity and resulting particles matter even when the solvent is the same.",
+      "This accounts for the dissolved salt, neutral sugar molecules, and partially ionized acid."
+    ],
+    "evidence": {
+      "caption": "Illustrative observations under comparable conditions.",
+      "headers": [
+        "Solute",
+        "Appearance",
+        "Conductivity"
+      ],
+      "rows": [
+        [
+          "NaCl",
+          "Dissolved",
+          "High"
+        ],
+        [
+          "Sucrose",
+          "Dissolved",
+          "Very low"
+        ],
+        [
+          "Acetic acid",
+          "Dissolved",
+          "Measurable; lower than NaCl"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "c1a22",
+    "topic": "Lesson 2 · Classification and properties",
+    "difficulty": "Difficult",
+    "q": "A concentrated acetic acid solution conducts more strongly than an extremely dilute NaCl solution. A student concludes that acetic acid produces a greater fraction of ions. Which evaluation is best?",
+    "c": [
+      "The conclusion is established because every conductivity comparison measures ionization alone.",
+      "The conclusion is unsupported because concentration and ionization both affect conductivity.",
+      "The conclusion is established because organic acids must ionize completely in water.",
+      "The conclusion is unsupported because NaCl contains neutral molecules even after dissolving."
+    ],
+    "a": 1,
+    "e": "Conductivity depends on the amount and mobility of ions, not just the fraction of solute ionized. Unequal concentrations confound this comparison. Comparing electrolyte behavior requires controlled conditions and an appropriate particle explanation.",
+    "why": [
+      "Conductivity is not a measurement of ionization fraction alone.",
+      "This identifies why the observation cannot isolate the degree of ionization.",
+      "Acetic acid is a weak electrolyte and only partially ionizes.",
+      "NaCl separates into ions in water; neutral NaCl molecules are not the correct explanation."
+    ]
+  },
+  {
+    "id": "c1a23",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Difficult",
+    "q": "For a stated amount of hydrocarbon fuel, breaking reactant bonds requires 1,250 kJ and forming product bonds releases 1,850 kJ. Which combined claim is supported for complete combustion?",
+    "c": [
+      "600 kJ is absorbed overall, and carbon dioxide forms.",
+      "3,100 kJ is released overall, and carbon dioxide forms.",
+      "600 kJ is released overall, and carbon dioxide forms.",
+      "600 kJ is released overall, and carbon dioxide cannot form."
+    ],
+    "a": 2,
+    "e": "The net release is 1,850 − 1,250 = 600 kJ. Complete combustion of a hydrocarbon produces CO₂ and H₂O, so useful heat release does not imply zero carbon dioxide emissions.",
+    "why": [
+      "The difference is 600 kJ, but more energy is released than required, so the net result is release.",
+      "Adding the magnitudes ignores their opposite directions of energy transfer.",
+      "Both the energy balance and the carbon-containing product are correctly identified.",
+      "The net energy is correct, but complete hydrocarbon combustion produces CO₂."
+    ]
+  },
+  {
+    "id": "c1a24",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Difficult",
+    "q": "A cup is plant-derived and has evidence of breakdown under industrial composting conditions. No home-composting or seawater tests are supplied. Which disposal advice is best supported?",
+    "c": [
+      "Check whether a local industrial facility accepts this particular cup.",
+      "Use a garden compost pile because plant-derived materials behave alike.",
+      "Dispose of it at sea because industrial breakdown proves marine breakdown.",
+      "Treat its feedstock label as proof of rapid breakdown in any location."
+    ],
+    "a": 0,
+    "e": "The evidence applies to specified industrial composting conditions. Appropriate disposal also depends on local acceptance. Feedstock origin does not establish behavior in a garden or the sea.",
+    "why": [
+      "This matches the claimed conditions and checks local suitability.",
+      "Plant-derived materials can have very different structures and breakdown requirements.",
+      "Industrial composting evidence does not establish marine degradation.",
+      "Feedstock and breakdown behavior are different questions."
+    ]
+  },
+  {
+    "id": "c1a25",
+    "topic": "Lesson 3 · Applications and evidence",
+    "difficulty": "Difficult",
+    "q": "A proposed cleaning molecule has a charged head that interacts with water, but its tail interacts poorly with grease. Which evaluation best applies the soap model?",
+    "c": [
+      "The head alone establishes effective grease dispersion and easy rinsing.",
+      "The charged head must change the grease into water before rinsing.",
+      "Weak tail–grease interaction may limit cleaning despite head–water interaction.",
+      "Poor grease interaction proves that the molecule has no carbon atoms."
+    ],
+    "a": 2,
+    "e": "The soap model needs both interactions: a nonpolar tail associates with grease and a charged head interacts with water. Good interaction with water alone does not establish effective grease dispersion; actual performance would need testing.",
+    "why": [
+      "This ignores the role of the tail in associating with grease.",
+      "Soap helps disperse grease rather than converting it into water.",
+      "This uses both regions of the molecule and avoids claiming untested cleaning performance.",
+      "Interaction behavior alone does not establish the absence of carbon."
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Assessment completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(element('span','letter',letters[i]+'.'),body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','result');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Assessment result actions');
+  const back = element('button','quiz-btn','← Back to Chapter Review');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Assessment');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Continue →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
-
+</script>
 </body>
 </html>
