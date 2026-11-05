@@ -1,315 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 – Lesson 3 Quiz</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-  img {
-    max-width: 300px;
-    border-radius: 10px;
-    margin: 12px auto;
-    display: block;
-  }
-
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 – Lesson 3 Quiz: Applications of Organic Chemistry in Daily Life</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-  <div class="quiz-container">
-    <h2>Applications of Organic Chemistry in Daily Life – Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "Which of the following is an organic compound used as a pain reliever?<br><img src='https://upload.wikimedia.org/wikipedia/commons/d/d9/Aspirin-skeletal.svg' width='100'>", c: ["Aspirin", "NaCl", "Iron oxide", "Ammonium nitrate"], a: 0 },
-      { q: "What type of organic compounds are responsible for providing energy and nutrients in food?", c: ["Salts", "Proteins, fats, and carbohydrates", "Metals", "Oxides"], a: 1 },
-      { q: "Which of the following is a hydrocarbon fuel?", c: ["Water (H₂O)", "Methane (CH₄)", "Carbon dioxide (CO₂)", "Sodium chloride (NaCl)"], a: 1 },
-      { q: "Plastics and rubbers are examples of:", c: ["Ionic compounds", "Metals", "Polymers", "Carbohydrates"], a: 2 },
-      { q: "Which branch of organic chemistry studies large molecules like plastics and fibers?", c: ["Stereochemistry", "Polymer chemistry", "Thermochemistry", "Analytical chemistry"], a: 1 },
-      { q: "What is the role of organic chemistry in medicine?", c: ["It studies planets", "It helps develop and improve drugs", "It produces electricity", "It refines metals"], a: 1 },
-      { q: "Which organic molecule makes up the structure of most enzymes?", c: ["Lipids", "Proteins", "Carbohydrates", "Nucleic acids"], a: 1 },
-      { q: "What is the organic compound in gasoline that provides energy?", c: ["Octane", "Methanol", "Benzene", "Acetone"], a: 0 },
-      { q: "Which of the following fields uses organic chemistry to improve crop yield?", c: ["Astronomy", "Agriculture", "Geology", "Physics"], a: 1 },
-      { q: "What is one environmental application of organic chemistry?", c: ["Developing eco-friendly materials", "Producing radioactive waste", "Mining heavy metals", "Increasing fossil fuel use"], a: 0 }
-    ];
-
-    let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1 · Lesson 3</div>
+  <h1 id="quizTitle">Applications of Organic Chemistry in Daily Life — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    "id": "c1l3q01",
+    "topic": "Fuels and energy",
+    "difficulty": "Easy",
+    "q": "A cooking-fuel label lists propane (C₃H₈). Which description correctly connects its composition with its use?",
+    "c": [
+      "An oxygen-containing fuel that releases heat when burned.",
+      "A hydrocarbon fuel that releases heat when burned.",
+      "A hydrocarbon fuel that absorbs heat overall when burned.",
+      "An oxygen-containing fuel that absorbs heat overall when burned."
+    ],
+    "a": 1,
+    "e": "Propane contains only carbon and hydrogen, so it is a hydrocarbon. Its combustion with oxygen releases energy overall, which can heat cookware.",
+    "why": [
+      "Propane contains no oxygen atoms; oxygen for combustion comes from outside the fuel.",
+      "Both the hydrocarbon classification and the overall energy release are correct.",
+      "Breaking bonds requires energy, but propane combustion releases energy overall.",
+      "Propane contains no oxygen, and its combustion releases energy overall."
+    ]
+  },
+  {
+    "id": "c1l3q02",
+    "topic": "Food, medicine, and agriculture",
+    "difficulty": "Easy",
+    "q": "A drink contains water, sucrose, and sodium chloride. Which ingredient is both organic and a source of dietary energy?",
+    "c": [
+      "Water",
+      "Sodium chloride",
+      "Water and sodium chloride",
+      "Sucrose"
+    ],
+    "a": 3,
+    "e": "Sucrose is an organic carbohydrate that supplies dietary energy. Water and sodium chloride are inorganic components with other physiological roles; they do not supply calories.",
+    "why": [
+      "Water supports body functions but is inorganic and does not supply calories.",
+      "Sodium chloride supplies ions but is inorganic and does not supply calories.",
+      "Both are inorganic components, and neither supplies dietary energy.",
+      "Sucrose satisfies both conditions: organic classification and dietary energy supply."
+    ]
+  },
+  {
+    "id": "c1l3q03",
+    "topic": "Materials and environmental claims",
+    "difficulty": "Easy",
+    "q": "Cellulose in cotton is a natural polymer; polyethylene in packaging is a synthetic polymer. What feature justifies calling both polymers?",
+    "c": [
+      "Their macromolecules contain many repeated structural units.",
+      "Their molecules contain only carbon and hydrogen atoms.",
+      "Their chains are digested to glucose by human enzymes.",
+      "Their materials break down rapidly in ordinary seawater."
+    ],
+    "a": 0,
+    "e": "Polymers contain macromolecules with many repeated structural units. Natural or synthetic origin does not determine whether a substance is a polymer. Their structures can give them very different properties.",
+    "why": [
+      "This is the structural feature shared by cellulose and polyethylene.",
+      "Cellulose also contains oxygen; a polymer need not be a hydrocarbon.",
+      "Humans do not digest either cellulose or polyethylene to glucose with their own digestive enzymes.",
+      "Polymer classification does not establish rapid biodegradation in seawater."
+    ]
+  },
+  {
+    "id": "c1l3q04",
+    "topic": "Food, medicine, and agriculture",
+    "difficulty": "Moderate",
+    "q": "A student argues that an active ingredient must be organic to work in the body. Calcium carbonate (CaCO₃), an inorganic ingredient in some antacids, reacts with acid. Which conclusion best follows?",
+    "c": [
+      "Its medicinal use changes its classification to organic.",
+      "Its usefulness follows mainly from containing carbon.",
+      "Its acid-reacting behavior explains an inorganic medicinal use.",
+      "Its inorganic classification prevents chemical activity in the body."
+    ],
+    "a": 2,
+    "e": "Calcium carbonate provides a counterexample to the claim: an inorganic compound can have a medicinal application because of its chemical behavior. Use in a medicine does not change a compound’s classification.",
+    "why": [
+      "Classification depends on the substance, not whether it is used in a medicine.",
+      "Carbon content alone does not explain antacid action; reaction with acid does.",
+      "This connects a chemical reaction to a useful application without changing the classification.",
+      "The stated reaction shows that the inorganic ingredient can be chemically active."
+    ]
+  },
+  {
+    "id": "c1l3q05",
+    "topic": "Fuels and energy",
+    "difficulty": "Moderate",
+    "q": "A report describes gasoline as “octane, C₈H₁₈, with one molecular formula.” Which revision best represents an everyday fuel product?",
+    "c": [
+      "Gasoline is a mixture whose components have their own formulas.",
+      "Gasoline is one polymer whose repeating unit is C₈H₁₈.",
+      "Gasoline is one compound whose formula changes with temperature.",
+      "Gasoline is a mixture whose components share the formula C₈H₁₈."
+    ],
+    "a": 0,
+    "e": "Gasoline contains many compounds, mainly hydrocarbons, and may include additives. Octane is a possible component, not a formula for the entire mixture. Individual compounds have formulas; the product has a composition.",
+    "why": [
+      "This distinguishes a mixture from the individual compounds within it.",
+      "Gasoline is not a single polymer made of repeating octane units.",
+      "Changing temperature does not turn gasoline into one compound with a changing molecular formula.",
+      "A mixture can contain compounds with different molecular formulas; gasoline is not limited to C₈H₁₈ compounds."
+    ]
+  },
+  {
+    "id": "c1l3q06",
+    "topic": "Fuels and energy",
+    "difficulty": "Moderate",
+    "q": "A poster says, “Bioethanol comes from crops, so burning it adds no CO₂ to the exhaust.” Which correction and follow-up are most appropriate?",
+    "c": [
+      "It produces CO₂; compare fuel colors to assess environmental impact.",
+      "It produces no CO₂; compare transport emissions to assess overall impact.",
+      "It produces no CO₂; compare crop yields to assess environmental impact.",
+      "It produces CO₂; compare production, transport, land use, and fuel use."
+    ],
+    "a": 3,
+    "e": "Burning bioethanol produces CO₂. Its biomass origin does not eliminate exhaust emissions. Environmental comparisons require a broader view of the fuel’s life cycle, including production, transport, land use, and use.",
+    "why": [
+      "The exhaust correction is right, but fuel color is not a suitable measure of life-cycle environmental impact.",
+      "Considering transport is useful, but the claim about combustion emissions is wrong.",
+      "Crop yields can matter in a broader assessment, but burning bioethanol still produces CO₂.",
+      "This corrects the exhaust claim and identifies relevant stages for a broader comparison."
+    ]
+  },
+  {
+    "id": "c1l3q07",
+    "topic": "Materials and environmental claims",
+    "difficulty": "Moderate",
+    "q": "Grease remains on a plate after rinsing with water. Which explanation best links soap’s structure to improved removal?",
+    "c": [
+      "Its tails change grease into water; charged heads supply the reaction energy.",
+      "Its charged heads associate with grease; nonpolar tails interact with water.",
+      "Its nonpolar tails associate with grease; charged heads interact with water.",
+      "Its heads convert grease into a polymer; nonpolar tails carry it away."
+    ],
+    "a": 2,
+    "e": "Soap has regions with different interactions. Its nonpolar hydrocarbon tails associate with grease, while its charged heads interact with water. This helps disperse oily material so rinsing can carry it away.",
+    "why": [
+      "Soap does not clean by transforming grease into water.",
+      "This reverses the typical roles of the nonpolar tail and charged head.",
+      "This correctly links both regions of soap to their roles in dispersing grease.",
+      "Dispersing grease does not require converting it into a polymer."
+    ]
+  },
+  {
+    "id": "c1l3q08",
+    "topic": "Food, medicine, and agriculture",
+    "difficulty": "Moderate",
+    "q": "Urea is an organic nitrogen fertilizer, while ammonium sulfate is an inorganic nitrogen fertilizer. What best explains why both can support plant growth?",
+    "c": [
+      "Both must first become carbon-based molecules in the soil.",
+      "Both can provide nitrogen in forms available to plants.",
+      "Both supply nitrogen only after conversion to nitrogen gas.",
+      "Both promote growth because their classifications are identical."
+    ],
+    "a": 1,
+    "e": "Urea can be converted in soil to ammonium, with further transformations potentially producing nitrate. Ammonium sulfate supplies ammonium ions. Both can provide usable nitrogen despite different chemical classifications.",
+    "why": [
+      "Plants can use inorganic nitrogen forms such as ammonium and nitrate; conversion into carbon-based molecules in soil is not required.",
+      "This connects the shared nutrient function with the different compounds and their transformations.",
+      "Conversion to nitrogen gas is not the required route described here for supplying plants with usable nitrogen.",
+      "Their classifications differ; their useful nitrogen content explains the shared application."
+    ]
+  },
+  {
+    "id": "c1l3q09",
+    "topic": "Materials and environmental claims",
+    "difficulty": "Difficult",
+    "q": "A school compares three packaging materials. A local industrial composting facility accepts Q but has not approved P or R. Which disposal recommendation is best supported by the evidence?",
+    "c": [
+      "Compost P at home because plant origin establishes biodegradability.",
+      "Discard Q in seawater because composting evidence applies there too.",
+      "Compost P and Q together because their feedstocks are both biological.",
+      "Send Q to the accepting facility; seek disposal guidance for P and R."
+    ],
+    "a": 3,
+    "e": "Q has evidence for the stated composting conditions and an accepting local facility. P’s plant origin alone gives no breakdown evidence, and neither source nor industrial composting evidence establishes seawater breakdown. No specific disposal route for P or R is established by this table.",
+    "why": [
+      "Plant-derived feedstock does not by itself establish home compostability.",
+      "Industrial composting uses conditions that cannot simply be assumed in seawater.",
+      "Shared feedstock origin does not establish shared composting performance.",
+      "This uses both the material-specific evidence and local acceptance without extending the claim to untested conditions."
+    ],
+    "evidence": {
+      "caption": "Hypothetical supplier information; “none supplied” means evidence is missing, not that breakdown is impossible.",
+      "headers": [
+        "Material",
+        "Feedstock",
+        "Breakdown evidence"
+      ],
+      "rows": [
+        [
+          "P",
+          "Plant-derived",
+          "None supplied"
+        ],
+        [
+          "Q",
+          "Plant-derived",
+          "Industrial composting under specified conditions"
+        ],
+        [
+          "R",
+          "Petroleum-derived",
+          "None supplied"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "c1l3q10",
+    "topic": "Fuels and energy",
+    "difficulty": "Difficult",
+    "q": "In an illustrative energy account for complete combustion of a stated amount of methane, breaking reactant bonds requires 2,648 kJ and forming product bonds releases 3,450 kJ. Which conclusion correctly combines the energy balance with the products formed?",
+    "c": [
+      "802 kJ is absorbed overall; CO₂ and H₂O are formed.",
+      "802 kJ is released overall; CO₂ and H₂O are formed.",
+      "6,098 kJ is released overall; CO₂ and H₂O are formed.",
+      "802 kJ is released overall; CO₂ is absent from the products."
+    ],
+    "a": 1,
+    "e": "Subtract the energy required from the energy released: 3,450 − 2,648 = 802 kJ released overall. Complete methane combustion forms CO₂ and H₂O. A reaction can release useful energy while still producing carbon dioxide.",
+    "why": [
+      "The difference is 802 kJ, but formation releases more energy than breaking requires, so the net flow is outward.",
+      "Both deductions are correct: 802 kJ net release and formation of CO₂ and H₂O.",
+      "Adding the magnitudes ignores that bond breaking takes in energy while bond formation gives it out.",
+      "The energy balance is correct, but complete combustion of methane does produce CO₂."
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(element('span','letter',letters[i]+'.'),body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','result');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
+</script>
 </body>
 </html>
