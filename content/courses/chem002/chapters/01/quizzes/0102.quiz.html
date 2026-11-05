@@ -1,310 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1 – Lesson 2 Quiz</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 – Lesson 2 Quiz: Organic vs Inorganic Compounds</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-   <div class="quiz-container">
-    <h2>Organic vs Inorganic Compounds – Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "What is the primary element found in all organic compounds?", c: ["Hydrogen", "Oxygen", "Carbon", "Nitrogen"], a: 2 },
-      { q: "Which of the following is an example of an inorganic compound?", c: ["Ethanol (C₂H₅OH)", "Methane (CH₄)", "Sodium chloride (NaCl)", "Glucose (C₆H₁₂O₆)"], a: 2 },
-      { q: "Organic compounds are typically bonded through:", c: ["Ionic bonds", "Covalent bonds", "Metallic bonds", "Hydrogen bonds"], a: 1 },
-      { q: "Which property is most common in organic compounds?", c: ["High melting point", "Nonflammable", "Low melting point and flammable", "Good conductor of electricity"], a: 2 },
-      { q: "Inorganic compounds are usually soluble in:", c: ["Nonpolar solvents", "Water and polar solvents", "Oils", "Ether"], a: 1 },
-      { q: "Which compound is organic?<br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b8/Methane-2D-flat.png' width='120'>", c: ["CH₄", "NaCl", "CaCO₃", "Fe₂O₃"], a: 0 },
-      { q: "Which compound is inorganic?<br><img src='https://upload.wikimedia.org/wikipedia/commons/5/5f/Sodium-chloride-3D-ionic.png' width='120'>", c: ["Ethanol", "Glucose", "NaCl", "Methane"], a: 2 },
-      { q: "Which statement best describes inorganic compounds?", c: ["Always contain carbon", "Mainly ionic and simple", "Always contain C–H bonds", "Usually flammable"], a: 1 },
-      { q: "Which element combination is typical for organic compounds?", c: ["C and H", "Na and Cl", "Fe and O", "Cu and S"], a: 0 },
-      { q: "Organic compounds are often used in:", c: ["Fuel and pharmaceuticals", "Salt mining", "Metallurgy", "Rock formation"], a: 0 }
-    ];
-
-    let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 1 · Lesson 2</div>
+  <h1 id="quizTitle">Organic vs Inorganic Compounds — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    "id": "c1l2q01",
+    "topic": "Classification and bonding",
+    "difficulty": "Easy",
+    "q": "Acetic acid (CH₃COOH) and sodium hydrogen carbonate (NaHCO₃) both contain carbon. Which classification is correct?",
+    "c": [
+      "Acetic acid is organic; sodium hydrogen carbonate is inorganic.",
+      "Acetic acid is inorganic; sodium hydrogen carbonate is organic.",
+      "Both are organic because their formulas include carbon and hydrogen.",
+      "Both are inorganic because their formulas include oxygen atoms."
+    ],
+    "a": 0,
+    "e": "Acetic acid belongs to an organic acid family. Hydrogen carbonates are conventionally inorganic carbon compounds. The presence of C and H in a formula is not a complete classification test.",
+    "why": [
+      "This correctly distinguishes an organic acid from an inorganic hydrogen carbonate.",
+      "This reverses the classifications of the two named compounds.",
+      "Containing both carbon and hydrogen does not make every compound organic; NaHCO₃ is an exception.",
+      "Oxygen occurs in many organic compounds, including acetic acid and sugars."
+    ]
+  },
+  {
+    "id": "c1l2q02",
+    "topic": "Classification and bonding",
+    "difficulty": "Easy",
+    "q": "Water consists of H₂O molecules with shared electron pairs in the O–H bonds. Which description correctly combines its classification and bonding?",
+    "c": [
+      "Organic compound with covalent bonds.",
+      "Inorganic compound with ionic bonds.",
+      "Inorganic compound with covalent bonds.",
+      "Organic compound with ionic bonds."
+    ],
+    "a": 2,
+    "e": "Water contains no carbon and is inorganic. Its O–H bonds are covalent. Organic/inorganic classification and ionic/covalent bonding describe different aspects of a substance.",
+    "why": [
+      "The bonding description is right, but water is inorganic.",
+      "The classification is right, but the bonds within each water molecule are covalent.",
+      "This correctly describes water as inorganic and its O–H bonds as covalent.",
+      "Water is neither organic nor an ionic compound."
+    ]
+  },
+  {
+    "id": "c1l2q03",
+    "topic": "Classification and bonding",
+    "difficulty": "Easy",
+    "q": "A solid NaCl crystal contains Na⁺ and Cl⁻ ions. What interaction holds these ions together in the ionic lattice?",
+    "c": [
+      "Sharing electron pairs between discrete NaCl molecules.",
+      "Attraction between neutral molecules with temporary dipoles.",
+      "Attraction between metal ions and delocalized electrons.",
+      "Electrostatic attraction between oppositely charged ions."
+    ],
+    "a": 3,
+    "e": "Ionic bonding is the electrostatic attraction between oppositely charged ions. Electron transfer can explain ion formation, but the attraction between the ions is what holds the ionic solid together.",
+    "why": [
+      "This describes covalent sharing, and solid NaCl is not made of discrete NaCl molecules.",
+      "NaCl is an ionic lattice, not a collection of neutral molecules held together mainly by temporary dipoles.",
+      "Delocalized electrons are characteristic of metallic bonding, not the bonding in solid NaCl.",
+      "Na⁺ and Cl⁻ have opposite charges and attract electrostatically."
+    ]
+  },
+  {
+    "id": "c1l2q04",
+    "topic": "Particles and conductivity",
+    "difficulty": "Moderate",
+    "q": "NaCl conducts poorly as a dry solid but conducts when molten. Which change best explains the difference?",
+    "c": [
+      "The solid has neutral atoms, while the melt creates ions.",
+      "The ions are fixed in the solid but mobile in the melt.",
+      "The solid has ions, while the melt forms neutral molecules.",
+      "The ions remain fixed, but melting creates mobile electrons."
+    ],
+    "a": 1,
+    "e": "NaCl contains ions in both states. In the solid, the ions are held in lattice positions; in the liquid, they can move and carry electric charge.",
+    "why": [
+      "The solid already contains Na⁺ and Cl⁻ ions; melting does not first create them from neutral atoms.",
+      "Mobility of the existing charged ions explains conduction in the melt.",
+      "Molten NaCl contains mobile ions rather than becoming a liquid of neutral NaCl molecules.",
+      "Mobile ions, not a metallic supply of mobile electrons, explain conduction in molten NaCl."
+    ]
+  },
+  {
+    "id": "c1l2q05",
+    "topic": "Particles and conductivity",
+    "difficulty": "Moderate",
+    "q": "Sucrose and NaCl both dissolve in pure water. Under comparable dilute conditions, the NaCl solution conducts much better. Which particle explanation fits?",
+    "c": [
+      "NaCl supplies mobile ions; sucrose remains as neutral molecules.",
+      "NaCl supplies neutral molecules; sucrose separates into mobile ions.",
+      "Both form mobile ions; only the larger sucrose ions are unable to move.",
+      "Both remain neutral; NaCl molecules carry current because they are smaller."
+    ],
+    "a": 0,
+    "e": "Dissolved NaCl provides Na⁺ and Cl⁻ ions. Dissolved sucrose remains as neutral molecules and does not appreciably produce ions. Dissolving and forming mobile charge carriers are different processes.",
+    "why": [
+      "This identifies both the charge and mobility needed to explain the difference.",
+      "This reverses the dissolved particle descriptions of NaCl and sucrose.",
+      "Sucrose does not dissociate into large ions; it remains molecular.",
+      "Neutral molecules do not explain the ionic current in a NaCl solution."
+    ]
+  },
+  {
+    "id": "c1l2q06",
+    "topic": "Solubility and evidence",
+    "difficulty": "Moderate",
+    "q": "Sucrose dissolves readily in water, while cooking oil forms a separate layer. Both involve organic compounds. Which explanation is most useful?",
+    "c": [
+      "Sucrose becomes inorganic in water; the oil retains its organic classification.",
+      "Sucrose forms sodium ions in water; the oil contains no metal atoms.",
+      "Water attracts all organic compounds equally; only their physical states differ.",
+      "Sucrose interacts strongly with water; the oil has large nonpolar regions."
+    ],
+    "a": 3,
+    "e": "Sucrose has many O–H groups that interact favorably with polar water. Oil molecules have large nonpolar regions and mix poorly with water. Molecular interactions, not the organic label alone, explain the contrast.",
+    "why": [
+      "Dissolving does not change sucrose from an organic compound into an inorganic one.",
+      "Sucrose contains no sodium and dissolves as neutral molecules.",
+      "Different molecular structures interact differently with water; the organic category does not imply equal attraction.",
+      "This connects the observed behavior to differences in molecular structure and interactions."
+    ]
+  },
+  {
+    "id": "c1l2q07",
+    "topic": "Solubility and evidence",
+    "difficulty": "Moderate",
+    "q": "A student finds that an unknown solid dissolves in water and gives a solution with very low conductivity. Which conclusion is justified by these observations alone?",
+    "c": [
+      "The solid is organic because organic compounds do not form ions.",
+      "Few mobile ions are present; its organic/inorganic category remains unresolved.",
+      "The solid is inorganic because inorganic compounds dissolve in water.",
+      "Many mobile ions are present; low conductivity identifies a high-melting salt."
+    ],
+    "a": 1,
+    "e": "Very low conductivity indicates few mobile charge carriers under the test conditions. These observations do not establish chemical identity or whether the substance belongs to an organic or inorganic family.",
+    "why": [
+      "Some organic compounds produce ions in water, and low conductivity alone does not establish an organic identity.",
+      "This distinguishes the supported particle-level inference from an unsupported classification.",
+      "Both organic and inorganic substances can dissolve in water.",
+      "Very low conductivity does not support many mobile ions or establish a melting point."
+    ]
+  },
+  {
+    "id": "c1l2q08",
+    "topic": "Particles and conductivity",
+    "difficulty": "Moderate",
+    "q": "Acetic acid, CH₃COOH, is an organic molecular compound, yet its aqueous solution conducts electricity. What best explains this?",
+    "c": [
+      "Dissolving reclassifies acetic acid as an inorganic salt.",
+      "Neutral acid molecules carry charge without any ions forming.",
+      "Some acid molecules react with water to produce mobile ions.",
+      "Every acid molecule dissociates into ions, just like dissolved NaCl."
+    ],
+    "a": 2,
+    "e": "Acetic acid partially ionizes in water, producing acetate and hydronium ions. It is a weak electrolyte: only a fraction of its molecules form ions. Being organic does not prevent a substance from producing a conducting solution.",
+    "why": [
+      "Producing ions in solution does not reclassify acetic acid as inorganic.",
+      "The mobile ions formed by partial ionization explain the conductivity, rather than transport of charge by neutral molecules.",
+      "Partial ionization produces the mobile charged particles needed for conduction.",
+      "Acetic acid ionizes only partially; dissolved NaCl is present essentially as separated ions in dilute solution."
+    ]
+  },
+  {
+    "id": "c1l2q09",
+    "topic": "Particles and conductivity",
+    "difficulty": "Difficult",
+    "q": "Three dilute solutions contain NaCl, sucrose, and acetic acid, each used once. They have equal molar concentrations and are tested at the same temperature with the same apparatus. Which assignment best fits the observations?",
+    "c": [
+      "P = NaCl; Q = sucrose; R = acetic acid.",
+      "P = sucrose; Q = NaCl; R = acetic acid.",
+      "P = NaCl; Q = acetic acid; R = sucrose.",
+      "P = acetic acid; Q = sucrose; R = NaCl."
+    ],
+    "a": 0,
+    "e": "NaCl supplies many mobile ions, matching P. Sucrose remains neutral, matching Q. Acetic acid ionizes partially, matching R. This interpretation uses both the specified candidate list and the controlled conditions; conductivity would not uniquely identify arbitrary unknowns.",
+    "why": [
+      "The three matches agree with extensive ion separation, negligible ion production, and partial ionization, respectively.",
+      "Sucrose cannot explain the high conductivity of P, and NaCl does not fit the near-baseline conductivity of Q under these conditions.",
+      "Acetic acid produces measurable ions, while sucrose remains near the pure-water baseline; Q and R are reversed.",
+      "Under these controlled conditions, dilute NaCl supplies far more mobile ions than an equal molar concentration of acetic acid; P and R are reversed."
+    ],
+    "evidence": {
+      "caption": "Illustrative observations (not measurements from your class)",
+      "headers": [
+        "Solution",
+        "Appearance",
+        "Conductivity"
+      ],
+      "rows": [
+        [
+          "P",
+          "Uniform solution",
+          "High"
+        ],
+        [
+          "Q",
+          "Uniform solution",
+          "Very low; near pure-water baseline"
+        ],
+        [
+          "R",
+          "Uniform solution",
+          "Measurable; lower than P"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "c1l2q10",
+    "topic": "Solubility and evidence",
+    "difficulty": "Difficult",
+    "q": "A concentrated acetic acid solution is observed to conduct more than an extremely dilute NaCl solution at the same temperature. Which conclusion is warranted?",
+    "c": [
+      "The acid is a strong electrolyte because its solution conducts more.",
+      "The salt is a weak electrolyte because its solution conducts less.",
+      "The acid becomes inorganic when its solution contains mobile charged particles.",
+      "The comparison does not isolate electrolyte strength because the concentrations differ."
+    ],
+    "a": 3,
+    "e": "Conductivity depends on ion concentration and mobility as well as the extent of ion production. A weak electrolyte at one concentration can conduct more than a strong electrolyte at a much lower concentration. Strong/weak describes the extent of ion production, not simply a raw conductivity reading.",
+    "why": [
+      "Higher conductivity in an uncontrolled concentration comparison does not establish extensive ionization; acetic acid remains a weak electrolyte.",
+      "Diluting NaCl reduces ion concentration but does not make the dissolved salt a weak electrolyte.",
+      "Organic compounds can produce ions; ion formation does not establish inorganic classification.",
+      "The unequal concentrations confound an inference about relative extent of ion production."
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(element('span','letter',letters[i]+'.'),body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','result');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
-
+</script>
 </body>
 </html>
