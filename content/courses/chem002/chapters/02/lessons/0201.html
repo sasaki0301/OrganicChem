@@ -1,272 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 2 – Lesson 1: Review of Atomic Structure</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chapter 2 – Lesson 1: Review of Atomic Structure</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-<style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-    color: #222;
-    margin: 0;
-    padding: 32px 24px;
-    line-height: 1.7;
-    font-size: 22px;
-  }
+.wide-table{min-width:580px}.equation{background:#f5f8ff;border:1px solid var(--line);border-radius:10px;padding:20px;text-align:center;overflow-wrap:anywhere;font-weight:600}.steps li strong{color:var(--green)}
+.diagram{width:100%;height:auto;display:block;max-width:600px;margin:12px auto}.table-wrap{max-width:100%}.worksheet{min-height:70px;border-bottom:1px dashed #a6b9bd;margin:14px 0}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}.worksheet{min-height:45px}}
 
-  h1 {
-    color: #136f63;
-    font-size: 2.2em;
-    margin-bottom: 0.6em;
-  }
-
-  h2 {
-    color: #136f63;
-    font-size: 1.55em;
-    margin-top: 1.3em;
-    margin-bottom: 0.4em;
-  }
-
-  h3 {
-    color: #174ea6;
-    font-size: 1.2em;
-    margin: 0.6em 0 0.4em 0;
-  }
-
-  p { margin: 12px 0; }
-
-  .section {
-    background: #fff;
-    padding: 24px 28px;
-    border-radius: 14px;
-    margin-bottom: 32px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-  }
-
-  .image, .video {
-    text-align: center;
-    margin: 22px 0;
-  }
-
-  img {
-    border-radius: 10px;
-    width: 85%;
-    max-width: 560px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  iframe {
-    width: 90%;
-    max-width: 760px;
-    height: 430px;
-    border-radius: 12px;
-  }
-
-  ul { margin-left: 26px; }
-
-  .activity {
-    background: #f9fbff;
-    border-left: 5px solid #136f63;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-top: 16px;
-  }
-
-  .toggle-btn {
-    background: #136f63;
-    color: white;
-    padding: 9px 16px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-  }
-
-  .toggle-btn:hover {
-    background: #0f5b52;
-    transform: translateY(-1px);
-  }
-
-  .answer {
-    display: none;
-    margin-top: 12px;
-    background: #eef3ff;
-    padding: 14px;
-    border-radius: 8px;
-  }
-
-  .quiz-button {
-    background-color: #136f63;
-    color: white;
-    padding: 13px 26px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 22px;
-  }
-
-  .quiz-button:hover {
-    background-color: #0f5b52;
-  }
-
-  .note {
-    font-size: 0.9em;
-    color: #555;
-  }
-
-</style>
-</head>
-
-<body>
-
-<h1>Review of Atomic Structure</h1>
-
-<p>
-Understanding atomic structure is essential for studying organic chemistry.  
-Atoms form all matter, and the way electrons are arranged around the nucleus explains bonding, reactions, and molecular behavior.
-</p>
-
-<!-- SECTION 1 -->
-<div class="section">
-  <h2>1. Structure of the Atom</h2>
-  <p>
-    An atom is composed of three main subatomic particles:
-  </p>
-  <ul>
-    <li><strong>Protons</strong> – positively charged, found in the nucleus</li>
-    <li><strong>Neutrons</strong> – neutral, also in the nucleus</li>
-    <li><strong>Electrons</strong> – negatively charged, found in energy levels around the nucleus</li>
-  </ul>
-
-  <div class="image">
-    <img src="https://d20khd7ddkh5ls.cloudfront.net/bohrs_atomic_model.jpeg" />
-    <p class="note"><em>Bohr Model: electrons orbit the nucleus in defined shells or energy levels.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 1 — Counting Subatomic Particles</h3>
-    <p>A sodium atom (Na) has atomic number 11 and mass number 23.  
-       How many protons, neutrons, and electrons does it have?</p>
-
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      <strong>Answer:</strong><br>
-      Protons: 11<br>
-      Electrons: 11<br>
-      Neutrons: 23 − 11 = 12<br><br>
-      <em>The atomic number equals protons and electrons; subtracting gives neutrons.</em>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 2 -->
-<div class="section">
-  <h2>2. Atomic Number, Mass Number, and Isotopes</h2>
-  <p>
-    - <strong>Atomic number (Z)</strong> = number of protons<br>
-    - <strong>Mass number (A)</strong> = protons + neutrons<br>
-    - <strong>Isotopes</strong> are atoms of the same element with different numbers of neutrons
-  </p>
-
-  <div class="activity">
-    <h3>Activity 2 — Identifying Isotopes</h3>
-    <p>Why are Carbon-12 and Carbon-14 considered isotopes of the same element?</p>
-
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      Both have 6 protons (so both are carbon),  
-      but Carbon-12 has 6 neutrons while Carbon-14 has 8 neutrons.
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 3 -->
-<div class="section">
-  <h2>3. Electron Configuration</h2>
-  <p>
-    Electrons occupy specific energy levels or “shells.”  
-    Their arrangement determines how atoms bond and interact with other atoms.
-  </p>
-
-  <div class="image">
-    <img src="https://ibchemninja.weebly.com/uploads/4/9/2/5/49255073/2172354_orig.png" />
-    <p class="note"><em>Electron shells fill in specific order.  
-    The electrons farthest from the nucleus determine reactivity.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 3 — Electron Configuration Practice</h3>
-    <p>Write the electron configuration of oxygen (atomic number = 8).</p>
-
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      <strong>Electron configuration:</strong> 1s² 2s² 2p⁴<br>
-      <em>First 2 fill the 1s orbital, next 2 fill 2s, remaining 4 go to 2p.</em>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 4: VIDEO -->
-<div class="section">
-  <h2>🎥 Video Lesson: Electron Configuration Basics</h2>
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/NIwcDnFjj98" allowfullscreen></iframe>
-  </div>
-</div>
-
-<!-- SECTION 5: KEY TAKEAWAYS -->
-<div class="section">
-  <h2>Key Takeaways</h2>
-  <ul>
-    <li>Atoms consist of protons, neutrons, and electrons.</li>
-    <li>Atomic number identifies an element; mass number counts protons + neutrons.</li>
-    <li>Isotopes differ in number of neutrons.</li>
-    <li>Electron configuration determines bonding and chemical behavior.</li>
-  </ul>
-</div>
-
-<!-- KEY TERMS -->
-<div class="section">
-  <h2>Key Terms</h2>
-  <ul>
-    <li><strong>Proton</strong> – positively charged particle in the nucleus.</li>
-    <li><strong>Neutron</strong> – neutral particle in the nucleus.</li>
-    <li><strong>Electron</strong> – negatively charged particle in energy levels.</li>
-    <li><strong>Atomic number (Z)</strong> – number of protons.</li>
-    <li><strong>Mass number (A)</strong> – total of protons + neutrons.</li>
-    <li><strong>Isotope</strong> – atoms with same protons but different neutrons.</li>
-    <li><strong>Electron configuration</strong> – arrangement of electrons in shells.</li>
-  </ul>
-</div>
-
-<!-- QUIZ BUTTON -->
-<div style="text-align:center; margin-top:25px;">
-  <button class="quiz-button" id="takeQuizBtn">Take the Lesson Quiz →</button>
-</div>
-
+.nuclide{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-size:1.25em;vertical-align:middle}.nuclide .numbers{display:flex;flex-direction:column;font-size:.65em;line-height:1.15;text-align:right}.nuclide .symbol{font-weight:650}.nuclide .charge{align-self:flex-start;font-size:.65em;line-height:1.2}.count-rule{display:flex;gap:12px;flex-wrap:wrap}.count-rule span{padding:10px 16px;border-radius:8px;background:#eaf0fc;font-weight:650}.orbital-diagram{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin:20px 0}.orbital-group{text-align:center}.boxes{display:flex;gap:5px}.orbital{display:flex;align-items:center;justify-content:center;width:49px;height:50px;border:2px solid #174ea6;border-radius:5px;background:#fff;color:#174ea6;font-size:26px;line-height:1;letter-spacing:0}.orbital-label{font-size:.8em;margin-top:5px}.config{white-space:normal;font-weight:650;color:#174ea6}.input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.input-grid label{font-size:.9em;font-weight:600}input,select{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #7d919a;border-radius:6px;background:#fff;color:#24323d}input{margin-top:6px}.practice-actions{display:flex;gap:10px;flex-wrap:wrap}.practice-actions button{background:#136f63;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 .9em 'Segoe UI',Arial,sans-serif;cursor:pointer}.practice-actions .secondary{background:#e5ebf7;color:#174ea6}.feedback{margin-top:16px;padding:16px;background:#eaf0fc;border-radius:8px}.feedback:empty{display:none}.self-check label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.self-check input{width:20px;flex-shrink:0;margin-top:8px}code{font-family:inherit}.diagram{max-width:650px}.print-note{display:none}@media(max-width:440px){.input-grid{grid-template-columns:1fr}.orbital-diagram{gap:16px}.count-rule span{padding:8px 10px}}@media print{.interactive{display:none}.print-note{display:block}.orbital{print-color-adjust:exact}.orbital-diagram{break-inside:avoid}}
+</style></head><body><a href="#lesson" class="skip">Skip to lesson</a><main id="lesson">
+<header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 1</div><h1>Review of Atomic Structure</h1><p class="intro">Why can carbon form the framework of so many molecules? Start with the atom: its protons identify the element, its neutrons distinguish isotopes, and its electrons help explain bonding.</p><p class="meta">Allow about 40–50 minutes. Use paper for configurations and orbital diagrams. Complete each drill before revealing its explanation. On small screens, scroll wide tables sideways to see every column.</p><nav aria-label="Lesson sections"><a href="#goals">Goals</a><a href="#particles">Particles</a><a href="#counting">Counting and ions</a><a href="#isotopes">Isotopes</a><a href="#orbitals">Orbitals</a><a href="#configurations">Configurations</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav></header>
+<section class="section" id="goals"><h2>What you will learn</h2><ul><li>Use atomic number, mass number, and charge to count protons, neutrons, and electrons.</li><li>Distinguish a change in isotope from the formation of an ion.</li><li>Read shell, subshell, and orbital notation; write simple ground-state electron configurations.</li><li>Identify valence electrons in the main-group atoms used here and connect them to later bonding lessons.</li></ul><div class="note"><strong>Our scope:</strong> ground-state atoms through argon (Z = 18), plus simple ions formed from these elements. Hybridization and detailed molecular bonding will be developed later.</div></section>
+<section class="section" id="particles"><h2>1. Identify the particles and their roles</h2><p>An atom has a small, dense nucleus containing protons and usually neutrons. Electrons occupy states described by orbitals in the space around the nucleus. Nearly all atomic mass is in the nucleus.</p><div class="table-wrap" role="region" aria-label="Subatomic particles" tabindex="0"><table><caption>Three particles to track</caption><thead><tr><th scope="col">Particle</th><th scope="col">Relative charge</th><th scope="col">Location</th><th scope="col">Approximate mass</th></tr></thead><tbody><tr><th scope="row">Proton, p</th><td>+1</td><td>Nucleus</td><td>1 u</td></tr><tr><th scope="row">Neutron, n</th><td>0</td><td>Nucleus</td><td>1 u</td></tr><tr><th scope="row">Electron, e</th><td>−1</td><td>Orbitals around the nucleus</td><td>About 1/1836 of a proton’s mass</td></tr></tbody></table></div><p class="small">Here, u means atomic mass unit. Relative charges are measured in units of the elementary charge. Ordinary hydrogen-1 has no neutron.</p>
+<figure><svg class="diagram" style="max-width:470px" viewBox="0 0 400 370" role="img" aria-labelledby="atomTitle atomDesc"><title id="atomTitle">Nucleus and surrounding electron distribution</title><desc id="atomDesc">A small labeled nucleus sits inside a diffuse blue region representing the electron distribution. There are no circular electron paths. The drawing is conceptual and not to scale.</desc><defs><radialGradient id="cloud"><stop offset="0" stop-color="#75a9eb" stop-opacity=".8"/><stop offset=".45" stop-color="#75a9eb" stop-opacity=".42"/><stop offset="1" stop-color="#75a9eb" stop-opacity="0"/></radialGradient></defs><ellipse cx="200" cy="150" rx="155" ry="112" fill="url(#cloud)"/><circle cx="200" cy="150" r="15" fill="#136f63"/><text x="200" y="25" text-anchor="middle" fill="#174ea6" font-family="Arial" font-size="22">Electron distribution</text><path d="M200 35 V65" stroke="#174ea6" stroke-width="2"/><path d="M200 165 V275" stroke="#136f63" stroke-width="2"/><text x="200" y="298" text-anchor="middle" fill="#136f63" font-family="Arial" font-size="22">Nucleus</text><text x="200" y="325" text-anchor="middle" fill="#24323d" font-family="Arial" font-size="20">Protons and neutrons</text><text x="200" y="360" text-anchor="middle" fill="#536575" font-family="Arial" font-size="17">Not to scale · no fixed electron tracks</text></svg><figcaption>Shading represents a distribution, not a solid cloud or a photograph. The nucleus is greatly enlarged for visibility.</figcaption></figure>
+<div class="note"><strong>Model check:</strong> Bohr-style circles can help organize shell counts, but electrons in multi-electron atoms do not follow the fixed circular tracks shown in that model. An orbital is a quantum description of an electron’s spatial state; its probability distribution tells us where the electron may be found.</div>
+<div class="activity"><h3>Quick check · Which particle matters?</h3><p>Which particle count identifies the element? Which particles are gained or lost when a simple ion forms?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Protons identify the element.</strong> Gaining or losing <strong>electrons</strong> forms a simple ion. Ordinary ion formation does not change the nucleus.</p></div></details></div>
+</section>
+<section class="section" id="counting"><h2>2. Count particles in a neutral atom or ion</h2><p>Read the symbol before calculating. <strong>Z</strong> is the atomic number, <strong>A</strong> is the mass number, and the charge appears at the upper right.</p><div class="reaction"><div><span class="nuclide" role="img" aria-label="Na, mass number 23, atomic number 11, charge +"><span class="numbers" aria-hidden="true"><span>23</span><span>11</span></span><span class="symbol" aria-hidden="true">Na</span><span class="charge" aria-hidden="true">+</span></span></div><div><strong>Sodium-23 ion</strong><br>A = 23 · Z = 11 · charge = +1</div></div><div class="count-rule"><span>p = Z</span><span>n = A − Z</span><span>charge = p − e</span></div><p>In the charge equation, use the signed charge number: +1 for Na⁺, −1 for Cl⁻, and −2 for O²⁻. Therefore, <strong>e = Z − charge</strong>. A neutral atom has charge 0, so only then does e = Z.</p>
+<div class="worked"><div class="label">Worked example 1</div><h3>Compare neutral sodium-23 with Na⁺</h3><ol class="steps"><li><strong>Find protons:</strong> Z = 11, so p = 11 in both species.</li><li><strong>Find neutrons:</strong> n = 23 − 11 = 12 in both.</li><li><strong>Use the charge:</strong> neutral Na has e = 11 − 0 = 11; Na⁺ has e = 11 − (+1) = 10.</li><li><strong>Check:</strong> for Na⁺, p − e = 11 − 10 = +1. One electron was lost; the element is still sodium.</li></ol></div>
+<div class="worked"><div class="label">Worked example 2</div><h3>Count particles in oxygen-16, O²⁻</h3><p>Given A = 16, Z = 8, and charge = −2:</p><ol><li>p = 8.</li><li>n = 16 − 8 = 8.</li><li>e = 8 − (−2) = <strong>10</strong>.</li><li>Check: 8 − 10 = −2. The ion has two more electrons than protons.</li></ol></div>
+<div class="note"><strong>Remember the direction:</strong> a positive ion (cation) has lost electrons; a negative ion (anion) has gained electrons. Do not add protons to explain a positive charge in ordinary ion formation.</div>
+<div class="activity"><h3>Guided drill 1 · You do the counting</h3><p>Magnesium-24 has Z = 12. Find p, n, and e for Mg²⁺. Show one charge check.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>p = 12; n = 24 − 12 = 12; e = 12 − (+2) = 10. Check: 12 − 10 = +2. Magnesium lost two electrons.</p></div></details></div>
+<div class="activity interactive"><h3>Try it · Particle-count practice</h3><p>Choose a species, calculate on paper, then enter whole-number counts. This practice is not graded or sent to LearnTrack.</p><form id="particleForm"><label for="species"><strong>Species</strong></label><select id="species"><option value="c12">Carbon-12, neutral · Z = 6, A = 12</option><option value="c14">Carbon-14, neutral · Z = 6, A = 14</option><option value="na">Sodium-23, Na⁺ · Z = 11, A = 23</option><option value="o">Oxygen-16, O²⁻ · Z = 8, A = 16</option><option value="cl">Chlorine-37, Cl⁻ · Z = 17, A = 37</option></select><p id="speciesFacts" class="small">Z = 6 · A = 12 · charge = 0 (neutral)</p><div class="input-grid"><label for="pCount">Protons<input id="pCount" type="number" min="0" max="40" step="1" required inputmode="numeric"></label><label for="nCount">Neutrons<input id="nCount" type="number" min="0" max="40" step="1" required inputmode="numeric"></label><label for="eCount">Electrons<input id="eCount" type="number" min="0" max="40" step="1" required inputmode="numeric"></label></div><div class="practice-actions"><button type="submit">Check my counts</button><button type="button" id="clearCounts" class="secondary">Clear entries</button></div><div id="particleFeedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></form><noscript><p>JavaScript is needed for this checker. The worked examples and revealable answers below remain available.</p></noscript></div><p class="print-note">For extra practice: count particles in neutral carbon-14, Na⁺ with A = 23, and Cl⁻ with A = 37.</p>
+</section>
+<section class="section" id="isotopes"><h2>3. Separate isotopes, ions, and different elements</h2><p><strong>Isotopes</strong> have the same number of protons but different numbers of neutrons. <strong>Ions</strong> have unequal proton and electron counts. These are separate ideas: a particular isotope can be neutral or charged.</p><div class="table-wrap" role="region" aria-label="Carbon isotope comparison" tabindex="0"><table><caption>Three neutral carbon atoms</caption><thead><tr><th scope="col">Isotope</th><th scope="col">Protons</th><th scope="col">Neutrons</th><th scope="col">Electrons</th><th scope="col">Mass number</th></tr></thead><tbody><tr><th scope="row">Carbon-12</th><td>6</td><td>6</td><td>6</td><td>12</td></tr><tr><th scope="row">Carbon-13</th><td>6</td><td>7</td><td>6</td><td>13</td></tr><tr><th scope="row">Carbon-14</th><td>6</td><td>8</td><td>6</td><td>14</td></tr></tbody></table></div>
+<div class="worked"><div class="label">Worked example 3</div><h3>What changes—and what stays the same?</h3><p>Compare <span class="nuclide" role="img" aria-label="Cl, mass number 35, atomic number 17, neutral"><span class="numbers" aria-hidden="true"><span>35</span><span>17</span></span><span class="symbol" aria-hidden="true">Cl</span><span class="charge" aria-hidden="true"></span></span> and <span class="nuclide" role="img" aria-label="Cl, mass number 37, atomic number 17, charge −"><span class="numbers" aria-hidden="true"><span>37</span><span>17</span></span><span class="symbol" aria-hidden="true">Cl</span><span class="charge" aria-hidden="true">−</span></span>.</p><ol><li><strong>Same element:</strong> both have 17 protons.</li><li><strong>Different isotopes:</strong> neutron counts are 35 − 17 = 18 and 37 − 17 = 20.</li><li><strong>Different charge states:</strong> neutral chlorine-35 has 17 electrons; chloride-37 has 18.</li></ol><p>These two species differ in both neutron count and electron count. Neither difference changes their identity as chlorine.</p></div>
+<div class="note"><strong>Mass number is not average atomic mass.</strong> A is a whole-number count of protons plus neutrons for one isotope. A periodic-table value such as chlorine’s approximate 35.45 is an isotope-weighted average atomic mass, not the mass number of one atom. Do not round it to invent a neutron count; use the isotope’s stated A.</div>
+<div class="activity"><h3>Guided drill 2 · Classify the difference</h3><p>Species X has 6 p, 7 n, and 6 e. Species Y has 6 p, 8 n, and 6 e. Species Z has 7 p, 7 n, and 7 e. Which two are isotopes of the same element?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>X and Y are carbon-13 and carbon-14: same six protons, different neutrons. Z is nitrogen-14 because it has seven protons. Y and Z have the same mass number but are different elements.</p></div></details></div>
+</section>
+<section class="section" id="orbitals"><h2>4. Organize electrons: shell → subshell → orbital</h2><p>An <strong>electron configuration</strong> records how electrons occupy subshells. A <strong>ground state</strong> is the lowest-energy arrangement for that atom or ion.</p><div class="grid"><div class="card"><h3>Shell</h3><p>A principal level labelled n = 1, 2, 3, … . A shell contains subshells. The number in <strong>2p</strong> identifies the shell.</p></div><div class="card"><h3>Subshell</h3><p>A set of orbitals of a particular type, such as s or p. The letter in <strong>2p</strong> identifies the subshell type.</p></div></div><p><strong>Orbital:</strong> an individual quantum state with a characteristic spatial distribution. Each orbital can hold at most two electrons. Do not confuse an orbital with an orbit or track.</p><div class="table-wrap" role="region" aria-label="Subshell capacity" tabindex="0"><table><caption>Subshells needed for this lesson</caption><thead><tr><th scope="col">Subshell type</th><th scope="col">Orbitals per subshell</th><th scope="col">Maximum electrons</th></tr></thead><tbody><tr><th scope="row">s</th><td>1</td><td>2</td></tr><tr><th scope="row">p</th><td>3</td><td>6</td></tr></tbody></table></div><p>The first shell has only 1s. The second shell has 2s and 2p, so it can hold 2 + 6 = 8 electrons. Higher shells contain additional subshell types; “every shell holds eight” is not a general rule.</p>
+<div class="reaction"><div><strong class="formula">2p<sup>4</sup></strong><br>2 = shell · p = subshell · 4 = electrons in that subshell</div></div>
+<h3>Three rules for building the ground state</h3><ol><li><strong>Fill lower-energy orbitals first (Aufbau principle).</strong> For neutral atoms through argon, use <span class="config">1s → 2s → 2p → 3s → 3p</span>.</li><li><strong>At most two electrons per orbital, with opposite spins (Pauli exclusion principle).</strong> In the diagrams, one box is one orbital; each arrow represents one electron.</li><li><strong>Occupy equal-energy orbitals singly before pairing (Hund’s rule).</strong> For the three p orbitals of an isolated atom, place one parallel-spin electron in each before adding opposite-spin partners.</li></ol><p class="small">Arrows indicate spin states; they do not show electrons moving upward or downward. This filling sequence is limited to the examples here, not a complete rule for every element.</p>
+<h3>Read the 2p⁴ orbital diagram</h3><div class="orbital-diagram" role="img" aria-label="Oxygen 2p subshell. 2p: two electrons with opposite spins, one spin-up electron, one spin-up electron"><div aria-hidden="true" style="display:contents"><div class="orbital-group"><div class="boxes"><span class="orbital">↑↓</span><span class="orbital">↑</span><span class="orbital">↑</span></div><div class="orbital-label">2p</div></div></div></div><p>Three orbitals hold four electrons: one pair and two unpaired electrons. The paired orbital could be drawn in another position among the three equivalent p orbitals.</p>
+<div class="activity"><h3>Guided drill 3 · Predict before looking</h3><p>How many electrons and how many occupied orbitals are represented by 2p³ in the ground state? Should the electrons pair immediately?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>There are three electrons in three occupied p orbitals, one in each with parallel spins. They remain unpaired at this stage according to Hund’s rule.</p><div class="orbital-diagram" role="img" aria-label="Nitrogen 2p subshell. 2p: one spin-up electron, one spin-up electron, one spin-up electron"><div aria-hidden="true" style="display:contents"><div class="orbital-group"><div class="boxes"><span class="orbital">↑</span><span class="orbital">↑</span><span class="orbital">↑</span></div><div class="orbital-label">2p</div></div></div></div></div></details></div>
+</section>
+<section class="section" id="configurations"><h2>5. Write, check, and interpret a configuration</h2><div class="note"><strong>Use this routine:</strong> count electrons → fill subshells in order → add the superscripts → identify the highest occupied shell. For an ion, adjust the electron count first.</div>
+<div class="worked"><div class="label">Worked example 4</div><h3>Carbon: from atomic number to valence electrons</h3><ol><li><strong>Count:</strong> neutral carbon has Z = 6, so 6 electrons.</li><li><strong>Allocate:</strong> 1s takes 2; 2s takes 2; the remaining 2 go into 2p.</li><li><strong>Write:</strong> <span class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>2</sup></span>.</li><li><strong>Check total:</strong> 2 + 2 + 2 = 6.</li><li><strong>Find valence electrons:</strong> the highest occupied shell is n = 2. Count both 2s and 2p: 2 + 2 = <strong>4 valence electrons</strong>.</li></ol><div class="orbital-diagram" role="img" aria-label="Ground-state carbon. 1s: two electrons with opposite spins; 2s: two electrons with opposite spins; 2p: one spin-up electron, one spin-up electron, empty"><div aria-hidden="true" style="display:contents"><div class="orbital-group"><div class="boxes"><span class="orbital">↑↓</span></div><div class="orbital-label">1s</div></div><div class="orbital-group"><div class="boxes"><span class="orbital">↑↓</span></div><div class="orbital-label">2s</div></div><div class="orbital-group"><div class="boxes"><span class="orbital">↑</span><span class="orbital">↑</span><span class="orbital"></span></div><div class="orbital-label">2p</div></div></div></div><p class="small">This is the ground state of an isolated carbon atom. Its two unpaired electrons should not be used as a rule that carbon can make only two bonds. Bonding in molecules requires the models developed in later lessons.</p></div>
+<div class="worked"><div class="label">Worked example 5</div><h3>Oxygen: one pair forms in the 2p subshell</h3><p>Neutral oxygen has Z = 8, so 8 electrons. After 1s² and 2s², four remain:</p><p class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>4</sup></p><div class="orbital-diagram" role="img" aria-label="Ground-state oxygen. 1s: two electrons with opposite spins; 2s: two electrons with opposite spins; 2p: two electrons with opposite spins, one spin-up electron, one spin-up electron"><div aria-hidden="true" style="display:contents"><div class="orbital-group"><div class="boxes"><span class="orbital">↑↓</span></div><div class="orbital-label">1s</div></div><div class="orbital-group"><div class="boxes"><span class="orbital">↑↓</span></div><div class="orbital-label">2s</div></div><div class="orbital-group"><div class="boxes"><span class="orbital">↑↓</span><span class="orbital">↑</span><span class="orbital">↑</span></div><div class="orbital-label">2p</div></div></div></div><p><strong>Check:</strong> 2 + 2 + 4 = 8 total electrons. The outer n = 2 shell contains 2 + 4 = <strong>6 valence electrons</strong>; the isolated atom has two unpaired electrons.</p></div>
+<div class="worked"><div class="label">Worked example 6</div><h3>Chlorine and chloride: the ion has one extra electron</h3><p>Neutral chlorine has 17 electrons:</p><p class="config">Cl: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup></p><p>Check total: 2 + 2 + 6 + 2 + 5 = 17. The outer n = 3 shell contains 2 + 5 = <strong>7 valence electrons</strong>.</p><p>Cl⁻ has 17 − (−1) = 18 electrons:</p><p class="config">Cl⁻: 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup></p><p>Its outer shell is filled in this configuration. The proton count stays 17, so it remains chlorine.</p></div>
+<h3>Why this matters in organic chemistry</h3><p>For the main-group atoms below, valence electrons are those in the highest occupied principal shell. They are central to later Lewis structures and bonding models. Count the entire outer shell, not only the last subshell written.</p><div class="table-wrap" role="region" aria-label="Common atoms in organic chemistry" tabindex="0"><table><caption>Neutral ground-state atoms</caption><thead><tr><th scope="col">Atom (Z)</th><th scope="col">Configuration</th><th scope="col">Valence electrons</th></tr></thead><tbody><tr><th scope="row">H (1)</th><td>1s¹</td><td>1</td></tr><tr><th scope="row">C (6)</th><td>1s² 2s² 2p²</td><td>4</td></tr><tr><th scope="row">N (7)</th><td>1s² 2s² 2p³</td><td>5</td></tr><tr><th scope="row">O (8)</th><td>1s² 2s² 2p⁴</td><td>6</td></tr><tr><th scope="row">Cl (17)</th><td>1s² 2s² 2p⁶ 3s² 3p⁵</td><td>7</td></tr></tbody></table></div>
+<div class="activity"><h3>Guided drill 4 · Complete the routine</h3><p>Neutral nitrogen has Z = 7. Write its configuration, check the sum, and identify the number of valence electrons.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Configuration: <strong>1s² 2s² 2p³</strong>. Total: 2 + 2 + 3 = 7. The highest occupied shell is n = 2, so valence electrons = 2 + 3 = <strong>5</strong>. Its three 2p electrons occupy separate orbitals in the ground state.</p></div></details></div>
+<div class="activity"><h3>Guided drill 5 · An ion can share a configuration with another element</h3><p>Na has Z = 11. Write the configuration of Na⁺. It matches neutral neon (Z = 10); does that make the ion neon?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Na⁺ has 10 electrons: <strong>1s² 2s² 2p⁶</strong>. It has the same electron configuration as neutral Ne but still has 11 protons, so it is sodium. Such species are called <strong>isoelectronic</strong>: they have the same number of electrons.</p></div></details></div>
+</section>
+<section class="section" id="practice"><h2>6. Independent practice</h2><p>Work without opening the answers. For particle counts, show p = Z, n = A − Z, and a charge check. For configurations, add the superscripts and identify the outer shell.</p><h3>A. Count the particles · Items 1–4</h3><div class="table-wrap" role="region" aria-label="Particle counting practice" tabindex="0"><table><caption>Fill p, n, and e on paper</caption><thead><tr><th scope="col">Item</th><th scope="col">Species</th><th scope="col">Z</th><th scope="col">A</th><th scope="col">Charge</th></tr></thead><tbody><tr><th scope="row">1</th><td>Carbon-13</td><td>6</td><td>13</td><td>0</td></tr><tr><th scope="row">2</th><td>Nitrogen-15</td><td>7</td><td>15</td><td>0</td></tr><tr><th scope="row">3</th><td>Magnesium-24 ion</td><td>12</td><td>24</td><td>+2</td></tr><tr><th scope="row">4</th><td>Chloride-35 ion</td><td>17</td><td>35</td><td>−1</td></tr></tbody></table></div>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol><li><strong>6 p, 7 n, 6 e:</strong> 13 − 6 = 7 neutrons; 6 − 6 = 0 charge.</li><li><strong>7 p, 8 n, 7 e:</strong> 15 − 7 = 8 neutrons; 7 − 7 = 0 charge.</li><li><strong>12 p, 12 n, 10 e:</strong> 24 − 12 = 12 neutrons; 12 − 10 = +2.</li><li><strong>17 p, 18 n, 18 e:</strong> 35 − 17 = 18 neutrons; 17 − 18 = −1.</li></ol></div></details>
+<h3>B. Write configurations · Items 5–8</h3><ol start="5"><li>Neutral fluorine, Z = 9: write its configuration and count valence electrons.</li><li>Neutral sodium, Z = 11: write its configuration and count valence electrons.</li><li>O²⁻, Z = 8: find its electron count and configuration.</li><li>Neutral nitrogen, Z = 7: draw the three 2p orbitals and count unpaired electrons.</li></ol>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol start="5"><li><strong>F: 1s² 2s² 2p⁵.</strong> Total 9; n = 2 contains 2 + 5 = <strong>7 valence electrons</strong>.</li><li><strong>Na: 1s² 2s² 2p⁶ 3s¹.</strong> Total 11; n = 3 contains <strong>1 valence electron</strong>.</li><li><strong>O²⁻: 8 − (−2) = 10 electrons; 1s² 2s² 2p⁶.</strong> Its proton count remains 8.</li><li><strong>N: three unpaired 2p electrons</strong>, one in each orbital with parallel spins.</li></ol><div class="orbital-diagram" role="img" aria-label="Answer to item 8: nitrogen 2p. 2p: one spin-up electron, one spin-up electron, one spin-up electron"><div aria-hidden="true" style="display:contents"><div class="orbital-group"><div class="boxes"><span class="orbital">↑</span><span class="orbital">↑</span><span class="orbital">↑</span></div><div class="orbital-label">2p</div></div></div></div></div></details>
+<h3>C. Explain and diagnose · Items 9–12</h3>
+<div class="activity"><h3>9 · Same mass number, same element?</h3><p>Species A has 6 p, 8 n, 6 e. Species B has 7 p, 7 n, 7 e. Are they isotopes of the same element?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>No. Both have mass number 14, but A is carbon-14 and B is nitrogen-14. Isotopes must have the same proton count.</p></div></details></div>
+<div class="activity"><h3>10 · Find the impossible subshell count</h3><p>A student writes oxygen as 1s² 2s⁴ 2p². The superscripts add to eight. Is it valid? Correct it.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>No. An s subshell has one orbital and holds at most two electrons. The correct ground-state configuration is <strong>1s² 2s² 2p⁴</strong>. A correct total alone is not enough.</p></div></details></div>
+<div class="activity"><h3>11 · Correct the valence count</h3><p>A student says carbon has two valence electrons because its configuration ends in 2p². Explain the error.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The outer shell is all of n = 2, including <strong>2s² and 2p²</strong>. Carbon therefore has four valence electrons. The last subshell is not the entire outer shell.</p></div></details></div>
+<div class="activity"><h3>12 · Test a particle claim</h3><p>An ion has 8 protons, 10 neutrons, and 10 electrons. Identify its element, mass number, and charge. Would removing one electron turn it into nitrogen?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>It is <strong>oxygen-18, O²⁻</strong>: Z = 8, A = 8 + 10 = 18, and charge = 8 − 10 = −2. Removing one electron would leave 9 electrons and charge −1. It would still be oxygen because its eight protons remain.</p></div></details></div>
+</section>
+<section class="section" id="summary"><h2>7. Bring the ideas together</h2><ul><li><strong>Identity:</strong> protons determine the element.</li><li><strong>Isotope:</strong> neutron count changes A while Z stays the same.</li><li><strong>Charge:</strong> compare protons and electrons; charge = p − e.</li><li><strong>Electron arrangement:</strong> obey subshell capacities, filling order, Pauli, and Hund.</li><li><strong>Valence:</strong> for the main-group examples here, count electrons in the highest occupied shell.</li></ul><h3>Key terms</h3><div class="table-wrap" role="region" aria-label="Key terms" tabindex="0"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row">Atomic number, Z</th><td>Number of protons.</td></tr><tr><th scope="row">Mass number, A</th><td>Number of protons plus neutrons in one isotope.</td></tr><tr><th scope="row">Isotopes</th><td>Same element, different neutron counts.</td></tr><tr><th scope="row">Ion</th><td>A charged atom or group of atoms; this lesson uses single-atom ions.</td></tr><tr><th scope="row">Orbital</th><td>A quantum description of an electron’s spatial state, associated with a probability distribution.</td></tr><tr><th scope="row">Electron configuration</th><td>Occupancy of subshells by electrons in an atom or ion.</td></tr><tr><th scope="row">Ground state</th><td>Lowest-energy state.</td></tr><tr><th scope="row">Valence electrons</th><td>Electrons central to bonding; in the main-group examples here, those in the highest occupied shell.</td></tr></tbody></table></div><h3>Readiness check</h3><div class="self-check"><label><input type="checkbox">I can count p, n, and e for a neutral atom and an ion.</label><label><input type="checkbox">I can distinguish isotopes from ions and different elements.</label><label><input type="checkbox">I can write and check C, N, and O configurations.</label><label><input type="checkbox">I can explain why carbon has four valence electrons.</label></div><p class="small">These checks are for your own review; they do not control quiz access.</p></section>
+<section class="section" id="references"><h2>Sources and further reading</h2><p class="small">The worked examples, practice, and diagrams are prepared for this lesson. These textbook sections support the underlying concepts.</p><ul class="references"><li><a href="https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Atomic Structure and Symbolism</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/6-3-development-of-quantum-theory" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Development of Quantum Theory</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Electronic Structure of Atoms</a></li></ul></section>
+<div class="quiz-area"><p>Ready to apply what you have learned?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Lesson Quiz →</button><p id="quizNotice" class="small" role="status"></p></div></main>
 <script>
-function toggleAnswer(btn) {
-  const ans = btn.nextElementSibling;
-  const open = ans.style.display === "block";
-  ans.style.display = open ? "none" : "block";
-  btn.textContent = open ? "Show Answer" : "Hide Answer";
-}
-
-document.getElementById("takeQuizBtn").addEventListener("click", () => {
-  window.parent.postMessage({
-    type: "openQuiz",
-    quiz: "chapter2_lesson1_quiz.html"
-  }, "*");
+'use strict';
+const speciesData={c12:{z:6,a:12,q:0},c14:{z:6,a:14,q:0},na:{z:11,a:23,q:1},o:{z:8,a:16,q:-2},cl:{z:17,a:37,q:-1}};
+const species=document.getElementById('species');
+const fields=['pCount','nCount','eCount'].map(id=>document.getElementById(id));
+const feedback=document.getElementById('particleFeedback');
+function clearCounts(){fields.forEach(input=>input.value='');feedback.replaceChildren();const s=speciesData[species.value];document.getElementById('speciesFacts').textContent=`Z = ${s.z} · A = ${s.a} · charge = ${s.q>0?'+'+s.q:s.q}${s.q===0?' (neutral)':''}`;}
+species.addEventListener('change',clearCounts);
+document.getElementById('clearCounts').addEventListener('click',()=>{clearCounts();fields[0].focus();});
+document.getElementById('particleForm').addEventListener('submit',event=>{
+ event.preventDefault();if(!event.currentTarget.reportValidity())return;
+ const s=speciesData[species.value];const expected=[s.z,s.a-s.z,s.z-s.q];
+ const entered=fields.map(input=>Number(input.value));
+ if(!entered.every(Number.isInteger))return;
+ feedback.replaceChildren();
+ const heading=document.createElement('strong');heading.textContent=entered.every((n,i)=>n===expected[i])?'All three counts are correct.':'Check the counts below, then try again.';feedback.append(heading);
+ const list=document.createElement('ul');const labels=['Protons','Neutrons','Electrons'];
+ const signed=s.q>0?'+'+s.q:String(s.q);
+ const reasons=[`Z = ${s.z}`,`A − Z = ${s.a} − ${s.z} = ${expected[1]}`,`Z − charge = ${s.z} − (${signed}) = ${expected[2]}`];
+ expected.forEach((n,i)=>{const li=document.createElement('li');li.textContent=`${labels[i]}: ${entered[i]===n?'correct':'your entry '+entered[i]+'; expected '+n}. ${reasons[i]}.`;list.append(li);});feedback.append(list);
+ const check=document.createElement('p');check.textContent=`Charge check: ${s.z} − ${expected[2]} = ${signed}.`;feedback.append(check);
 });
-</script>
-
-</body>
-</html>
+document.getElementById('takeQuizBtn').addEventListener('click',()=>{
+ if(window.parent!==window)window.parent.postMessage({type:'openQuiz',quiz:'chapter2_lesson1_quiz.html'},'*');
+ else document.getElementById('quizNotice').textContent='Open this lesson inside LearnTrack to launch its quiz.';
+});
+let openBeforePrint=[];
+window.addEventListener('beforeprint',()=>{openBeforePrint=Array.from(document.querySelectorAll('details')).map(item=>{const previous=item.open;item.open=true;return previous;});});
+window.addEventListener('afterprint',()=>{document.querySelectorAll('details').forEach((item,i)=>item.open=Boolean(openBeforePrint[i]));});
+</script></body></html>
