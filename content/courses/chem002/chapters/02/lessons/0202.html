@@ -1,309 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Chapter 2 – Lesson 2: Chemical Bonding Theory (Interactive)</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 2 – Lesson 2: Chemical Bonding Theory</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-<style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-    color: #222;
-    margin: 0;
-    padding: 32px 24px;
-    line-height: 1.7;
-    font-size: 22px;
-  }
+.wide-table{min-width:580px}.equation{background:#f5f8ff;border:1px solid var(--line);border-radius:10px;padding:20px;text-align:center;overflow-wrap:anywhere;font-weight:600}.steps li strong{color:var(--green)}
+.diagram{width:100%;height:auto;display:block;max-width:600px;margin:12px auto}.table-wrap{max-width:100%}.worksheet{min-height:70px;border-bottom:1px dashed #a6b9bd;margin:14px 0}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}.worksheet{min-height:45px}}
 
-  h1 {
-    color: #136f63;
-    font-size: 2.2em;
-    margin-bottom: 0.6em;
-  }
-
-  h2 {
-    color: #136f63;
-    font-size: 1.6em;
-    margin-top: 1.3em;
-    margin-bottom: 0.4em;
-  }
-
-  h3 {
-    color: #174ea6;
-    font-size: 1.25em;
-    margin: 0.6em 0 0.4em 0;
-  }
-
-  p { margin: 10px 0; }
-
-  .section {
-    background: #fff;
-    padding: 24px 28px;
-    border-radius: 14px;
-    margin-bottom: 32px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-  }
-
-  .image, .video {
-    text-align: center;
-    margin: 22px 0;
-  }
-
-  img {
-    border-radius: 10px;
-    width: 85%;
-    max-width: 560px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  iframe {
-    width: 90%;
-    max-width: 760px;
-    height: 430px;
-    border-radius: 12px;
-  }
-
-  .activity {
-    background: #f9fbff;
-    border-left: 5px solid #136f63;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-top: 16px;
-  }
-
-  .toggle-btn {
-    background: #136f63;
-    color: white;
-    padding: 9px 16px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-  }
-
-  .toggle-btn:hover {
-    background: #0f5b52;
-    transform: translateY(-1px);
-  }
-
-  .answer {
-    display: none;
-    margin-top: 12px;
-    background: #eef3ff;
-    padding: 14px;
-    border-radius: 8px;
-  }
-
-  .quiz-button {
-    background-color: #136f63;
-    color: white;
-    padding: 13px 26px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 22px;
-  }
-
-  .quiz-button:hover {
-    background-color: #0f5b52;
-  }
-
-  ul { margin-left: 24px; }
-
-  .note {
-    color: #555;
-    font-size: 0.9em;
-  }
-
-</style>
-</head>
-
-<body>
-
-<h1>Chemical Bonding Theory (Interactive Lesson)</h1>
-
-<p class="note">
-This lesson explains how atoms form bonds, why different types of bonding exist, and how these affect molecular structure and properties. 
-Answer the activities as you go — only reveal answers after you try them.
-</p>
-
-<!-- 1. WHY ATOMS BOND -->
-<div class="section">
-  <h2>1. Why Atoms Bond</h2>
-  <p>
-    Atoms bond to achieve a more stable, lower-energy configuration.
-    For most main-group elements, this means achieving a full valence shell (the “octet rule”). 
-    Atoms may gain, lose, or share electrons to achieve stability.
-  </p>
-
-  <div class="activity">
-    <h3>Activity 1: Stability and the Octet Rule</h3>
-    <p>Why does sodium tend to lose an electron, while chlorine tends to gain one?</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      Sodium has 1 valence electron; losing it forms Na⁺ with a full shell (like Neon).  
-      Chlorine has 7 valence electrons; gaining 1 forms Cl⁻ with a full octet.  
-      Both changes increase stability by reducing energy.
-    </div>
-  </div>
-</div>
-
-<!-- 2. IONIC BONDING -->
-<div class="section">
-  <h2>2. Ionic Bonding</h2>
-  <p>
-    Ionic bonding occurs when a metal transfers electrons to a nonmetal.  
-    The resulting ions (cations and anions) attract each other electrostatically.
-  </p>
-
-  <div class="image">
-    <img src="https://www.shutterstock.com/image-vector/electron-transfer-sodium-chloride-crystal-260nw-1696829455.jpg">
-    <p class="note"><em>Sodium transfers an electron to chlorine, forming Na⁺ and Cl⁻.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 2: Identify Ionic vs Covalent</h3>
-    <p>Which forms an ionic bond?  
-      A) Na + Cl &nbsp;&nbsp; B) C + O &nbsp;&nbsp; C) H + H</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      A) Na + Cl — large electronegativity difference → electron transfer → ionic bond.
-    </div>
-  </div>
-</div>
-
-<!-- 3. COVALENT BONDING -->
-<div class="section">
-  <h2>3. Covalent Bonding</h2>
-  <p>
-    Covalent bonds form when two nonmetals share electron pairs.  
-    Sharing can be equal (nonpolar) or unequal (polar).
-  </p>
-
-  <div class="image">
-    <img src="https://www.chemistrylearner.com/wp-content/uploads/2021/10/Lewis-Structure-Examples.jpg">
-    <p class="note"><em>Covalent bonds involve shared electron pairs between atoms.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 3: Predict Bond Type</h3>
-    <p>A) H–H  
-       B) H–Cl  
-       C) Na–Cl  
-       Classify as Ionic / Polar Covalent / Nonpolar Covalent.</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      A — Nonpolar covalent  
-      B — Polar covalent  
-      C — Ionic
-    </div>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 4: Lewis Structure</h3>
-    <p>Draw the Lewis structure of H₂O and explain its bent shape.</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      <img src="https://www.chemistrylearner.com/wp-content/uploads/2023/05/H2O-Molecular-Geometry.jpg">
-      Oxygen has 2 lone pairs + 2 bonding pairs → electron repulsion → bent shape (~104.5°).
-    </div>
-  </div>
-</div>
-
-<!-- 4. METALLIC + COORDINATE -->
-<div class="section">
-  <h2>4. Metallic Bonding & Coordinate Bonds</h2>
-
-  <p><strong>Metallic bonding:</strong> A “sea of electrons” flows through metal atoms → explains conductivity & malleability.</p>
-  <p><strong>Coordinate bond:</strong> A covalent bond where one atom donates both electrons (e.g., NH₃ → H⁺).</p>
-
-  <div class="activity">
-    <h3>Activity 5: Recognizing a Coordinate Bond</h3>
-    <p>Which shows a coordinate bond?  
-       A) NH₃ + H⁺ → NH₄⁺  
-       B) H₂ + Cl₂  
-       C) NaCl formation</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      A) NH₃ donates a lone pair to H⁺ → coordinate bond.
-    </div>
-  </div>
-</div>
-
-<!-- 5. POLARITY, LENGTH, ENERGY -->
-<div class="section">
-  <h2>5. Bond Polarity, Bond Length & Bond Energy</h2>
-  <p>
-    - Higher electronegativity difference → stronger polarity. <br>
-    - Triple bonds are shortest and strongest; single bonds are longest and weakest.
-  </p>
-
-  <div class="activity">
-    <h3>Activity 6: Bond Length Comparison</h3>
-    <p>Which is shortest: C–C, C=C, or C≡C?</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-    <div class="answer">
-      C≡C (triple bond) → shortest & strongest.
-    </div>
-  </div>
-</div>
-
-<!-- 6. VIDEO + SIMULATION -->
-<div class="section">
-  <h2>🎥 Ionic, Covalent and Metallic Bonding</h2>
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/5gEWOh630b8" allowfullscreen></iframe>
-  </div>
-
-  <h2>🧪 Interactive Simulation: Build an Atom</h2>
-  <p class="note">Experiment with protons, neutrons, and electrons to see how atoms change.</p>
-
-  <div class="video">
-    <iframe src="https://phet.colorado.edu/sims/html/build-an-atom/latest/build-an-atom_en.html" allowfullscreen></iframe>
-  </div>
-</div>
-
-<!-- KEY TERMS -->
-<div class="section">
-  <h2>Key Terms</h2>
-  <ul>
-    <li><strong>Ionic bond</strong> – electron transfer forming ions.</li>
-    <li><strong>Covalent bond</strong> – sharing of electrons.</li>
-    <li><strong>Metallic bond</strong> – delocalized electrons in metal lattices.</li>
-    <li><strong>Coordinate bond</strong> – shared pair donated by one atom.</li>
-    <li><strong>Polarity</strong> – unequal electron sharing.</li>
-    <li><strong>Bond length</strong> – distance between bonded nuclei.</li>
-    <li><strong>Bond energy</strong> – energy required to break a bond.</li>
-  </ul>
-</div>
-
-<!-- QUIZ BUTTON -->
-<div style="text-align:center; margin-top:25px;">
-  <button class="quiz-button" id="takeQuizBtn">Take the Lesson Quiz →</button>
-</div>
-
-<script>
-function toggleAnswer(btn) {
-  const ans = btn.nextElementSibling;
-  const open = ans.style.display === "block";
-  ans.style.display = open ? "none" : "block";
-  btn.textContent = open ? "Show Answer" : "Hide Answer";
-}
-
-document.getElementById("takeQuizBtn").addEventListener("click", () => {
-  window.parent.postMessage({
-    type: "openQuiz",
-    quiz: "chapter2_lesson2_quiz.html"
-  }, "*");
-});
-</script>
-
-</body>
-</html>
+.molecule{display:block;width:100%;max-width:430px;height:auto;margin:12px auto}.molecule text{font-family:'Segoe UI',Arial,sans-serif}.mol-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.scheme{padding:18px;background:#f5f8ff;border:1px solid #dce6eb;border-radius:10px;margin:18px 0}.scheme p{text-align:center}.count{font-weight:650;color:#174ea6}.prediction{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.prediction select{display:block;width:100%;max-width:480px;font:inherit;padding:10px;border:1px solid #728994;border-radius:6px;margin:8px 0 16px;background:#fff;color:#24323d}.prediction fieldset{border:1px solid #c5d8de;border-radius:8px;margin:16px 0;padding:12px}.prediction label.option{display:block;margin:8px 0}.prediction input{width:19px;height:19px;vertical-align:middle;margin-right:9px}.actions{display:flex;gap:12px;flex-wrap:wrap}.actions button{font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;padding:10px 16px;background:#136f63;color:white;border:0;border-radius:8px;cursor:pointer}.actions button.secondary{background:#e5ebf7;color:#174ea6}.feedback{background:#eaf0fc;border-left:4px solid #174ea6;padding:16px;margin-top:16px;border-radius:8px}.feedback:empty{display:none}#moleculeView .dipoles{display:none}#moleculeView.show-dipoles .dipoles{display:inline}.warning{font-weight:650;color:#8a3b0e}.readiness label{display:flex;gap:10px;margin:12px 0}.readiness input{width:19px;height:19px;flex-shrink:0;margin-top:7px}.text-equation{font-weight:650;overflow-wrap:anywhere;text-align:center;padding:16px;background:#f5f8ff;border-radius:8px}.small-list{font-size:.9em}@media(max-width:620px){.mol-grid{grid-template-columns:1fr}.prediction{padding:16px 12px}}@media print{.prediction,.readiness{display:none}.mol-grid{display:block}.molecule{max-width:300px}.table-wrap{overflow:visible}}
+</style></head><body><a href="#lesson" class="skip">Skip to lesson</a><main id="lesson"><header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 2</div><h1>Chemical Bonding Theory</h1><p class="intro">Use valence electrons to explain how atoms connect, then use structure to explain shape, polarity, and properties. The aim is to justify a prediction—not only attach a bond-type label.</p><p class="meta">Allow about 45–60 minutes, or study in two parts. Draw the structures on paper before revealing answers. On small screens, scroll wide tables sideways.</p><nav aria-label="Lesson sections"><a href="#goals">Goals</a><a href="#stability">Energy</a><a href="#ionic">Ionic bonding</a><a href="#lewis">Lewis structures</a><a href="#polarity">Shape and polarity</a><a href="#other">Other bonding models</a><a href="#strength">Length and energy</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav></header>
+<section class="section" id="goals"><h2>What you will learn</h2><ul><li>Distinguish ionic, covalent, and metallic bonding using particles and attractions.</li><li>Count valence electrons and draw simple Lewis structures with bonds and lone pairs.</li><li>Use electron regions and electronegativity to explain shape and molecular polarity.</li><li>Explain coordinate bond formation and interpret bond-length and bond-energy comparisons.</li></ul><div class="note"><strong>Recall Lesson 1:</strong> neutral H contributes 1 valence electron; C contributes 4; N contributes 5; O contributes 6; Cl contributes 7. For a negative ion add electrons to the total; for a positive ion subtract them.</div></section>
+<section class="section" id="stability"><h2>1. Bond formation is an energy question</h2><p>A stable bond corresponds to a lower-energy arrangement than the relevant separated particles. Attractions between positive nuclei and electrons compete with electron–electron and nucleus–nucleus repulsions. At the equilibrium bond length, the balance gives a minimum in potential energy.</p><div class="grid"><div class="card"><h3>Form a bond</h3><p>Forming a bond from the corresponding separated particles releases energy.</p></div><div class="card"><h3>Break a bond</h3><p>Separating bonded particles requires energy. A reaction’s net energy change depends on both bonds broken and bonds formed.</p></div></div><h3>Use the octet rule as a guide</h3><p>Many common structures give second-period atoms such as C, N, and O eight electrons around each atom, counting shared pairs toward both bonded atoms. Hydrogen follows a <strong>duet</strong>: two electrons, usually in one bond.</p><div class="note"><strong>The octet is not a universal law or an energy calculation.</strong> Electron-deficient species, radicals, and some heavier-element structures need additional treatment. In this lesson, focus on ordinary closed-shell structures of H, C, N, O, and Cl.</div><p class="warning">Removing an electron from an isolated sodium atom costs energy—even though Na⁺ has a filled outer shell. Formation of solid NaCl is explained by the energy balance of the entire process, including strong attractions in the ionic lattice.</p>
+<div class="activity"><h3>Guided drill 1 · Correct the energy claim</h3><p>A student says, “Breaking a bond releases energy because the atoms become free.” Correct the statement.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Breaking a bond requires energy to separate attracted particles. Bond formation releases energy. An overall reaction releases energy only when its energy-releasing changes outweigh the energy-requiring changes.</p></div></details></div>
+</section>
+<section class="section" id="ionic"><h2>2. Ionic bonding: ions attract in a lattice</h2><p>An <strong>ionic bond</strong> is electrostatic attraction between oppositely charged ions. Electron transfer is a useful way to account for formation of simple ions; it is not itself the definition of the attraction that holds an ionic solid together.</p><div class="worked"><div class="label">Worked example 1</div><h3>Account for NaCl formation</h3><ol><li><strong>Track electrons:</strong> Na loses one electron, giving Na⁺; Cl gains one, giving Cl⁻.</li><li><strong>Identify attraction:</strong> positive and negative ions attract electrostatically.</li><li><strong>Describe the solid:</strong> NaCl forms an extended three-dimensional lattice, not a collection of isolated Na–Cl molecules.</li><li><strong>Check charge balance:</strong> (+1) + (−1) = 0, so the simplest ratio is 1:1.</li></ol><div class="text-equation">Na → Na⁺ + e⁻<br>Cl + e⁻ → Cl⁻</div><p class="small">These are electron-accounting steps for atoms, not the full reaction or a claim that both steps release energy. The overall elemental reaction is 2Na(s) + Cl₂(g) → 2NaCl(s).</p></div><h3>Use charge balance to find a formula</h3><p>Mg²⁺ needs two Cl⁻ ions: (+2) + 2(−1) = 0. The formula is <strong>MgCl₂</strong>, not MgCl. A formula unit gives the simplest whole-number ion ratio.</p><h3>Connect the model to a property</h3><p>Solid NaCl has ions fixed in its lattice, so it conducts poorly. When molten, or dissolved in water, its mobile ions can carry charge. Dissolution is not guaranteed for every ionic compound.</p><div class="note"><strong>Use the metal/nonmetal pattern as a clue, not a definition.</strong> Ionic substances can contain polyatomic ions. For example, ammonium chloride contains NH₄⁺ and Cl⁻ ions, with covalent N–H bonds inside NH₄⁺.</div>
+<div class="activity"><h3>Guided drill 2 · Balance charges</h3><p>Calcium forms Ca²⁺ and oxygen forms O²⁻. What is the simplest neutral formula? Explain why the charges are not written as subscripts.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>CaO:</strong> one +2 ion balances one −2 ion. Superscripts describe charge; subscripts describe the number or ratio of particles. Ca₂O₂ is not the simplest formula-unit ratio.</p></div></details></div>
+</section>
+<section class="section" id="lewis"><h2>3. Covalent bonding and Lewis structures</h2><p>A <strong>covalent bond</strong> involves shared electron density attracted to both bonded nuclei. In a Lewis structure, a line represents a shared pair of electrons. A <strong>lone pair</strong> is a pair not used in a bond.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Bond orders"><table><caption>Count shared electrons without double-counting the total</caption><thead><tr><th scope="col">Bond</th><th scope="col">Shared pairs</th><th scope="col">Electrons in the bond</th></tr></thead><tbody><tr><th scope="row">Single</th><td>1</td><td>2</td></tr><tr><th scope="row">Double</th><td>2</td><td>4</td></tr><tr><th scope="row">Triple</th><td>3</td><td>6</td></tr></tbody></table></div><p>A shared pair counts toward the shell of each bonded atom, but it is counted <strong>once</strong> in the molecule’s total electron budget.</p><h3>A repeatable drawing routine</h3><ol><li><strong>Total:</strong> add valence electrons, adjusting for overall charge.</li><li><strong>Connect:</strong> use the given skeleton or choose a plausible central atom; H is terminal. Join atoms with single bonds.</li><li><strong>Subtract:</strong> each single bond uses two electrons from the total.</li><li><strong>Distribute:</strong> complete terminal-atom shells, then place remaining electrons on the central atom. Stop H at two.</li><li><strong>Repair:</strong> if the central atom lacks an octet, consider turning a neighboring lone pair into a multiple bond.</li><li><strong>Check:</strong> total electrons, shell counts, and overall charge. Formal charges provide an additional check.</li></ol>
+<div class="worked"><div class="label">Worked example 2</div><h3>Build H₂O: eight electrons in the entire structure</h3><ol><li><strong>Total:</strong> 2(1) + 6 = 8 valence electrons.</li><li><strong>Connect:</strong> put O between two H atoms. Two O–H bonds use 4 electrons.</li><li><strong>Place the remaining 4:</strong> two lone pairs on O.</li><li><strong>Check:</strong> 4 bonding + 4 nonbonding = 8 electrons total. Each H counts 2; O counts 8 around it.</li></ol><svg class="molecule" viewBox="0 0 400 220" role="img" aria-labelledby="mol1title mol1desc"><title id="mol1title">H₂O Lewis structure</title><desc id="mol1desc">Two O–H single bonds and two lone pairs on oxygen. Bent molecule. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol1arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="200" y="104" text-anchor="middle" font-size="29" fill="#24323d">O</text><text x="100" y="181" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="300" y="181" text-anchor="middle" font-size="29" fill="#24323d">H</text><line x1="181" y1="109" x2="120" y2="157" stroke="#24323d" stroke-width="3"/><line x1="219" y1="109" x2="280" y2="157" stroke="#24323d" stroke-width="3"/><circle cx="168" cy="61" r="3.4" fill="#136f63"/><circle cx="178" cy="61" r="3.4" fill="#136f63"/><circle cx="222" cy="61" r="3.4" fill="#136f63"/><circle cx="232" cy="61" r="3.4" fill="#136f63"/></svg><p class="small">Each green pair of dots is one lone pair. The bent layout anticipates the shape discussion below; a Lewis drawing alone is not a full three-dimensional model.</p></div>
+<div class="worked"><div class="label">Worked example 3</div><h3>Build CO₂: why two double bonds are needed</h3><ol><li><strong>Total:</strong> 4 + 2(6) = 16 valence electrons.</li><li><strong>Start:</strong> use O–C–O. The two single bonds use 4 electrons.</li><li><strong>Complete terminal O octets:</strong> place the remaining 12 electrons as three lone pairs on each O. Carbon still counts only 4 electrons around it.</li><li><strong>Convert:</strong> move one lone pair from each O into an additional shared pair with C. No electrons are added.</li><li><strong>Check:</strong> O=C=O has 8 bonding electrons and 8 lone-pair electrons. Each atom has an octet; each O retains two lone pairs.</li></ol><svg class="molecule" viewBox="0 0 400 220" role="img" aria-labelledby="mol2title mol2desc"><title id="mol2title">CO₂ Lewis structure</title><desc id="mol2desc">Two carbon–oxygen double bonds. Each oxygen has two lone pairs. Linear molecule. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol2arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="90" y="119" text-anchor="middle" font-size="29" fill="#24323d">O</text><text x="200" y="119" text-anchor="middle" font-size="29" fill="#24323d">C</text><text x="310" y="119" text-anchor="middle" font-size="29" fill="#24323d">O</text><line x1="112" y1="105" x2="178" y2="105" stroke="#24323d" stroke-width="3"/><line x1="112" y1="115" x2="178" y2="115" stroke="#24323d" stroke-width="3"/><line x1="222" y1="105" x2="288" y2="105" stroke="#24323d" stroke-width="3"/><line x1="222" y1="115" x2="288" y2="115" stroke="#24323d" stroke-width="3"/><circle cx="85" cy="76" r="3.4" fill="#136f63"/><circle cx="95" cy="76" r="3.4" fill="#136f63"/><circle cx="85" cy="144" r="3.4" fill="#136f63"/><circle cx="95" cy="144" r="3.4" fill="#136f63"/><circle cx="305" cy="76" r="3.4" fill="#136f63"/><circle cx="315" cy="76" r="3.4" fill="#136f63"/><circle cx="305" cy="144" r="3.4" fill="#136f63"/><circle cx="315" cy="144" r="3.4" fill="#136f63"/></svg></div>
+<div class="activity"><h3>Guided drill 3 · Build NH₃</h3><p>Nitrogen contributes 5 electrons and each H contributes 1. Draw NH₃. State its total electrons, number of N–H bonds, and nitrogen lone pairs.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Total = 5 + 3(1) = <strong>8</strong>. Three single bonds use 6 electrons; the remaining 2 form <strong>one lone pair on N</strong>. N has an octet and each H has a duet.</p><svg class="molecule" viewBox="0 0 400 220" role="img" aria-labelledby="mol3title mol3desc"><title id="mol3title">NH₃ Lewis structure</title><desc id="mol3desc">Three N–H single bonds and one lone pair on nitrogen. Flat Lewis drawing, not the molecular shape. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol3arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="200" y="109" text-anchor="middle" font-size="29" fill="#24323d">N</text><text x="100" y="109" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="300" y="109" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="200" y="199" text-anchor="middle" font-size="29" fill="#24323d">H</text><line x1="122" y1="100" x2="178" y2="100" stroke="#24323d" stroke-width="3"/><line x1="222" y1="100" x2="278" y2="100" stroke="#24323d" stroke-width="3"/><line x1="200" y1="123" x2="200" y2="164" stroke="#24323d" stroke-width="3"/><circle cx="195" cy="60" r="3.4" fill="#136f63"/><circle cx="205" cy="60" r="3.4" fill="#136f63"/></svg><p class="small">This flat drawing records connectivity and electrons; actual NH₃ is trigonal pyramidal, not flat.</p></div></details></div>
+</section>
+<section class="section" id="polarity"><h2>4. Separate bond polarity from molecular polarity</h2><p><strong>Electronegativity</strong> describes an atom’s ability to attract shared electron density in a bond. Identical atoms share equally in a simple homonuclear bond such as H–H. In H–Cl, Cl attracts the shared density more strongly, giving H a partial positive charge (δ⁺) and Cl a partial negative charge (δ⁻).</p><div class="text-equation">Hδ⁺—Clδ⁻<br><span class="small">Partial charges are not the full charges H⁺ and Cl⁻.</span></div><p>A larger electronegativity difference usually suggests a more polar bond. Ionic and covalent descriptions are limiting models along a continuum; one numerical cutoff should not be treated as an exception-free law.</p><h3>First find shape with VSEPR</h3><p>In the valence-shell electron-pair repulsion model, regions of electron density around a central atom arrange to reduce repulsion. Count each single, double, or triple bond as <strong>one region</strong>; each lone pair is also one region.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Shape and polarity comparison"><table><caption>Electron-region geometry includes lone pairs; molecular shape names the atom arrangement</caption><thead><tr><th scope="col">Molecule</th><th scope="col">Central-atom regions</th><th scope="col">Electron-region geometry</th><th scope="col">Molecular shape</th><th scope="col">Molecular polarity</th></tr></thead><tbody><tr><th scope="row">CO₂</th><td>2 bonds, 0 lone pairs</td><td>Linear</td><td>Linear; 180°</td><td>Nonpolar: equal opposing bond dipoles cancel</td></tr><tr><th scope="row">CH₄</th><td>4 bonds, 0 lone pairs</td><td>Tetrahedral</td><td>Tetrahedral; about 109.5°</td><td>Nonpolar: symmetry gives no net dipole</td></tr><tr><th scope="row">NH₃</th><td>3 bonds, 1 lone pair</td><td>Tetrahedral</td><td>Trigonal pyramidal; about 107°</td><td>Polar: dipoles do not cancel</td></tr><tr><th scope="row">H₂O</th><td>2 bonds, 2 lone pairs</td><td>Tetrahedral</td><td>Bent; about 104.5°</td><td>Polar: dipoles do not cancel</td></tr></tbody></table></div>
+<div class="worked"><div class="label">Worked example 4</div><h3>Compare H₂O with CO₂</h3><ol><li><strong>Identify polar bonds:</strong> O attracts shared density more strongly than either H or C.</li><li><strong>Use the full structure:</strong> H₂O has four electron regions at O and is bent; CO₂ has two regions at C and is linear.</li><li><strong>Combine directions:</strong> water’s bond dipoles do not cancel. CO₂’s equal bond dipoles point in opposite directions and cancel.</li><li><strong>Conclude:</strong> H₂O is polar; CO₂ is nonpolar even though both C=O bonds are polar.</li></ol></div>
+<div class="prediction"><h3>Try it · Compare bond dipoles</h3><p>Select a molecule, use its shape, and predict whether it has a net dipole. Reveal the arrows to inspect the directions. This practice does not affect your quiz score.</p><label for="moleculeSelect"><strong>Molecule</strong></label><select id="moleculeSelect"><option value="water">H₂O — bent</option><option value="co2">CO₂ — linear</option><option value="hcl">HCl — diatomic</option></select><div id="moleculeView"></div><p id="dipoleText" class="small">Bond arrows are hidden.</p><form id="polarityForm"><fieldset><legend>Predict the molecule’s polarity</legend><label class="option"><input type="radio" name="polarity" value="polar" required>Polar: a nonzero net dipole</label><label class="option"><input type="radio" name="polarity" value="nonpolar">Nonpolar: no net dipole</label></fieldset><div class="actions"><button type="submit">Check my prediction</button><button type="button" id="dipoleToggle" class="secondary" aria-pressed="false">Show bond dipoles</button><button type="button" id="resetPrediction" class="secondary">Reset</button></div><div id="polarityFeedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></form><noscript><p>The interactive comparison needs JavaScript. Use the comparison table and worked example above.</p></noscript></div>
+<div class="activity"><h3>Guided drill 4 · Find the counting error</h3><p>A student counts four electron regions around carbon in CO₂ because it has two double bonds. What should the count and shape be?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Each double bond counts as one region. Carbon therefore has <strong>two regions</strong>, giving a <strong>linear</strong> arrangement. Count directions of electron density, not the number of shared pairs.</p></div></details></div>
+</section>
+<section class="section" id="other"><h2>5. Metallic bonding and coordinate bond formation</h2><h3>Metallic bonding: electrons extend through the solid</h3><p>A simple model describes positive metal cores held together by attraction to delocalized valence electrons. These electrons are not confined to one atom or one atom pair. Their response to an electric field explains conduction; bonding can persist as layers shift, helping explain malleability.</p><p>Do not picture a directed current continually flowing in an unconnected metal. A net current requires an applied driving influence such as an electric field. Also distinguish solid copper’s mobile electrons from molten NaCl’s mobile ions.</p><h3>Coordinate bonding: where did the shared pair come from?</h3><p>A <strong>coordinate covalent bond</strong> is formed when one partner supplies both electrons of a shared pair. In NH₃ + H⁺ → NH₄⁺, nitrogen supplies its lone pair to the proton. The pair is shared in the resulting N–H bond.</p><div class="worked"><div class="label">Worked example 5</div><h3>Follow the electron budget into NH₄⁺</h3><ol><li><strong>Start with NH₃:</strong> three N–H bonds and one lone pair on N; 8 valence electrons total.</li><li><strong>Add H⁺:</strong> it contributes no electron. The nitrogen lone pair becomes the new N–H bonding pair.</li><li><strong>Check the product total:</strong> 5 + 4(1) − 1 = <strong>8 electrons</strong>, all in four bonds.</li><li><strong>Show the charge:</strong> put brackets around the Lewis structure and write + outside.</li></ol><svg class="molecule" viewBox="0 0 400 265" role="img" aria-labelledby="mol4title mol4desc"><title id="mol4title">NH₄⁺ Lewis structure</title><desc id="mol4desc">Four N–H single bonds, no lone pairs on nitrogen, enclosed in brackets with an overall plus charge. Flat Lewis drawing, not the molecular shape. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol4arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="200" y="139" text-anchor="middle" font-size="29" fill="#24323d">N</text><text x="100" y="139" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="300" y="139" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="200" y="49" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="200" y="229" text-anchor="middle" font-size="29" fill="#24323d">H</text><line x1="122" y1="130" x2="178" y2="130" stroke="#24323d" stroke-width="3"/><line x1="222" y1="130" x2="278" y2="130" stroke="#24323d" stroke-width="3"/><line x1="200" y1="64" x2="200" y2="105" stroke="#24323d" stroke-width="3"/><line x1="200" y1="154" x2="200" y2="195" stroke="#24323d" stroke-width="3"/><path d="M75 16 H58 V246 H75 M325 16 H342 V246 H325" fill="none" stroke="#24323d" stroke-width="2.5"/><text x="352" y="35" font-size="25" fill="#174ea6">+</text></svg><p><strong>No lone pair remains on N.</strong> In isolated NH₄⁺, all four N–H bonds are equivalent and the shape is tetrahedral. “Coordinate” describes the pair’s origin during formation; it does not mean the new bond stays a permanently different type.</p><p class="small">The flat cross is a Lewis drawing, not a square-planar shape.</p></div>
+<h3>A short formal-charge check</h3><p>For these line-and-dot structures:</p><div class="text-equation">Formal charge = valence electrons − nonbonding electrons − bond lines</div><p>Count a double bond as two lines and a triple bond as three. For nitrogen in NH₄⁺: 5 − 0 − 4 = +1. Each H has 1 − 0 − 1 = 0, so the sum is +1. Formal charge is electron bookkeeping, not the same thing as partial charge or a measured charge distribution.</p>
+<div class="activity"><h3>Guided drill 5 · Track a donated pair</h3><p>H₂O uses a lone pair to bind H⁺, forming H₃O⁺. How many O–H bonds and lone pairs remain on O?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>H₂O starts with two bonds and two lone pairs. One lone pair becomes the third O–H bond, leaving <strong>three bonds and one lone pair</strong>. Total valence electrons: 6 + 3(1) − 1 = 8. Oxygen’s formal charge is 6 − 2 − 3 = +1.</p></div></details></div>
+</section>
+<section class="section" id="strength"><h2>6. Compare bond length and bond energy carefully</h2><p><strong>Bond length</strong> is the equilibrium distance between bonded nuclei. <strong>Bond dissociation energy</strong> is the energy needed to break a specified bond in the gas phase; average bond energies summarize values across molecular environments.</p><p>For comparable bonds between the <strong>same elements</strong>, increasing bond order generally shortens and strengthens the bond. Thus the usual carbon–carbon comparison is:</p><div class="text-equation">Length: C–C &gt; C=C &gt; C≡C<br>Energy to break: C–C &lt; C=C &lt; C≡C</div><p>This is not a universal ranking across different element pairs or every molecular environment. Bond polarity alone also does not establish which bond is strongest.</p><div class="worked"><div class="label">Worked example 6</div><h3>Read a bond-energy account</h3><p>Suppose breaking reactant bonds requires <strong>900 kJ</strong> and forming product bonds releases <strong>1,120 kJ</strong>, for the stated amount of reaction.</p><ol><li>Energy required: +900 kJ.</li><li>Energy released: −1,120 kJ.</li><li>Net: 900 − 1,120 = <strong>−220 kJ</strong>.</li></ol><p>The reaction releases 220 kJ overall. It does so because bond formation releases more than bond breaking requires—not because breaking bonds releases energy.</p><p class="small">These are illustrative totals, not tabulated data for a particular reaction.</p></div>
+<div class="activity"><h3>Guided drill 6 · Explain the trend</h3><p>Which carbon–carbon bond is normally shortest: C–C, C=C, or C≡C? Does that mean it requires the least energy to break?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>C≡C</strong> is normally shortest in this comparison. It generally requires the <strong>most</strong> energy to break. Shorter does not mean easier to break.</p></div></details></div>
+<div class="note"><strong>A bond inside a molecule is different from an attraction between molecules.</strong> Boiling water primarily overcomes intermolecular attractions; it does not normally split H₂O into H and O atoms by breaking every O–H covalent bond.</div>
+</section>
+<section class="section" id="practice"><h2>7. Independent practice</h2><p>Write your answer and a reason before opening the explanation. For structures, show all lone pairs and any overall charge.</p><h3>A. Identify and explain · Items 1–4</h3><ol><li>Classify H–H and H–Cl as nonpolar or polar covalent; identify which end of H–Cl is δ⁻.</li><li>Name the dominant bonding model in solid MgO and write its ion ratio.</li><li>Explain why copper conducts while solid NaCl conducts poorly.</li><li>Explain why the statement “Na loses an electron because electron loss releases energy” is incorrect.</li></ol>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol><li><strong>H–H:</strong> nonpolar covalent. <strong>H–Cl:</strong> polar covalent; Cl is δ⁻ because it attracts shared density more strongly.</li><li><strong>Ionic:</strong> Mg²⁺ and O²⁻ occur in a 1:1 ratio, giving neutral MgO.</li><li>Copper has delocalized electrons that can carry charge. Solid NaCl has ions fixed in a lattice; the ions become mobile on melting or dissolution.</li><li>Removing an electron from isolated Na costs ionization energy. Stability of solid NaCl requires the complete energy balance, including lattice formation.</li></ol></div></details>
+<h3>B. Draw and count · Items 5–8</h3><ol start="5"><li>Draw CH₄. State total valence electrons and lone pairs on C.</li><li>Draw N₂. State bond order and lone pairs on each N.</li><li>Draw NH₄⁺. State total valence electrons and nitrogen’s formal charge.</li><li>Draw H₂O and identify its electron-region geometry and molecular shape.</li></ol>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol start="5"><li><strong>CH₄:</strong> 4 + 4(1) = 8 electrons; four C–H single bonds, no lone pairs on C. Each H has a duet and C has an octet. The molecular shape is tetrahedral.</li><li><strong>N₂:</strong> 2(5) = 10 electrons; a triple bond uses 6, leaving one lone pair on each N.</li><li><strong>NH₄⁺:</strong> 5 + 4 − 1 = 8 electrons; four N–H bonds, no lone pairs on N. Formal charge on N = +1; enclose the structure in brackets with overall +.</li><li><strong>H₂O:</strong> two single bonds and two lone pairs on O; four regions, tetrahedral electron-region geometry, bent molecular shape.</li></ol><svg class="molecule" viewBox="0 0 400 220" role="img" aria-labelledby="mol5title mol5desc"><title id="mol5title">N₂ Lewis structure</title><desc id="mol5desc">A nitrogen–nitrogen triple bond and one lone pair on each nitrogen. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol5arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="155" y="119" text-anchor="middle" font-size="29" fill="#24323d">N</text><text x="245" y="119" text-anchor="middle" font-size="29" fill="#24323d">N</text><line x1="177" y1="102" x2="223" y2="102" stroke="#24323d" stroke-width="3"/><line x1="177" y1="110" x2="223" y2="110" stroke="#24323d" stroke-width="3"/><line x1="177" y1="118" x2="223" y2="118" stroke="#24323d" stroke-width="3"/><circle cx="114" cy="110" r="3.4" fill="#136f63"/><circle cx="124" cy="110" r="3.4" fill="#136f63"/><circle cx="276" cy="110" r="3.4" fill="#136f63"/><circle cx="286" cy="110" r="3.4" fill="#136f63"/></svg><p class="small">N₂: the three lines are three shared pairs; each outer dot pair is a lone pair.</p></div></details>
+<h3>C. Diagnose and apply · Items 9–12</h3>
+<div class="activity"><h3>9 · Polar bonds, nonpolar molecule</h3><p>A student concludes that CO₂ is polar because its C=O bonds are polar. What information is missing?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The student must consider <strong>geometry and dipole cancellation</strong>. CO₂ is linear with two equal opposing bond dipoles, so its net dipole is zero.</p></div></details></div>
+<div class="activity"><h3>10 · Find the missing electrons</h3><p>A drawing of H₂O shows only H–O–H bonds, with no dots on oxygen. How many electrons have been omitted?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Four electrons are missing: <strong>two lone pairs on O</strong>. The two bonds show only 4 of the 8 valence electrons. Without the lone pairs, the drawing is incomplete and misleading for shape prediction.</p></div></details></div>
+<div class="activity"><h3>11 · Keep the comparison valid</h3><p>A student says, “Every triple bond is stronger than every double bond, whatever atoms are involved.” How should this claim be revised?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Compare similar bonds between the <strong>same elements</strong> and consider molecular environment. Increasing bond order generally increases bond strength for such comparisons. Bond order alone does not rank all different element pairs.</p></div></details></div>
+<div class="activity"><h3>12 · Determine the net energy change</h3><p>For a stated reaction amount, breaking bonds requires 1,400 kJ and forming bonds releases 1,050 kJ. Calculate the net change and state the direction of energy transfer.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Net change = 1,400 − 1,050 = <strong>+350 kJ</strong>. The reaction absorbs 350 kJ overall because bond breaking requires more than bond formation releases.</p></div></details></div>
+</section>
+<section class="section" id="summary"><h2>8. What to remember</h2><ul><li><strong>Ionic:</strong> opposite ions attract; charge balance sets the formula-unit ratio.</li><li><strong>Covalent:</strong> shared pairs and lone pairs must fit the electron budget.</li><li><strong>Metallic:</strong> delocalized electrons help explain conduction and malleability.</li><li><strong>Coordinate formation:</strong> one partner supplies both electrons of a new shared pair.</li><li><strong>Polarity:</strong> combine bond polarity with molecular shape.</li><li><strong>Energy:</strong> breaking bonds requires energy; forming bonds releases energy.</li></ul><h3>Key terms</h3><div class="table-wrap" role="region" tabindex="0" aria-label="Key terms"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning in this lesson</th></tr></thead><tbody><tr><th scope="row">Octet / duet</th><td>Eight / two electrons around an atom in the relevant Lewis-shell count.</td></tr><tr><th scope="row">Lone pair</th><td>A pair of electrons not used in a bond.</td></tr><tr><th scope="row">Electronegativity</th><td>Ability to attract shared electron density.</td></tr><tr><th scope="row">Bond dipole</th><td>Charge separation associated with a polar bond; it has magnitude and direction.</td></tr><tr><th scope="row">VSEPR</th><td>A model relating electron-region repulsions to arrangement around a central atom.</td></tr><tr><th scope="row">Formal charge</th><td>Electron bookkeeping that assigns each atom half the bonding electrons.</td></tr><tr><th scope="row">Bond order</th><td>Number of shared pairs in the simple single, double, and triple bonds used here.</td></tr><tr><th scope="row">Bond length</th><td>Equilibrium distance between bonded nuclei.</td></tr></tbody></table></div><h3>Ready for the quiz?</h3><div class="readiness"><label><input type="checkbox">I can explain the particle attractions in ionic, covalent, and metallic bonding.</label><label><input type="checkbox">I can draw H₂O, CO₂, NH₃, and NH₄⁺ with the correct electron totals.</label><label><input type="checkbox">I can explain why CO₂ and H₂O have different molecular polarity.</label><label><input type="checkbox">I can distinguish bond breaking from bond formation in an energy account.</label></div><p class="small">These checks are for your own review and do not control quiz access.</p></section>
+<section class="section" id="references"><h2>Sources and further reading</h2><p class="small">Diagrams, examples, and practice are prepared for this lesson. OpenStax Chemistry 2e provides supporting explanations:</p><ul class="references"><li><a href="https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding" target="_blank" rel="noopener noreferrer">Ionic Bonding</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-2-covalent-bonding" target="_blank" rel="noopener noreferrer">Covalent Bonding</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-3-lewis-symbols-and-structures" target="_blank" rel="noopener noreferrer">Lewis Symbols and Structures</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-4-formal-charges-and-resonance" target="_blank" rel="noopener noreferrer">Formal Charges and Resonance</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity" target="_blank" rel="noopener noreferrer">Molecular Structure and Polarity</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-5-strengths-of-ionic-and-covalent-bonds" target="_blank" rel="noopener noreferrer">Strengths of Ionic and Covalent Bonds</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter" target="_blank" rel="noopener noreferrer">The Solid State of Matter</a></li></ul></section><div class="quiz-area"><p>Ready to check your understanding?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Lesson Quiz →</button><p id="quizNotice" class="small" role="status"></p></div></main>
+<template id="template-water"><svg class="molecule" viewBox="0 0 400 265" role="img" aria-labelledby="mol6title mol6desc"><title id="mol6title">H₂O Lewis structure</title><desc id="mol6desc">Two O–H single bonds and two lone pairs on oxygen. Bent molecule. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol6arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="200" y="104" text-anchor="middle" font-size="29" fill="#24323d">O</text><text x="100" y="181" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="300" y="181" text-anchor="middle" font-size="29" fill="#24323d">H</text><line x1="181" y1="109" x2="120" y2="157" stroke="#24323d" stroke-width="3"/><line x1="219" y1="109" x2="280" y2="157" stroke="#24323d" stroke-width="3"/><circle cx="168" cy="61" r="3.4" fill="#136f63"/><circle cx="178" cy="61" r="3.4" fill="#136f63"/><circle cx="222" cy="61" r="3.4" fill="#136f63"/><circle cx="232" cy="61" r="3.4" fill="#136f63"/><g class="dipoles"><line x1="119" y1="191" x2="174" y2="149" stroke="#174ea6" stroke-width="3" marker-end="url(#mol6arrow)"/><line x1="281" y1="191" x2="226" y2="149" stroke="#174ea6" stroke-width="3" marker-end="url(#mol6arrow)"/><text x="200" y="238" text-anchor="middle" font-size="17" fill="#174ea6">Arrows point toward greater electron density.</text></g></svg></template><template id="template-co2"><svg class="molecule" viewBox="0 0 400 265" role="img" aria-labelledby="mol7title mol7desc"><title id="mol7title">CO₂ Lewis structure</title><desc id="mol7desc">Two carbon–oxygen double bonds. Each oxygen has two lone pairs. Linear molecule. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol7arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="90" y="119" text-anchor="middle" font-size="29" fill="#24323d">O</text><text x="200" y="119" text-anchor="middle" font-size="29" fill="#24323d">C</text><text x="310" y="119" text-anchor="middle" font-size="29" fill="#24323d">O</text><line x1="112" y1="105" x2="178" y2="105" stroke="#24323d" stroke-width="3"/><line x1="112" y1="115" x2="178" y2="115" stroke="#24323d" stroke-width="3"/><line x1="222" y1="105" x2="288" y2="105" stroke="#24323d" stroke-width="3"/><line x1="222" y1="115" x2="288" y2="115" stroke="#24323d" stroke-width="3"/><circle cx="85" cy="76" r="3.4" fill="#136f63"/><circle cx="95" cy="76" r="3.4" fill="#136f63"/><circle cx="85" cy="144" r="3.4" fill="#136f63"/><circle cx="95" cy="144" r="3.4" fill="#136f63"/><circle cx="305" cy="76" r="3.4" fill="#136f63"/><circle cx="315" cy="76" r="3.4" fill="#136f63"/><circle cx="305" cy="144" r="3.4" fill="#136f63"/><circle cx="315" cy="144" r="3.4" fill="#136f63"/><g class="dipoles"><line x1="178" y1="175" x2="112" y2="175" stroke="#174ea6" stroke-width="3" marker-end="url(#mol7arrow)"/><line x1="222" y1="175" x2="288" y2="175" stroke="#174ea6" stroke-width="3" marker-end="url(#mol7arrow)"/><text x="200" y="238" text-anchor="middle" font-size="17" fill="#174ea6">Arrows point toward greater electron density.</text></g></svg></template><template id="template-hcl"><svg class="molecule" viewBox="0 0 400 265" role="img" aria-labelledby="mol8title mol8desc"><title id="mol8title">HCl Lewis structure</title><desc id="mol8desc">One H–Cl single bond and three lone pairs on chlorine. Diatomic molecule. Lines show shared pairs; green dot pairs show lone pairs.</desc><defs><marker id="mol8arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#174ea6"/></marker></defs><text x="110" y="119" text-anchor="middle" font-size="29" fill="#24323d">H</text><text x="280" y="119" text-anchor="middle" font-size="29" fill="#24323d">Cl</text><line x1="133" y1="110" x2="251" y2="110" stroke="#24323d" stroke-width="3"/><circle cx="275" cy="76" r="3.4" fill="#136f63"/><circle cx="285" cy="76" r="3.4" fill="#136f63"/><circle cx="275" cy="144" r="3.4" fill="#136f63"/><circle cx="285" cy="144" r="3.4" fill="#136f63"/><circle cx="318" cy="105" r="3.4" fill="#136f63"/><circle cx="318" cy="115" r="3.4" fill="#136f63"/><g class="dipoles"><line x1="135" y1="175" x2="250" y2="175" stroke="#174ea6" stroke-width="3" marker-end="url(#mol8arrow)"/><text x="200" y="238" text-anchor="middle" font-size="17" fill="#174ea6">Arrows point toward greater electron density.</text></g></svg></template><script>
+'use strict';
+const explanations={water:{answer:'polar',arrows:'Both O–H bond dipoles point toward O. Their sideways components cancel, but their components toward O add.',reason:'H₂O is bent. The two O–H bond dipoles do not cancel, giving a nonzero net dipole.'},co2:{answer:'nonpolar',arrows:'The two equal C=O bond dipoles point away from C toward opposite O atoms. They cancel.',reason:'CO₂ is linear. Its equal C=O bond dipoles point in opposite directions, so the net dipole is zero.'},hcl:{answer:'polar',arrows:'The H–Cl bond dipole points from H toward Cl; there is no second bond dipole to cancel it.',reason:'HCl has a polar H–Cl bond, with more electron density toward Cl. This diatomic molecule therefore has a net dipole.'}};
+const select=document.getElementById('moleculeSelect'),view=document.getElementById('moleculeView'),toggle=document.getElementById('dipoleToggle'),form=document.getElementById('polarityForm'),feedback=document.getElementById('polarityFeedback'),dipoleText=document.getElementById('dipoleText');
+function resetComparison(){view.replaceChildren(document.getElementById('template-'+select.value).content.cloneNode(true));view.classList.remove('show-dipoles');toggle.setAttribute('aria-pressed','false');toggle.textContent='Show bond dipoles';dipoleText.textContent='Bond arrows are hidden.';form.reset();feedback.textContent='';}
+select.addEventListener('change',resetComparison);document.getElementById('resetPrediction').addEventListener('click',resetComparison);
+toggle.addEventListener('click',()=>{const shown=view.classList.toggle('show-dipoles');toggle.setAttribute('aria-pressed',String(shown));toggle.textContent=shown?'Hide bond dipoles':'Show bond dipoles';dipoleText.textContent=shown?explanations[select.value].arrows:'Bond arrows are hidden.';});
+form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;const chosen=form.querySelector('input[name="polarity"]:checked').value;const item=explanations[select.value];feedback.textContent=(chosen===item.answer?'Correct. ':'Not quite. ')+item.reason;});
+resetComparison();
+document.getElementById('takeQuizBtn').addEventListener('click',()=>{if(window.parent!==window)window.parent.postMessage({type:'openQuiz',quiz:'chapter2_lesson2_quiz.html'},'*');else document.getElementById('quizNotice').textContent='Open this lesson inside LearnTrack to launch its quiz.';});
+let openBeforePrint=[];
+window.addEventListener('beforeprint',()=>{openBeforePrint=Array.from(document.querySelectorAll('details')).map(item=>{const previous=item.open;item.open=true;return previous;});});
+window.addEventListener('afterprint',()=>{document.querySelectorAll('details').forEach((item,i)=>item.open=Boolean(openBeforePrint[i]));});
+</script></body></html>
