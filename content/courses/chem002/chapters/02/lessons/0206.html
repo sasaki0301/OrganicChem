@@ -1,248 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chapter 2 – Summary: Atomic Structure to Nomenclature</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 2 Summary: Atomic Structure to Nomenclature</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 32px 24px;
-      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-      color: #222;
-      font-size: 22px;
-      line-height: 1.7;
-    }
+.wide-table{min-width:580px}.equation{background:#f5f8ff;border:1px solid var(--line);border-radius:10px;padding:20px;text-align:center;overflow-wrap:anywhere;font-weight:600}.steps li strong{color:var(--green)}
+.diagram{width:100%;height:auto;display:block;max-width:600px;margin:12px auto}.table-wrap{max-width:100%}.worksheet{min-height:70px;border-bottom:1px dashed #a6b9bd;margin:14px 0}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}.worksheet{min-height:45px}}
 
-    h1 { font-size: 2.2em; color: #136f63; margin-bottom: 0.4em; }
-    h2 { font-size: 1.55em; color: #136f63; margin-top: 1.2em; margin-bottom: 0.4em; }
-    h3 { font-size: 1.15em; color: #174ea6; margin-top: 0.6em; }
+.nuclide{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-size:1.25em;vertical-align:middle}.nuclide .numbers{display:flex;flex-direction:column;font-size:.65em;line-height:1.15;text-align:right}.nuclide .symbol{font-weight:650}.nuclide .charge{align-self:flex-start;font-size:.65em;line-height:1.2}.count-rule{display:flex;gap:12px;flex-wrap:wrap}.count-rule span{padding:10px 16px;border-radius:8px;background:#eaf0fc;font-weight:650}.orbital-diagram{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin:20px 0}.orbital-group{text-align:center}.boxes{display:flex;gap:5px}.orbital{display:flex;align-items:center;justify-content:center;width:49px;height:50px;border:2px solid #174ea6;border-radius:5px;background:#fff;color:#174ea6;font-size:26px;line-height:1;letter-spacing:0}.orbital-label{font-size:.8em;margin-top:5px}.config{white-space:normal;font-weight:650;color:#174ea6}.input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.input-grid label{font-size:.9em;font-weight:600}input,select{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #7d919a;border-radius:6px;background:#fff;color:#24323d}input{margin-top:6px}.practice-actions{display:flex;gap:10px;flex-wrap:wrap}.practice-actions button{background:#136f63;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 .9em 'Segoe UI',Arial,sans-serif;cursor:pointer}.practice-actions .secondary{background:#e5ebf7;color:#174ea6}.feedback{margin-top:16px;padding:16px;background:#eaf0fc;border-radius:8px}.feedback:empty{display:none}.self-check label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.self-check input{width:20px;flex-shrink:0;margin-top:8px}code{font-family:inherit}.diagram{max-width:650px}.print-note{display:none}@media(max-width:440px){.input-grid{grid-template-columns:1fr}.orbital-diagram{gap:16px}.count-rule span{padding:8px 10px}}@media print{.interactive{display:none}.print-note{display:block}.orbital{print-color-adjust:exact}.orbital-diagram{break-inside:avoid}}
 
-    .section {
-      background: #fff;
-      padding: 26px;
-      border-radius: 14px;
-      margin-bottom: 28px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    }
+.simulation iframe{display:block;width:100%;max-width:760px;aspect-ratio:16/10;height:auto;margin:16px auto;border:0;border-radius:10px}.molecule{display:block;width:100%;max-width:410px;height:auto;margin:16px auto}.molecule text{font-family:Segoe UI,Arial,sans-serif}.bond-key{display:flex;gap:12px;flex-wrap:wrap}.bond-key span{background:#edf4ff;padding:7px 12px;border-radius:8px;font-weight:650}.exercise{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.exercise select,.exercise input[type=number]{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #728994;border-radius:6px;background:#fff;color:#24323d;margin:6px 0 14px}.exercise .field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.exercise label{font-weight:600;font-size:.9em}.exercise .actions{display:flex;gap:10px;flex-wrap:wrap}.exercise button{background:#136f63;color:white;border:0;border-radius:8px;padding:10px 16px;font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;cursor:pointer}.exercise button.secondary{background:#e5ebf7;color:#174ea6}.exercise .feedback{background:#eaf0fc;border-left:4px solid #174ea6;padding:16px;margin-top:16px;border-radius:8px}.exercise .feedback:empty{display:none}.formula-box{text-align:center;padding:17px;border-radius:9px;background:#f4f8fb;color:#174ea6;font-weight:700;font-size:1.15em;overflow-wrap:anywhere}.route{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.route span{background:#edf4ff;padding:9px 12px;border-radius:8px;font-weight:650}.readiness label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.readiness input{width:20px;flex-shrink:0;margin-top:8px}.compact{font-size:.9em}.print-note{display:none}@media(max-width:520px){.exercise .field-grid{grid-template-columns:1fr}.exercise{padding:15px}}@media print{.exercise{display:none}.print-note{display:block}.molecule{max-width:260px}.table-wrap{overflow:visible}}
 
-    ul { margin-left: 24px; }
+.structure-svg{width:100%;height:auto;max-width:530px;display:block;margin:12px auto}.structure-svg text{font-family:Segoe UI,Arial,sans-serif}.structure-card{border:1px solid #dce6eb;border-radius:10px;background:#f8fbff;padding:18px;margin:16px 0}.representation{font-weight:700;color:#174ea6;text-align:center;overflow-wrap:anywhere;font-size:1.06em}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.simulation iframe{display:block;width:100%;max-width:760px;aspect-ratio:16/10;height:auto;margin:16px auto;border:0;border-radius:10px}.practice{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.practice select,.practice input[type=number]{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #728994;border-radius:6px;background:#fff;color:#24323d;margin:6px 0 14px}.practice .inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.practice label{font-weight:600;font-size:.9em}.practice button{background:#136f63;color:white;border:0;border-radius:8px;padding:10px 16px;font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;cursor:pointer}.practice button.secondary{background:#e5ebf7;color:#174ea6}.practice .buttons{display:flex;gap:10px;flex-wrap:wrap}.practice .feedback{background:#eaf0fc;border-left:4px solid #174ea6;padding:16px;margin-top:16px;border-radius:8px}.practice .feedback:empty{display:none}.print-note{display:none}@media(max-width:620px){.two-col{grid-template-columns:1fr}}@media(max-width:480px){.practice .inputs{grid-template-columns:1fr}}@media print{.practice,.simulation iframe{display:none}.print-note{display:block}.two-col{display:block}.structure-svg{max-width:350px}.table-wrap{overflow:visible}}
 
-    /* Activity block */
-    .activity {
-      border-left: 6px solid #136f63;
-      background: #fff;
-      padding: 16px 18px;
-      border-radius: 10px;
-      margin: 18px 0;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-    }
-
-    .toggle-btn {
-      margin-top: 12px;
-      padding: 10px 16px;
-      background: #136f63;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.18s;
-    }
-
-    .toggle-btn:hover {
-      background: #0f5b52;
-      transform: translateY(-1px);
-    }
-
-    .answer {
-      display: none;
-      margin-top: 12px;
-      background: #eef6ff;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 17px;
-    }
-
-    /* Video iframe */
-    iframe {
-      width: 92%;
-      max-width: 820px;
-      height: 440px;
-      border-radius: 12px;
-      border: none;
-      display: block;
-      margin: 18px auto;
-    }
-
-    /* Quiz button */
-    .quiz-button {
-      background: #136f63;
-      color: #fff;
-      padding: 14px 30px;
-      border-radius: 12px;
-      border: none;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: 0.2s;
-    }
-    .quiz-button:hover { background: #0f5b52; }
-
-    .note { font-size: 1.0rem; color: #555; }
-
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-  </style>
-</head>
-
-<body>
-
-  <h1>Chapter 2 Summary: Atomic Structure to Nomenclature</h1>
-  <p class="note">
-    This chapter connected concepts from atomic structure all the way to
-    organic nomenclature. Review each topic below to reinforce your 
-    understanding before taking the comprehensive assessment.
-  </p>
-
-  <!-- SECTION 1 -->
-  <div class="section">
-    <h2>1. Review of Atomic Structure</h2>
-    <ul>
-      <li>Atoms consist of protons, neutrons, and electrons.</li>
-      <li>Electrons are arranged in shells, subshells, and orbitals.</li>
-      <li>Electron configuration determines reactivity and bonding behavior.</li>
-    </ul>
-
-    <div class="activity">
-      <h3>Checkpoint: Sodium’s Electron Configuration</h3>
-      <p>Write the electron configuration of sodium (Z = 11).</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-      <div class="answer">
-        <strong>Answer:</strong> 1s² 2s² 2p⁶ 3s¹
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 2 -->
-  <div class="section">
-    <h2>2. Chemical Bonding Theory</h2>
-    <p>Atoms bond to achieve stable, lower-energy electron configurations.</p>
-    <ul>
-      <li><strong>Ionic bonds:</strong> electron transfer between metal & nonmetal.</li>
-      <li><strong>Covalent bonds:</strong> electron sharing between nonmetals.</li>
-      <li><strong>Metallic bonds:</strong> delocalized “electron sea” among metals.</li>
-    </ul>
-
-    <div class="activity">
-      <h3>Checkpoint: Bond Identification</h3>
-      <p>Identify the bond type in NaCl, H₂, and Cu.</p>
-
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        NaCl → Ionic <br>
-        H₂ → Covalent <br>
-        Cu → Metallic
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 3 -->
-  <div class="section">
-    <h2>3. Hybridization & Molecular Geometry</h2>
-    <ul>
-      <li><strong>sp³:</strong> 4 sigma bonds → tetrahedral (≈109.5°)</li>
-      <li><strong>sp²:</strong> 3 sigma + 1 pi → trigonal planar (120°)</li>
-      <li><strong>sp:</strong> 2 sigma + 2 pi → linear (180°)</li>
-    </ul>
-
-    <div class="activity">
-      <h3>Checkpoint: Hybridization Practice</h3>
-      <p>Predict the hybridization of each carbon in ethene (C₂H₄).</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-      <div class="answer">
-        <strong>Answer:</strong> Both carbons are <strong>sp²-hybridized</strong>.
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 4 -->
-  <div class="section">
-    <h2>4. Drawing Chemical Structures</h2>
-    <ul>
-      <li>Lewis structures show valence electrons & bonding pairs.</li>
-      <li>VSEPR predicts 3D geometry by minimizing electron pair repulsion.</li>
-      <li>Bent, trigonal planar, tetrahedral, and linear are common shapes.</li>
-    </ul>
-
-    <div class="activity">
-      <h3>Checkpoint: Water Geometry</h3>
-      <p>What is the shape of H₂O based on VSEPR theory?</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-      <div class="answer">
-        <strong>Answer:</strong> Bent (~104.5°) due to two lone pairs on oxygen.
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 5 -->
-  <div class="section">
-    <h2>5. Organic Nomenclature Essentials</h2>
-    <p>IUPAC naming consists of three main parts:</p>
-    <ul>
-      <li><strong>Prefix</strong> – substituents (with locants)</li>
-      <li><strong>Parent</strong> – longest carbon chain (root)</li>
-      <li><strong>Suffix</strong> – main functional group</li>
-      <li>Number to give the <strong>lowest locants</strong>.</li>
-      <li>Alphabetize substituents (ignoring di-, tri-, sec-, tert-).</li>
-    </ul>
-
-    <div class="activity">
-      <h3>Checkpoint: Structure of an IUPAC Name</h3>
-      <p>What is the correct order?</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-      <div class="answer">
-        <strong>Answer:</strong> Prefix + Parent + Suffix
-      </div>
-    </div>
-  </div>
-
-  <!-- VIDEO SECTION -->
-  <div class="section">
-    <h2>Summary Video Review</h2>
-    <iframe
-      src="https://www.youtube.com/embed/S_k0kr2eZSQ"
-      title="Review: Chemical Bonds & Structure"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- QUIZ BUTTON -->
-  <div style="text-align:center; margin-top:20px; margin-bottom:40px;">
-    <button class="quiz-button" id="takeQuizBtn">
-      Take the Comprehensive Assessment →
-    </button>
-  </div>
-
-  <script>
-    function toggleAnswer(btn) {
-      const ans = btn.nextElementSibling;
-      const show = ans.style.display === "block";
-      ans.style.display = show ? "none" : "block";
-      btn.textContent = show ? "Show Answer" : "Hide Answer";
-    }
-
-    document.getElementById('takeQuizBtn').addEventListener('click', () => {
-      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter2_summary_quiz.html' }, '*');
-    });
-  </script>
-
-</body>
-</html>
+.review-map{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.review-map span{background:#edf4ff;padding:9px 12px;border-radius:8px;font-weight:650;color:#174ea6}.formula-box{text-align:center;padding:16px;border-radius:10px;background:#f3f8fc;color:#174ea6;font-weight:700;font-size:1.12em;overflow-wrap:anywhere}.diagram{display:block;width:100%;max-width:500px;height:auto;margin:14px auto}.diagram text{font-family:Segoe UI,Arial,sans-serif}.readiness label{display:flex;gap:10px;align-items:flex-start;margin:11px 0}.readiness input{width:20px;height:20px;flex-shrink:0;margin-top:7px}.reading-guide{font-size:.9em;color:#536575}.reference-row{font-size:.9em}.assessment-label{text-align:center;color:#136f63;font-weight:700}.review-table{min-width:560px}@media print{.readiness{display:none}.review-table{min-width:0}.diagram{max-width:340px}.table-wrap{overflow:visible}}
+</style></head><body><a class="skip" href="#review">Skip to chapter review</a><main id="review"><header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Chapter Review</div><h1>Chapter 2 Summary: Atomic Structure to Nomenclature</h1><p class="intro">Bring the chapter together: use atomic structure to reason about bonding, read a molecular structure, and describe it with a systematic name.</p><p class="meta">Allow about 25–35 minutes. Work through the mixed practice on paper before revealing its explanations. Scroll wide tables sideways on small screens.</p><nav aria-label="Chapter review sections"><a href="#map">Chapter map</a><a href="#atomic">Lesson 1</a><a href="#bonding">Lesson 2</a><a href="#hybrid">Lesson 3</a><a href="#drawing">Lesson 4</a><a href="#naming">Lesson 5</a><a href="#connection">Integrated example</a><a href="#practice">Mixed practice</a><a href="#ready">Readiness</a></nav></header>
+<section class="section" id="map"><h2>How the ideas connect</h2><div class="review-map"><span>Atomic particles</span><span>→ valence electrons</span><span>→ bonding and shape</span><span>→ structural representations</span><span>→ systematic names</span></div><p>The arrows show a study sequence, not a claim that one model alone predicts every property. Use each tool for the question it can answer.</p><div class="note"><strong>How to review:</strong> scan the five lesson recaps, work through the mixed practice independently, then revisit any lesson linked to an uncertain answer. The checks and practice on this page do not record a score or control assessment access.</div></section>
+<section class="section" id="atomic"><h2>1. Atomic structure and electron configuration</h2><ul><li><strong>Atomic number Z</strong> is the number of protons; it identifies the element.</li><li><strong>Mass number A</strong> is protons + neutrons; for one isotope, n = A − Z. It differs from a periodic-table average atomic mass.</li><li><strong>Isotopes</strong> share a proton count and differ in neutron count. <strong>Ions</strong> differ in electron count from the neutral atom.</li><li><strong>Charge = p − e.</strong> Only a neutral atom has equal numbers of protons and electrons.</li><li>Orbitals are quantum descriptions associated with electron probability distributions, not fixed circular tracks.</li></ul><p>For the main-group examples in this chapter, valence electrons are those in the highest occupied principal shell. Neutral carbon is 1s² 2s² 2p²: 2 + 2 = <strong>4 valence electrons</strong>, not merely the final 2p².</p>
+<div class="activity"><h3>Checkpoint · Sodium atom and ion</h3><p>Sodium-23 has Z = 11. Give p, n, and e for neutral Na and Na⁺, then write the ground-state configuration of each.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Both have <strong>11 p and 12 n</strong>. Neutral Na has 11 e and configuration <strong>1s² 2s² 2p⁶ 3s¹</strong>. Na⁺ has 10 e and configuration <strong>1s² 2s² 2p⁶</strong>. Check Na⁺: 11 − 10 = +1.</p><p class="small">Revisit Lesson 1 for particle-count steps, orbital diagrams, and configuration practice.</p></div></details></div>
+</section>
+<section class="section" id="bonding"><h2>2. Bonding, Lewis structures, and polarity</h2><div class="table-wrap" role="region" tabindex="0" aria-label="Bonding models"><table><thead><tr><th scope="col">Model</th><th scope="col">Attraction or shared electrons</th><th scope="col">Example</th></tr></thead><tbody><tr><th scope="row">Ionic</th><td>Electrostatic attraction between oppositely charged ions</td><td>NaCl crystal: Na⁺ and Cl⁻ in a lattice</td></tr><tr><th scope="row">Covalent</th><td>Shared electron density attracted to both bonded nuclei</td><td>H–H within H₂</td></tr><tr><th scope="row">Metallic</th><td>Metal cores and delocalized electrons</td><td>Solid copper</td></tr></tbody></table></div><p>Electron transfer can account for simple ion formation, but <strong>ionic bonding is the attraction between ions</strong>. A coordinate bond is a covalent bond whose shared pair is supplied by one partner during formation.</p><p>Lewis structures account for <strong>valence electrons, bonds, lone pairs, and charges</strong>. VSEPR then uses bonding regions and lone pairs to predict a local arrangement. In H₂O, oxygen has four electron regions: tetrahedral electron-region geometry and a <strong>bent</strong> molecular shape, about 104.5°.</p><p><strong>Bond polarity is not the same as molecular polarity.</strong> CO₂ has polar C=O bonds, but its linear arrangement makes their dipoles cancel; bent H₂O has a net dipole.</p><div class="note">Breaking a bond requires energy; forming a bond releases energy. The overall energy change depends on both. The octet rule is a useful guide, not a universal rule.</div>
+<div class="activity"><h3>Checkpoint · Reason from shape</h3><p>Why is CO₂ nonpolar even though its C=O bonds are polar?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The two identical bond dipoles point in opposite directions in <strong>linear</strong> CO₂ and cancel. H₂O is bent, so its two O–H bond dipoles do not cancel.</p><p class="small">Revisit Lesson 2 for Lewis electron counts, coordinate bonding, shape, and polarity.</p></div></details></div>
+</section>
+<section class="section" id="hybrid"><h2>3. Hybridization, electron regions, and σ / π bonds</h2><p>In the introductory local model, count <strong>bonded neighbors plus lone pairs on the chosen atom</strong>. Each single, double, or triple connection counts as one electron region.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Hybridization summary"><table><thead><tr><th scope="col">Regions</th><th scope="col">Common local model</th><th scope="col">Ideal electron-region arrangement</th><th scope="col">Unhybridized p orbitals in the simple model</th></tr></thead><tbody><tr><td>2</td><td>sp</td><td>Linear, 180°</td><td>2</td></tr><tr><td>3</td><td>sp²</td><td>Trigonal planar, 120°</td><td>1</td></tr><tr><td>4</td><td>sp³</td><td>Tetrahedral, 109.5°</td><td>0</td></tr></tbody></table></div><p>Actual angles can differ, especially with lone pairs; molecular shape names atom positions. For example, NH₃ has <strong>4 regions</strong> and an sp³ approximation, but is <strong>trigonal pyramidal</strong>, not tetrahedral in molecular shape. Resonance can require a more careful model.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Bond counts by bond order"><table><thead><tr><th scope="col">Connection</th><th scope="col">σ</th><th scope="col">π</th></tr></thead><tbody><tr><td>Single</td><td>1</td><td>0</td></tr><tr><td>Double</td><td>1</td><td>1</td></tr><tr><td>Triple</td><td>1</td><td>2</td></tr></tbody></table></div><p>For the ordinary localized structures in this chapter, count one σ per bonded atom pair, then add one π for each double bond or two π for each triple bond. Include C–H bonds in a whole-molecule count.</p>
+<div class="activity"><h3>Checkpoint · Ethene</h3><p>Assign the local model at each carbon in CH₂=CH₂. Count all σ and π bonds in the whole molecule.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Each carbon has three neighbors → <strong>sp²</strong>. Four C–H bonds contribute 4 σ; the C=C contributes 1 σ + 1 π. Total: <strong>5 σ and 1 π</strong>. The double connection is only one electron region around each carbon.</p><p class="small">Revisit Lesson 3 for p-orbital overlap, ethyne, and restricted rotation.</p></div></details></div>
+</section>
+<section class="section" id="drawing"><h2>4. Read and draw chemical structures</h2><div class="table-wrap" role="region" tabindex="0" aria-label="Comparing structure representations"><table><thead><tr><th scope="col">Representation</th><th scope="col">What it shows</th><th scope="col">Important limitation</th></tr></thead><tbody><tr><th scope="row">Molecular formula</th><td>Number of each kind of atom</td><td>Does not uniquely show connectivity</td></tr><tr><th scope="row">Lewis structure</th><td>Bonds, lone pairs, and charge</td><td>Does not by itself fully specify 3D geometry</td></tr><tr><th scope="row">Condensed</th><td>Connected groups, with branches often in parentheses</td><td>Not every bond is drawn</td></tr><tr><th scope="row">Skeletal</th><td>Carbon framework and explicitly written heteroatoms</td><td>Most C labels and C–H bonds are omitted</td></tr></tbody></table></div><p>In a skeletal formula, each <strong>unlabeled endpoint, corner, and junction</strong> represents C. Add enough H to give an ordinary neutral carbon four bonds, counting double bonds twice. A labeled atom such as O is <strong>not</strong> an extra carbon; H on O or N is usually shown.</p><svg class="diagram" viewBox="0 0 400 205" role="img" aria-labelledby="eth-title eth-desc"><title id="eth-title">Ethanol skeletal structure</title><desc id="eth-desc">Two unlabeled carbon positions joined to a written OH group. The labeled terminal oxygen is not another carbon.</desc><line x1="70" y1="145" x2="190" y2="60" stroke="#174ea6" stroke-width="4" stroke-linecap="round"/><line x1="190" y1="60" x2="280" y2="122" stroke="#174ea6" stroke-width="4" stroke-linecap="round"/><text x="290" y="135" font-size="31" font-weight="bold" fill="#a13918">OH</text><text x="55" y="180" font-size="18" fill="#136f63">C</text><text x="185" y="40" font-size="18" fill="#136f63">C</text></svg><p class="small">Ethanol: the green C labels are teaching aids. Condensed CH₃CH₂OH; molecular C₂H₆O. Include the H on oxygen.</p><p>Different structures can have the same molecular formula: ethanol CH₃CH₂OH and dimethyl ether CH₃OCH₃ are constitutional isomers. Wedges and hashed wedges can add spatial information.</p>
+<div class="activity"><h3>Checkpoint · Count a branch</h3><p>For CH₃CH(CH₃)CH₃, count carbon and hydrogen atoms. What does the parenthesized CH₃ indicate?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>There are <strong>4 carbons and 10 hydrogens</strong>, so C₄H₁₀. The parenthesized CH₃ is a branch attached to the immediately preceding CH.</p><p class="small">Revisit Lesson 4 for skeletal rings, resonance, and wedge-and-dash drawings.</p></div></details></div>
+</section>
+<section class="section" id="naming"><h2>5. Organic nomenclature: the introductory workflow</h2><ol><li><strong>Read and select:</strong> identify the principal characteristic group and relevant multiple bonds; choose an eligible continuous parent chain.</li><li><strong>Number:</strong> in the simple examples studied, give the principal suffix group its lowest locant, then the multiple bond, then compare substituent locants at the first point of difference.</li><li><strong>Name the attached groups:</strong> use a locant for each occurrence and di-, tri-, or tetra- for repeated identical groups.</li><li><strong>Assemble:</strong> alphabetize different simple substituent names, ignoring di-, tri-, and tetra- for alphabetization; add the parent and ending.</li><li><strong>Check:</strong> redraw the name and compare it with the structure.</li></ol><div class="note">This sequence is an introductory guide for the simple open-chain examples in Lesson 5. Competing parent chains, multiple characteristic groups, rings, and stereochemistry need the fuller IUPAC rules. A longer chain that omits a principal suffix group is not automatically the parent.</div><p>For <strong>CH₃CH(CH₃)CH(Cl)CH₂CH₃</strong>, the parent is pentane. Numbering gives methyl at 2 and chloro at 3; cite chloro before methyl: <strong>3-chloro-2-methylpentane</strong>. The name leaves any stereochemistry unspecified.</p><p>Among the selected groups reviewed in Lesson 5, an acid group has priority over an OH group for the principal suffix: HOOC–CH(OH)–CH₃ is <strong>2-hydroxypropanoic acid</strong>. The abbreviated group-priority list is not a complete hierarchy.</p>
+<div class="activity"><h3>Checkpoint · Compare numbering</h3><p>For the same alkane parent, compare substituent locants 2,2,4 and 2,4,4. Which set wins?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>2,2,4.</strong> The first entries tie; at the first difference the second entries are 2 and 4, so 2 is preferred. Compare ordered locants, not their sums.</p><p class="small">Revisit Lesson 5 for annotated naming examples and reverse drawing.</p></div></details></div>
+</section>
+<section class="section" id="connection"><h2>6. One structure connects the chapter</h2><div class="worked"><div class="label">Integrated example</div><h3>Propene: CH₂=CH–CH₃</h3><svg class="diagram" viewBox="0 0 480 210" role="img" aria-labelledby="prop-title prop-desc"><title id="prop-title">Numbered propene structure</title><desc id="prop-desc">Carbon one is CH2, double-bonded to carbon two CH, which is single-bonded to carbon three CH3. Numbers one, two, and three label the parent chain from the double-bond end.</desc><text x="70" y="72" text-anchor="middle" font-size="19" font-weight="bold" fill="#136f63">1</text><text x="240" y="72" text-anchor="middle" font-size="19" font-weight="bold" fill="#136f63">2</text><text x="410" y="72" text-anchor="middle" font-size="19" font-weight="bold" fill="#136f63">3</text><text x="70" y="130" text-anchor="middle" font-size="31" font-weight="bold" fill="#174ea6">CH₂</text><text x="240" y="130" text-anchor="middle" font-size="31" font-weight="bold" fill="#174ea6">CH</text><text x="410" y="130" text-anchor="middle" font-size="31" font-weight="bold" fill="#174ea6">CH₃</text><line x1="108" y1="116" x2="202" y2="116" stroke="#24323d" stroke-width="3"/><line x1="108" y1="124" x2="202" y2="124" stroke="#24323d" stroke-width="3"/><line x1="272" y1="120" x2="367" y2="120" stroke="#24323d" stroke-width="3"/><text x="240" y="180" text-anchor="middle" font-size="16" fill="#536575">Condensed structural drawing · numbers are teaching labels</text></svg><ol><li><strong>Structure and atoms:</strong> the molecule has three carbon atoms and 2 + 1 + 3 = six H atoms, so C₃H₆.</li><li><strong>Regions and hybridization:</strong> C-1 and C-2 each have three neighbors → sp². C-3 has four neighbors → sp³. Count the C=C as one region around each of its two carbons.</li><li><strong>Whole-molecule bond count:</strong> six C–H bonds give 6 σ; two C–C connections give 2 σ; the C=C adds 1 π. Total = <strong>8 σ and 1 π</strong>.</li><li><strong>Naming:</strong> the parent has three carbons and one double bond: <strong>propene</strong>. Numbering from the nearer end places the double bond at C-1; its position is unambiguous in propene.</li><li><strong>Model and shape:</strong> the two double-bonded carbons are approximately trigonal planar. Twisting the double bond substantially disrupts the π overlap in the localized model.</li></ol></div><p class="small">A carbon’s electron-region count, a bond’s σ/π composition, and the molecule’s total atoms are related, but they are different counting tasks.</p></section>
+<section class="section" id="practice"><h2>7. Mixed practice: retrieve, explain, apply</h2><p>Try each item before opening the explanation. Each answer identifies a lesson to revisit if the reasoning is unclear.</p>
+<div class="activity"><h3>1 · Count particles</h3><p>Magnesium-24 has Z = 12. Find p, n, and e in neutral magnesium-24 and in Mg²⁺ of the same isotope.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Both have <strong>12 p and 12 n</strong>. The neutral atom has 12 e; Mg²⁺ has 10 e. Charges: 12 − 12 = 0 and 12 − 10 = +2. <strong>Revisit Lesson 1.</strong></p></div></details></div>
+<div class="activity"><h3>2 · Configure and count</h3><p>Write the ground-state configuration for neutral O, Z = 8. How many valence electrons does it have?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>1s² 2s² 2p⁴.</strong> The highest occupied shell is n = 2; 2 + 4 = <strong>6 valence electrons</strong>. <strong>Revisit Lesson 1.</strong></p></div></details></div>
+<div class="activity"><h3>3 · Explain a conducting solid</h3><p>Why does copper conduct as a solid while solid NaCl conducts poorly?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Copper has mobile delocalized electrons. NaCl has charged ions, but they are fixed in the solid lattice; its ions can carry charge when molten or dissolved. <strong>Revisit Lesson 2.</strong></p></div></details></div>
+<div class="activity"><h3>4 · Electron geometry versus shape</h3><p>NH₃ has three N–H bonds and one lone pair on N. Give its electron-region geometry, molecular shape, and simple hybridization model.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Four regions give a <strong>tetrahedral electron-region arrangement</strong> and an <strong>sp³ approximation</strong>. The atom positions make a <strong>trigonal-pyramidal molecular shape</strong>. <strong>Revisit Lessons 2–3.</strong></p></div></details></div>
+<div class="activity"><h3>5 · Count a charged Lewis structure</h3><p>How many valence electrons and N lone pairs are in the standard Lewis structure of NH₄⁺?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>5 + 4(1) − 1 = <strong>8 valence electrons</strong>. Four N–H bonds use all eight, leaving <strong>zero lone pairs</strong> on N. Bracket the ion with overall +. <strong>Revisit Lessons 2 and 4.</strong></p></div></details></div>
+<div class="activity"><h3>6 · Count a triple bond and its hydrogens</h3><p>For HC≡CH, assign each carbon’s local model and count all σ and π bonds in the molecule.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Each carbon has two neighbors → <strong>sp</strong>. Two C–H σ bonds plus one C–C σ bond give <strong>3 σ</strong>; the triple connection adds <strong>2 π</strong>. <strong>Revisit Lesson 3.</strong></p></div></details></div>
+<div class="activity"><h3>7 · Same formula, different structure</h3><p>Ethanol CH₃CH₂OH and dimethyl ether CH₃OCH₃ share C₂H₆O. Are they the same compound?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>No. Their atom connections differ, so they are <strong>constitutional isomers</strong>. A molecular formula alone does not specify connectivity. <strong>Revisit Lesson 4.</strong></p></div></details></div>
+<div class="activity"><h3>8 · Read a skeletal formula</h3><p>An unlabeled four-position zigzag has three single-bond segments and no branches. Write its condensed and molecular formulas.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Four carbon positions give <strong>CH₃CH₂CH₂CH₃</strong>, or <strong>C₄H₁₀</strong>. Each end is CH₃ and each interior carbon is CH₂. <strong>Revisit Lesson 4.</strong></p></div></details></div>
+<div class="activity"><h3>9 · Name a branched chain</h3><p>Name CH₃CH(CH₃)CH₂CH₃ using the simple workflow.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The longest continuous chain contains four carbons; the remaining methyl is on C-2: <strong>2-methylbutane</strong>. <strong>Revisit Lesson 5.</strong></p></div></details></div>
+<div class="activity"><h3>10 · Alphabetical order</h3><p>Name CH₃CH(CH₃)CH(Cl)CH₂CH₃. Why does the name not begin with 2-methyl?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The parent is pentane, with methyl at 2 and chloro at 3: <strong>3-chloro-2-methylpentane</strong>. Chloro is cited first alphabetically, while its own locant stays 3. <strong>Revisit Lesson 5.</strong></p></div></details></div>
+<div class="activity"><h3>11 · Principal group and numbering</h3><p>For HOOC–CH(OH)–CH₃, identify the acid suffix and name the compound.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The carboxyl carbon is C-1 and the OH is at C-2. Acid is the principal group in this pair; OH is hydroxy-: <strong>2-hydroxypropanoic acid</strong>. This does not specify stereochemistry. <strong>Revisit Lesson 5.</strong></p></div></details></div>
+<div class="activity"><h3>12 · Construct from a name</h3><p>Write a condensed structure for 2,2-dimethylpropane. How many total carbons are present?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>CH₃C(CH₃)₂CH₃.</strong> The parent has 3 carbons and two methyl branches add 2, giving <strong>5 total carbons</strong>. The central carbon has four C–C bonds and no hydrogen. <strong>Revisit Lessons 4–5.</strong></p></div></details></div>
+</section>
+<section class="section" id="ready"><h2>8. Ready for the chapter assessment?</h2><p>Check a statement only when you can explain it without opening an answer. These are self-checks and do not affect access.</p><div class="readiness"><label><input type="checkbox">I can count protons, neutrons, and electrons for an atom and an ion.</label><label><input type="checkbox">I can connect Lewis electrons with shape and distinguish bond from molecular polarity.</label><label><input type="checkbox">I can count regions at one atom and σ / π bonds in the whole molecule.</label><label><input type="checkbox">I can read a skeletal structure and write its molecular formula.</label><label><input type="checkbox">I can name and redraw a simple branched structure.</label></div><div class="activity"><h3>Final retrieval prompt</h3><p>Explain how you would go from the condensed structure CH₂=CHCH₃ to its carbon hybridizations, whole-molecule σ / π count, and name.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Each double-bonded carbon has three regions and is sp²; the CH₃ carbon has four and is sp³. The molecule has six C–H σ bonds and two C–C σ bonds, plus one π bond: <strong>8 σ and 1 π</strong>. The three-carbon alkene is <strong>propene</strong>.</p></div></details></div></section>
+<section class="section" id="references"><h2>Sources and further reading</h2><p class="small">This page consolidates the revised Chapter 2 lessons. Background references include:</p><ul class="references"><li><a href="https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Atomic Structure and Symbolism</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Molecular Structure and Polarity</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/8-3-multiple-bonds" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Multiple Bonds</a></li><li><a href="https://openstax.org/books/organic-chemistry/pages/1-12-drawing-chemical-structures" target="_blank" rel="noopener noreferrer">OpenStax Organic Chemistry · Drawing Chemical Structures</a></li><li><a href="https://iupac.qmul.ac.uk/BlueBook/P6.html" target="_blank" rel="noopener noreferrer">IUPAC Blue Book · Substitutive nomenclature</a></li></ul></section><div class="quiz-area"><p>Ready to apply the chapter?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Comprehensive Assessment →</button><p id="quizNotice" class="small" role="status"></p></div></main>
+<script>
+'use strict';document.getElementById('takeQuizBtn').addEventListener('click',()=>{if(window.parent!==window)window.parent.postMessage({type:'openQuiz',quiz:'chapter2_summary_quiz.html'},'*');else document.getElementById('quizNotice').textContent='Open this chapter review inside LearnTrack to launch the assessment.';});
+let openBeforePrint=[];window.addEventListener('beforeprint',()=>{openBeforePrint=Array.from(document.querySelectorAll('details')).map(item=>{const was=item.open;item.open=true;return was;});});window.addEventListener('afterprint',()=>{document.querySelectorAll('details').forEach((item,i)=>item.open=Boolean(openBeforePrint[i]));});
+</script></body></html>
