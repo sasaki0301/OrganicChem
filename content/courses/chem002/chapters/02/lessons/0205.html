@@ -1,395 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chapter 2 – Lesson 5: Nomenclature (IUPAC Workflow)</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 2 – Lesson 5: Organic Nomenclature — IUPAC Workflow</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-  <style>
-    /* Global lesson styles (same system as other chapter lessons) */
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 32px 24px;
-      background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-      color: #222;
-      font-size: 22px;
-      line-height: 1.7;
-    }
+.wide-table{min-width:580px}.equation{background:#f5f8ff;border:1px solid var(--line);border-radius:10px;padding:20px;text-align:center;overflow-wrap:anywhere;font-weight:600}.steps li strong{color:var(--green)}
+.diagram{width:100%;height:auto;display:block;max-width:600px;margin:12px auto}.table-wrap{max-width:100%}.worksheet{min-height:70px;border-bottom:1px dashed #a6b9bd;margin:14px 0}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}.worksheet{min-height:45px}}
 
-    h1 { font-size: 2.2em; color: #136f63; margin-bottom: 0.4em; }
-    h2 { font-size: 1.55em; color: #136f63; margin-top: 1.2em; margin-bottom: 0.4em; }
-    h3 { font-size: 1.15em; color: #174ea6; margin-top: 0.6em; }
+.nuclide{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-size:1.25em;vertical-align:middle}.nuclide .numbers{display:flex;flex-direction:column;font-size:.65em;line-height:1.15;text-align:right}.nuclide .symbol{font-weight:650}.nuclide .charge{align-self:flex-start;font-size:.65em;line-height:1.2}.count-rule{display:flex;gap:12px;flex-wrap:wrap}.count-rule span{padding:10px 16px;border-radius:8px;background:#eaf0fc;font-weight:650}.orbital-diagram{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin:20px 0}.orbital-group{text-align:center}.boxes{display:flex;gap:5px}.orbital{display:flex;align-items:center;justify-content:center;width:49px;height:50px;border:2px solid #174ea6;border-radius:5px;background:#fff;color:#174ea6;font-size:26px;line-height:1;letter-spacing:0}.orbital-label{font-size:.8em;margin-top:5px}.config{white-space:normal;font-weight:650;color:#174ea6}.input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.input-grid label{font-size:.9em;font-weight:600}input,select{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #7d919a;border-radius:6px;background:#fff;color:#24323d}input{margin-top:6px}.practice-actions{display:flex;gap:10px;flex-wrap:wrap}.practice-actions button{background:#136f63;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 .9em 'Segoe UI',Arial,sans-serif;cursor:pointer}.practice-actions .secondary{background:#e5ebf7;color:#174ea6}.feedback{margin-top:16px;padding:16px;background:#eaf0fc;border-radius:8px}.feedback:empty{display:none}.self-check label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.self-check input{width:20px;flex-shrink:0;margin-top:8px}code{font-family:inherit}.diagram{max-width:650px}.print-note{display:none}@media(max-width:440px){.input-grid{grid-template-columns:1fr}.orbital-diagram{gap:16px}.count-rule span{padding:8px 10px}}@media print{.interactive{display:none}.print-note{display:block}.orbital{print-color-adjust:exact}.orbital-diagram{break-inside:avoid}}
 
-    .section {
-      background: #fff;
-      padding: 22px 26px;
-      border-radius: 14px;
-      margin-bottom: 28px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    }
+.simulation iframe{display:block;width:100%;max-width:760px;aspect-ratio:16/10;height:auto;margin:16px auto;border:0;border-radius:10px}.molecule{display:block;width:100%;max-width:410px;height:auto;margin:16px auto}.molecule text{font-family:Segoe UI,Arial,sans-serif}.bond-key{display:flex;gap:12px;flex-wrap:wrap}.bond-key span{background:#edf4ff;padding:7px 12px;border-radius:8px;font-weight:650}.exercise{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.exercise select,.exercise input[type=number]{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #728994;border-radius:6px;background:#fff;color:#24323d;margin:6px 0 14px}.exercise .field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.exercise label{font-weight:600;font-size:.9em}.exercise .actions{display:flex;gap:10px;flex-wrap:wrap}.exercise button{background:#136f63;color:white;border:0;border-radius:8px;padding:10px 16px;font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;cursor:pointer}.exercise button.secondary{background:#e5ebf7;color:#174ea6}.exercise .feedback{background:#eaf0fc;border-left:4px solid #174ea6;padding:16px;margin-top:16px;border-radius:8px}.exercise .feedback:empty{display:none}.formula-box{text-align:center;padding:17px;border-radius:9px;background:#f4f8fb;color:#174ea6;font-weight:700;font-size:1.15em;overflow-wrap:anywhere}.route{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.route span{background:#edf4ff;padding:9px 12px;border-radius:8px;font-weight:650}.readiness label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.readiness input{width:20px;flex-shrink:0;margin-top:8px}.compact{font-size:.9em}.print-note{display:none}@media(max-width:520px){.exercise .field-grid{grid-template-columns:1fr}.exercise{padding:15px}}@media print{.exercise{display:none}.print-note{display:block}.molecule{max-width:260px}.table-wrap{overflow:visible}}
 
-    p { margin: 12px 0; }
-    ul { margin-left: 24px; }
+.structure-svg{width:100%;height:auto;max-width:530px;display:block;margin:12px auto}.structure-svg text{font-family:Segoe UI,Arial,sans-serif}.structure-card{border:1px solid #dce6eb;border-radius:10px;background:#f8fbff;padding:18px;margin:16px 0}.representation{font-weight:700;color:#174ea6;text-align:center;overflow-wrap:anywhere;font-size:1.06em}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.simulation iframe{display:block;width:100%;max-width:760px;aspect-ratio:16/10;height:auto;margin:16px auto;border:0;border-radius:10px}.practice{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.practice select,.practice input[type=number]{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #728994;border-radius:6px;background:#fff;color:#24323d;margin:6px 0 14px}.practice .inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.practice label{font-weight:600;font-size:.9em}.practice button{background:#136f63;color:white;border:0;border-radius:8px;padding:10px 16px;font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;cursor:pointer}.practice button.secondary{background:#e5ebf7;color:#174ea6}.practice .buttons{display:flex;gap:10px;flex-wrap:wrap}.practice .feedback{background:#eaf0fc;border-left:4px solid #174ea6;padding:16px;margin-top:16px;border-radius:8px}.practice .feedback:empty{display:none}.print-note{display:none}@media(max-width:620px){.two-col{grid-template-columns:1fr}}@media(max-width:480px){.practice .inputs{grid-template-columns:1fr}}@media print{.practice,.simulation iframe{display:none}.print-note{display:block}.two-col{display:block}.structure-svg{max-width:350px}.table-wrap{overflow:visible}}
 
-    .image, .video { text-align: center; margin: 20px 0; }
-
-    img {
-      width: 85%;
-      max-width: 640px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    iframe {
-      width: 92%;
-      max-width: 820px;
-      height: 440px;
-      border-radius: 12px;
-      border: none;
-    }
-
-    /* Activity block (left accent) */
-    .activity {
-      border-left: 6px solid #136f63;
-      background: #fff;
-      padding: 16px 18px;
-      border-radius: 10px;
-      margin: 18px 0;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-    }
-
-    .toggle-btn {
-      margin-top: 12px;
-      padding: 10px 16px;
-      background: #136f63;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.18s;
-    }
-    .toggle-btn:hover { background: #0f5b52; transform: translateY(-1px); }
-
-    .answer {
-      display: none;
-      margin-top: 12px;
-      background: #eef6ff;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 17px;
-    }
-
-    .quiz-button {
-      background: #136f63;
-      color: #fff;
-      padding: 14px 30px;
-      border-radius: 12px;
-      border: none;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: 0.2s;
-    }
-    .quiz-button:hover { background: #0f5b52; }
-
-    /* Step-by-step table */
-    .steps {
-      width: 100%;
-      max-width: 980px;
-      border-collapse: collapse;
-      margin: 14px auto 6px;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
-      background: #fff;
-    }
-    .steps thead th {
-      background: #f3f7ff;
-      color: #174ea6;
-      text-align: left;
-      padding: 12px 14px;
-      font-size: 18px;
-    }
-    .steps tbody td {
-      padding: 14px;
-      border-top: 1px solid #eef2f8;
-      vertical-align: middle;
-    }
-    .steps img { max-width: 260px; border-radius: 8px; display:block; margin: 4px auto; }
-
-    .note { color: #555; font-size: 1.0rem; margin-top: 8px; }
-
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-  </style>
-</head>
-
-<body>
-
-  <h1>Organic Nomenclature — IUPAC Workflow</h1>
-
-  <p class="note">
-    This lesson gives a clear, repeatable IUPAC naming workflow (prefix + parent + suffix). We’ll cover the general steps and practice with multiple examples. Detailed alkane naming rules are covered in the next chapter.
-  </p>
-
-  <!-- 1: Structure of a name -->
-  <div class="section">
-    <h2>1. Anatomy of an IUPAC Name</h2>
-    <p>
-      An IUPAC name typically has three parts:
-    </p>
-    <ul>
-      <li><strong>Prefix</strong> — substituents (with locants and multiplicative prefixes)</li>
-      <li><strong>Parent</strong> — longest continuous carbon chain (root)</li>
-      <li><strong>Suffix</strong> — principal functional group (–ane, –ol, –al, –oic acid, –amine, etc.)</li>
-    </ul>
-
-    <h3>Common parent prefixes</h3>
-    <table class="steps" style="max-width:720px;">
-      <thead>
-        <tr><th>Number of C</th><th>Prefix</th><th>Example</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>meth-</td><td>CH₄ → methane</td></tr>
-        <tr><td>2</td><td>eth-</td><td>C₂H₆ → ethane</td></tr>
-        <tr><td>3</td><td>prop-</td><td>C₃H₈ → propane</td></tr>
-        <tr><td>4</td><td>but-</td><td>C₄H₁₀ → butane</td></tr>
-        <tr><td>5</td><td>pent-</td><td>C₅H₁₂ → pentane</td></tr>
-        <tr><td>6–10</td><td>hex-, hept-, oct-, non-, dec-</td><td>6–10 carbon chains</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 2: Step-by-step procedure -->
-  <div class="section">
-    <h2>2. Step-by-step naming procedure</h2>
-
-    <table class="steps" aria-describedby="naming-steps">
-      <thead>
-        <tr><th style="width:44%;">Step</th><th>Visual guide / example</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <strong>1. Find the longest continuous carbon chain</strong><br>
-            This chain is the parent (root) that determines the base name.
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/tyElqo2.png" alt="Identify longest chain"><br>
-            <div class="note">Example: longest = 5 C → pent-</div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <strong>2. Number the chain</strong><br>
-            Number from the end nearest the principal functional group or substituent to give lowest locants.
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/sofm7sg.png" alt="Numbering chain"><br>
-            <div class="note">Number to minimize substituent locants</div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <strong>3. Identify substituents</strong><br>
-            Name alkyl, halo, nitro, etc., and record their locants.
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/DXjSFBP.png" alt="Identify substituent methyl group"><br>
-            <div class="note">Example: methyl groups at C-2 and C-3</div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <strong>4. Assign locants and combine</strong><br>
-            Use commas between numbers and hyphens between numbers and words (e.g., 2,3-dimethyl).
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/DXjSFBP.png" alt="Assign locants"><br>
-            <div class="note">Example: 2,3-dimethyl</div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <strong>5. Use multiplicative prefixes</strong><br>
-            di-, tri-, tetra- when identical substituents repeat (do not alphabetize by these prefixes).
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/DXjSFBP.png" alt="Multiplicative prefixes"><br>
-            <div class="note">Example: 2,3-dimethyl</div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <strong>6. Choose the suffix</strong><br>
-            The suffix corresponds to the highest-priority functional group (–oic acid > –al > –ol > –amine > –ane).
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/gqVsi7Z.png" alt="Select suffix"><br>
-            <div class="note">Example: –OH ⇒ –ol</div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <strong>7. Assemble the name</strong><br>
-            Prefix (substituents with locants) + parent + suffix → finalize the IUPAC name.
-          </td>
-          <td style="text-align:center;">
-            <img src="https://i.imgur.com/gqVsi7Z.png" alt="Assemble name"><br>
-            <div class="note">Example: 2,3-dimethylpentane</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="activity">
-      <h3>Activity 1 — Guided example: name this molecule</h3>
-      <p style="text-align:center;">
-        <img src="https://www.sigmaaldrich.com/deepweb/assets/sigmaaldrich/product/structures/281/930/8a9b2cb0-7f44-46aa-a009-5ddb8caa1cc1/640/8a9b2cb0-7f44-46aa-a009-5ddb8caa1cc1.png" alt="2-methylbutane structure" style="max-width:380px;">
-      </p>
-      <p>Follow the steps above to name the compound.</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <ol>
-          <li>Longest chain = 4 carbons → but-</li>
-          <li>One methyl substituent on carbon 2 → 2-methyl</li>
-          <li>Final name: <strong>2-methylbutane</strong></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3: Functional group priority -->
-  <div class="section">
-    <h2>3. Suffix priority rules (short list)</h2>
-    <p>
-      When multiple functional groups exist, the highest-priority functional group determines the suffix and numbering.
-    </p>
-
-    <ul>
-      <li><strong>Carboxylic acids (–COOH)</strong> → suffix <strong>-oic acid</strong></li>
-      <li><strong>Aldehydes (–CHO)</strong> → suffix <strong>-al</strong></li>
-      <li><strong>Alcohols (–OH)</strong> → suffix <strong>-ol</strong></li>
-      <li><strong>Amines (–NH₂)</strong> → suffix <strong>-amine</strong></li>
-      <li>If no functional group outranks alkanes, use <strong>-ane</strong></li>
-    </ul>
-
-    <div class="activity">
-      <h3>Activity 2 — Priority practice</h3>
-      <p>If both –OH and –COOH are present, which suffix is used?</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        Carboxylic acid (–COOH) outranks alcohol (–OH), so use <strong>-oic acid</strong> and number accordingly.
-      </div>
-    </div>
-  </div>
-
-  <!-- 4: More examples -->
-  <div class="section">
-    <h2>4. Additional stepwise examples</h2>
-
-    <div class="activity">
-      <h3>Example A — Halogen substituent</h3>
-      <p style="text-align:center;"><img src="https://i.imgur.com/HyK1EvC.jpeg" alt="1-chloropropane structure" style="max-width:380px;"></p>
-      <p>Name this compound.</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <ol>
-          <li>Longest chain = 3 carbons → prop-</li>
-          <li>Chlorine at carbon 1 → 1-chloro</li>
-          <li>Final: <strong>1-chloropropane</strong></li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="activity">
-      <h3>Example B — Alkene position</h3>
-      <p style="text-align:center;"><img src="https://i.imgur.com/1I6olE7.png" alt="but-2-ene" style="max-width:380px;"></p>
-      <p>Apply the rules to name this alkene.</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <ol>
-          <li>Parent chain = 4 carbons → but-</li>
-          <li>Double bond at carbon 2 → -2-ene</li>
-          <li>Name: <strong>but-2-ene</strong></li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="activity">
-      <h3>Example C — Multiple substituents</h3>
-      <p style="text-align:center;"><img src="https://structimg.guidechem.com/1/25/829584.png" alt="3-fluoro-2-methylpentane" style="max-width:380px;"></p>
-      <p>Name this compound and remember alphabetical ordering for substituents.</p>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <ol>
-          <li>Parent = 5 carbons → pent-</li>
-          <li>Substituents: chloro at C-3, methyl at C-2</li>
-          <li>Alphabetical order: chloro before methyl → <strong>3-chloro-2-methylpentane</strong></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5: Tips -->
-  <div class="section">
-    <h2>5. Common pitfalls & quick tips</h2>
-    <ul>
-      <li>Always select the longest chain that contains the principal functional group.</li>
-      <li>Number the chain to give lowest possible locants to substituents and functional groups.</li>
-      <li>Use multiplicative prefixes (di-, tri-) for identical substituents but ignore them when alphabetizing.</li>
-      <li>Double/triple bonds affect numbering — give the unsaturation the lowest possible number.</li>
-      <li>When in doubt, draw alternative parent chains and compare locants.</li>
-    </ul>
-  </div>
-
-  <!-- 6: Video -->
-  <div class="section">
-    <h2>6. Video walkthrough</h2>
-    <p>Short walkthrough on IUPAC naming (Khan Academy-style):</p>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/-cExhtwVT1v0" title="Nomenclature walkthrough" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <!-- Key Terms -->
-  <div class="section">
-    <h2>Key Terms</h2>
-    <ul>
-      <li><strong>Parent chain</strong> — the longest continuous carbon chain forming the root name.</li>
-      <li><strong>Locant</strong> — the number indicating the position of a substituent or functional group.</li>
-      <li><strong>Prefix</strong> — substituent identifier (with locant).</li>
-      <li><strong>Suffix</strong> — indicates the principal functional group (determines numbering).</li>
-      <li><strong>Multiplicative prefix</strong> — di-, tri-, tetra- for repeated substituents.</li>
-    </ul>
-  </div>
-
-  <!-- Quiz button -->
-  <div style="text-align:center; margin-top:10px; margin-bottom:40px;">
-    <button class="quiz-button" id="takeQuizBtn">Take the Lesson Quiz →</button>
-  </div>
-
-  <script>
-    function toggleAnswer(btn) {
-      const ans = btn.nextElementSibling;
-      const show = ans.style.display === "block";
-      ans.style.display = show ? "none" : "block";
-      btn.textContent = show ? "Show Answer" : "Hide Answer";
-    }
-
-    document.getElementById('takeQuizBtn').addEventListener('click', () => {
-      window.parent.postMessage({ type: 'openQuiz', quiz: 'chapter2_lesson5_quiz.html' }, '*');
-    });
-  </script>
-
-</body>
-</html>
+.structure-scroll{overflow-x:auto;max-width:100%;border:1px solid #dce8eb;border-radius:10px;background:#f8fbff;margin:16px 0}.chain-svg{display:block;width:100%;height:auto;min-width:520px;max-width:900px;margin:auto}.chain-svg text{font-family:'Segoe UI',Arial,sans-serif}.chain-caption{font-size:.8em;color:#536575;margin-top:8px}.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;font-weight:650}.legend .parent{color:#174ea6}.legend .branch{color:#a13918}.highlight-name{font-size:1.2em;color:#174ea6;font-weight:750;text-align:center;overflow-wrap:anywhere}.name-builder{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:15px 0}.name-builder span{background:#e9f2ff;border-radius:8px;padding:8px 10px;font-weight:650;color:#174ea6}.interactive-name{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.interactive-name select,.interactive-name input{display:block;width:100%;max-width:100%;font:inherit;padding:10px;border:1px solid #728994;border-radius:6px;background:#fff;color:#24323d;margin:6px 0 14px}.interactive-name label{font-size:.9em;font-weight:650}.interactive-name button{background:#136f63;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;cursor:pointer}.interactive-name button.secondary{background:#e5ebf7;color:#174ea6}.interactive-name .buttons{display:flex;flex-wrap:wrap;gap:10px}.interactive-name .feedback{background:#eaf0fc;border-left:4px solid #174ea6;border-radius:8px;padding:16px;margin-top:16px}.interactive-name .feedback:empty{display:none}.choice-comparison{border:1px solid #dce8eb;border-radius:8px;padding:12px 16px;margin:10px 0}.choice-comparison strong{color:#136f63}.print-note{display:none}@media(max-width:520px){.interactive-name{padding:15px}}@media print{.interactive-name{display:none}.print-note{display:block}.chain-svg{min-width:0}.structure-scroll{overflow:visible}.table-wrap{overflow:visible}}
+</style></head><body><a class="skip" href="#lesson">Skip to lesson</a><main id="lesson"><header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 5</div><h1>Organic Nomenclature: An IUPAC Workflow</h1><p class="intro">Turn a structure into a clear name by choosing a parent, numbering it, identifying substituents, and assembling the parts. Then reverse the process to check that the name describes the original structure.</p><p class="meta">Allow about 50–60 minutes, or work in two sessions. Draw and number each structure before opening the answer. Scroll diagrams and wide tables sideways on small screens.</p><nav aria-label="Lesson sections"><a href="#goals">Goals</a><a href="#anatomy">Name parts</a><a href="#workflow">Workflow</a><a href="#examples">Worked examples</a><a href="#groups">Functional groups</a><a href="#reverse">Name → structure</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav></header>
+<section class="section" id="goals"><h2>What you will learn</h2><ul><li>Identify the parent, prefix, locants, and ending in a simple systematic name.</li><li>Name selected open-chain alkanes, haloalkanes, alkenes, and alcohols.</li><li>Compare numbering directions at the first point of difference and alphabetize simple prefixes.</li><li>Connect a name to a drawing, then verify carbon counts, branch positions, and bonding.</li></ul><div class="note"><strong>Scope:</strong> this is an introductory workflow for the simple open-chain examples shown. Rings, multiple characteristic groups, complex substituents, stereochemical descriptors, and competing parent-selection cases require additional rules. More detailed alkane naming follows in the next chapter.</div></section>
+<section class="section" id="anatomy"><h2>1. Take apart a name</h2><p>A systematic name can describe substituents, the parent skeleton, bond unsaturation, and a principal characteristic group. Not every component occurs in every name.</p><div class="name-builder"><span>3-chloro-2-methyl</span><span>pent</span><span>ane</span></div><ul><li><strong>Prefixes:</strong> chloro and methyl identify groups attached to the parent. Their numbers are locants.</li><li><strong>Parent root:</strong> pent indicates five carbons in the selected parent chain.</li><li><strong>Ending:</strong> -ane identifies a saturated parent in this simple example. An alkene has an -ene ending; an alcohol may use -ol as the principal characteristic-group suffix.</li></ul><div class="note"><strong>Keep the roles separate:</strong> -ane and -ene describe saturation or unsaturation of the parent; -ol, -al, -one, -oic acid, and -amine can identify a principal characteristic group. An alkene can also have a principal-group suffix, as in prop-2-en-1-ol.</div><h3>Parent roots for carbon chains</h3><div class="table-wrap" role="region" tabindex="0" aria-label="Parent carbon roots"><table><thead><tr><th scope="col">Carbon atoms</th><th scope="col">Root</th><th scope="col">Simple alkane</th></tr></thead><tbody><tr><td>1</td><td>meth-</td><td>methane</td></tr><tr><td>2</td><td>eth-</td><td>ethane</td></tr><tr><td>3</td><td>prop-</td><td>propane</td></tr><tr><td>4</td><td>but-</td><td>butane</td></tr><tr><td>5</td><td>pent-</td><td>pentane</td></tr><tr><td>6</td><td>hex-</td><td>hexane</td></tr><tr><td>7</td><td>hept-</td><td>heptane</td></tr><tr><td>8</td><td>oct-</td><td>octane</td></tr><tr><td>9</td><td>non-</td><td>nonane</td></tr><tr><td>10</td><td>dec-</td><td>decane</td></tr></tbody></table></div>
+<div class="activity"><h3>Guided drill 1 · Read the name</h3><p>In 3-chloro-2-methylpentane, how many carbons are in the parent? Which groups are attached, and at which positions?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The parent is <strong>pentane: 5 carbons</strong>. A methyl group is attached at C-2 and a chloro group at C-3. The methyl adds one carbon, so the entire molecule has six carbons.</p></div></details></div>
+</section>
+<section class="section" id="workflow"><h2>2. Use a repeatable naming workflow</h2><ol><li><strong>Read the structure:</strong> expand condensed branches and mark the principal characteristic group, if any, and any multiple bonds.</li><li><strong>Select an eligible parent:</strong> for the simple cases here, select a continuous chain containing the principal group and the shown multiple bond where applicable. Among eligible chains in these examples, use the longest. Do not choose a longer chain that omits the group used as suffix.</li><li><strong>Compare numbering directions:</strong> in these simple examples, first give the suffix group its lowest locant; if tied or absent, give a multiple bond its lowest locant; then compare substituent locants at the first difference. A double-bond locant identifies the lower-numbered carbon of that bond.</li><li><strong>Name and locate substituents:</strong> use alkyl or halo prefixes and list one locant for each occurrence. Use di-, tri-, or tetra- for repeated identical simple groups.</li><li><strong>Assemble:</strong> alphabetize different simple substituent names, ignoring di-, tri-, and tetra- for alphabetization. Add the parent and the appropriate ending.</li><li><strong>Check by redrawing:</strong> confirm the parent length, every branch position, bond order, valence, and any stereochemistry specified.</li></ol><div class="note"><strong>Important scope:</strong> the complete IUPAC parent-selection and numbering hierarchy includes further criteria and exceptions. In more complex compounds, a blanket instruction to choose “the longest chain containing every double bond” can fail. Apply the full rules when competing chain lengths, unsaturations, rings, or several principal groups arise.</div><h3>Numbering: compare in order, not by the sum</h3><p>Arrange the competing substituent locants in increasing order and compare the first position where they differ. For <strong>2,2,4</strong> versus <strong>2,4,4</strong>, the first entries tie; the second entries are 2 versus 4, so 2,2,4 wins.</p><p><strong>Punctuation:</strong> commas separate numbers; hyphens separate numbers and words. Write <strong>2,2-dimethylpropane</strong>, not 2-2-dimethyl propane.</p>
+<div class="activity"><h3>Guided drill 2 · First difference</h3><p>For an alkane parent with no higher-priority feature, compare locant sets 2,3 and 3,4. Which numbering is preferred?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>2,3</strong>: compare the first entries, 2 versus 3. The lower number at the first difference decides this comparison.</p></div></details></div>
+</section>
+<section class="section" id="examples"><h2>3. Follow worked naming examples</h2><p>In the diagrams, blue labels show the chosen parent, orange labels show attached groups, and green numbers are teaching locants. The structures are condensed displayed formulas: each line is a bond between the labeled groups.</p>
+<div class="worked"><div class="label">Worked example</div><h3>A. One methyl branch</h3><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 580 260" role="img" aria-labelledby="mol1title mol1desc"><title id="mol1title">Displayed condensed structure</title><desc id="mol1desc">CH3–CH(CH3)–CH2–CH3, four parent-chain carbons with a methyl branch on the second carbon. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="210" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="460" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">4</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text></svg></div><p class="chain-caption">Blue = chosen parent; orange = group attached to it; green numbers = parent locants. Scroll the diagram sideways on a small screen.</p><ol><li>Choose the four-carbon continuous chain: <strong>butane</strong>.</li><li>Number from the end closer to the branch: methyl at <strong>C-2</strong>, not C-3.</li><li>Assemble: <strong>2-methylbutane</strong>.</li></ol></div>
+<div class="worked"><div class="label">Worked example</div><h3>B. Different substituents: methyl and chloro</h3><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 705 260" role="img" aria-labelledby="mol2title mol2desc"><title id="mol2title">Displayed condensed structure</title><desc id="mol2desc">CH3–CH(CH3)–CH(Cl)–CH2–CH3, five-carbon chain with methyl on carbon 2 and chlorine on carbon 3. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><line x1="490" y1="135" x2="555" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="210" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="460" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">4</text><text x="585" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="585" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">5</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text><line x1="335" y1="160" x2="335" y2="204" stroke="#334b57" stroke-width="3"/><text x="335" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">Cl</text></svg></div><p class="chain-caption">Blue = chosen parent; orange = group attached to it; green numbers = parent locants. Scroll the diagram sideways on a small screen.</p><ol><li>The parent has five carbons: <strong>pentane</strong>.</li><li>Numbering left to right gives substituent locants <strong>2,3</strong>; the reverse gives 3,4. Choose 2,3.</li><li>At C-2 there is methyl; at C-3 there is chloro. Alphabetize the names: <strong>chloro</strong> before methyl.</li><li>Assemble: <strong>3-chloro-2-methylpentane</strong>.</li></ol><p>The group on C-3 is <strong>Cl</strong>, chlorine. Its prefix is chloro, not fluoro.</p></div>
+<div class="worked"><div class="label">Worked example</div><h3>C. Repeated substituents</h3><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 705 260" role="img" aria-labelledby="mol3title mol3desc"><title id="mol3title">Displayed condensed structure</title><desc id="mol3desc">CH3–C(CH3)2–CH2–CH(CH3)–CH3, a five-carbon chain with two methyl groups on carbon 2 and one on carbon 4. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><line x1="490" y1="135" x2="555" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">C</text><text x="245" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="460" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">4</text><text x="585" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="585" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">5</text><line x1="210" y1="110" x2="210" y2="65" stroke="#334b57" stroke-width="3"/><text x="210" y="49" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text><line x1="460" y1="160" x2="460" y2="204" stroke="#334b57" stroke-width="3"/><text x="460" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text></svg></div><p class="chain-caption">Blue = chosen parent; orange = group attached to it; green numbers = parent locants. Scroll the diagram sideways on a small screen.</p><ol><li>The selected parent has five carbons: <strong>pentane</strong>.</li><li>From the chosen end, methyl groups are at <strong>2,2,4</strong>; from the other end they are 2,4,4. The second locant decides in favor of 2,2,4.</li><li>Three identical methyl groups use <strong>tri-</strong>. Repeat the locant for each group, including the two on carbon 2.</li><li>Assemble: <strong>2,2,4-trimethylpentane</strong>.</li></ol></div>
+<div class="worked"><div class="label">Worked example</div><h3>D. Alphabetical order is not locant order</h3><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 830 260" role="img" aria-labelledby="mol4title mol4desc"><title id="mol4title">Displayed condensed structure</title><desc id="mol4desc">CH3–CH(CH3)–CH(CH2CH3)–CH2–CH2–CH3, a six-carbon chain with methyl on carbon 2 and ethyl on carbon 3. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><line x1="490" y1="135" x2="555" y2="135" stroke="#334b57" stroke-width="3"/><line x1="615" y1="135" x2="680" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="210" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="460" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">4</text><text x="585" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="585" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">5</text><text x="710" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="710" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">6</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text><line x1="335" y1="160" x2="335" y2="204" stroke="#334b57" stroke-width="3"/><text x="335" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₂CH₃</text></svg></div><p class="chain-caption">Blue = chosen parent; orange = group attached to it; green numbers = parent locants. Scroll the diagram sideways on a small screen.</p><ol><li>A six-carbon parent gives <strong>hexane</strong>. Of the equal-length candidate chains here, the shown chain has the larger number of substituents.</li><li>The chosen direction gives <strong>2,3</strong> rather than 4,5.</li><li>There is methyl at C-2 and ethyl at C-3. Alphabetically, ethyl precedes methyl.</li><li>Assemble: <strong>3-ethyl-2-methylhexane</strong>. Keep each locant with its own group.</li></ol></div>
+<div class="activity"><h3>Guided drill 3 · Alphabetize repeated groups</h3><p>If a structure has ethyl and two methyl substituents, which group is cited first: ethyl or dimethyl? Why?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Ethyl</strong> comes first. For simple substituents, ignore the multiplicative prefix di- when alphabetizing: compare ethyl with methyl.</p></div></details></div>
+<div class="worked"><div class="label">Worked example</div><h3>E. Locate a double bond</h3><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 580 260" role="img" aria-labelledby="mol5title mol5desc"><title id="mol5title">Displayed condensed structure</title><desc id="mol5desc">CH2=CH–CH2–CH3, a four-carbon chain with the double bond at an endpoint. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="131" x2="180" y2="131" stroke="#334b57" stroke-width="3"/><line x1="115" y1="139" x2="180" y2="139" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="210" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="460" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">4</text></svg></div><p class="chain-caption">Blue = chosen parent; orange = group attached to it; green numbers = parent locants. Scroll the diagram sideways on a small screen.</p><ol><li>The four-carbon parent containing the double bond uses the root <strong>but-</strong>.</li><li>Number from the double-bond end: the bond lies between C-1 and C-2, so its locant is <strong>1</strong>.</li><li>Use the alkene ending: <strong>but-1-ene</strong>. The older placement 1-butene is also encountered.</li></ol><p class="small">Some alkenes require stereochemical information. For example, “but-2-ene” alone does not specify E or Z. Stereochemical assignment is outside this introductory workflow.</p></div>
+</section>
+<section class="section" id="groups"><h2>4. Choose a principal characteristic group</h2><p>In a multifunctional molecule, a senior characteristic group can be expressed as a suffix; other groups may be named as prefixes. The following is a <strong>limited teaching subset</strong>, not the complete priority order:</p><div class="table-wrap" role="region" tabindex="0" aria-label="Selected nomenclature suffixes"><table><thead><tr><th scope="col">Group</th><th scope="col">Common structural feature</th><th scope="col">Suffix in a simple name</th><th scope="col">Prefix when subordinate</th></tr></thead><tbody><tr><th scope="row">Carboxylic acid</th><td>–COOH</td><td>-oic acid</td><td>depends on context</td></tr><tr><th scope="row">Aldehyde</th><td>–CHO</td><td>-al</td><td>often oxo- in suitable structures</td></tr><tr><th scope="row">Ketone</th><td>&gt;C=O</td><td>-one</td><td>oxo-</td></tr><tr><th scope="row">Alcohol</th><td>–OH</td><td>-ol</td><td>hydroxy-</td></tr><tr><th scope="row">Amine</th><td>–NH₂</td><td>-amine</td><td>amino-</td></tr><tr><th scope="row">Halo substituent</th><td>–F, –Cl, –Br, –I</td><td>usually cited as a prefix</td><td>fluoro-, chloro-, bromo-, iodo-</td></tr></tbody></table></div><p>Within this limited set, a carboxylic acid is senior to an aldehyde, ketone, alcohol, or amine. Do not treat this short list as a substitute for the complete IUPAC hierarchy. The –COOH carbon is part of the parent and is C-1 in the simple open-chain acid examples here.</p>
+<div class="worked"><div class="label">Worked example</div><h3>F. Number the –OH group</h3><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 455 260" role="img" aria-labelledby="mol6title mol6desc"><title id="mol6title">Displayed condensed structure</title><desc id="mol6desc">CH3–CH(OH)–CH3, a three-carbon chain with an OH group attached to the middle carbon. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="210" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">OH</text></svg></div><p class="chain-caption">Blue = chosen parent; orange = group attached to it; green numbers = parent locants. Scroll the diagram sideways on a small screen.</p><ol><li>The three-carbon chain contains –OH: root <strong>prop-</strong>.</li><li>The –OH is on carbon 2 from either end. The principal-group locant is 2.</li><li>Use the alcohol suffix and omit the final “e” of propane before -ol: <strong>propan-2-ol</strong>. The older placement 2-propanol is also common.</li></ol></div>
+<div class="worked"><div class="label">Worked example</div><h3>G. Acid and alcohol together</h3><p class="highlight-name">HOOC–CH(OH)–CH₃</p><ol><li>The acid is senior to the alcohol in this pair; the parent has three carbons including the carboxyl carbon.</li><li>The carboxyl carbon is C-1; the –OH is on C-2.</li><li>Use <strong>hydroxy-</strong> as the prefix and <strong>-oic acid</strong> as the suffix: <strong>2-hydroxypropanoic acid</strong>.</li></ol><p class="small">This name does not specify a stereoisomer; a complete description of a particular stereoisomer requires the appropriate descriptor.</p></div>
+<div class="activity"><h3>Guided drill 4 · Group priority</h3><p>A molecule contains both –COOH and –OH. Which group supplies the suffix in this teaching subset, and what prefix can describe the –OH?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The <strong>carboxylic acid</strong> supplies <strong>-oic acid</strong>; the subordinate –OH can be cited as <strong>hydroxy-</strong>.</p></div></details></div>
+</section>
+<section class="section" id="reverse"><h2>5. Work backward from a name</h2><div class="worked"><div class="label">Worked example</div><h3>Draw 3-chloro-2-methylpentane</h3><ol><li><strong>Parent:</strong> draw five carbons in a continuous single-bond chain: pentane.</li><li><strong>Number:</strong> label the chain 1 through 5.</li><li><strong>Place groups:</strong> attach CH₃ at C-2 and Cl at C-3.</li><li><strong>Complete valences:</strong> add hydrogens so each ordinary neutral C has four bonds.</li><li><strong>Check:</strong> the condensed structure is <strong>CH₃CH(CH₃)CH(Cl)CH₂CH₃</strong>.</li></ol><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 705 260" role="img" aria-labelledby="mol7title mol7desc"><title id="mol7title">Displayed condensed structure</title><desc id="mol7desc">CH3–CH(CH3)–CH(Cl)–CH2–CH3, five-carbon chain with methyl on carbon 2 and chlorine on carbon 3. Numbered blue groups are the chosen parent, and orange groups are attached substituents or characteristic groups.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><line x1="490" y1="135" x2="555" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="85" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">1</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="210" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">2</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH</text><text x="335" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">3</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₂</text><text x="460" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">4</text><text x="585" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#174ea6">CH₃</text><text x="585" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#136f63">5</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">CH₃</text><line x1="335" y1="160" x2="335" y2="204" stroke="#334b57" stroke-width="3"/><text x="335" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#a13918">Cl</text></svg></div><p>Recount: five parent carbons plus one methyl carbon = six total carbons. The compound has a stereogenic center; the name shown leaves its configuration unspecified.</p></div>
+<div class="activity"><h3>Guided drill 5 · Reverse a name</h3><p>Draw 2,2-dimethylpropane. How many parent carbons, methyl groups, and total carbons are present?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The parent has <strong>3</strong> carbons. Attach <strong>two</strong> methyl groups to C-2. Total carbons = 3 + 2 = <strong>5</strong>. A condensed structure is CH₃C(CH₃)₂CH₃. The central carbon has four C–C bonds and no H.</p></div></details></div>
+</section>
+<section class="section" id="practice"><h2>6. Practice naming and checking</h2><p>Try each structure on paper before looking at the answer. In this lesson’s introductory checker, stereochemistry is not specified and a name alone does not specify a particular stereoisomer.</p><div class="interactive-name"><h3>Interactive drill · Name the structure</h3><p>Choose a structure, write the complete name, and check it. Names use the locant placement shown in this lesson; common alternative placements for the alkene and alcohol are also accepted. This is practice and does not send a score to LearnTrack.</p><label for="structureChoice">Structure</label><select id="structureChoice"><option value="methyl">Structure A</option><option value="chloro">Structure B</option><option value="dimethyl">Structure C</option><option value="alkene">Structure D</option><option value="alcohol">Structure E</option><option value="bromo">Structure F</option></select><div id="interactiveStructure"></div><p class="small">A horizontal diagram can be scrolled sideways. No parent chain or numbering is marked in this drill.</p><form id="nameForm"><label for="nameInput">Your proposed name</label><input id="nameInput" type="text" required autocomplete="off" spellcheck="false" placeholder="e.g., 2-methylbutane"><div class="buttons"><button type="submit">Check name</button><button type="button" id="resetName" class="secondary">Clear entry</button></div><div id="nameFeedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></form><details id="nameReveal"><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer" id="nameAnswer"></div></details><noscript><p>The interactive drill needs JavaScript. The worked examples and independent practice remain available.</p></noscript></div><p class="print-note">Extra practice: name CH₃CH(CH₃)CH₂CH₃ and CH₂=CHCH₂CH₃.</p>
+<h3>A. Name these structures · Items 1–6</h3><ol><li>CH₃CH₂CH₂CH₃</li><li>CH₃CH(CH₃)CH₂CH₃</li><li>CH₃CH(CH₃)CH(Cl)CH₂CH₃</li><li>CH₃C(CH₃)₂CH₂CH(CH₃)CH₃</li><li>CH₂=CHCH₂CH₃</li><li>CH₃CH(OH)CH₃</li></ol>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol><li><strong>Butane:</strong> four carbons in an unbranched saturated parent.</li><li><strong>2-Methylbutane:</strong> four-carbon parent, methyl at C-2.</li><li><strong>3-Chloro-2-methylpentane:</strong> parent pentane; locants 2,3; chloro is cited before methyl.</li><li><strong>2,2,4-Trimethylpentane:</strong> parent pentane; 2,2,4 beats 2,4,4 at the first difference.</li><li><strong>But-1-ene:</strong> double bond begins at C-1. “1-Butene” is an alternative placement.</li><li><strong>Propan-2-ol:</strong> the OH-bearing carbon is C-2. “2-Propanol” is an alternative placement.</li></ol></div></details>
+<h3>B. Explain and reverse · Items 7–12</h3>
+<div class="activity"><h3>7 · Check a claimed parent</h3><p>A student calls CH₃CH(CH₃)CH₂CH₃ “2-ethylpropane” by choosing a three-carbon parent. What is the better parent and name?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The longest continuous chain has <strong>four</strong> carbons, so the parent is butane. The remaining CH₃ is on C-2: <strong>2-methylbutane</strong>.</p></div></details></div>
+<div class="activity"><h3>8 · Lowest set of locants</h3><p>Compare 2,2,4 with 2,4,4 for repeated substituents. Show the first difference.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The first entries tie at 2. The second entries are <strong>2 versus 4</strong>; 2,2,4 is preferred.</p></div></details></div>
+<div class="activity"><h3>9 · Put groups in order</h3><p>A hexane parent has an ethyl at C-3 and methyl at C-2. Assemble the name.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>3-Ethyl-2-methylhexane.</strong> Alphabetical citation puts ethyl before methyl, but each retains its own locant.</p></div></details></div>
+<div class="activity"><h3>10 · A suffix group versus a branch</h3><p>For HOOC–CH(OH)–CH₃, identify the parent suffix, the OH prefix, and the name.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The acid group supplies <strong>-oic acid</strong>. The OH is <strong>hydroxy-</strong> at C-2: <strong>2-hydroxypropanoic acid</strong>.</p></div></details></div>
+<div class="activity"><h3>11 · Draw from the name</h3><p>Write a condensed structure for 3-chloro-2-methylpentane, then count the total carbons.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>CH₃CH(CH₃)CH(Cl)CH₂CH₃.</strong> The parent has five carbons and the methyl group adds one, giving <strong>six</strong> in total.</p></div></details></div>
+<div class="activity"><h3>12 · A double-bond locant</h3><p>Why is CH₂=CHCH₂CH₃ named but-1-ene rather than but-3-ene?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Number from the end nearer the double bond. It lies between C-1 and C-2, and the smaller of those two numbers is its locant: <strong>1</strong>.</p></div></details></div>
+</section>
+<section class="section" id="summary"><h2>7. Quick reference</h2><ul><li><strong>Parent:</strong> choose a continuous eligible chain; check the principal group and relevant parent-selection criteria first.</li><li><strong>Numbering:</strong> in these examples, suffix group → multiple bond → substituent locants; compare at the first difference.</li><li><strong>Prefixes:</strong> identify and locate each substituent; use di-, tri-, tetra- for repetitions.</li><li><strong>Alphabetization:</strong> ignore simple multiplicative prefixes when ordering substituent names.</li><li><strong>Check:</strong> reconstruct the structure. Names may need stereochemical descriptors to identify a particular stereoisomer.</li></ul><h3>Key terms</h3><div class="table-wrap" role="region" tabindex="0" aria-label="Nomenclature key terms"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning</th></tr></thead><tbody><tr><th scope="row">Parent chain</th><td>The selected continuous chain forming the basis of the name in these examples.</td></tr><tr><th scope="row">Locant</th><td>A number identifying a position in the structure.</td></tr><tr><th scope="row">Substituent</th><td>An atom or group cited as attached to the parent.</td></tr><tr><th scope="row">Principal characteristic group</th><td>The selected senior characteristic group represented by a suffix in the name.</td></tr><tr><th scope="row">Multiplicative prefix</th><td>A prefix such as di- or tri- showing the number of repeated features.</td></tr></tbody></table></div></section>
+<section class="section" id="references"><h2>Sources and further reading</h2><p class="small">The diagrams, explanations, and practice were prepared for this lesson. For the complete rules and further background:</p><ul class="references"><li><a href="https://iupac.qmul.ac.uk/BlueBook/P4.html" target="_blank" rel="noopener noreferrer">IUPAC Blue Book · Parent structure selection</a></li><li><a href="https://iupac.qmul.ac.uk/BlueBook/P6.html" target="_blank" rel="noopener noreferrer">IUPAC Blue Book · Substitutive nomenclature and numbering</a></li><li><a href="https://openstax.org/books/organic-chemistry/pages/3-4-naming-alkanes" target="_blank" rel="noopener noreferrer">OpenStax Organic Chemistry · Naming Alkanes</a></li><li><a href="https://openstax.org/books/organic-chemistry/pages/17-1-naming-alcohols-and-phenols" target="_blank" rel="noopener noreferrer">OpenStax Organic Chemistry · Naming Alcohols</a></li></ul></section><div class="quiz-area"><p>Ready to check your understanding?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Lesson Quiz →</button><p id="quizNotice" class="small" role="status"></p></div></main>
+<template id="template-methyl"><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 580 260" role="img" aria-labelledby="mol8title mol8desc"><title id="mol8title">Displayed condensed structure</title><desc id="mol8desc">CH3–CH(CH3)–CH2–CH3, four parent-chain carbons with a methyl branch on the second carbon. Parent chain and numbering have not been marked.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₂</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">CH₃</text></svg></div></template><template id="template-chloro"><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 705 260" role="img" aria-labelledby="mol9title mol9desc"><title id="mol9title">Displayed condensed structure</title><desc id="mol9desc">CH3–CH(CH3)–CH(Cl)–CH2–CH3, five-carbon chain with methyl on carbon 2 and chlorine on carbon 3. Parent chain and numbering have not been marked.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><line x1="490" y1="135" x2="555" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₂</text><text x="585" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">CH₃</text><line x1="335" y1="160" x2="335" y2="204" stroke="#334b57" stroke-width="3"/><text x="335" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">Cl</text></svg></div></template><template id="template-dimethyl"><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 455 260" role="img" aria-labelledby="mol10title mol10desc"><title id="mol10title">Displayed condensed structure</title><desc id="mol10desc">CH3–C(CH3)2–CH3, a three-carbon parent chain with two methyl groups attached to carbon 2. Parent chain and numbering have not been marked.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">C</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><line x1="210" y1="110" x2="210" y2="65" stroke="#334b57" stroke-width="3"/><text x="210" y="49" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">CH₃</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">CH₃</text></svg></div></template><template id="template-alkene"><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 580 260" role="img" aria-labelledby="mol11title mol11desc"><title id="mol11title">Displayed condensed structure</title><desc id="mol11desc">CH2=CH–CH2–CH3, a four-carbon chain with the double bond at an endpoint. Parent chain and numbering have not been marked.</desc><line x1="115" y1="131" x2="180" y2="131" stroke="#334b57" stroke-width="3"/><line x1="115" y1="139" x2="180" y2="139" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₂</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₂</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text></svg></div></template><template id="template-alcohol"><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 455 260" role="img" aria-labelledby="mol12title mol12desc"><title id="mol12title">Displayed condensed structure</title><desc id="mol12desc">CH3–CH(OH)–CH3, a three-carbon chain with an OH group attached to the middle carbon. Parent chain and numbering have not been marked.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">OH</text></svg></div></template><template id="template-bromo"><div class="structure-scroll" tabindex="0" role="region" aria-label="Molecular structure; scroll sideways if needed"><svg class="chain-svg" viewBox="0 0 580 260" role="img" aria-labelledby="mol13title mol13desc"><title id="mol13title">Displayed condensed structure</title><desc id="mol13desc">CH3–CH(Br)–CH2–CH3, a four-carbon chain with bromine on the second carbon. Parent chain and numbering have not been marked.</desc><line x1="115" y1="135" x2="180" y2="135" stroke="#334b57" stroke-width="3"/><line x1="240" y1="135" x2="305" y2="135" stroke="#334b57" stroke-width="3"/><line x1="365" y1="135" x2="430" y2="135" stroke="#334b57" stroke-width="3"/><text x="85" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><text x="210" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH</text><text x="335" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₂</text><text x="460" y="143" text-anchor="middle" font-size="25" font-weight="650" fill="#24323d">CH₃</text><line x1="210" y1="160" x2="210" y2="204" stroke="#334b57" stroke-width="3"/><text x="210" y="233" text-anchor="middle" font-size="23" font-weight="650" fill="#24323d">Br</text></svg></div></template><script>
+'use strict';
+const drills={methyl:{names:['2-methylbutane'],answer:'2-methylbutane',reason:'Choose a four-carbon parent and number the methyl branch 2, not 3.',hint:'Find the longest continuous chain and compare the methyl position from each end.'},chloro:{names:['3-chloro-2-methylpentane'],answer:'3-chloro-2-methylpentane',reason:'The five-carbon parent has methyl at 2 and chloro at 3; chloro is cited first alphabetically.',hint:'Choose the five-carbon chain, compare 2,3 with 3,4, then alphabetize the two prefixes.'},dimethyl:{names:['2,2-dimethylpropane'],answer:'2,2-dimethylpropane',reason:'The parent has three carbons and two methyl groups on carbon 2.',hint:'The central carbon has four carbon neighbors; count the longest continuous path and both branches.'},alkene:{names:['but-1-ene','1-butene'],answer:'but-1-ene',reason:'The four-carbon chain has a double bond beginning at carbon 1. The alternative placement 1-butene is also accepted.',hint:'There are four parent carbons; number from the end nearer the double bond.'},alcohol:{names:['propan-2-ol','2-propanol'],answer:'propan-2-ol',reason:'The three-carbon parent has an OH group on carbon 2. The alternative placement 2-propanol is also accepted.',hint:'Find the three-carbon chain containing OH and locate its OH-bearing carbon.'},bromo:{names:['2-bromobutane'],answer:'2-bromobutane',reason:'A four-carbon parent has bromo on carbon 2. Stereochemistry is not specified by this name.',hint:'Find the four-carbon parent and number from the end nearer Br.'}};
+const select=document.getElementById('structureChoice'),view=document.getElementById('interactiveStructure'),nameInput=document.getElementById('nameInput'),feedback=document.getElementById('nameFeedback'),reveal=document.getElementById('nameReveal');
+function resetEntry(){nameInput.value='';feedback.replaceChildren();reveal.open=false;document.getElementById('nameAnswer').textContent=drills[select.value].answer+'. '+drills[select.value].reason;view.replaceChildren(document.getElementById('template-'+select.value).content.cloneNode(true));}
+select.addEventListener('change',resetEntry);document.getElementById('resetName').addEventListener('click',()=>{resetEntry();nameInput.focus();});
+function normalize(value){return value.toLowerCase().trim().replace(/[‐‑‒–—−]/g,'-').replace(/\s+/g,'');}
+document.getElementById('nameForm').addEventListener('submit',event=>{event.preventDefault();const value=normalize(nameInput.value);if(!value){nameInput.setCustomValidity('Enter a name before checking.');nameInput.reportValidity();nameInput.setCustomValidity('');return;}const item=drills[select.value],correct=item.names.includes(value);feedback.replaceChildren();const title=document.createElement('strong');title.textContent=correct?'Correct.':'Not quite; try again.';feedback.append(title);const p=document.createElement('p');p.textContent=correct?item.reason:item.hint;feedback.append(p);});
+resetEntry();document.getElementById('takeQuizBtn').addEventListener('click',()=>{if(window.parent!==window)window.parent.postMessage({type:'openQuiz',quiz:'chapter2_lesson5_quiz.html'},'*');else document.getElementById('quizNotice').textContent='Open this lesson inside LearnTrack to launch its quiz.';});
+let openBeforePrint=[];window.addEventListener('beforeprint',()=>{openBeforePrint=Array.from(document.querySelectorAll('details')).map(item=>{const was=item.open;item.open=true;return was;});});window.addEventListener('afterprint',()=>{document.querySelectorAll('details').forEach((item,i)=>item.open=Boolean(openBeforePrint[i]));});
+</script></body></html>
