@@ -1,289 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Chapter 2 – Lesson 3: Hybridization, Sigma and Pi Bonds</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 2 – Lesson 3: Hybridization, Sigma and Pi Bonds</title><style>
+  :root{--green:#136f63;--blue:#174ea6;--ink:#24323d;--muted:#536575;--line:#dce6eb}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#f0fbf7,#f3f7ff);color:var(--ink);margin:0;padding:32px 24px;line-height:1.75;font-size:20px}
+  main{max-width:1060px;margin:auto}h1,h2,h3{line-height:1.3}h1{color:var(--green);font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 18px}h2{color:var(--green);font-size:1.55em;margin:0 0 18px}h3{color:var(--blue);font-size:1.13em;margin:24px 0 10px}
+  p{margin:12px 0}li+li{margin-top:8px}ul,ol{padding-left:26px}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--green)}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.intro{font-size:1.05em}.meta,.small{font-size:.85em;color:var(--muted)}
+  header{padding:12px 0 22px}.section{background:#fff;padding:30px;margin:0 0 24px;border-radius:14px;box-shadow:0 4px 20px #00000009;scroll-margin-top:20px}
+  nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85em;margin-top:20px}nav a{padding:5px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;border:1px solid var(--line);border-radius:10px}.card h3{margin-top:0}
+  .note,.activity,.worked{border-radius:10px;padding:18px 22px;margin:20px 0}.note{background:#fff8e8;border-left:5px solid #b78017}.activity{background:#f5f8ff;border-left:5px solid var(--blue)}.worked{background:#f0faf6;border:1px solid #c8e6d9}.activity h3,.worked h3{margin-top:0}.label{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+  details{margin-top:14px}summary{display:list-item;cursor:pointer;color:var(--green);font-weight:650;padding:9px 12px;border:1px solid #b8d6ce;border-radius:8px;width:fit-content;background:white}summary:hover{background:#eaf5f0}summary .hide{display:none}details[open]>summary .show{display:none}details[open]>summary .hide{display:inline}.answer{background:#eaf0fc;border-radius:8px;padding:16px;margin-top:10px}.answer p:first-child{margin-top:0}.answer p:last-child{margin-bottom:0}
+  :focus-visible{outline:3px solid #174ea6;outline-offset:4px}.formula{font-size:1.15em;font-weight:650;overflow-wrap:anywhere}sub,sup{font-size:.72em;line-height:0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}caption{text-align:left;font-weight:600;margin-bottom:10px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f5fc;color:var(--blue)}
+  figure{margin:20px 0}figcaption{font-size:.85em;color:var(--muted);margin-top:12px}.reaction{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#f6fafc;border:1px solid var(--line);padding:24px 16px;border-radius:12px;text-align:center}.reaction .compound{flex:1 1 200px}.reaction .arrow{color:var(--green);font-size:2em;line-height:1.2}.reaction .arrow small{display:block;font-size:.38em}.reaction .name{font-weight:650}.reaction .tag{display:block;font-size:.75em;color:var(--muted)}
+  .structure{display:block;max-width:100%;height:auto;margin:8px auto}.timeline{list-style:none;padding:0}.timeline li{border-left:3px solid #b4d9cb;margin:0;padding:0 0 22px 22px}.timeline li:last-child{padding-bottom:0}.timeline strong{color:var(--green)}
+  .quiz-area{text-align:center;padding:12px 12px 30px}.quiz-button{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font:700 .95em "Segoe UI",Arial,sans-serif;border:none;cursor:pointer}.quiz-button:hover{background:#0f5b52}.references{font-size:.8em}.references li{overflow-wrap:anywhere}.skip{position:absolute;left:-10000px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:2}
+  @media(max-width:620px){body{padding:20px 12px;font-size:18px}.section{padding:22px 18px}.grid{grid-template-columns:1fr}.note,.activity,.worked{padding:16px}.reaction{flex-direction:column}.reaction .compound{flex:auto}.reaction .arrow{transform:none}.reaction .arrow .symbol{display:inline-block;transform:rotate(90deg)}th,td{padding:10px 9px}h2{font-size:1.4em}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff;padding:0;font-size:11pt}.section{box-shadow:none;border:1px solid #ddd;padding:16px;break-inside:auto}nav,.quiz-area,.skip,summary{display:none}details>.answer{display:block!important}.answer,.worked,.activity,figure{break-inside:avoid}a{color:inherit}header{padding-top:0}}
 
-<style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f0fbf7, #f3f7ff);
-    color: #222;
-    margin: 0;
-    padding: 32px 24px;
-    line-height: 1.7;
-    font-size: 22px;
-  }
+.wide-table{min-width:580px}.equation{background:#f5f8ff;border:1px solid var(--line);border-radius:10px;padding:20px;text-align:center;overflow-wrap:anywhere;font-weight:600}.steps li strong{color:var(--green)}
+.diagram{width:100%;height:auto;display:block;max-width:600px;margin:12px auto}.table-wrap{max-width:100%}.worksheet{min-height:70px;border-bottom:1px dashed #a6b9bd;margin:14px 0}
+@media print{.wide-table{min-width:0}.table-wrap{overflow:visible}.worksheet{min-height:45px}}
 
-  h1 {
-    color: #136f63;
-    font-size: 2.2em;
-    margin-bottom: 0.6em;
-  }
+.nuclide{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-size:1.25em;vertical-align:middle}.nuclide .numbers{display:flex;flex-direction:column;font-size:.65em;line-height:1.15;text-align:right}.nuclide .symbol{font-weight:650}.nuclide .charge{align-self:flex-start;font-size:.65em;line-height:1.2}.count-rule{display:flex;gap:12px;flex-wrap:wrap}.count-rule span{padding:10px 16px;border-radius:8px;background:#eaf0fc;font-weight:650}.orbital-diagram{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin:20px 0}.orbital-group{text-align:center}.boxes{display:flex;gap:5px}.orbital{display:flex;align-items:center;justify-content:center;width:49px;height:50px;border:2px solid #174ea6;border-radius:5px;background:#fff;color:#174ea6;font-size:26px;line-height:1;letter-spacing:0}.orbital-label{font-size:.8em;margin-top:5px}.config{white-space:normal;font-weight:650;color:#174ea6}.input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.input-grid label{font-size:.9em;font-weight:600}input,select{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #7d919a;border-radius:6px;background:#fff;color:#24323d}input{margin-top:6px}.practice-actions{display:flex;gap:10px;flex-wrap:wrap}.practice-actions button{background:#136f63;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 .9em 'Segoe UI',Arial,sans-serif;cursor:pointer}.practice-actions .secondary{background:#e5ebf7;color:#174ea6}.feedback{margin-top:16px;padding:16px;background:#eaf0fc;border-radius:8px}.feedback:empty{display:none}.self-check label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.self-check input{width:20px;flex-shrink:0;margin-top:8px}code{font-family:inherit}.diagram{max-width:650px}.print-note{display:none}@media(max-width:440px){.input-grid{grid-template-columns:1fr}.orbital-diagram{gap:16px}.count-rule span{padding:8px 10px}}@media print{.interactive{display:none}.print-note{display:block}.orbital{print-color-adjust:exact}.orbital-diagram{break-inside:avoid}}
 
-  h2 {
-    color: #136f63;
-    font-size: 1.55em;
-    margin-top: 1.3em;
-    margin-bottom: 0.4em;
-  }
-
-  h3 {
-    color: #174ea6;
-    font-size: 1.2em;
-    margin: 0.6em 0 0.4em 0;
-  }
-
-  p { margin: 12px 0; }
-
-  ul { margin-left: 26px; }
-
-  .section {
-    background: #fff;
-    padding: 24px 28px;
-    border-radius: 14px;
-    margin-bottom: 32px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-  }
-
-  .image, .video {
-    text-align: center;
-    margin: 24px 0;
-  }
-
-  img {
-    border-radius: 10px;
-    width: 85%;
-    max-width: 580px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  iframe {
-    width: 90%;
-    max-width: 760px;
-    height: 430px;
-    border-radius: 12px;
-  }
-
-  .activity {
-    background: #f9fbff;
-    border-left: 5px solid #136f63;
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-top: 16px;
-  }
-
-  .toggle-btn {
-    background: #136f63;
-    color: white;
-    padding: 9px 16px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-  }
-
-  .toggle-btn:hover {
-    background: #0f5b52;
-    transform: translateY(-1px);
-  }
-
-  .answer {
-    display: none;
-    margin-top: 12px;
-    background: #eef3ff;
-    padding: 14px;
-    border-radius: 8px;
-  }
-
-  .quiz-button {
-    display: inline-block;
-    background-color: #136f63;
-    color: white;
-    padding: 13px 26px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 26px;
-  }
-
-  .quiz-button:hover {
-    background-color: #0f5b52;
-  }
-
-  .note {
-    font-size: 0.9em;
-    color: #555;
-  }
-
-  * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-</style>
-</head>
-
-<body>
-
-<h1>Hybridization, Sigma and Pi Bonds</h1>
-<p class="note">
-  This lesson explains why atoms form certain shapes, how orbitals mix (hybridize), and how σ (sigma) and π (pi) bonds form from orbital overlap.  
-  Work through the activities to strengthen your understanding.
-</p>
-
-<!-- SECTION 1 -->
-<div class="section">
-  <h2>1. What is Hybridization?</h2>
-  <p>
-    Hybridization is the process in which atomic orbitals blend to form new, identical hybrid orbitals.  
-    This explains the shapes and bond angles of molecules that cannot be predicted using only pure s and p orbitals.
-  </p>
-
-  <p>
-    For example, carbon’s 2s and 2p orbitals mix to form four <strong>sp³</strong> hybrid orbitals arranged in a tetrahedral shape.  
-    This explains methane’s (CH₄) 109.5° bond angle.
-  </p>
-
-  <div class="image">
-    <img src="https://i.ytimg.com/vi/nTaZTlXNLRo/sddefault.jpg" alt="sp3 hybridized orbitals in methane">
-    <p class="note"><em>sp³ hybrid orbitals produce the tetrahedral shape of methane.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 1 — Why Carbon Forms Four Bonds</h3>
-    <p>Carbon is 1s² 2s² 2p². How can it form four identical single bonds in CH₄?</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-    <div class="answer">
-      Carbon promotes one 2s electron into the empty 2p orbital → 4 unpaired electrons.  
-      Then 2s + 3p orbitals hybridize → 4 equivalent sp³ orbitals.  
-      Each overlaps with H 1s orbitals → 4 identical σ bonds.
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 2 -->
-<div class="section">
-  <h2>2. Types of Hybridization</h2>
-  <p>
-    Hybridization depends on the number of electron regions (bonds + lone pairs) around an atom:
-  </p>
-
-  <ul>
-    <li><strong>sp</strong> — 2 regions → linear (180°)</li>
-    <li><strong>sp²</strong> — 3 regions → trigonal planar (120°)</li>
-    <li><strong>sp³</strong> — 4 regions → tetrahedral (109.5°)</li>
-  </ul>
-
-  <div class="image">
-    <img src="https://louis.pressbooks.pub/app/uploads/sites/10/2022/01/image292-2.jpeg" alt="sp, sp2, sp3 hybridization diagram">
-    <p class="note"><em>Hybrid orbitals differ in shape, orientation, and bond angles.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 2 — Identify Hybridization</h3>
-    <p>Determine the hybridization of the central atom in: CO₂, BF₃, CH₄.</p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-    <div class="answer">
-      CO₂ → sp (linear) <br>
-      BF₃ → sp² (trigonal planar) <br>
-      CH₄ → sp³ (tetrahedral)
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 3 -->
-<div class="section">
-  <h2>3. Sigma (σ) and Pi (π) Bonds</h2>
-  <p>
-    Chemical bonds form when orbitals overlap:
-  </p>
-
-  <ul>
-    <li><strong>Sigma (σ) bond</strong> — first/primary bond; formed by head-on overlap.</li>
-    <li><strong>Pi (π) bond</strong> — formed by side-by-side overlap of unhybridized p orbitals.</li>
-  </ul>
-
-  <div class="image">
-    <img src="https://www.chemistrylearner.com/wp-content/uploads/2023/04/Sigma-and-Pi-Bonds.jpg" alt="Sigma and Pi bond overlap">
-    <p class="note"><em>Double bonds = 1 σ + 1 π. Triple bonds = 1 σ + 2 π.</em></p>
-  </div>
-
-  <div class="activity">
-    <h3>Activity 3 — Counting σ and π Bonds</h3>
-    <p>
-      How many σ and π bonds are in the following?<br>
-      • Ethene (C₂H₄)  
-      • Ethyne (C₂H₂)
-    </p>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-
-    <div class="answer">
-      <strong>Ethene (C₂H₄):</strong> 1 σ (C–C) + 1 π → total double bond  
-      <br><strong>Ethyne (C₂H₂):</strong> 1 σ + 2 π → triple bond
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 4 -->
-<div class="section">
-  <h2>4. Molecular Geometry Visualization</h2>
-  <p>
-    Use the interactive simulation to explore how electron regions determine molecular shape and hybridization.
-  </p>
-
-  <div class="video">
-    <iframe src="https://phet.colorado.edu/sims/html/molecule-shapes/latest/molecule-shapes_en.html" title="Molecule Shapes Simulation"></iframe>
-  </div>
-
-  <p class="note">
-    Try CH₄ (sp³), BF₃ (sp²), and CO₂ (sp).  
-    Observe how bond angles change based on electron pair arrangement.
-  </p>
-</div>
-
-<!-- KEY TERMS -->
-<div class="section">
-  <h2>Key Terms</h2>
-  <ul>
-    <li><strong>Hybridization</strong> — mixing of atomic orbitals to form hybrid orbitals.</li>
-    <li><strong>sp, sp², sp³</strong> — types of hybrid orbitals.</li>
-    <li><strong>Sigma (σ) bond</strong> — strong, head-on orbital overlap.</li>
-    <li><strong>Pi (π) bond</strong> — side-by-side overlap of unhybridized p orbitals.</li>
-    <li><strong>Tetrahedral</strong> — 109.5° bond angle; typical of sp³ hybridization.</li>
-    <li><strong>Trigonal planar</strong> — 120° bond angle; sp² hybridization.</li>
-    <li><strong>Linear</strong> — 180° bond angle; sp hybridization.</li>
-  </ul>
-</div>
-
-<!-- QUIZ BUTTON -->
-<div style="text-align:center; margin-top:25px;">
-  <button class="quiz-button" id="takeQuizBtn">Take the Quiz →</button>
-</div>
-
+.simulation iframe{display:block;width:100%;max-width:760px;aspect-ratio:16/10;height:auto;margin:16px auto;border:0;border-radius:10px}.molecule{display:block;width:100%;max-width:410px;height:auto;margin:16px auto}.molecule text{font-family:Segoe UI,Arial,sans-serif}.bond-key{display:flex;gap:12px;flex-wrap:wrap}.bond-key span{background:#edf4ff;padding:7px 12px;border-radius:8px;font-weight:650}.exercise{border:1px solid #c5d8de;border-radius:10px;padding:18px;margin:18px 0;background:#f7fbff}.exercise select,.exercise input[type=number]{display:block;width:100%;max-width:100%;font:inherit;padding:9px;border:1px solid #728994;border-radius:6px;background:#fff;color:#24323d;margin:6px 0 14px}.exercise .field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.exercise label{font-weight:600;font-size:.9em}.exercise .actions{display:flex;gap:10px;flex-wrap:wrap}.exercise button{background:#136f63;color:white;border:0;border-radius:8px;padding:10px 16px;font:650 .9em 'Segoe UI',Arial,sans-serif;min-height:44px;cursor:pointer}.exercise button.secondary{background:#e5ebf7;color:#174ea6}.exercise .feedback{background:#eaf0fc;border-left:4px solid #174ea6;padding:16px;margin-top:16px;border-radius:8px}.exercise .feedback:empty{display:none}.formula-box{text-align:center;padding:17px;border-radius:9px;background:#f4f8fb;color:#174ea6;font-weight:700;font-size:1.15em;overflow-wrap:anywhere}.route{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.route span{background:#edf4ff;padding:9px 12px;border-radius:8px;font-weight:650}.readiness label{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.readiness input{width:20px;flex-shrink:0;margin-top:8px}.compact{font-size:.9em}.print-note{display:none}@media(max-width:520px){.exercise .field-grid{grid-template-columns:1fr}.exercise{padding:15px}}@media print{.exercise{display:none}.print-note{display:block}.molecule{max-width:260px}.table-wrap{overflow:visible}}
+</style></head><body><a class="skip" href="#lesson">Skip to lesson</a><main id="lesson"><header><div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 3</div><h1>Hybridization, Sigma and Pi Bonds</h1><p class="intro">Why can a carbon chain bend at some bonds but resist twisting at others? Use electron regions, a local orbital model, and a complete bond count to connect structure to behavior.</p><p class="meta">Allow about 45–60 minutes, or work in two sessions. Draw the structures on paper before opening the answers. Scroll wide tables sideways on small screens.</p><nav aria-label="Lesson sections"><a href="#goals">Goals</a><a href="#hybrid">Hybrid orbitals</a><a href="#regions">Count regions</a><a href="#overlap">σ and π</a><a href="#examples">Worked examples</a><a href="#rotation">Rotation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav></header>
+<section class="section" id="goals"><h2>What you will learn</h2><ul><li>Count electron regions around a specified atom and assign a simple local sp, sp², or sp³ model.</li><li>Distinguish electron-region geometry from the shape formed by atoms.</li><li>Describe σ and π bonding and count all bonds in a molecule, including C–H bonds.</li><li>Connect π overlap with restricted rotation while recognizing the limits of the model.</li></ul><div class="note"><strong>Recall Lesson 2:</strong> each bond—single, double, or triple—counts as <strong>one electron region</strong> around a particular atom. Each lone pair adds one region. This is different from counting individual σ and π bonds.</div></section>
+<section class="section" id="hybrid"><h2>1. What does hybridization describe?</h2><p>In a valence-bond model, <strong>hybridization</strong> combines atomic orbitals on the <strong>same atom</strong> into hybrid orbitals oriented for bonding. It is a useful model for describing localized bonds and approximate geometry; it is not a claim that we can directly watch orbitals physically mix.</p><p>Orbital number is conserved: combining one s orbital with three p orbitals produces four sp³ hybrid orbitals. For a simple carbon description, sp² leaves one p orbital unhybridized; sp leaves two. Those unhybridized p orbitals can participate in π bonding.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Hybridization patterns"><table><caption>Idealized local models for common second-period atoms</caption><thead><tr><th scope="col">Model</th><th scope="col">Orbitals mixed</th><th scope="col">Hybrid orbitals</th><th scope="col">Unhybridized p orbitals</th><th scope="col">Ideal arrangement</th></tr></thead><tbody><tr><th scope="row">sp³</th><td>1 s + 3 p</td><td>4 sp³</td><td>0</td><td>Tetrahedral; 109.5°</td></tr><tr><th scope="row">sp²</th><td>1 s + 2 p</td><td>3 sp²</td><td>1</td><td>Trigonal planar; 120°</td></tr><tr><th scope="row">sp</th><td>1 s + 1 p</td><td>2 sp</td><td>2</td><td>Linear; 180°</td></tr></tbody></table></div><div class="note"><strong>Angles are ideal reference values.</strong> Actual angles depend on the atoms, lone pairs, and molecular environment. The sp / sp² / sp³ assignment by region count is a useful introductory approximation; resonance and delocalization can require a more careful orbital model.</div>
+<div class="worked"><div class="label">Worked example 1</div><h3>Why use sp³ for carbon in methane?</h3><ol><li>CH₄ has four C–H bonds and no lone pair on C: <strong>four electron regions</strong>.</li><li>VSEPR predicts tetrahedral arrangement; the H–C–H angle is about 109.5°.</li><li>In the localized hybrid model, carbon uses four equivalent sp³ orbitals, each overlapping with a hydrogen 1s orbital to describe one σ bond.</li><li>Four C–H bonds means <strong>4 σ and 0 π bonds</strong>.</li></ol><p class="small">Some introductory models represent electron promotion as an accounting step before hybridization. Treat it as a model for bonding, not as evidence that an isolated carbon atom must undergo a separately observed step before every reaction.</p></div>
+<div class="activity"><h3>Guided drill 1 · Conserve orbitals</h3><p>If one s orbital combines with two p orbitals on carbon, how many hybrid orbitals result, and how many valence p orbitals remain unhybridized?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Three orbitals combine to give <strong>three sp² orbitals</strong>. One of the three original valence p orbitals remains unhybridized. The number of orbitals is conserved.</p></div></details></div>
+</section>
+<section class="section" id="regions"><h2>2. Assign hybridization to one atom at a time</h2><div class="note"><strong>Routine:</strong> draw the Lewis structure → choose the atom → count atoms directly attached to it plus its lone pairs → map 2, 3, or 4 regions to sp, sp², or sp³ in this introductory model → check electron geometry and local bonding.</div><p>Count one region per bonded neighbor, even when the bond is double or triple. Add one region for each lone pair on the chosen atom. Do not count atoms elsewhere in the molecule or lone pairs on neighboring atoms.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Hybridization and electron regions"><table><caption>Region counts for the examples in this lesson</caption><thead><tr><th scope="col">Chosen atom</th><th scope="col">Bonded neighbors</th><th scope="col">Lone pairs</th><th scope="col">Regions</th><th scope="col">Local model</th></tr></thead><tbody><tr><th scope="row">C in CH₄</th><td>4</td><td>0</td><td>4</td><td>sp³</td></tr><tr><th scope="row">C in CH₂O</th><td>3</td><td>0</td><td>3</td><td>sp²</td></tr><tr><th scope="row">C in CO₂</th><td>2</td><td>0</td><td>2</td><td>sp</td></tr><tr><th scope="row">B in BF₃</th><td>3</td><td>0</td><td>3</td><td>sp²</td></tr><tr><th scope="row">N in NH₃</th><td>3</td><td>1</td><td>4</td><td>sp³</td></tr><tr><th scope="row">O in H₂O</th><td>2</td><td>2</td><td>4</td><td>sp³ approximation</td></tr></tbody></table></div><p>In BF₃, boron has three regions and a trigonal-planar sp² model; it has six electrons around it, an example of an incomplete octet. For NH₃, four regions have an approximately tetrahedral electron-region arrangement; the <strong>molecular shape</strong>, which names atom positions, is <strong>trigonal pyramidal</strong>. H₂O likewise has four regions but a <strong>bent</strong> molecular shape. Lone pairs affect bond angles.</p><div class="worked"><div class="label">Worked example 2</div><h3>Two different carbons in propene</h3><p class="formula-box">CH₂=CH–CH₃</p><ol><li>The left CH₂ carbon has two H neighbors and one C neighbor: 3 regions → <strong>sp²</strong>.</li><li>The middle CH carbon has one H and two C neighbors: 3 regions → <strong>sp²</strong>.</li><li>The right CH₃ carbon has three H and one C neighbor: 4 regions → <strong>sp³</strong>.</li></ol><p>Assign each carbon separately. The double bond counts as one region at <em>each</em> carbon it joins.</p></div>
+<div class="activity"><h3>Guided drill 2 · Double bonds and regions</h3><p>In CO₂, the central carbon is double-bonded to two oxygens. How many electron regions surround carbon? Give its local hybridization and electron-region geometry.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Each double bond is one region, so carbon has <strong>2 regions</strong>. The introductory model is <strong>sp</strong> and the electron-region geometry is <strong>linear</strong> (180°).</p></div></details></div>
+<div class="activity"><h3>Guided drill 3 · Lone pairs change shape</h3><p>NH₃ has three N–H bonds and one lone pair on nitrogen. Assign the simple hybridization and distinguish its electron-region geometry from its molecular shape.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Three bonds + one lone pair = <strong>4 regions</strong>, giving an <strong>sp³</strong> approximation and a tetrahedral electron-region arrangement. The molecular shape is <strong>trigonal pyramidal</strong>, not tetrahedral.</p></div></details></div>
+</section>
+<section class="section" id="overlap"><h2>3. Sigma and pi bonds: two overlap patterns</h2><p>A <strong>σ bond</strong> has electron density concentrated along the internuclear axis and can be described by end-on overlap. A <strong>π bond</strong> has a nodal plane containing that axis and can be described, in these examples, by sideways overlap of parallel unhybridized p orbitals.</p><figure><svg class="molecule" viewBox="0 0 400 460" role="img" aria-labelledby="overlap-title overlap-desc"><title id="overlap-title">Simplified orbital overlap models</title><desc id="overlap-desc">Two schematics compare end-on p orbital overlap for a sigma bond with sideways p orbital overlap for a pi bond. The lobes are colored to show orbital phase, not electric charge. The two lobes of a pi bonding region belong to one pi bond.</desc><text x="200" y="25" text-anchor="middle" font-size="20" font-weight="bold" fill="#136f63">σ: end-on overlap</text><line x1="20" y1="100" x2="380" y2="100" stroke="#697a85" stroke-width="2" stroke-dasharray="5 5"/><ellipse cx="55" cy="100" rx="40" ry="22" fill="#edb570" opacity=".7"/><ellipse cx="345" cy="100" rx="40" ry="22" fill="#edb570" opacity=".7"/><ellipse cx="153" cy="100" rx="67" ry="26" fill="#7ba9e5" opacity=".75"/><ellipse cx="247" cy="100" rx="67" ry="26" fill="#7ba9e5" opacity=".75"/><circle cx="100" cy="100" r="5" fill="#173a49"/><circle cx="300" cy="100" r="5" fill="#173a49"/><text x="200" y="163" text-anchor="middle" font-size="16" fill="#536575">Example: p–p overlap along the bond axis</text><text x="200" y="210" text-anchor="middle" font-size="20" font-weight="bold" fill="#136f63">π: sideways overlap</text><line x1="20" y1="320" x2="380" y2="320" stroke="#697a85" stroke-width="2" stroke-dasharray="5 5"/><ellipse cx="100" cy="270" rx="110" ry="34" fill="#7ba9e5" opacity=".75"/><ellipse cx="300" cy="270" rx="110" ry="34" fill="#7ba9e5" opacity=".75"/><ellipse cx="100" cy="370" rx="110" ry="34" fill="#edb570" opacity=".75"/><ellipse cx="300" cy="370" rx="110" ry="34" fill="#edb570" opacity=".75"/><circle cx="100" cy="320" r="5" fill="#173a49"/><circle cx="300" cy="320" r="5" fill="#173a49"/><text x="200" y="438" text-anchor="middle" font-size="16" fill="#536575">Side-by-side overlap above and below the axis</text></svg><figcaption>Conceptual two-dimensional overlap sketches, not actual orbital boundaries. Dots mark nuclei; the dashed line is the bond axis. Colors show orbital phase, not charge. The two π regions represent one π bond.</figcaption></figure><div class="table-wrap" role="region" tabindex="0" aria-label="Sigma and pi bond counts"><table><caption>For ordinary localized single, double, and triple bonds</caption><thead><tr><th scope="col">Connection</th><th scope="col">σ bonds</th><th scope="col">π bonds</th><th scope="col">Shared pairs</th></tr></thead><tbody><tr><th scope="row">Single: A–B</th><td>1</td><td>0</td><td>1</td></tr><tr><th scope="row">Double: A=B</th><td>1</td><td>1</td><td>2</td></tr><tr><th scope="row">Triple: A≡B</th><td>1</td><td>2</td><td>3</td></tr></tbody></table></div><div class="note"><strong>For a whole-molecule count:</strong> count one σ for every connected pair of bonded atoms. Then add one π for each double bond and two π for each triple bond. Include bonds to hydrogen. This shortcut applies to the ordinary localized structures used here.</div><p>In the localized model of a C=C bond, each sp² carbon has one unhybridized p orbital. Their sideways overlap makes <strong>one π bond</strong>; its electron density has regions above and below the σ framework, which are parts of the same π bond, not two π bonds.</p><p>For C≡C, each sp carbon has two unhybridized p orbitals. Two perpendicular pairs overlap to form <strong>two π bonds</strong>, in addition to the C–C σ bond.</p>
+<div class="activity"><h3>Guided drill 4 · Count the connection</h3><p>How many σ and π bonds make up a single C≡C connection? How many electron regions does that connection count as around either carbon?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The triple connection contains <strong>1 σ + 2 π</strong>, but it is <strong>one electron region</strong> around either carbon. The two counting tasks answer different questions.</p></div></details></div>
+</section>
+<section class="section" id="examples"><h2>4. Worked examples: include every hydrogen</h2><p class="small">The diagrams display all C–H bonds. A line represents a shared electron pair; multiple lines connect the same pair of atoms. Each diagram is a schematic structure, not a complete three-dimensional orbital picture.</p>
+<div class="worked"><div class="label">Worked example 3 · Ethane</div><h3>CH₃–CH₃: single bond</h3><svg class="molecule" viewBox="0 0 400 210" role="img" aria-label="Ethane: two carbons connected by a single bond; each carbon is bonded to three hydrogen atoms."><line x1="170" y1="100" x2="230" y2="100" stroke="#136f63" stroke-width="2.5"/><line x1="132.5" y1="86.25" x2="97.5" y2="58.75" stroke="#136f63" stroke-width="2.5"/><line x1="132.5" y1="113.75" x2="97.5" y2="141.25" stroke="#136f63" stroke-width="2.5"/><line x1="150.0" y1="120.0" x2="150.0" y2="160.0" stroke="#136f63" stroke-width="2.5"/><line x1="267.5" y1="86.25" x2="302.5" y2="58.75" stroke="#136f63" stroke-width="2.5"/><line x1="267.5" y1="113.75" x2="302.5" y2="141.25" stroke="#136f63" stroke-width="2.5"/><line x1="250.0" y1="120.0" x2="250.0" y2="160.0" stroke="#136f63" stroke-width="2.5"/><text x="150" y="108" text-anchor="middle" font-size="26" fill="#173a49">C</text><text x="250" y="108" text-anchor="middle" font-size="26" fill="#173a49">C</text><text x="80" y="53" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="80" y="163" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="150" y="188" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="320" y="53" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="320" y="163" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="250" y="188" text-anchor="middle" font-size="26" fill="#173a49">H</text></svg><ol><li>Each carbon has four neighbors → 4 regions → <strong>sp³</strong>.</li><li>Count six C–H connections → 6 σ.</li><li>Count one C–C single connection → 1 σ, 0 π.</li><li><strong>Whole molecule: 7 σ, 0 π.</strong></li></ol></div>
+<div class="worked"><div class="label">Worked example 4 · Ethene</div><h3>CH₂=CH₂: double bond</h3><svg class="molecule" viewBox="0 0 400 210" role="img" aria-label="Ethene: two carbons connected by a double bond; each carbon is bonded to two hydrogen atoms."><line x1="170" y1="100" x2="230" y2="100" stroke="#136f63" stroke-width="2.5"/><line x1="170" y1="110" x2="230" y2="110" stroke="#136f63" stroke-width="2.5"/><line x1="129.0" y1="88.2" x2="93.75" y2="60.0" stroke="#136f63" stroke-width="2.5"/><line x1="129.0" y1="121.8" x2="93.75" y2="150.0" stroke="#136f63" stroke-width="2.5"/><line x1="271.0" y1="88.2" x2="306.25" y2="60.0" stroke="#136f63" stroke-width="2.5"/><line x1="271.0" y1="121.8" x2="306.25" y2="150.0" stroke="#136f63" stroke-width="2.5"/><text x="150" y="113" text-anchor="middle" font-size="26" fill="#173a49">C</text><text x="250" y="113" text-anchor="middle" font-size="26" fill="#173a49">C</text><text x="75" y="53" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="75" y="173" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="325" y="53" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="325" y="173" text-anchor="middle" font-size="26" fill="#173a49">H</text></svg><ol><li>Each carbon has two H neighbors and one C neighbor → 3 regions → <strong>sp²</strong>.</li><li>The four C–H bonds contribute 4 σ.</li><li>The C=C connection contributes 1 σ + 1 π.</li><li><strong>Whole molecule: 5 σ, 1 π.</strong></li></ol><p>The C=C connection alone is 1 σ + 1 π. The four C–H σ bonds must be added to obtain the whole-molecule total.</p></div>
+<div class="worked"><div class="label">Worked example 5 · Ethyne</div><h3>HC≡CH: triple bond</h3><svg class="molecule" viewBox="0 0 400 210" role="img" aria-label="Ethyne: two carbons connected by a triple bond, with one hydrogen bonded to each carbon; atoms lie in a straight line."><line x1="70" y1="105" x2="130" y2="105" stroke="#136f63" stroke-width="2.5"/><line x1="170" y1="97" x2="230" y2="97" stroke="#136f63" stroke-width="2.5"/><line x1="170" y1="105" x2="230" y2="105" stroke="#136f63" stroke-width="2.5"/><line x1="170" y1="113" x2="230" y2="113" stroke="#136f63" stroke-width="2.5"/><line x1="270" y1="105" x2="330" y2="105" stroke="#136f63" stroke-width="2.5"/><text x="50" y="113" text-anchor="middle" font-size="26" fill="#173a49">H</text><text x="150" y="113" text-anchor="middle" font-size="26" fill="#173a49">C</text><text x="250" y="113" text-anchor="middle" font-size="26" fill="#173a49">C</text><text x="350" y="113" text-anchor="middle" font-size="26" fill="#173a49">H</text></svg><ol><li>Each carbon has one H neighbor and one C neighbor → 2 regions → <strong>sp</strong>.</li><li>Two C–H bonds contribute 2 σ.</li><li>The C≡C connection contributes 1 σ + 2 π.</li><li><strong>Whole molecule: 3 σ, 2 π.</strong></li></ol></div>
+<div class="worked"><div class="label">Worked example 6 · Propene</div><h3>CH₂=CH–CH₃: different carbon environments</h3><p>The six C–H bonds contribute <strong>6 σ</strong>. The two carbon–carbon connections contribute <strong>2 σ</strong>; the double bond adds <strong>1 π</strong>. Total: <strong>8 σ and 1 π</strong>. The two alkene carbons are sp²; the CH₃ carbon is sp³.</p></div>
+<div class="activity"><h3>Guided drill 5 · Carbonyl bonds count too</h3><p>Methanal is H₂C=O. Determine the hybridization of carbon and count σ and π bonds in the whole molecule.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Carbon has two H neighbors and one O neighbor: 3 regions → <strong>sp²</strong>. Two C–H bonds give 2 σ; C=O gives 1 σ + 1 π. Total = <strong>3 σ and 1 π</strong>.</p></div></details></div>
+</section>
+<section class="section" id="rotation"><h2>5. Why double bonds resist twisting</h2><p>In the localized π model of ethene, effective overlap needs parallel p orbitals. Twisting around the C=C axis reduces their alignment and raises the energy; a 90° twist would disrupt the π overlap. This helps explain the rotational barrier and can allow distinct geometric isomers when each double-bonded carbon has two different substituents.</p><p>A single C–C σ bond can often rotate more readily without losing its end-on overlap, although other interactions can create rotational barriers. Some single bonds—including bonds with partial double-bond character—also have restricted rotation. A double bond does not automatically produce cis/trans isomers: the substituents must satisfy the stated condition.</p>
+<div class="activity"><h3>Guided drill 6 · Avoid a common shortcut</h3><p>Ethene itself has H₂C=CH₂. Can it have cis/trans isomers simply because it has a C=C bond?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>No.</strong> Each carbon has two identical hydrogen substituents. Each double-bonded carbon must have two different substituents for the usual geometric-isomer distinction.</p></div></details></div>
+</section>
+<section class="section simulation" id="simulation"><h2>Explore molecular geometry</h2><p>Use PhET’s Molecule Shapes simulation to compare two, three, and four electron regions. Explore the corresponding ideal arrangements, then add a lone pair and compare electron geometry with molecular shape. The simulation illustrates VSEPR geometry; the sp, sp², and sp³ labels in this lesson are a separate bonding model.</p><iframe src="https://phet.colorado.edu/sims/html/molecule-shapes/latest/molecule-shapes_en.html" title="PhET Molecule Shapes simulation" loading="lazy" allowfullscreen></iframe><p class="small">An internet connection is needed. If the embedded simulation does not load, <a href="https://phet.colorado.edu/en/simulations/molecule-shapes" target="_blank" rel="noopener noreferrer">open Molecule Shapes in a new tab</a>.</p></section>
+<section class="section" id="practice"><h2>6. Practice and feedback</h2><p>Try a complete count before checking. For condensed formulas, expand each CH₃, CH₂, or CH group mentally or on paper.</p><div class="exercise"><h3>Interactive drill · Identify and count</h3><p>Choose a structure and focus on the specified carbon. Enter that carbon’s hybridization and the total σ and π bonds for the <strong>whole molecule</strong>. Your entries are practice only and are not sent to LearnTrack.</p><form id="bondForm"><label for="compound">Structure and target atom</label><select id="compound"><option value="ethane">Ethane: CH₃–CH₃ · either carbon</option><option value="ethene">Ethene: CH₂=CH₂ · either carbon</option><option value="ethyne">Ethyne: HC≡CH · either carbon</option><option value="propene">Propene: CH₂=CH–CH₃ · rightmost CH₃ carbon</option><option value="methanal">Methanal: H₂C=O · carbon</option></select><p id="targetInfo" class="small">Target: either carbon in CH₃–CH₃.</p><div class="field-grid"><label for="hybridChoice">Target hybridization<select id="hybridChoice" required><option value="">Choose…</option><option value="sp">sp</option><option value="sp2">sp²</option><option value="sp3">sp³</option></select></label><label for="sigmaCount">Whole-molecule σ bonds<input id="sigmaCount" type="number" min="0" max="30" step="1" required inputmode="numeric"></label><label for="piCount">Whole-molecule π bonds<input id="piCount" type="number" min="0" max="30" step="1" required inputmode="numeric"></label></div><div class="actions"><button type="submit">Check my answer</button><button id="resetBond" class="secondary" type="button">Clear answers</button></div><div id="bondFeedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></form><noscript><p>The interactive drill requires JavaScript; the examples and revealable practice answers remain available.</p></noscript></div><p class="print-note">Extra practice: count whole-molecule σ and π bonds in ethane, ethene, ethyne, propene, and methanal.</p>
+<h3>A. Assign the model · Items 1–4</h3><ol><li>Central C in CO₂: count regions and assign hybridization.</li><li>Carbon in CH₂O: count regions and assign hybridization.</li><li>N in NH₃: count regions and name the electron-region geometry and molecular shape.</li><li>Assign each carbon in CH₃–C≡CH, reading left to right.</li></ol>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol><li><strong>2 regions, sp:</strong> each C=O connection is one region.</li><li><strong>3 regions, sp²:</strong> two C–H bonds and one C=O connection.</li><li><strong>4 regions, sp³ approximation:</strong> tetrahedral electron-region geometry and trigonal-pyramidal molecular shape.</li><li><strong>sp³, sp, sp:</strong> the CH₃ carbon has four neighbors; each alkyne carbon has two.</li></ol></div></details>
+<h3>B. Count the whole molecule · Items 5–8</h3><ol start="5"><li>CH₄</li><li>H₂C=O</li><li>CH₃–C≡CH</li><li>CO₂, O=C=O</li></ol>
+<details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><ol start="5"><li><strong>CH₄: 4 σ, 0 π</strong>—four C–H connections.</li><li><strong>H₂C=O: 3 σ, 1 π</strong>—two C–H plus one C–O σ, with one carbonyl π.</li><li><strong>CH₃–C≡CH: 6 σ, 2 π</strong>—four C–H and two C–C connections; the triple bond adds two π.</li><li><strong>CO₂: 2 σ, 2 π</strong>—each of its two C=O connections contributes 1 σ and 1 π.</li></ol></div></details>
+<h3>C. Explain the reasoning · Items 9–12</h3>
+<div class="activity"><h3>9 · Catch the ethene error</h3><p>A learner reports 1 σ and 1 π for all of C₂H₄. Which bonds were omitted?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>The learner counted only C=C. Four C–H σ bonds were omitted. The correct molecular total is <strong>5 σ and 1 π</strong>.</p></div></details></div>
+<div class="activity"><h3>10 · Count orbitals, not electrons</h3><p>A student claims that one s and two p orbitals make two sp² orbitals. Correct the count and identify the remaining p orbital.</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p><strong>Three</strong> orbitals mix to give three sp² orbitals; <strong>one</strong> of the original three valence p orbitals remains unhybridized.</p></div></details></div>
+<div class="activity"><h3>11 · Geometry and lone pairs</h3><p>Why can oxygen in H₂O be described by an sp³ model even though the molecule is bent rather than tetrahedral in molecular shape?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>O has two bonding regions and two lone pairs: four regions give a roughly tetrahedral electron-region arrangement. The molecular shape considers only atom positions, so it is <strong>bent</strong>. The sp³ description is an introductory approximation.</p></div></details></div>
+<div class="activity"><h3>12 · Predict the effect of twisting</h3><p>Why does a large twist about ethene’s C=C bond cost energy in the localized orbital picture?</p><details><summary><span class="show">Show answer and explanation</span><span class="hide">Hide answer and explanation</span></summary><div class="answer"><p>Twisting misaligns the parallel p orbitals and reduces the sideways overlap that supports the π bond. The resulting loss of π bonding raises the energy.</p></div></details></div>
+</section>
+<section class="section" id="summary"><h2>7. Bring the ideas together</h2><div class="route"><span>Lewis structure</span><span>→ chosen atom</span><span>→ electron regions</span><span>→ local model</span><span>→ whole-molecule σ / π count</span></div><ul><li><strong>2, 3, 4 regions:</strong> commonly sp, sp², sp³ respectively in the simple localized model.</li><li><strong>One connected atom pair:</strong> one σ; a double adds one π and a triple adds two.</li><li><strong>Whole-molecule totals:</strong> include every H bond and every multiple bond.</li><li><strong>Shape:</strong> electron-region arrangement includes lone pairs; molecular shape describes atom positions.</li><li><strong>Model limits:</strong> actual angles vary, and resonance can complicate a simple local assignment.</li></ul><h3>Key terms</h3><div class="table-wrap" role="region" tabindex="0" aria-label="Hybridization key terms"><table><thead><tr><th scope="col">Term</th><th scope="col">Meaning here</th></tr></thead><tbody><tr><th scope="row">Hybrid orbital</th><td>An orbital constructed by combining atomic orbitals on the same atom in a bonding model.</td></tr><tr><th scope="row">Electron region</th><td>A bonding connection or lone pair around the chosen atom; a multiple bond is one region.</td></tr><tr><th scope="row">σ bond</th><td>A bond described by end-on overlap and density along the internuclear axis.</td></tr><tr><th scope="row">π bond</th><td>A bond with a nodal plane containing the internuclear axis; in these examples, described by sideways p overlap.</td></tr><tr><th scope="row">Unhybridized p orbital</th><td>A p orbital not included in the selected hybrid set; it can participate in π bonding.</td></tr></tbody></table></div><h3>Readiness check</h3><div class="readiness"><label><input type="checkbox">I can count regions around a specified atom, including lone pairs.</label><label><input type="checkbox">I can explain why ethene has 5 σ and 1 π in total.</label><label><input type="checkbox">I can distinguish tetrahedral electron geometry from bent molecular shape.</label><label><input type="checkbox">I can explain why twisting can disrupt π overlap.</label></div><p class="small">These checks are for your own review and do not control quiz access.</p></section>
+<section class="section" id="references"><h2>Sources and further reading</h2><p class="small">The examples, diagrams, and drills were prepared for this lesson. These textbook sections support the bonding models:</p><ul class="references"><li><a href="https://openstax.org/books/chemistry-2e/pages/8-2-hybrid-atomic-orbitals" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Hybrid Atomic Orbitals</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/8-3-multiple-bonds" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Multiple Bonds</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity" target="_blank" rel="noopener noreferrer">OpenStax Chemistry 2e · Molecular Structure and Polarity</a></li></ul></section><div class="quiz-area"><p>Ready to check your understanding?</p><button class="quiz-button" id="takeQuizBtn" type="button">Take the Quiz →</button><p id="quizNotice" class="small" role="status"></p></div></main>
 <script>
-function toggleAnswer(btn) {
-  const ans = btn.nextElementSibling;
-  const open = ans.style.display === "block";
-  ans.style.display = open ? "none" : "block";
-  btn.textContent = open ? "Show Answer" : "Hide Answer";
-}
-
-document.getElementById("takeQuizBtn").addEventListener("click", () => {
-  window.parent.postMessage({
-    type: "openQuiz",
-    quiz: "chapter2_lesson3_quiz.html"
-  }, "*");
-});
-</script>
-
-</body>
-</html>
+'use strict';
+const compounds={ethane:{target:'either carbon in CH₃–CH₃',hybrid:'sp3',sigma:7,pi:0,reason:'4 regions at each carbon; 6 C–H + 1 C–C = 7 σ; no multiple bonds.'},ethene:{target:'either carbon in CH₂=CH₂',hybrid:'sp2',sigma:5,pi:1,reason:'3 regions at each carbon; 4 C–H + 1 C–C = 5 σ; the double bond adds 1 π.'},ethyne:{target:'either carbon in HC≡CH',hybrid:'sp',sigma:3,pi:2,reason:'2 regions at each carbon; 2 C–H + 1 C–C = 3 σ; the triple bond adds 2 π.'},propene:{target:'the rightmost CH₃ carbon in CH₂=CH–CH₃',hybrid:'sp3',sigma:8,pi:1,reason:'The CH₃ carbon has 4 regions; 6 C–H + 2 C–C = 8 σ; the double bond adds 1 π.'},methanal:{target:'carbon in H₂C=O',hybrid:'sp2',sigma:3,pi:1,reason:'Carbon has 3 regions; 2 C–H + 1 C–O = 3 σ; the carbonyl adds 1 π.'}};
+const form=document.getElementById('bondForm'),compound=document.getElementById('compound'),hybrid=document.getElementById('hybridChoice'),sigma=document.getElementById('sigmaCount'),pi=document.getElementById('piCount'),feedback=document.getElementById('bondFeedback');
+function resetAnswers(){hybrid.value='';sigma.value='';pi.value='';feedback.replaceChildren();document.getElementById('targetInfo').textContent='Target: '+compounds[compound.value].target+'.';}
+compound.addEventListener('change',resetAnswers);document.getElementById('resetBond').addEventListener('click',()=>{resetAnswers();hybrid.focus();});
+form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;const item=compounds[compound.value],entered=[hybrid.value,Number(sigma.value),Number(pi.value)],expected=[item.hybrid,item.sigma,item.pi],labels=['Hybridization','σ bonds','π bonds'],display={sp:'sp',sp2:'sp²',sp3:'sp³'};feedback.replaceChildren();const h=document.createElement('strong');h.textContent=entered.every((v,i)=>v===expected[i])?'All three answers are correct.':'Review the feedback, then try again.';feedback.append(h);const list=document.createElement('ul');expected.forEach((v,i)=>{const li=document.createElement('li');li.textContent=labels[i]+': '+(entered[i]===v?'correct':'expected '+(i===0?display[v]:v))+'.';list.append(li);});feedback.append(list);const p=document.createElement('p');p.textContent=item.reason;feedback.append(p);});
+document.getElementById('takeQuizBtn').addEventListener('click',()=>{if(window.parent!==window)window.parent.postMessage({type:'openQuiz',quiz:'chapter2_lesson3_quiz.html'},'*');else document.getElementById('quizNotice').textContent='Open this lesson inside LearnTrack to launch its quiz.';});
+let openBeforePrint=[];window.addEventListener('beforeprint',()=>{openBeforePrint=Array.from(document.querySelectorAll('details')).map(item=>{const previous=item.open;item.open=true;return previous;});});window.addEventListener('afterprint',()=>{document.querySelectorAll('details').forEach((item,i)=>item.open=Boolean(openBeforePrint[i]));});
+</script></body></html>
