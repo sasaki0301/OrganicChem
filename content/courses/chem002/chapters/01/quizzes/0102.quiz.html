@@ -314,7 +314,7 @@ function showQuestion(focus = false) {
     button.setAttribute('data-choice', String(i));
     const body = element('span', 'choice-body');
     body.append(element('span', 'choice-label', text), element('span','choice-status'));
-    button.append(element('span','letter',letters[i]+'.'),body);
+    button.append(body);
     button.addEventListener('click', () => selectChoice(i));
     choices.append(button);
   });
