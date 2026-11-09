@@ -1,336 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 2 – Lesson 2 Quiz: Chemical Bonding Theory</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
-  img {
-    max-width: 300px;
-    border-radius: 10px;
-    margin: 12px auto;
-    display: block;
-  }
-
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2 – Lesson 2 Quiz: Chemical Bonding Theory</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-   <div class="quiz-container">
-    <h2>Chemical Bonding Theory – Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "1. Why do atoms form bonds?", 
-        c: ["To become more reactive", "To reach a stable electron configuration", "To gain mass", "To lose all electrons"], 
-        a: 1 },
-      { q: "2. Which type of bond involves the transfer of electrons?", 
-        c: ["Covalent", "Ionic", "Metallic", "Hydrogen"], 
-        a: 1 },
-      { q: "3. The image below represents which type of bond?<br><img src='https://static.wikia.nocookie.net/ellesmere-chemistry/images/6/69/Nacl_lattice.gif' alt='Ionic lattice'>", 
-        c: ["Ionic bond", "Covalent bond", "Metallic bond", "Hydrogen bond"], 
-        a: 0 },
-      { q: "4. A bond formed by sharing a pair of electrons is called:", 
-        c: ["Ionic", "Covalent", "Metallic", "Van der Waals"], 
-        a: 1 },
-      { q: "5. Which statement best describes a polar covalent bond?", 
-        c: ["Electrons shared equally", "Electrons transferred completely", "Electrons shared unequally", "Electrons move freely"], 
-        a: 2 },
-      { q: "6. Which molecule below is polar due to its bent shape?<br><img src='https://www.chemistrylearner.com/wp-content/uploads/2023/05/H2O-Molecular-Geometry.jpg' alt='H2O molecule'>", 
-        c: ["O₂", "H₂", "H₂O", "N₂"], 
-        a: 2 },
-      { q: "7. In metallic bonding, electrons are:", 
-        c: ["Shared in pairs between atoms", "Transferred from one atom to another", "Delocalized across many atoms", "Held tightly by one atom"], 
-        a: 2 },
-      { q: "8. Which compound contains a coordinate (dative) bond?", 
-        c: ["H₂", "NH₄⁺", "NaCl", "CO₂"], 
-        a: 1 },
-      { q: "9. Arrange the bonds in order of increasing strength: single, double, triple.", 
-        c: ["Triple < Double < Single", "Single < Double < Triple", "Double < Single < Triple", "Single = Triple < Double"], 
-        a: 1 },
-      { q: "10. What determines bond polarity?", 
-        c: ["Atomic mass", "Bond length", "Difference in electronegativity", "Number of valence electrons"], 
-        a: 2 }
-    ];
-
-    let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 2</div>
+  <h1 id="quizTitle">Chemical Bonding Theory — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    "id": "c2l2q01",
+    "topic": "Bonding models and properties",
+    "difficulty": "Easy",
+    "q": "A sample of solid NaCl contains Na⁺ and Cl⁻ ions. What holds these ions together in the crystal?",
+    "c": [
+      "The sharing of one electron pair by each neighboring ion.",
+      "The electrostatic attraction between oppositely charged ions.",
+      "The movement of neutral salt molecules around a nucleus.",
+      "The attraction between protons within one atomic nucleus."
+    ],
+    "a": 1,
+    "e": "Ionic bonding is the electrostatic attraction between oppositely charged ions in an extended lattice. Electron transfer can help account for forming simple ions; the attraction is what holds the ionic solid together.",
+    "why": [
+      "Shared pairs describe covalent bonding; the dominant bonding model in NaCl is ionic.",
+      "Opposite charges attract in the ionic lattice.",
+      "Solid NaCl is an ionic lattice, not a collection of orbiting neutral NaCl molecules.",
+      "The question concerns attraction between ions, not forces inside one nucleus."
+    ]
+  },
+  {
+    "id": "c2l2q02",
+    "topic": "Bonding models and properties",
+    "difficulty": "Easy",
+    "q": "In an H–Cl bond, chlorine attracts the shared electron density more strongly than hydrogen. Which description is appropriate?",
+    "c": [
+      "Nonpolar covalent, with equal attraction by both atoms.",
+      "Ionic, with complete transfer stated by the information given.",
+      "Metallic, with delocalized electrons across a metal lattice.",
+      "Polar covalent, with H δ⁺ and Cl δ⁻."
+    ],
+    "a": 3,
+    "e": "The electrons are shared unequally in the polar covalent H–Cl bond. Greater electron density toward Cl gives partial charges H δ⁺ and Cl δ⁻; these are not full ionic charges.",
+    "why": [
+      "The stated unequal attraction indicates a polar bond.",
+      "The information describes unequal sharing, not a complete electron-transfer statement.",
+      "H–Cl is a molecular bond, not the metallic lattice model.",
+      "This correctly identifies unequal sharing and the direction of partial charge."
+    ]
+  },
+  {
+    "id": "c2l2q03",
+    "topic": "Bonding models and properties",
+    "difficulty": "Easy",
+    "q": "Which particle model best explains why a piece of copper can conduct electricity as a solid?",
+    "c": [
+      "Delocalized electrons can move through the metallic solid.",
+      "Positive and negative copper ions move through a rigid ionic lattice.",
+      "Neutral copper atoms repeatedly gain neutrons under a voltage.",
+      "Individual covalent molecules migrate between the electrodes."
+    ],
+    "a": 0,
+    "e": "In a metallic solid, delocalized electrons can respond to an applied electric field and carry charge. This differs from ionic conduction by mobile ions in molten or dissolved salts.",
+    "why": [
+      "Mobile delocalized electrons are the relevant charge carriers in metallic copper.",
+      "Copper metal is not modeled as a rigid lattice of alternating positive and negative copper ions.",
+      "Gaining neutrons is a nuclear change and does not explain ordinary electrical conduction.",
+      "Metallic copper is not composed of migrating individual covalent molecules."
+    ]
+  },
+  {
+    "id": "c2l2q04",
+    "topic": "Lewis structures, shape, and polarity",
+    "difficulty": "Moderate",
+    "q": "A learner draws H–O–H with only the two single bonds and no dots. How many valence electrons are missing from a complete Lewis structure of H₂O, and where do they go?",
+    "c": [
+      "Two electrons, placed as one lone pair on hydrogen.",
+      "Two electrons, placed as one lone pair on oxygen.",
+      "Four electrons, placed as two lone pairs on oxygen.",
+      "Four electrons, placed as two lone pairs on hydrogen."
+    ],
+    "a": 2,
+    "e": "H₂O has 6 + 2(1) = 8 valence electrons. The two bonds account for 4; the remaining 4 form two lone pairs on oxygen. Each H has a duet and O has an octet.",
+    "why": [
+      "Four electrons, not two, are missing; ordinary bonded hydrogen has no lone pair here.",
+      "Oxygen needs two lone pairs, totaling four electrons.",
+      "Two bonding pairs account for four electrons and two O lone pairs account for the other four.",
+      "The two lone pairs belong on oxygen; each H already has its duet through one bond."
+    ]
+  },
+  {
+    "id": "c2l2q05",
+    "topic": "Bonding models and properties",
+    "difficulty": "Moderate",
+    "q": "A compound contains Mg²⁺ and Cl⁻ ions. Which formula gives the simplest electrically neutral ratio of these ions?",
+    "c": [
+      "MgCl₂, because one +2 ion balances two −1 ions.",
+      "Mg₂Cl, because two +2 ions balance one −1 ion.",
+      "MgCl, because one ion of each always gives zero charge.",
+      "Mg₂Cl₂, because equal ion counts always balance charge."
+    ],
+    "a": 0,
+    "e": "One Mg²⁺ contributes +2; two Cl⁻ ions contribute −2. The simplest neutral ratio is 1:2, so the formula is MgCl₂.",
+    "why": [
+      "The charge sum is +2 + 2(−1) = 0 in the simplest whole-number ratio.",
+      "The charge sum for Mg₂Cl is +4 − 1 = +3, not zero.",
+      "The charge sum for MgCl is +2 − 1 = +1.",
+      "The charge sum for Mg₂Cl₂ is +4 − 2 = +2."
+    ]
+  },
+  {
+    "id": "c2l2q06",
+    "topic": "Lewis structures, shape, and polarity",
+    "difficulty": "Moderate",
+    "q": "CO₂ has two polar C=O bonds and is linear. H₂O has two polar O–H bonds and is bent. Which conclusion follows when the bond dipoles are combined?",
+    "c": [
+      "Both molecules are polar because both contain oxygen.",
+      "Both molecules are nonpolar because each has two bonds.",
+      "CO₂ is polar while H₂O is nonpolar because CO₂ has double bonds.",
+      "CO₂ is nonpolar while H₂O is polar because their dipoles combine differently."
+    ],
+    "a": 3,
+    "e": "The equal C=O bond dipoles in linear CO₂ point in opposite directions and cancel. The O–H bond dipoles in bent H₂O do not cancel, giving a net molecular dipole.",
+    "why": [
+      "Oxygen content alone does not determine the net molecular dipole.",
+      "The directions, not merely the number of bonds, determine cancellation.",
+      "CO₂ bond dipoles cancel, whereas the bent shape of H₂O prevents complete cancellation.",
+      "This matches the opposing bond dipoles in CO₂ and the noncancelling dipoles in H₂O."
+    ]
+  },
+  {
+    "id": "c2l2q07",
+    "topic": "Lewis structures, shape, and polarity",
+    "difficulty": "Moderate",
+    "q": "When NH₃ reacts with H⁺ to form NH₄⁺, where does the electron pair for the newly formed N–H bond originate?",
+    "c": [
+      "One electron comes from each H⁺ and nitrogen.",
+      "Both electrons come from a proton inside the nitrogen nucleus.",
+      "Both electrons come from a lone pair on nitrogen.",
+      "Both electrons come from the original H⁺ ion."
+    ],
+    "a": 2,
+    "e": "NH₃ donates its nitrogen lone pair to H⁺ to form a coordinate covalent bond. In isolated NH₄⁺, all four N–H bonds are equivalent; coordinate describes the pair’s origin during formation.",
+    "why": [
+      "In this electron-accounting model, the proton contributes no electron to the donated pair.",
+      "The pair comes from valence electrons, not a proton in the nucleus.",
+      "Nitrogen supplies both electrons of the shared pair.",
+      "H⁺ contributes no electron; the pair is donated by NH₃."
+    ]
+  },
+  {
+    "id": "c2l2q08",
+    "topic": "Bonding models and properties",
+    "difficulty": "Moderate",
+    "q": "For comparable carbon–carbon bonds, which statement describes the usual trend from C–C to C=C to C≡C?",
+    "c": [
+      "Bond length generally increases and bond energy generally decreases.",
+      "Bond length generally decreases and bond energy generally increases.",
+      "Both bond length and bond energy generally increase.",
+      "All three bonds have identical lengths and bond energies."
+    ],
+    "a": 1,
+    "e": "When comparing similar bonds between the same elements, increasing bond order generally shortens and strengthens the bond. Thus C≡C is normally shorter and takes more energy to break than C–C. This is not a universal ranking across different element pairs.",
+    "why": [
+      "This reverses the usual same-elements comparison.",
+      "For these comparable carbon–carbon bonds, increasing bond order generally shortens and strengthens the bond.",
+      "Bond energy generally increases, but length generally decreases.",
+      "The different bond orders typically have different lengths and bond energies."
+    ]
+  },
+  {
+    "id": "c2l2q09",
+    "topic": "Bond energy and formal charge",
+    "difficulty": "Difficult",
+    "q": "A student estimates the energy change for a stated reaction amount using the illustrative totals below. Which interpretation is correct?",
+    "c": [
+      "The reaction releases 2,550 kJ because both magnitudes are added.",
+      "The reaction absorbs 330 kJ because forming bonds absorbs energy.",
+      "The reaction absorbs 2,550 kJ because breaking bonds releases energy.",
+      "The reaction releases 330 kJ because formation releases more than breaking requires."
+    ],
+    "a": 3,
+    "e": "Use signed energy changes: breaking requires +1,110 kJ and formation releases −1,440 kJ. Net = 1,110 − 1,440 = −330 kJ, so the stated reaction releases 330 kJ overall.",
+    "why": [
+      "Bond breaking and formation have opposite signs; adding magnitudes ignores their energy directions.",
+      "Bond formation releases energy, and the net is negative here.",
+      "Breaking bonds requires energy; the reaction’s net is not the sum of the magnitudes.",
+      "The net is +1,110 − 1,440 = −330 kJ, indicating an overall release."
+    ],
+    "evidence": {
+      "caption": "Illustrative energy account for a stated reaction amount",
+      "headers": [
+        "Process",
+        "Energy change"
+      ],
+      "rows": [
+        [
+          "Break reactant bonds",
+          "1,110 kJ required"
+        ],
+        [
+          "Form product bonds",
+          "1,440 kJ released"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "c2l2q10",
+    "topic": "Bond energy and formal charge",
+    "difficulty": "Difficult",
+    "q": "A Lewis structure for NH₄⁺ has four N–H single bonds and no lone pairs on nitrogen. Using formal charge = valence electrons − nonbonding electrons − bond lines, which result and molecular shape are correct?",
+    "c": [
+      "N formal charge 0; trigonal pyramidal molecular shape.",
+      "N formal charge +1; tetrahedral molecular shape.",
+      "N formal charge −1; tetrahedral molecular shape.",
+      "N formal charge +1; bent molecular shape."
+    ],
+    "a": 1,
+    "e": "For nitrogen, formal charge = 5 − 0 − 4 = +1. The four bonding regions and no lone pairs give tetrahedral molecular shape for NH₄⁺. Each H has formal charge 0, so the sum is +1.",
+    "why": [
+      "Nitrogen’s formal charge is +1, and four bonding regions with no lone pairs give tetrahedral shape.",
+      "The calculation gives +1 and four bonding regions give tetrahedral shape.",
+      "5 − 0 − 4 = +1, not −1.",
+      "The formal charge is correct, but NH₄⁺ has four bonded atoms and a tetrahedral shape."
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(element('span','letter',letters[i]+'.'),body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','result');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
+</script>
 </body>
 </html>
