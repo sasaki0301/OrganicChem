@@ -1,316 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 2 – Lesson 1 Quiz: Review of Atomic Structure</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
-  img {
-    max-width: 300px;
-    border-radius: 10px;
-    margin: 12px auto;
-    display: block;
-  }
-
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2 – Lesson 1 Quiz: Review of Atomic Structure</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-  <div class="quiz-container">
-    <h2>Review of Atomic Structure – Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "1. Which subatomic particle determines the element’s identity?", c: ["Electron", "Neutron", "Proton", "Positron"], a: 2 },
-      { q: "2. An atom has 17 protons, 18 neutrons, and 17 electrons. What is its atomic mass number?", c: ["17", "18", "34", "35"], a: 3 },
-      { q: "3. The diagram below shows a simplified atom model.<br><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0vvh1Fm-R828-TnzTvBqDpATUCIQaIkuJQw&s' width='180'><br>What does each orbit represent?", c: ["Neutron layer", "Electron energy level", "Proton ring", "Atomic shell of nucleus"], a: 1 },
-      { q: "4. The atomic number represents:", c: ["Number of neutrons", "Sum of protons and neutrons", "Number of protons", "Number of isotopes"], a: 2 },
-      { q: "5. Which statement best describes isotopes?", c: ["Different elements with same number of protons", "Same element, different number of neutrons", "Different elements with same atomic mass", "Atoms with same number of electrons"], a: 1 },
-      { q: "6. The electron configuration of sodium is:", c: ["1s² 2s² 2p⁶ 3s¹", "1s² 2s² 2p⁶ 2s¹", "1s² 2p⁶ 3s²", "1s² 2s² 2p⁴"], a: 0 },
-      { q: "7. In a neutral atom, the number of electrons is always equal to the number of:", c: ["Neutrons", "Isotopes", "Protons", "Orbitals"], a: 2 },
-      { q: "8. Which subatomic particle has a negative charge?", c: ["Neutron", "Proton", "Electron", "Positron"], a: 2 },
-      { q: "9. The model below was proposed by Niels Bohr.<br><img src='https://www.chemistrylearner.com/wp-content/uploads/2022/01/Bohr-Model-Examples.jpg' width='180'><br>What did this model introduce?", c: ["Electron clouds", "Energy levels or shells", "Proton orbitals", "Nucleus splitting"], a: 1 },
-      { q: "10. What is the correct order of filling for these orbitals: 1s, 2s, 2p, 3s?", c: ["1s → 2s → 2p → 3s", "1s → 2p → 2s → 3s", "2p → 1s → 2s → 3s", "3s → 2p → 2s → 1s"], a: 0 }
-    ];
-
-    let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 1</div>
+  <h1 id="quizTitle">Review of Atomic Structure — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    "id": "c2l1q01",
+    "topic": "Particles, isotopes, and ions",
+    "difficulty": "Easy",
+    "q": "A carbon-12 atom has 6 protons and 6 neutrons. A carbon-14 atom has 6 protons and 8 neutrons. Which statement describes their relationship?",
+    "c": [
+      "They are different elements because their neutron numbers differ.",
+      "They are isotopes of the same element because their proton numbers match.",
+      "They are ions because their mass numbers are different.",
+      "They are the same isotope because both contain six protons."
+    ],
+    "a": 1,
+    "e": "Proton number identifies an element. These atoms both have six protons, so both are carbon; their different neutron counts make them different isotopes.",
+    "why": [
+      "Different neutron counts do not change the element when proton counts match.",
+      "Same proton count and different neutron counts identify isotopes of one element.",
+      "An ion has unequal proton and electron counts; a mass-number difference alone does not establish charge.",
+      "The neutron counts differ, so carbon-12 and carbon-14 are different isotopes."
+    ]
+  },
+  {
+    "id": "c2l1q02",
+    "topic": "Particles, isotopes, and ions",
+    "difficulty": "Easy",
+    "q": "A neutral atom has 17 protons, 18 neutrons, and 17 electrons. What are its atomic number Z and mass number A?",
+    "c": [
+      "Z = 18; A = 35",
+      "Z = 17; A = 34",
+      "Z = 35; A = 17",
+      "Z = 17; A = 35"
+    ],
+    "a": 3,
+    "e": "Atomic number is the proton count: Z = 17. Mass number is protons plus neutrons: A = 17 + 18 = 35. Electrons are not added to A.",
+    "why": [
+      "18 is the neutron count, not the atomic number.",
+      "Z is correct, but 17 + 18 = 35, not 34.",
+      "This reverses the atomic and mass numbers.",
+      "Both values follow from Z = protons and A = protons + neutrons."
+    ]
+  },
+  {
+    "id": "c2l1q03",
+    "topic": "Electron models and configurations",
+    "difficulty": "Easy",
+    "q": "A class uses a Bohr-style shell drawing to organize electrons. Which statement best describes the modern orbital model?",
+    "c": [
+      "An orbital describes a quantum state associated with an electron probability distribution.",
+      "An orbital is a fixed circular path that gives the electron’s exact position.",
+      "An orbital is a layer of neutrons surrounding the nucleus.",
+      "An orbital is a physical track along which protons move."
+    ],
+    "a": 0,
+    "e": "Orbitals are quantum descriptions associated with probability distributions for electrons. Simple shell diagrams can organize energy levels, but fixed circular tracks are not the modern description for multi-electron atoms.",
+    "why": [
+      "This distinguishes a quantum orbital from a fixed track.",
+      "A fixed orbit with an exact electron path is not the modern orbital description.",
+      "Neutrons are normally in the nucleus; an orbital describes an electron state.",
+      "Atomic orbitals describe electron states, not proton tracks."
+    ]
+  },
+  {
+    "id": "c2l1q04",
+    "topic": "Particles, isotopes, and ions",
+    "difficulty": "Moderate",
+    "q": "Magnesium-24 has atomic number 12. After a neutral atom forms Mg²⁺, how many protons, neutrons, and electrons does the ion contain?",
+    "c": [
+      "12 protons, 12 neutrons, 14 electrons",
+      "10 protons, 14 neutrons, 12 electrons",
+      "12 protons, 12 neutrons, 10 electrons",
+      "14 protons, 10 neutrons, 12 electrons"
+    ],
+    "a": 2,
+    "e": "Protons = Z = 12; neutrons = A − Z = 24 − 12 = 12. A 2+ ion has lost two electrons, so it has 10. Check: 12 − 10 = +2.",
+    "why": [
+      "Fourteen electrons would give charge 12 − 14 = −2, not +2.",
+      "Ion formation changes the electron count, not the proton count; A − Z also gives 12 neutrons.",
+      "The nucleus has 12 protons and 12 neutrons; loss of two electrons leaves 10.",
+      "The ion remains magnesium with 12 protons and 12 neutrons."
+    ]
+  },
+  {
+    "id": "c2l1q05",
+    "topic": "Particles, isotopes, and ions",
+    "difficulty": "Moderate",
+    "q": "Na⁺ has 11 protons and 10 electrons; neutral Ne has 10 protons and 10 electrons. Which conclusion is supported?",
+    "c": [
+      "They are isoelectronic but remain different elements because their proton counts differ.",
+      "They are the same element because they have equal numbers of electrons.",
+      "They are isotopes because their electron counts match.",
+      "They have the same charge because each contains ten electrons."
+    ],
+    "a": 0,
+    "e": "Isoelectronic species have the same number of electrons. Na⁺ and Ne each have 10, but their proton counts differ, so they are different elements. Their charges are +1 and 0 respectively.",
+    "why": [
+      "Equal electron counts make them isoelectronic; different proton counts keep them different elements.",
+      "Element identity depends on protons, not just electrons.",
+      "Isotopes must have the same proton count and different neutron counts; these proton counts differ.",
+      "Their proton counts differ, so their charges are +1 and 0."
+    ]
+  },
+  {
+    "id": "c2l1q06",
+    "topic": "Electron models and configurations",
+    "difficulty": "Moderate",
+    "q": "A neutral oxygen atom has Z = 8. Which ground-state configuration contains the correct number of electrons and respects the subshell capacities and filling order taught in the lesson?",
+    "c": [
+      "1s² 2s⁴ 2p²",
+      "1s² 2s² 2p⁶",
+      "1s² 2p⁶",
+      "1s² 2s² 2p⁴"
+    ],
+    "a": 3,
+    "e": "Neutral oxygen has 8 electrons. Fill 1s with 2, 2s with 2, and place the remaining 4 in 2p: 1s² 2s² 2p⁴. The superscripts sum to 8.",
+    "why": [
+      "The total is eight, but an s subshell can hold at most two electrons.",
+      "This configuration has 10 electrons, not 8.",
+      "Although the total is eight, the lower-energy 2s subshell is skipped.",
+      "It has eight electrons and follows the relevant capacities and filling order."
+    ]
+  },
+  {
+    "id": "c2l1q07",
+    "topic": "Electron models and configurations",
+    "difficulty": "Moderate",
+    "q": "A student says, “Carbon has two valence electrons because its configuration ends in 2p².” Neutral carbon is 1s² 2s² 2p². What should the student count?",
+    "c": [
+      "Only 2p², because s electrons are never valence electrons.",
+      "Only 1s², giving two electrons in the lowest occupied shell.",
+      "Both 2s² and 2p², giving four electrons in the highest occupied shell.",
+      "All three subshells, giving six valence electrons."
+    ],
+    "a": 2,
+    "e": "For the main-group atoms in this lesson, count all electrons in the highest occupied principal shell. Carbon’s n = 2 shell contains 2s² and 2p², for four valence electrons.",
+    "why": [
+      "Carbon’s 2s and 2p electrons both belong to its valence shell.",
+      "The 1s electrons are in the inner shell, not carbon’s highest occupied shell.",
+      "Both n = 2 subshells are in carbon’s outer occupied shell: 2 + 2 = 4.",
+      "Six is the total number of electrons; the two 1s electrons are inner-shell electrons."
+    ]
+  },
+  {
+    "id": "c2l1q08",
+    "topic": "Orbitals and interpretation",
+    "difficulty": "Moderate",
+    "q": "An isolated ground-state oxygen atom has four electrons in its three 2p orbitals. Which orbital diagram follows Hund’s rule and the two-electrons-per-orbital rule? Each vertical separator divides orbitals.",
+    "c": [
+      "↑↓ | ↑↓ | empty",
+      "↑↓ | ↑ | ↑",
+      "↑↑ | ↑ | ↓",
+      "↑↓ | ↑↓ | ↑"
+    ],
+    "a": 1,
+    "e": "Place one electron with parallel spin in each of the three equal-energy 2p orbitals before pairing. The fourth pairs with an opposite-spin electron: ↑↓ | ↑ | ↑. The paired box may be drawn in any of the three positions.",
+    "why": [
+      "Pairing two orbitals while leaving the third empty does not give the ground-state arrangement required by Hund’s rule.",
+      "This has four electrons: one opposite-spin pair and two parallel unpaired electrons.",
+      "Two electrons in the same orbital cannot have the same spin.",
+      "This diagram contains five electrons, not four."
+    ]
+  },
+  {
+    "id": "c2l1q09",
+    "topic": "Orbitals and interpretation",
+    "difficulty": "Difficult",
+    "q": "Three species are described in the table. Which conclusion correctly identifies an isotope relationship and an isoelectronic relationship?",
+    "c": [
+      "X and Z are isotopes; X and Y are isoelectronic.",
+      "Y and Z are isotopes; X and Z are isoelectronic.",
+      "X and Y are isotopes; X and Z are isoelectronic.",
+      "X and Y are isotopes; Y and Z are isoelectronic."
+    ],
+    "a": 3,
+    "e": "X and Y each have 8 protons but have 8 and 10 neutrons, so they are oxygen isotopes. Y and Z each have 10 electrons, so they are isoelectronic. Their proton counts differ, so they are not the same element.",
+    "why": [
+      "X and Z have different proton numbers; X and Y also have different electron counts.",
+      "Y and Z have different proton numbers; X and Z have 8 and 10 electrons respectively.",
+      "X and Y are isotopes, but X and Z have different electron counts.",
+      "X and Y share proton count but differ in neutrons; Y and Z share electron count."
+    ],
+    "evidence": {
+      "caption": "Particle counts for three individual species",
+      "headers": [
+        "Species",
+        "Protons",
+        "Neutrons",
+        "Electrons"
+      ],
+      "rows": [
+        [
+          "X",
+          "8",
+          "8",
+          "8"
+        ],
+        [
+          "Y",
+          "8",
+          "10",
+          "10"
+        ],
+        [
+          "Z",
+          "10",
+          "10",
+          "10"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "c2l1q10",
+    "topic": "Orbitals and interpretation",
+    "difficulty": "Difficult",
+    "q": "An isolated carbon atom in its ground state has configuration 1s² 2s² 2p², with two unpaired electrons. A student concludes that carbon can make at most two bonds in any molecule. Which evaluation best follows from the lesson?",
+    "c": [
+      "The conclusion is established because the atom has exactly two valence electrons.",
+      "The conclusion is unsupported: carbon has four valence electrons, and molecular bonding requires an appropriate bonding model.",
+      "The conclusion is established because each orbital can contain only one electron.",
+      "The conclusion is unsupported because carbon has no electrons in its outer shell."
+    ],
+    "a": 1,
+    "e": "Carbon has four valence electrons across 2s and 2p. The isolated atom’s ground-state diagram alone does not establish a two-bond maximum in molecules. Bonding in molecules needs additional models, developed in later lessons.",
+    "why": [
+      "Carbon has four valence electrons: two in 2s and two in 2p.",
+      "This separates the isolated atom’s ground state from the bonding models needed for molecules.",
+      "An orbital can hold two electrons with opposite spins, and this claim does not establish the proposed bond limit.",
+      "Carbon has four electrons in its outer n = 2 shell."
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(element('span','letter',letters[i]+'.'),body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','result');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
+</script>
 </body>
 </html>
