@@ -1,377 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 2 – Lesson 5 Quiz: Nomenclature Concepts</title>
-  <style>
-  /* === Base Page === */
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  /* === Quiz Card === */
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-    position: relative;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* === Progress Bar === */
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  /* === Questions === */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  /* === Buttons === */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* === Result Section === */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  .star {
-    color: #ccc;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .star.gold {
-    color: gold;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
-  img {
-    max-width: 300px;
-    border-radius: 10px;
-    margin: 12px auto;
-    display: block;
-  }
-    
-  @media (max-width: 600px) {
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.1em; }
-    .stars { font-size: 2em; }
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2 – Lesson 5 Quiz: Organic Nomenclature</title>
+<style>
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.quiz-result-panel{text-align:center}.quiz-result-panel h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.quiz-result-panel h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-   <div class="quiz-container">
-    <h2>Nomenclature – Quiz</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <script>
-    const quizData = [
-      { q: "1. What is the main purpose of IUPAC nomenclature?", 
-        c: [
-          "To make chemical names easier to pronounce",
-          "To assign unique, standardized names to compounds",
-          "To replace common names with historical terms",
-          "To classify elements by atomic mass"
-        ], a: 1 },
-
-      { q: "2. Which part of an IUPAC name identifies the longest continuous carbon chain?", 
-        c: ["Prefix", "Parent name", "Suffix", "Functional group"], 
-        a: 1 },
-
-      { q: "3. What does the prefix in a compound’s name usually represent?", 
-        c: [
-          "The number of double bonds",
-          "The substituents or branches attached to the main chain",
-          "The total molecular mass",
-          "The oxidation state of carbon"
-        ], a: 1 },
-
-      { q: "4. What does the suffix '-ol' indicate in IUPAC naming?", 
-        c: ["An alkane", "A halogen substituent", "An alcohol group (-OH)", "A carboxylic acid group (-COOH)"], 
-        a: 2 },
-
-      { q: "5. Which of the following shows the correct general format of an IUPAC name?", 
-        c: [
-          "Suffix–Parent–Prefix",
-          "Functional Group–Chain–Element",
-          "Prefix–Parent–Suffix",
-          "Group–Subgroup–Chain"
-        ], a: 2 },
-
-      { q: "6. When numbering a chain, which rule should you follow?", 
-        c: [
-          "Start from the rightmost carbon always",
-          "Begin numbering at the carbon farthest from a substituent",
-          "Assign the lowest possible locants to substituents or the main functional group",
-          "Start from any carbon as long as the total count is correct"
-        ], a: 2 },
-
-      { q: "7. What is the correct order when more than one substituent is present?", 
-        c: [
-          "By size of substituent",
-          "By alphabetical order, ignoring di-, tri-, etc.",
-          "By atomic mass of attached atoms",
-          "By position in the chain"
-        ], a: 1 },
-
-      { q: "8. Which suffix takes precedence when both –COOH and –OH groups are present in a molecule?", 
-        c: [
-          "–ol",
-          "–oic acid",
-          "–al",
-          "–amine"
-        ], a: 1 },
-
-      { q: "9. What does the term 'locant' refer to in nomenclature?", 
-        c: [
-          "A type of functional group",
-          "The number of hydrogens in a compound",
-          "The position number assigned to substituents or double bonds",
-          "The total count of carbon atoms"
-        ], a: 2 },
-
-      { q: "10. Which of the following is NOT a correct principle of IUPAC naming?", 
-        c: [
-          "Always identify the parent chain first",
-          "Choose numbering that gives the highest numbers possible",
-          "Functional groups determine the suffix used",
-          "Alphabetize substituents when naming"
-        ], a: 1 }
-    ];
-
-    let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
-let resultSent = false;
-
-function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 2 · Lesson 5</div>
+  <h1 id="quizTitle">Organic Nomenclature — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
+<script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
+const quizData = [
+  {
+    "id": "c2l5q01",
+    "topic": "Name parts",
+    "difficulty": "Easy",
+    "q": "A selected parent chain has five carbon atoms and only single bonds. Which parent name applies?",
+    "c": [
+      "Butane",
+      "Pentane",
+      "Pentene",
+      "Hexane"
+    ],
+    a: 1,
+    "e": "Five carbons give pent-; a saturated open chain uses -ane. The parent name is pentane.",
+    "why": [
+      "Butane has four carbons.",
+      "Pent- indicates five carbons and -ane indicates a saturated parent.",
+      "Pentene contains a carbon–carbon double bond.",
+      "Hexane has six carbons."
+    ]
+  },
+  {
+    "id": "c2l5q02",
+    "topic": "Name parts",
+    "difficulty": "Easy",
+    "q": "In 3-chloro-2-methylpentane, what does the number 3 identify?",
+    "c": [
+      "The position of the chloro substituent.",
+      "The total number of carbons.",
+      "The position of the methyl substituent.",
+      "The number of chlorine atoms."
+    ],
+    a: 0,
+    "e": "The locant immediately before chloro places that substituent on carbon 3 of the selected pentane parent.",
+    "why": [
+      "The locant 3 belongs to chloro.",
+      "The parent has five carbons; the full molecule has six.",
+      "Methyl is at carbon 2.",
+      "There is one chloro substituent; 3 is its position."
+    ]
+  },
+  {
+    "id": "c2l5q03",
+    "topic": "Name parts",
+    "difficulty": "Easy",
+    "q": "When an alcohol is the principal characteristic group, which suffix indicates the –OH group?",
+    "c": [
+      "-ane",
+      "-ene",
+      "-ol",
+      "-al"
+    ],
+    a: 2,
+    "e": "The suffix -ol indicates the principal alcohol group. The parent also describes the carbon skeleton and any multiple bond.",
+    "why": [
+      "-ane indicates a saturated parent, not specifically an alcohol.",
+      "-ene indicates a carbon–carbon double bond.",
+      "-ol indicates the principal alcohol group.",
+      "-al indicates an aldehyde."
+    ]
+  },
+  {
+    "id": "c2l5q04",
+    "topic": "Naming branched alkanes",
+    "difficulty": "Moderate",
+    "q": "What is the IUPAC name of CH₃–CH(CH₃)–CH₂–CH₃?",
+    "c": [
+      "3-methylbutane",
+      "2-methylbutane",
+      "2-methylpropane",
+      "pentane"
+    ],
+    a: 1,
+    "e": "Step 1: the longest continuous chain has four carbons: butane. Step 2: number from the nearer end, placing the methyl at carbon 2. Name: 2-methylbutane.",
+    "why": [
+      "Number from the nearer end to give the branch locant 2.",
+      "The continuous parent has four carbons and the methyl branch is at C-2.",
+      "The longest parent has four carbons, not three.",
+      "The molecule has five carbons total, but its longest continuous chain has four."
+    ]
+  },
+  {
+    "id": "c2l5q05",
+    "topic": "Naming branched alkanes",
+    "difficulty": "Moderate",
+    "q": "What is the correct name of CH₃–C(CH₃)₂–CH₃?",
+    "c": [
+      "2,2-dimethylpropane",
+      "2,3-dimethylpropane",
+      "2-methylbutane",
+      "2,2-dimethylbutane"
+    ],
+    a: 0,
+    "e": "The longest chain has three carbons. Two methyl groups are both attached to carbon 2, so write both locants and use di-: 2,2-dimethylpropane.",
+    "why": [
+      "Both methyl substituents are on C-2 of the propane parent.",
+      "Both methyl groups are attached to the same central carbon, not C-2 and C-3.",
+      "The parent is propane with two methyl groups at C-2.",
+      "The longest continuous chain has three, not four, carbons."
+    ]
+  },
+  {
+    "id": "c2l5q06",
+    "topic": "Locants and alphabetizing",
+    "difficulty": "Moderate",
+    "q": "For a simple alkane, which substituent locant set is preferred when the two possible directions give 2,2,4 and 2,4,4?",
+    "c": [
+      "2,4,4 because its sum is larger.",
+      "Either: both start with 2.",
+      "2,2,4 because its second locant is lower at the first difference.",
+      "2,4,4 because the last number is larger."
+    ],
+    a: 2,
+    "e": "Compare sorted locants in order. The first entries tie at 2; the second entries are 2 and 4, so 2,2,4 wins at the first difference.",
+    "why": [
+      "A larger sum is not the numbering criterion.",
+      "A tie in the first position requires comparing the next position.",
+      "At the first difference, 2 is less than 4.",
+      "The comparison is decided earlier, at the second locant."
+    ]
+  },
+  {
+    "id": "c2l5q07",
+    "topic": "Locants and alphabetizing",
+    "difficulty": "Moderate",
+    "q": "Name CH₃–CH(CH₃)–CH(Cl)–CH₂–CH₃.",
+    "c": [
+      "2-methyl-3-chloropentane",
+      "3-chloro-4-methylpentane",
+      "3-chloro-2-methylpentane",
+      "2-chloro-3-methylpentane"
+    ],
+    a: 2,
+    "e": "The parent has five carbons. Numbering gives methyl at 2 and chloro at 3 (rather than 4 and 3); list chloro before methyl alphabetically: 3-chloro-2-methylpentane.",
+    "why": [
+      "Substituents are alphabetized: chloro precedes methyl.",
+      "Number from the other end to obtain locants 2 and 3.",
+      "Pentane is the parent; locants 2 and 3 are preferred, and chloro is cited before methyl.",
+      "This swaps the substituent positions in the given structure."
+    ]
+  },
+  {
+    "id": "c2l5q08",
+    "topic": "Alkenes and alcohols",
+    "difficulty": "Moderate",
+    "q": "What is the name of CH₃–CH=CH–CH₃, ignoring stereochemistry?",
+    "c": [
+      "but-1-ene",
+      "but-2-ene",
+      "butane",
+      "pent-2-ene"
+    ],
+    a: 1,
+    "e": "The parent has four carbons, and the double bond is between carbons 2 and 3. Its locant is the lower number, 2: but-2-ene.",
+    "why": [
+      "The double bond is between the two central carbons, not C-1 and C-2.",
+      "A four-carbon parent with a double bond at C-2 is but-2-ene.",
+      "The given structure contains a double bond.",
+      "The parent has four carbons, not five."
+    ]
+  },
+  {
+    "id": "c2l5q09",
+    "topic": "Name to structure",
+    "difficulty": "Difficult",
+    "q": "Which condensed formula represents 3-ethyl-2,2-dimethylhexane?",
+    "c": [
+      "CH₃–C(CH₃)₂–CH(CH₂CH₃)–CH₂–CH₂–CH₃",
+      "CH₃–CH(CH₃)–CH(CH₃)–CH₂–CH₂–CH₃",
+      "CH₃–CH(CH₂CH₃)–C(CH₃)₂–CH₂–CH₂–CH₃",
+      "CH₃–C(CH₃)₂–CH(CH₃)–CH₂–CH₂–CH₃"
+    ],
+    a: 0,
+    "e": "Build a six-carbon chain. Attach two methyl groups to C-2 and an ethyl group to C-3. The first formula matches these positions and preserves four bonds per carbon.",
+    "why": [
+      "The six-carbon parent has two methyl groups at C-2 and an ethyl at C-3.",
+      "This has one methyl at C-2 and one at C-3, with no ethyl substituent.",
+      "This places the ethyl at C-2 and both methyl groups at C-3.",
+      "The substituent at C-3 is methyl rather than ethyl."
+    ]
+  },
+  {
+    "id": "c2l5q10",
+    "topic": "Alkenes and alcohols",
+    "difficulty": "Difficult",
+    "q": "Which name describes HO–CH₂–CH=CH–CH(CH₃)–CH₃, without specifying stereochemistry?",
+    "c": [
+      "2-methylpent-3-en-5-ol",
+      "4-methylpent-2-en-1-ol",
+      "4-methylpent-3-en-1-ol",
+      "2-methylpent-2-en-5-ol"
+    ],
+    a: 1,
+    "e": "Choose the five-carbon parent containing OH and the double bond. Number from the OH end: OH at 1, the double bond at 2, and methyl at 4. The name is 4-methylpent-2-en-1-ol.",
+    "why": [
+      "Numbering from the OH end gives the principal alcohol group locant 1, not 5.",
+      "The OH is at C-1, the double bond begins at C-2, and the methyl is at C-4.",
+      "The double bond joins C-2 and C-3, so its lower locant is 2.",
+      "The principal alcohol group receives the lower locant in this simple example."
+    ]
   }
+];
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
+let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 }
-
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    button.setAttribute('data-choice', String(i));
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // Preserve the LearnTrack quizResult message format.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
+function showResult() {
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','quiz-result-panel');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','result',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Waiting for LearnTrack to verify and save your answers...'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=true;
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
+}
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-  </script>
+</script>
 </body>
 </html>
