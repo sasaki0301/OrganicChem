@@ -313,7 +313,7 @@ function showQuestion(focus = false) {
     const button = element('button', 'choice'); button.type = 'button';
     const body = element('span', 'choice-body');
     body.append(element('span', 'choice-label', text), element('span','choice-status'));
-    button.append(element('span','letter',letters[i]+'.'),body);
+    button.append(body);
     button.addEventListener('click', () => selectChoice(i));
     choices.append(button);
   });
