@@ -12,7 +12,7 @@
   .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
   .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
   .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
-  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.quiz-result-panel{text-align:center}.quiz-result-panel h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.quiz-result-panel-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.quiz-result-panel{text-align:center}.quiz-result-panel h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
   details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
   [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.quiz-result-panel h2:focus{outline:none}
   .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
@@ -48,7 +48,7 @@ const quizData = [
       "The three-dimensional arrangement of all bonds.",
       "All bonding and lone pairs of electrons."
     ],
-    "a": 0,
+    a: 0,
     "e": "A molecular formula gives atom counts. C₂H₆O alone does not distinguish ethanol from dimethyl ether.",
     "why": [
       "It gives the counts of each element.",
@@ -68,7 +68,7 @@ const quizData = [
       "Three",
       "Four"
     ],
-    "a": 1,
+    a: 1,
     "e": "Water has eight valence electrons. Two O–H bonds use four; the remaining four electrons are two lone pairs on oxygen.",
     "why": [
       "One pair accounts for only two of the four nonbonding electrons.",
@@ -88,7 +88,7 @@ const quizData = [
       "A carbon atom, with attached hydrogens usually omitted.",
       "A hydrogen atom with no bonds."
     ],
-    "a": 2,
+    a: 2,
     "e": "Unlabeled vertices and endpoints usually represent carbon. Add enough implicit H atoms for the carbon’s ordinary valence, accounting for bond order and charge.",
     "why": [
       "Oxygen is normally written explicitly.",
@@ -108,7 +108,7 @@ const quizData = [
       "C₄H₈",
       "C₅H₁₂"
     ],
-    "a": 1,
+    a: 1,
     "e": "The two endpoints and two corners represent four carbons. The end carbons each have three hydrogens and the middle carbons each have two, giving C₄H₁₀.",
     "why": [
       "There are four carbon positions, not three.",
@@ -129,7 +129,7 @@ const quizData = [
       "C₃H₆O",
       "C₂H₆O₂"
     ],
-    "a": 1,
+    a: 1,
     "e": "Count 2 C, 3 + 2 + 1 = 6 H, and 1 O. The hydrogen in OH must be included.",
     "why": [
       "This omits the hydrogen attached to oxygen.",
@@ -149,7 +149,7 @@ const quizData = [
       "They show the same connectivity using different line angles.",
       "Their molecular formula alone reveals which is ethanol."
     ],
-    "a": 1,
+    a: 1,
     "e": "Both have C₂H₆O, but their connections differ: ethanol has C–C–O while dimethyl ether has C–O–C. They are constitutional isomers.",
     "why": [
       "Both formulas contain C₂H₆O.",
@@ -169,7 +169,7 @@ const quizData = [
       "Ten: 5 + 4 + 1.",
       "Twelve: 4 × 3."
     ],
-    "a": 0,
+    a: 0,
     "e": "Nitrogen contributes five and four hydrogens contribute four. Subtract one electron for the +1 charge: 5 + 4 − 1 = 8. Four N–H bonds use all eight.",
     "why": [
       "A positive charge means subtracting one electron from the neutral atom total.",
@@ -189,7 +189,7 @@ const quizData = [
       "A double bond lying in the page.",
       "An unshared electron pair."
     ],
-    "a": 0,
+    a: 0,
     "e": "A solid wedge usually points out of the page toward the viewer; a dashed wedge generally points behind the page. An ordinary line usually lies in the plane.",
     "why": [
       "A solid wedge conventionally shows a bond projecting toward the viewer.",
@@ -209,7 +209,7 @@ const quizData = [
       "32 electrons; boron +1.",
       "30 electrons; boron −1."
     ],
-    "a": 0,
+    a: 0,
     "e": "The total is 3 + 4(7) + 1 = 32 electrons. With four bonds and no lone pairs on B, its formal charge is 3 − 0 − 4 = −1; each F has formal charge 0.",
     "why": [
       "The extra electron accounts for the ion charge; formal charge on B is 3 − 0 − 4 = −1.",
@@ -229,7 +229,7 @@ const quizData = [
       "The actual ion rapidly switches between two separate structures.",
       "They differ in total electron count and overall charge."
     ],
-    "a": 1,
+    a: 1,
     "e": "The contributors have the same atoms, connectivity, total electrons and charge but place the double bond and negative charge on opposite oxygens. The resonance hybrid has equivalent N–O bonds.",
     "why": [
       "Resonance contributors retain the same atom connectivity.",
@@ -373,7 +373,7 @@ function showResult() {
   const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
   const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
   status.textContent = isEmbedded()
-    ? 'Result submitted to LearnTrack. Waiting for the app to process the result...'
+    ? 'Waiting for LearnTrack to verify and save your answers...'
     : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
   result.append(starDisplay,title,element('p','result-status',outcome),status);
   const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
