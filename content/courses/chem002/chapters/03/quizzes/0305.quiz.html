@@ -1,390 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chapter 3 – Lesson 5 Quiz: Organic Acids and Bases</title>
-
 <style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-  }
-
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* Progress */
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-  }
-
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-    border-radius: 8px;
-  }
-
-  /* Question + Choices */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
-  }
-
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; }
-
-  .explanation {
-    background: #eef3ff;
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-top: 10px;
-    display: none;
-    text-align: left;
-    font-size: 1.05em;
-  }
-
-  /* Buttons */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-    margin-top: 15px;
-  }
-
-  .next-btn:hover { background: #0f5b52; }
-
-  /* Result */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 20px;
-  }
-
-  .stars {
-    font-size: 2.4em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 0.95em;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
-  }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.quiz-result-panel{text-align:center}.quiz-result-panel h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.quiz-result-panel h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
-<div class="quiz-container">
-  <h2>Lesson 5 Quiz – Organic Acids and Bases</h2>
-
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 3 · Lesson 5</div>
+  <h1 id="quizTitle">Organic Acids and Bases — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
   <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-</div>
-
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
 <script>
+'use strict';
+// Fixed order: 3 easy, 5 moderate, 2 difficult items. Difficulty is an editorial estimate.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
 const quizData = [
   {
-    q: "1. What determines the strength of an organic acid?",
-    c: [
-      "The mass of the molecule",
-      "The stability of its conjugate base",
-      "The number of hydrogen atoms",
-      "The type of carbon chain"
+    "id": "c3l5q01",
+    "topic": "Conjugate partners",
+    "difficulty": "Easy",
+    "q": "What is the conjugate base formed when acetic acid, CH₃COOH, donates its O–H proton?",
+    "c": [
+      "CH₃COOH₂⁺",
+      "CH₃COO⁻",
+      "CH₃CH₂O⁻",
+      "CH₃COOH"
     ],
     a: 1,
-    e: "A more stable conjugate base → stronger acid."
+    "e": "Removing H⁺ from the O–H group of CH₃COOH gives acetate, CH₃COO⁻. The O–H bonding electron pair remains with oxygen.",
+    "why": [
+      "This species has gained a proton, rather than lost one.",
+      "Loss of the O–H proton gives acetate, CH₃COO⁻.",
+      "Ethoxide is the conjugate base of ethanol, not acetic acid.",
+      "The acid changes when it loses a proton."
+    ]
   },
   {
-    q: "2. Which is the strongest organic acid among the following?",
-    c: ["Ethanol", "Phenol", "Acetic acid"],
+    "id": "c3l5q02",
+    "topic": "Acid strength and pKₐ",
+    "difficulty": "Easy",
+    "q": "When two acids are compared under the same conditions in the same solvent, what does a lower pKₐ indicate?",
+    "c": [
+      "A weaker acid.",
+      "A more concentrated acid solution.",
+      "A stronger acid.",
+      "A higher pH regardless of concentration."
+    ],
     a: 2,
-    e: "Carboxylic acids (like acetic acid) are strongest due to resonance-stabilized conjugate bases."
+    "e": "For compatible pKₐ values, the lower pKₐ corresponds to the stronger acid and a larger acid-dissociation constant, Kₐ.",
+    "why": [
+      "Lower pKₐ indicates stronger, not weaker, acid.",
+      "pKₐ does not by itself specify concentration.",
+      "This correctly relates lower pKₐ to stronger acid.",
+      "Solution pH also depends on concentration and conditions."
+    ]
   },
   {
-    q: "3. Why are carboxylic acids more acidic than alcohols?",
-    c: [
-      "They have more hydrogen atoms",
-      "Their conjugate bases are resonance-stabilized",
-      "They contain nitrogen",
-      "They dissolve better in water"
+    "id": "c3l5q03",
+    "topic": "Organic bases",
+    "difficulty": "Easy",
+    "q": "In CH₃NH₂ + H₂O ⇌ CH₃NH₃⁺ + OH⁻, what does methylamine do in the forward direction?",
+    "c": [
+      "It donates H⁺ to water.",
+      "It accepts a neutron from water.",
+      "It donates an oxygen atom to water.",
+      "It accepts H⁺ from water."
     ],
-    a: 1,
-    e: "Carboxylates have two equivalent resonance structures, greatly stabilizing the negative charge."
+    a: 3,
+    "e": "Methylamine accepts H⁺ on nitrogen to form CH₃NH₃⁺. Water donates that proton and becomes OH⁻.",
+    "why": [
+      "Methylamine gains rather than loses a proton.",
+      "The reaction involves proton transfer, not neutron transfer.",
+      "No oxygen atom is transferred to methylamine.",
+      "This is the Brønsted–Lowry base role shown."
+    ]
   },
   {
-    q: "4. Which factor decreases the basicity of aniline?",
-    c: [
-      "Strong induction",
-      "Resonance delocalization of the nitrogen lone pair",
-      "Presence of alkyl groups",
-      "High electronegativity of nitrogen"
+    "id": "c3l5q04",
+    "topic": "Acid strength and pKₐ",
+    "difficulty": "Moderate",
+    "q": "Using approximate aqueous pKₐ values of 4.8 for acetic acid, 10 for phenol, and 16 for ethanol, which order is strongest to weakest acid?",
+    "c": [
+      "Ethanol > phenol > acetic acid.",
+      "Phenol > acetic acid > ethanol.",
+      "Acetic acid > phenol > ethanol.",
+      "Ethanol > acetic acid > phenol."
     ],
-    a: 1,
-    e: "The lone pair on nitrogen is delocalized into the aromatic ring → less available to accept a proton."
-  },
-  {
-    q: "5. Which is the strongest base?",
-    c: ["Ammonia", "Aniline", "A carbanion (R–C⁻)"],
     a: 2,
-    e: "Carbanions are extremely strong bases because carbon holds negative charge poorly."
+    "e": "Compare the values under the stated conditions: lower pKₐ means stronger acid. Thus 4.8 < 10 < 16 corresponds to acetic acid > phenol > ethanol.",
+    "why": [
+      "This reverses the order implied by the pKₐ values.",
+      "Acetic acid has the lower pKₐ than phenol.",
+      "This follows from comparing the approximate pKₐ values in order.",
+      "Ethanol has the highest listed pKₐ and is weakest in this comparison."
+    ]
   },
   {
-    q: "6. Which substituent increases acidity through an inductive effect?",
-    c: ["–CH3", "–Cl", "–OH", "–NH2"],
-    a: 1,
-    e: "Chlorine withdraws electron density, stabilizing the conjugate base."
-  },
-  {
-    q: "7. Which hybridization leads to the strongest acidity?",
-    c: ["sp", "sp2", "sp3"],
+    "id": "c3l5q05",
+    "topic": "Conjugate-base stabilization",
+    "difficulty": "Moderate",
+    "q": "Why is acetic acid more acidic than ethanol in the comparison taught in the lesson?",
+    "c": [
+      "Acetate has resonance delocalization over two oxygens, unlike the comparable ethoxide ion.",
+      "Acetate has no oxygen atoms to hold charge.",
+      "Ethanol is fully ionized in water.",
+      "Acetic acid contains no polar bonds."
+    ],
     a: 0,
-    e: "sp carbons have the most s-character and are most electronegative → strongest acids."
+    "e": "Acetate has two equivalent major resonance contributors that delocalize negative charge over two oxygens. Ethoxide lacks comparable carboxylate resonance. Solvation and the acids themselves also matter.",
+    "why": [
+      "This identifies an important difference between the conjugate bases.",
+      "Acetate contains two oxygen atoms.",
+      "Ethanol is a very weak acid in water.",
+      "Acetic acid contains polar bonds including O–H and C–O."
+    ]
   },
   {
-    q: "8. Rank the acidity: phenol, ethanol, acetic acid.",
-    c: [
-      "Ethanol > Phenol > Acetic acid",
-      "Acetic acid > Phenol > Ethanol",
-      "Phenol > Acetic acid > Ethanol",
-      "Phenol > Ethanol > Acetic acid"
+    "id": "c3l5q06",
+    "topic": "Inductive effects",
+    "difficulty": "Moderate",
+    "q": "Why is chloroacetic acid more acidic than acetic acid under comparable aqueous conditions?",
+    "c": [
+      "Chlorine donates a proton to the carbonyl group.",
+      "Chlorine changes the reaction into a nuclear process.",
+      "Chlorine removes all resonance from the conjugate base.",
+      "Chlorine withdraws electron density through σ bonds, helping stabilize the conjugate base relative to the acid."
+    ],
+    a: 3,
+    "e": "The electron-withdrawing inductive effect of Cl helps stabilize the chloroacetate conjugate base relative to its acid, increasing acidity in this related comparison.",
+    "why": [
+      "The comparison concerns an inductive effect, not proton donation by chlorine.",
+      "This is an acid–base comparison, not a nuclear process.",
+      "The carboxylate group still has resonance contributors.",
+      "This describes electron withdrawal through σ bonds and its effect on the comparison."
+    ]
+  },
+  {
+    "id": "c3l5q07",
+    "topic": "Organic bases",
+    "difficulty": "Moderate",
+    "q": "Why is methylamine generally more basic than aniline in comparable aqueous conditions?",
+    "c": [
+      "Aniline has no nitrogen atom.",
+      "Aniline’s nitrogen lone pair is delocalized into the aromatic ring, stabilizing the unprotonated base.",
+      "Methylamine is a strong base that completely reacts with water.",
+      "Aniline cannot form a protonated conjugate acid."
     ],
     a: 1,
-    e: "Carboxylic acid > phenol > alcohol."
+    "e": "In aniline, the nitrogen lone pair can delocalize into the ring, helping stabilize the unprotonated base; protonation ties up that pair. This helps explain its lower basicity than methylamine in water.",
+    "why": [
+      "Aniline contains a nitrogen atom in its –NH₂ group.",
+      "This identifies the relevant resonance contribution to the comparison.",
+      "Methylamine is a weak base in water.",
+      "Aniline can accept a proton to form its conjugate acid."
+    ]
   },
   {
-    q: "9. Which statement is TRUE?",
-    c: [
-      "A more stable conjugate base makes a weaker acid",
-      "Aromatic amines are stronger bases than aliphatic amines",
-      "Alcohols are weaker acids than phenols",
-      "Carboxylates do not undergo resonance"
+    "id": "c3l5q08",
+    "topic": "Hybridization and acidity",
+    "difficulty": "Moderate",
+    "q": "For the simple hydrocarbons ethyne, ethene, and ethane, which acidity order is consistent with the lesson?",
+    "c": [
+      "Ethane > ethene > ethyne.",
+      "Ethene > ethane > ethyne.",
+      "Ethyne > ethene > ethane.",
+      "All three have equal acidity."
     ],
     a: 2,
-    e: "Phenol is more acidic than alcohol because its conjugate base is resonance-stabilized."
+    "e": "For this comparison of C–H acids, the conjugate-base carbon is sp, sp², or sp³, respectively. Greater s-character helps stabilize negative charge, so ethyne is the strongest of the three, although still very weak in water.",
+    "why": [
+      "This reverses the trend for these particular C–H acids.",
+      "Ethyne is more acidic than ethene in this comparison.",
+      "This matches the sp > sp² > sp³ trend for these selected C–H acids.",
+      "Their acidities are not equal."
+    ]
   },
   {
-    q: "10. Which is the weakest base?",
-    c: ["Methylamine", "Ammonia", "Aniline"],
-    a: 2,
-    e: "Aniline is weakest because resonance delocalizes its lone pair."
+    "id": "c3l5q09",
+    "topic": "Equilibrium and pKₐ",
+    "difficulty": "Difficult",
+    "q": "For CH₃COOH + OH⁻ ⇌ CH₃COO⁻ + H₂O, use aqueous pKₐ ≈ 4.8 for acetic acid and 15.7 for water. Which side is favored?",
+    "c": [
+      "Products, because water is the weaker acid.",
+      "Reactants, because acetic acid has the higher pKₐ.",
+      "Reactants, because hydroxide cannot accept H⁺.",
+      "Neither side, because both acids have identical pKₐ values."
+    ],
+    a: 0,
+    "e": "Acetic acid is the acid on the left; water is the acid on the right. Water’s higher pKₐ means it is weaker, so the proton-transfer equilibrium strongly favors acetate and water in the introductory aqueous comparison.",
+    "why": [
+      "Water has the higher pKₐ and is the weaker acid in this comparison.",
+      "Acetic acid has the lower pKₐ, not the higher one.",
+      "Hydroxide accepts H⁺ to form water.",
+      "The listed pKₐ values are different."
+    ]
+  },
+  {
+    "id": "c3l5q10",
+    "topic": "Equilibrium and pKₐ",
+    "difficulty": "Difficult",
+    "q": "Two acids in the same solvent have pKₐ values 4 and 7. Which statement is supported?",
+    "c": [
+      "The pKₐ 7 acid has a Kₐ 1,000 times larger.",
+      "The pKₐ 4 acid has a Kₐ 1,000 times larger; solution pH still depends on concentration.",
+      "The pKₐ 4 solution must have pH exactly 4 regardless of concentration.",
+      "The acids have equal strengths because their pKₐ values are positive."
+    ],
+    a: 1,
+    "e": "pKₐ = −log₁₀Kₐ. A difference of 3 means the pKₐ 4 acid has Kₐ = 10³ times that of the pKₐ 7 acid in the stated solvent. pH also depends on concentrations and conditions.",
+    "why": [
+      "Lower pKₐ corresponds to the larger Kₐ.",
+      "A difference of three pKₐ units gives a 1,000-fold Kₐ ratio; pH is a separate quantity.",
+      "Solution pH depends on concentration and the equilibrium, not pKₐ alone.",
+      "Different pKₐ values indicate different acid strengths under compatible conditions."
+    ]
   }
 ];
 
-let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
 let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    button.setAttribute('data-choice', String(i));
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // Preserve the LearnTrack quizResult message format.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
 function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
-  }
-
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
-
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','quiz-result-panel');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','result',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Waiting for LearnTrack to verify and save your answers...'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=true;
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
 }
-
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
 </script>
-
 </body>
 </html>
