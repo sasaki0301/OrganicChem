@@ -22,160 +22,275 @@
     background: #ffffff;
     border-radius: 18px;
     padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     width: 95%;
     max-width: 850px;
     text-align: center;
   }
 
-  h2 { color:#136f63; margin-bottom:25px; font-size:1.8em; }
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
-    background: #e9f5ef; border-radius: 8px;
-    height: 14px; width: 100%; margin-bottom: 25px;
-    overflow: hidden; box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
   }
   .progress-bar {
     height: 100%;
     background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%; transition: width 0.4s ease;
-  }
-  .progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; }
-
-  .question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px; }
-
-  .structure-img {
-    width: 90%;
-    max-width: 420px;
-    margin: 10px auto 20px auto;
-    display: block;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 0%;
+    transition: width 0.4s ease;
   }
 
-  .choices { display:flex; flex-direction: column; gap: 12px; margin-bottom:25px; }
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
   .choice {
-    background: #e8ecf8; border:none; border-radius:10px;
-    padding:14px 18px; cursor:pointer; text-align:left;
-    font-size:1.05em; transition:0.2s;
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
   }
-  .choice:hover { background:#d3dbf8; transform:translateY(-2px); }
-  .choice.selected { background:#174ea6; color:white; transform:scale(1.02); }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
-    background:#eef3ff; border-radius:10px;
-    padding:14px 18px; margin-top:10px;
-    display:none; text-align:left; font-size:1.05em;
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
-    background:#136f63; color:white; border:none;
-    padding:12px 26px; border-radius:10px;
-    font-size:1.05em; cursor:pointer; font-weight:bold;
-    margin-top:15px;
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
   }
-  .next-btn:hover { background:#0f5b52; }
+  .next-btn:hover { background: #0f5b52; }
 
-  .result { font-size:1.4em; font-weight:bold; color:#174ea6; margin-top:20px; }
-  .stars { font-size:2.5em; margin-top:10px; }
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
+  .stars {
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
   .quiz-nav {
-    margin-top:25px; display:flex; justify-content:center;
-    flex-wrap:wrap; gap:10px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
   .quiz-btn {
-    background:#e8ecf8; color:#174ea6; border:none; border-radius:8px;
-    padding:10px 20px; font-size:0.95em; cursor:pointer;
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
-  .quiz-btn.primary { background:#136f63; color:#fff; }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
+
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
+  <h2>Lesson 5 Quiz – Naming Cycloalkanes</h2>
 
-<h2>Lesson 5 Quiz – Naming Cycloalkanes</h2>
+  <p>10 questions · Pass: 8/10 (80% required). Plain bonds show connectivity; cis/trans is unspecified. Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
-<div class="progress-text" id="progressText">Question 1 of 10</div>
-<div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-
-<div id="quizBox"></div>
-<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. What is the correct name for the following cycloalkane?",
-    img: "https://i.imgur.com/3cz0jlm.png",
-    c: ["1,3-dimethylcyclobutane", "1,2-dimethylcyclobutane", "3,4-dimethylcyclobutane", "1,4-dimethylcyclobutane"],
-    a: 0,
-    e: "Numbering gives the lowest locants: 1 and 3."
+    "q": "What is the connectivity name of the structure shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 2: semi-displayed structural formula; a 4-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"262.0\" y1=\"140.0\" x2=\"330.0\" y2=\"208.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"330.0\" y1=\"232.0\" x2=\"262.0\" y2=\"300.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"238.0\" y1=\"300.0\" x2=\"170.0\" y2=\"232.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.0\" y1=\"208.0\" x2=\"238.0\" y2=\"140.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"93.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"329.0\" x2=\"250.0\" y2=\"347.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"342.0\" y=\"226.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"158.0\" y=\"226.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"82.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"250.0\" y=\"370.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 2: skeletal formula; a 4-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"342.0\" y2=\"220.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"342.0\" y1=\"220.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"158.0\" y2=\"220.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"158.0\" y1=\"220.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"76.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"250.0\" y2=\"364.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "1,2-Dimethylcyclobutane",
+      "1,3-Dimethylcyclobutane",
+      "1,4-Dimethylcyclobutane",
+      "Methylcyclobutane"
+    ],
+    "a": 1,
+    "e": "The ring has four carbons and the two methyl groups are opposite one another. The lowest locants are 1,3."
   },
   {
-    q: "2. Name the compound shown below:",
-    img: "https://i.imgur.com/DshDoA9.png",
-    c: ["3-ethyl-1-methylcyclohexane", "1-ethyl-3-methylcyclohexane", "3-methyl-1-ethylcyclohexane", "ethylmethylcyclohexane"],
-    a: 1,
-    e: "Alphabetical order: ethyl is assigned carbon 1."
+    "q": "What is the connectivity name of the substituted cyclohexane?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 1: semi-displayed structural formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"264.7\" y1=\"136.5\" x2=\"315.0\" y2=\"165.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"191.0\" x2=\"329.7\" y2=\"249.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"315.0\" y1=\"274.5\" x2=\"264.7\" y2=\"303.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"303.5\" x2=\"185.0\" y2=\"274.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"249.0\" x2=\"170.3\" y2=\"191.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"185.0\" y1=\"165.5\" x2=\"235.3\" y2=\"136.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"93.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"254.7\" y1=\"59.7\" x2=\"259.7\" y2=\"42.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"344.4\" y1=\"274.5\" x2=\"360.0\" y2=\"283.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"329.7\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"82.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"264.4\" y=\"32.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"374.7\" y=\"298.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 1: skeletal formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"329.7\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"329.7\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"170.3\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"266.0\" x2=\"170.3\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"174.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"76.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"76.0\" x2=\"264.4\" y2=\"26.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"374.7\" y2=\"292.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "3-Ethyl-1-methylcyclohexane",
+      "1-Ethyl-4-methylcyclohexane",
+      "1-Ethyl-3-methylcyclohexane",
+      "1-Methyl-3-ethylcyclohexane"
+    ],
+    "a": 2,
+    "e": "Both numbering directions give 1,3. Ethyl comes before methyl alphabetically and receives locant 1."
   },
   {
-    q: "3. Identify the correct IUPAC name:",
-    img: "https://i.imgur.com/elsCSnY.png",
-    c: ["2-bromo-3-chlorocyclopentane", "1-chloro-2-bromocyclopentane", "1-bromo-2-chlorocyclopentane", "bromochlorocyclopentane"],
-    a: 2,
-    e: "Alphabetical: bromo (B) before chloro (C)."
+    "q": "What is the connectivity name for the halo-substituted ring?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 3: semi-displayed structural formula; a 5-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"263.8\" y1=\"138.0\" x2=\"323.7\" y2=\"181.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"332.2\" y1=\"207.7\" x2=\"309.3\" y2=\"278.3\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"287.1\" y1=\"294.4\" x2=\"212.9\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"190.7\" y1=\"278.3\" x2=\"167.8\" y2=\"207.7\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"176.3\" y1=\"181.6\" x2=\"236.2\" y2=\"138.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"353.7\" y1=\"186.3\" x2=\"373.6\" y2=\"179.8\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"337.5\" y=\"197.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"304.1\" y=\"300.4\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"195.9\" y=\"300.4\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"162.5\" y=\"197.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"79.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Br</text><text x=\"389.8\" y=\"180.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Cl</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 3: skeletal formula; a 5-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"337.5\" y2=\"191.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"337.5\" y1=\"191.6\" x2=\"304.1\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"304.1\" y1=\"294.4\" x2=\"195.9\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"195.9\" y1=\"294.4\" x2=\"162.5\" y2=\"191.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"162.5\" y1=\"191.6\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"337.5\" y1=\"191.6\" x2=\"373.6\" y2=\"179.8\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"79.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Br</text><text x=\"389.8\" y=\"180.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Cl</text></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "1-Bromo-2-chlorocyclopentane",
+      "1-Chloro-2-bromocyclopentane",
+      "1-Bromo-3-chlorocyclopentane",
+      "Bromochlorocyclopentane"
+    ],
+    "a": 0,
+    "e": "The substituents are adjacent, giving 1,2 in either direction. Bromo comes before chloro and is assigned 1."
   },
   {
-    q: "4. Name the branched cycloalkane:",
-    img: "https://i.imgur.com/wawZbpH.png",
-    c: ["3-isopropyl-1-methylcyclohexane", "1-isopropyl-3-methylcyclohexane", "isopropylmethylcyclohexane", "methylisopropylcyclohexane"],
-    a: 1,
-    e: "Isopropyl gets carbon 1 (alphabetical I > M)."
+    "q": "Using the common substituent name isopropyl, what is the connectivity name?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 4: semi-displayed structural formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"264.7\" y1=\"136.5\" x2=\"315.0\" y2=\"165.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"191.0\" x2=\"329.7\" y2=\"249.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"315.0\" y1=\"274.5\" x2=\"264.7\" y2=\"303.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"303.5\" x2=\"185.0\" y2=\"274.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"249.0\" x2=\"170.3\" y2=\"191.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"185.0\" y1=\"165.5\" x2=\"235.3\" y2=\"136.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"88.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"236.7\" y1=\"60.4\" x2=\"219.5\" y2=\"46.8\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"263.3\" y1=\"60.4\" x2=\"280.5\" y2=\"46.8\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"344.4\" y1=\"274.5\" x2=\"360.0\" y2=\"283.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"329.7\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"77.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"206.1\" y=\"42.2\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"293.9\" y=\"42.2\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"374.7\" y=\"298.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 4: skeletal formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"329.7\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"329.7\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"170.3\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"266.0\" x2=\"170.3\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"174.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"71.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"71.0\" x2=\"206.1\" y2=\"36.2\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"71.0\" x2=\"293.9\" y2=\"36.2\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"374.7\" y2=\"292.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "3-Isopropyl-1-methylcyclohexane",
+      "1-Isopropyl-4-methylcyclohexane",
+      "Isopropylmethylcyclohexane",
+      "1-Isopropyl-3-methylcyclohexane"
+    ],
+    "a": 3,
+    "e": "The lowest set is 1,3. In the common name, iso is included in alphabetizing, so isopropyl precedes methyl and gets 1. When the systematic name propan-2-yl is used, the numbering is reassessed."
   },
   {
-    q: "5. What is the correct IUPAC name?",
-    img: "https://i.imgur.com/8dfuqz5.png",
-    c: ["1-tert-butyl-2-methylcyclopentane", "tert-butylmethylcyclopentane", "2-methyl-1-tert-butylcyclopentane", "1-methyl-2-tert-butylcyclopentane"],
-    a: 0,
-    e: "Alphabetization uses 'butyl' (ignore tert-)."
+    "q": "Using the common substituent name tert-butyl, what is the connectivity name?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 5: semi-displayed structural formula; a 5-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"263.8\" y1=\"138.0\" x2=\"323.7\" y2=\"181.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"332.2\" y1=\"207.7\" x2=\"309.3\" y2=\"278.3\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"287.1\" y1=\"294.4\" x2=\"212.9\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"190.7\" y1=\"278.3\" x2=\"167.8\" y2=\"207.7\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"176.3\" y1=\"181.6\" x2=\"236.2\" y2=\"138.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"88.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"62.5\" x2=\"216.2\" y2=\"51.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"54.0\" x2=\"250.0\" y2=\"32.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"264.7\" y1=\"62.5\" x2=\"283.8\" y2=\"51.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"353.7\" y1=\"186.3\" x2=\"370.8\" y2=\"180.8\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"337.5\" y=\"197.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"304.1\" y=\"300.4\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"195.9\" y=\"300.4\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"162.5\" y=\"197.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"77.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">C</text><text x=\"201.4\" y=\"49.1\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"250.0\" y=\"21.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"298.6\" y=\"49.1\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"387.0\" y=\"181.5\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 5: skeletal formula; a 5-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"337.5\" y2=\"191.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"337.5\" y1=\"191.6\" x2=\"304.1\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"304.1\" y1=\"294.4\" x2=\"195.9\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"195.9\" y1=\"294.4\" x2=\"162.5\" y2=\"191.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"162.5\" y1=\"191.6\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"71.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"71.0\" x2=\"201.4\" y2=\"43.1\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"71.0\" x2=\"250.0\" y2=\"15.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"71.0\" x2=\"298.6\" y2=\"43.1\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"337.5\" y1=\"191.6\" x2=\"387.0\" y2=\"175.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "1-Methyl-2-tert-butylcyclopentane",
+      "1-tert-Butyl-2-methylcyclopentane",
+      "2-tert-Butyl-1-methylcyclopentane",
+      "tert-Butylmethylcyclopentane"
+    ],
+    "a": 1,
+    "e": "Both directions give 1,2. Ignore tert- when alphabetizing the common name, so butyl precedes methyl and receives 1."
   },
   {
-    q: "6. Name this cycloalkane:",
-    img: "https://i.imgur.com/RQGqAKk.png",
-    c: ["3-ethyl-1,2-dimethylcyclohexane", "1-ethyl-2,4-dimethylcyclohexane", "ethyl dimethyl cyclohexane", "1,3,5-trimethylcyclohexane"],
-    a: 1,
-    e: "Correct lowest locant set is 1,2,4."
+    "q": "What is the connectivity name of the structure shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 6: semi-displayed structural formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"264.7\" y1=\"136.5\" x2=\"315.0\" y2=\"165.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"191.0\" x2=\"329.7\" y2=\"249.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"315.0\" y1=\"274.5\" x2=\"264.7\" y2=\"303.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"303.5\" x2=\"185.0\" y2=\"274.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"249.0\" x2=\"170.3\" y2=\"191.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"185.0\" y1=\"165.5\" x2=\"235.3\" y2=\"136.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"93.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"254.7\" y1=\"59.7\" x2=\"259.7\" y2=\"42.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"344.4\" y1=\"165.5\" x2=\"360.0\" y2=\"156.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"329.0\" x2=\"250.0\" y2=\"347.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"170.3\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"82.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"264.4\" y=\"32.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"374.7\" y=\"154.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"250.0\" y=\"370.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 6: skeletal formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"329.7\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"329.7\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"170.3\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"266.0\" x2=\"170.3\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"174.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"76.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"76.0\" x2=\"264.4\" y2=\"26.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"374.7\" y2=\"148.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"250.0\" y2=\"364.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "1-Ethyl-2,4-dimethylcyclohexane",
+      "2-Ethyl-1,5-dimethylcyclohexane",
+      "1,3,5-Trimethylcyclohexane",
+      "1-Ethyl-3,5-dimethylcyclohexane"
+    ],
+    "a": 0,
+    "e": "The six-carbon ring bears one ethyl and two methyl groups. The lowest set is 1,2,4; the ethyl group is at carbon 1."
   },
   {
-    q: "7. Should the ring or chain be the parent?",
-    img: "https://i.imgur.com/OC10ue4.png",
-    c: ["cyclopentylpropane", "propylcyclopentane", "cyclopentylmethane", "1-propylcyclopentane"],
-    a: 1,
-    e: "The PROPANE chain is longer than any direction through the ring → chain is parent."
+    "q": "Which part is the parent and what is the name of the structure?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 7: semi-displayed structural formula; a 5-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"263.8\" y1=\"138.0\" x2=\"323.7\" y2=\"181.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"332.2\" y1=\"207.7\" x2=\"309.3\" y2=\"278.3\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"287.1\" y1=\"294.4\" x2=\"212.9\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"190.7\" y1=\"278.3\" x2=\"167.8\" y2=\"207.7\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"176.3\" y1=\"181.6\" x2=\"236.2\" y2=\"138.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"93.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"254.7\" y1=\"59.7\" x2=\"259.7\" y2=\"42.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"259.7\" y1=\"9.7\" x2=\"254.7\" y2=\"-7.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"337.5\" y=\"197.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"304.1\" y=\"300.4\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"195.9\" y=\"300.4\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"162.5\" y=\"197.6\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"82.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"264.4\" y=\"32.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"-17.9\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 7: skeletal formula; a 5-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"337.5\" y2=\"191.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"337.5\" y1=\"191.6\" x2=\"304.1\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"304.1\" y1=\"294.4\" x2=\"195.9\" y2=\"294.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"195.9\" y1=\"294.4\" x2=\"162.5\" y2=\"191.6\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"162.5\" y1=\"191.6\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"76.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"76.0\" x2=\"264.4\" y2=\"26.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"264.4\" y1=\"26.0\" x2=\"250.0\" y2=\"-23.9\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "The three-carbon chain; cyclopentylpropane",
+      "The five-carbon ring; propylcyclopentane",
+      "The three-carbon chain; 1-cyclopentylpropane",
+      "The five-carbon ring; methylcyclopentane"
+    ],
+    "a": 1,
+    "e": "The ring has five carbons and the attached straight chain has three, so the ring is the parent. The one substituent is propyl; its ring locant is implicit."
   },
   {
-    q: "8. Give the correct IUPAC name:",
-    img: "https://i.imgur.com/b9oMxRe.png",
-    c: ["1,2,4-trimethylcyclohexane", "1,3,5-trimethylcyclohexane", "trimethylcyclohexane", "2,3,4-trimethylcyclohexane"],
-    a: 0,
-    e: "Lowest set rule gives 1,2,4."
+    "q": "Which connectivity name matches this structure?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 8: semi-displayed structural formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"264.7\" y1=\"136.5\" x2=\"315.0\" y2=\"165.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"191.0\" x2=\"329.7\" y2=\"249.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"315.0\" y1=\"274.5\" x2=\"264.7\" y2=\"303.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"303.5\" x2=\"185.0\" y2=\"274.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"249.0\" x2=\"170.3\" y2=\"191.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"185.0\" y1=\"165.5\" x2=\"235.3\" y2=\"136.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"93.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"344.4\" y1=\"165.5\" x2=\"360.0\" y2=\"156.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"329.0\" x2=\"250.0\" y2=\"347.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"170.3\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"82.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"374.7\" y=\"154.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"250.0\" y=\"370.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 8: skeletal formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"329.7\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"329.7\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"170.3\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"266.0\" x2=\"170.3\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"174.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"76.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"374.7\" y2=\"148.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"250.0\" y2=\"364.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "1,3,5-Trimethylcyclohexane",
+      "1,3,4-Trimethylcyclohexane",
+      "1,2,4-Trimethylcyclohexane",
+      "1,2,4-Trimethylcyclopentane"
+    ],
+    "a": 2,
+    "e": "Numbering the six-carbon ring to the first point of difference gives the locant set 1,2,4 for its three methyl groups."
   },
   {
-    q: "9. What is the correct name?",
-    img: "https://i.imgur.com/OnZUHs7.png",
-    c: ["ethylhexane", "1-ethylcyclohexane", "hexylcycloethane", "ethylcyclohexane"],
-    a: 3,
-    e: "One substituent → no need to write 1-."
+    "q": "What is the correct connectivity name?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 9: semi-displayed structural formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"264.7\" y1=\"136.5\" x2=\"315.0\" y2=\"165.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"191.0\" x2=\"329.7\" y2=\"249.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"315.0\" y1=\"274.5\" x2=\"264.7\" y2=\"303.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"303.5\" x2=\"185.0\" y2=\"274.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"249.0\" x2=\"170.3\" y2=\"191.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"185.0\" y1=\"165.5\" x2=\"235.3\" y2=\"136.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"93.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"254.7\" y1=\"59.7\" x2=\"259.7\" y2=\"42.4\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"329.7\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"82.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"264.4\" y=\"32.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 9: skeletal formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"329.7\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"329.7\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"170.3\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"266.0\" x2=\"170.3\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"174.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"76.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"76.0\" x2=\"264.4\" y2=\"26.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "Ethylcyclohexane",
+      "1,2-Dimethylcyclohexane",
+      "Hexylcycloethane",
+      "Ethylcyclopentane"
+    ],
+    "a": 0,
+    "e": "The six-carbon ring is the parent and carries one ethyl group. A single substituent on this simple ring needs no locant 1."
   },
   {
-    q: "10. Identify the correct IUPAC name:",
-    img: "https://i.imgur.com/cmLC59j.png",
-    c: ["1-chloro-2-methyl-3-bromocyclohexane", "3-bromo-1-chloro-2-methylcyclohexane", "2-methyl-1-chloro-3-bromocyclohexane", "1-bromo-3-chloro-2-methylcyclohexane"],
-    a: 3,
-    e: "Alphabetical: bromo (B), chloro (C), methyl (M)."
+    "q": "What is the connectivity name of the structure shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 10: semi-displayed structural formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"264.7\" y1=\"136.5\" x2=\"315.0\" y2=\"165.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"191.0\" x2=\"329.7\" y2=\"249.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"315.0\" y1=\"274.5\" x2=\"264.7\" y2=\"303.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"235.3\" y1=\"303.5\" x2=\"185.0\" y2=\"274.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"249.0\" x2=\"170.3\" y2=\"191.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"185.0\" y1=\"165.5\" x2=\"235.3\" y2=\"136.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"111.0\" x2=\"250.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"344.4\" y1=\"165.5\" x2=\"360.0\" y2=\"156.5\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"344.4\" y1=\"274.5\" x2=\"362.6\" y2=\"285.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"134.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"329.7\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"250.0\" y=\"318.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"272.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"170.3\" y=\"180.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"250.0\" y=\"79.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Br</text><text x=\"374.7\" y=\"154.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"377.3\" y=\"299.5\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Cl</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"-30 -70 560 580\" role=\"img\" aria-label=\"Problem 10: skeletal formula; a 6-carbon ring and attached groups. Stereochemistry is unspecified.\"><line x1=\"250.0\" y1=\"128.0\" x2=\"329.7\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"329.7\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"250.0\" y2=\"312.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"312.0\" x2=\"170.3\" y2=\"266.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"266.0\" x2=\"170.3\" y2=\"174.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"170.3\" y1=\"174.0\" x2=\"250.0\" y2=\"128.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"250.0\" y1=\"128.0\" x2=\"250.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"174.0\" x2=\"374.7\" y2=\"148.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><line x1=\"329.7\" y1=\"266.0\" x2=\"362.6\" y2=\"285.0\" stroke=\"#136f63\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><text x=\"250.0\" y=\"79.0\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Br</text><text x=\"377.3\" y=\"299.5\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"600\" fill=\"#174ea6\">Cl</text></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "3-Bromo-1-chloro-2-methylcyclohexane",
+      "1-Chloro-3-bromo-2-methylcyclohexane",
+      "1-Bromo-2-chloro-3-methylcyclohexane",
+      "1-Bromo-3-chloro-2-methylcyclohexane"
+    ],
+    "a": 3,
+    "e": "The lowest set is 1,2,3 in either direction. Bromo is alphabetically first and gets 1; the methyl is at 2 and chloro at 3. Cite bromo, chloro, then methyl."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -189,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -209,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -217,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -254,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -277,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -301,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
