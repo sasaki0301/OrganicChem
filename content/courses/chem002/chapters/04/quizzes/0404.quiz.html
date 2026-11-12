@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chapter 4 – Lesson 4 Quiz: Cycloalkanes</title>
+
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
@@ -27,12 +28,26 @@
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -47,41 +62,29 @@
     width: 0%;
     transition: width 0.4s ease;
   }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
 
+  /* Question */
   .question {
-    font-size: 1.25em;
+    font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
-
-  .structure {
-    margin: 12px 0 18px;
-  }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
-    transition: all 0.2s ease;
+    transition: 0.2s;
   }
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
   .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
@@ -96,6 +99,7 @@
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -103,157 +107,190 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
     transition: 0.2s;
     margin-top: 15px;
   }
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
-    margin-top: 20px;
+    margin-top: 12px;
   }
-
   .stars {
     font-size: 2.5em;
     margin-top: 10px;
-    margin-bottom: 5px;
   }
 
   .quiz-nav {
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
-    font-size: 0.95em;
     cursor: pointer;
-    transition: all 0.2s ease;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
   .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-
   .quiz-btn.primary { background: #136f63; color: #fff; }
   .quiz-btn.primary:hover { background: #0f5b52; }
+
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
-  <div class="quiz-container">
-    <h2>Lesson 4 Quiz – Cycloalkanes</h2>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-    <div id="quizBox"></div>
-    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-  </div>
+
+<div class="quiz-container">
+  <h2>Lesson 4 Quiz – Cycloalkanes</h2>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. What is the general formula for cycloalkanes?",
-    c: ["CₙH₂ₙ₊₂", "CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙHₙ"],
-    a: 1,
-    e: "Cycloalkanes have the formula CₙH₂ₙ because forming a ring removes two hydrogens."
-  },
-  {
-    q: "2. What is the name of a 6-carbon ring with no substituents?",
-    c: ["Cyclopentane", "Cyclohexane", "Hexane", "Cycloheptane"],
-    a: 1,
-    e: "A six-carbon ring is called cyclohexane."
-  },
-  {
-    q: "3. Which statement is TRUE about cycloalkanes?",
-    c: [
-      "They contain at least one double bond",
-      "They are unsaturated hydrocarbons",
-      "They are cyclic alkanes with single bonds",
-      "They always contain substituents"
+    "q": "Which general formula describes a saturated hydrocarbon containing exactly one ring and n carbons?",
+    "c": [
+      "CₙH₂ₙ₊₂",
+      "CₙH₂ₙ",
+      "CₙH₂ₙ₋₂",
+      "CₙHₙ"
     ],
-    a: 2,
-    e: "Cycloalkanes are saturated hydrocarbons arranged in a ring with only single bonds."
+    "a": 1,
+    "e": "For a saturated hydrocarbon with exactly one ring, the formula is CₙH₂ₙ. Additional rings or multiple bonds change this formula."
   },
   {
-    q: "4. What is the parent name of this structure?",
-    img: "https://i.imgur.com/I9SLadw.png",
-    c: ["Cyclopropane", "Cyclobutane", "Cyclopentane", "Cyclohexane"],
-    a: 2,
-    e: "The ring has 5 carbons, so the parent name is cyclopentane."
-  },
-  {
-    q: "5. What is the correct name for a ring with one methyl substituent?",
-    c: [
-      "1-methylcycloalkane",
-      "Methyl + parent chain name",
-      "Parent name + methyl",
-      "Cyclomethylalkane"
+    "q": "What is the name of the unsubstituted ring shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0\"><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Semi-displayed structural formula: 5 carbon ring. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"187.9\" y1=\"89.4\" x2=\"233.4\" y2=\"122.4\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"241.4\" y1=\"147.0\" x2=\"224.0\" y2=\"200.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"203.1\" y1=\"215.7\" x2=\"146.9\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"126.0\" y1=\"200.5\" x2=\"108.6\" y2=\"147.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"116.6\" y1=\"122.4\" x2=\"162.1\" y2=\"89.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"175.0\" y=\"87.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"246.3\" y=\"138.8\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"219.1\" y=\"222.7\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"130.9\" y=\"222.7\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"103.7\" y=\"138.8\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text></svg><div style=\"font-size:.7em\">Semi-displayed structure</div></div><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Skeletal formula: 5 carbon ring. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"175.0\" y1=\"80.0\" x2=\"246.3\" y2=\"131.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"246.3\" y1=\"131.8\" x2=\"219.1\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"219.1\" y1=\"215.7\" x2=\"130.9\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"130.9\" y1=\"215.7\" x2=\"103.7\" y2=\"131.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"103.7\" y1=\"131.8\" x2=\"175.0\" y2=\"80.0\" stroke=\"#136f63\" stroke-width=\"3\"/></svg><div style=\"font-size:.7em\">Skeletal structure</div></div></div>",
+    "c": [
+      "Cyclobutane",
+      "Pentane",
+      "Cyclopentane",
+      "Cyclohexane"
     ],
-    a: 1,
-    e: "A single substituent is named as 'methyl' + parent ring (e.g., methylcyclohexane)."
+    "a": 2,
+    "e": "Count five carbons in the closed ring. Its parent name is cyclopentane."
   },
   {
-    q: "6. Name the structure below:",
-    img: "https://i.imgur.com/AnBzKXi.png",
-    c: [
+    "q": "Which statement describes a cycloalkane?",
+    "c": [
+      "A saturated hydrocarbon containing at least one carbon ring",
+      "A hydrocarbon that must have a carbon–carbon double bond",
+      "An open-chain molecule with no rings",
+      "A compound that must contain oxygen"
+    ],
+    "a": 0,
+    "e": "Cycloalkanes are saturated hydrocarbons whose carbon framework contains one or more rings."
+  },
+  {
+    "q": "What is the correct connectivity name for this structure?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0\"><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Semi-displayed structural formula: 5 carbon ring, 1 carbon side chain attached to ring carbon 1. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"187.9\" y1=\"89.4\" x2=\"233.4\" y2=\"122.4\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"241.4\" y1=\"147.0\" x2=\"224.0\" y2=\"200.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"203.1\" y1=\"215.7\" x2=\"146.9\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"126.0\" y1=\"200.5\" x2=\"108.6\" y2=\"147.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"116.6\" y1=\"122.4\" x2=\"162.1\" y2=\"89.4\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"64.0\" x2=\"175.0\" y2=\"53.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"175.0\" y=\"87.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH</text><text x=\"246.3\" y=\"138.8\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"219.1\" y=\"222.7\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"130.9\" y=\"222.7\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"103.7\" y=\"138.8\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"175.0\" y=\"44.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₃</text></svg><div style=\"font-size:.7em\">Semi-displayed structure</div></div><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Skeletal formula: 5 carbon ring, 1 carbon side chain attached to ring carbon 1. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"175.0\" y1=\"80.0\" x2=\"246.3\" y2=\"131.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"246.3\" y1=\"131.8\" x2=\"219.1\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"219.1\" y1=\"215.7\" x2=\"130.9\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"130.9\" y1=\"215.7\" x2=\"103.7\" y2=\"131.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"103.7\" y1=\"131.8\" x2=\"175.0\" y2=\"80.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"80.0\" x2=\"175.0\" y2=\"37.0\" stroke=\"#136f63\" stroke-width=\"3\"/></svg><div style=\"font-size:.7em\">Skeletal structure</div></div></div>",
+    "c": [
       "Methylcyclobutane",
-      "Cyclopentylmethane",
-      "Methylcyclopentane",
-      "1-methylcyclopentane"
+      "1,2-Dimethylcyclopentane",
+      "Cyclohexane",
+      "Methylcyclopentane"
     ],
-    a: 2,
-    e: "A 5-carbon ring with one methyl substituent is named methylcyclopentane. Numbering is not needed."
+    "a": 3,
+    "e": "The parent ring contains five carbons and has one methyl group. A single ring substituent does not need the locant 1."
   },
   {
-    q: "7. When two substituents are present, how do you number the ring?",
-    c: [
-      "Alphabetical order decides numbering direction",
-      "Number to give the lowest set of locants",
-      "Start at any point",
-      "Always number clockwise"
-    ],
-    a: 1,
-    e: "Numbering must give substituents the lowest possible numbers."
-  },
-  {
-    q: "8. Name the structure:",
-    img: "https://i.imgur.com/mg7M3zj.png",
-    c: [
-      "1,4-dimethylcyclohexane",
-      "2,5-dimethylcyclohexane",
-      "1,3-dimethylcyclohexane",
+    "q": "What is the connectivity name of this structure?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0\"><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Semi-displayed structural formula: 6 carbon ring, 1 carbon side chain attached to ring carbon 1, 1 carbon side chain attached to ring carbon 3. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"188.9\" y1=\"88.0\" x2=\"226.1\" y2=\"109.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"240.0\" y1=\"133.5\" x2=\"240.0\" y2=\"176.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"226.1\" y1=\"200.5\" x2=\"188.9\" y2=\"222.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"161.1\" y1=\"222.0\" x2=\"123.9\" y2=\"200.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"110.0\" y1=\"176.5\" x2=\"110.0\" y2=\"133.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"123.9\" y1=\"109.5\" x2=\"161.1\" y2=\"88.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"64.0\" x2=\"175.0\" y2=\"53.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"253.8\" y1=\"200.5\" x2=\"263.3\" y2=\"206.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"175.0\" y=\"87.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH</text><text x=\"240.0\" y=\"124.5\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"240.0\" y=\"199.5\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH</text><text x=\"175.0\" y=\"237.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"110.0\" y=\"199.5\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"110.0\" y=\"124.5\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"175.0\" y=\"44.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₃</text><text x=\"277.2\" y=\"221.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₃</text></svg><div style=\"font-size:.7em\">Semi-displayed structure</div></div><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Skeletal formula: 6 carbon ring, 1 carbon side chain attached to ring carbon 1, 1 carbon side chain attached to ring carbon 3. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"175.0\" y1=\"80.0\" x2=\"240.0\" y2=\"117.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"240.0\" y1=\"117.5\" x2=\"240.0\" y2=\"192.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"240.0\" y1=\"192.5\" x2=\"175.0\" y2=\"230.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"230.0\" x2=\"110.0\" y2=\"192.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"110.0\" y1=\"192.5\" x2=\"110.0\" y2=\"117.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"110.0\" y1=\"117.5\" x2=\"175.0\" y2=\"80.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"80.0\" x2=\"175.0\" y2=\"37.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"240.0\" y1=\"192.5\" x2=\"277.2\" y2=\"214.0\" stroke=\"#136f63\" stroke-width=\"3\"/></svg><div style=\"font-size:.7em\">Skeletal structure</div></div></div>",
+    "c": [
+      "1,4-Dimethylcyclohexane",
+      "1,3-Dimethylcyclohexane",
+      "1,2-Dimethylcyclohexane",
       "Dimethylcyclohexane"
     ],
-    a: 0,
-    e: "The lowest locants are 1 and 4, so the name is 1,4-dimethylcyclohexane."
+    "a": 1,
+    "e": "The ring contains six carbons. Number along the shorter path between the two methyl groups to obtain locants 1 and 3. Plain lines do not specify cis/trans."
   },
   {
-    q: "9. Which substituent is listed first alphabetically?",
-    c: ["Methyl", "Bromo", "Chloro", "Ethyl"],
-    a: 1,
-    e: "Alphabetical order: bromo (B), chloro (C), ethyl (E), methyl (M)."
-  },
-  {
-    q: "10. Name this structure:",
-    img: "https://i.imgur.com/kq9Ommb.png",
-    c: [
-      "1-chloro-6-fluoro-2-methylcycloheptane",
-      "3-chloro-1-fluoro-4-methylcycloheptane",
-      "7-chloro-5-fluoro-1-methylycloheptane",
-      "2-chloro-4-fluoro-1-methylcycloheptane"
+    "q": "What is the connectivity name for the structure shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0\"><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Semi-displayed structural formula: 5 carbon ring, 2 carbon side chain attached to ring carbon 1, 1 carbon side chain attached to ring carbon 3. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"187.9\" y1=\"89.4\" x2=\"233.4\" y2=\"122.4\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"241.4\" y1=\"147.0\" x2=\"224.0\" y2=\"200.5\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"203.1\" y1=\"215.7\" x2=\"146.9\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"126.0\" y1=\"200.5\" x2=\"108.6\" y2=\"147.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"116.6\" y1=\"122.4\" x2=\"162.1\" y2=\"89.4\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"64.0\" x2=\"175.0\" y2=\"53.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"180.5\" y1=\"22.0\" x2=\"184.3\" y2=\"11.6\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"228.5\" y1=\"228.6\" x2=\"235.0\" y2=\"237.5\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"175.0\" y=\"87.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH</text><text x=\"246.3\" y=\"138.8\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"219.1\" y=\"222.7\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH</text><text x=\"130.9\" y=\"222.7\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"103.7\" y=\"138.8\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"175.0\" y=\"44.0\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₂</text><text x=\"189.7\" y=\"3.6\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₃</text><text x=\"244.4\" y=\"257.5\" text-anchor=\"middle\" font-size=\"19\" fill=\"#174ea6\">CH₃</text></svg><div style=\"font-size:.7em\">Semi-displayed structure</div></div><div style=\"flex:1 1 210px\"><svg viewBox=\"-10 -40 370 400\" role=\"img\" aria-label=\"Skeletal formula: 5 carbon ring, 2 carbon side chain attached to ring carbon 1, 1 carbon side chain attached to ring carbon 3. Stereochemistry is not specified.\" style=\"width:100%;max-width:300px;height:auto\"><line x1=\"175.0\" y1=\"80.0\" x2=\"246.3\" y2=\"131.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"246.3\" y1=\"131.8\" x2=\"219.1\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"219.1\" y1=\"215.7\" x2=\"130.9\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"130.9\" y1=\"215.7\" x2=\"103.7\" y2=\"131.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"103.7\" y1=\"131.8\" x2=\"175.0\" y2=\"80.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"80.0\" x2=\"175.0\" y2=\"37.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"175.0\" y1=\"37.0\" x2=\"189.7\" y2=\"-3.4\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"219.1\" y1=\"215.7\" x2=\"244.4\" y2=\"250.5\" stroke=\"#136f63\" stroke-width=\"3\"/></svg><div style=\"font-size:.7em\">Skeletal structure</div></div></div>",
+    "c": [
+      "1-Ethyl-3-methylcyclopentane",
+      "3-Ethyl-1-methylcyclopentane",
+      "1-Ethyl-4-methylcyclopentane",
+      "1-Methyl-3-ethylcyclohexane"
     ],
-    a: 1,
-    e: "Lowest locants and alphabetical order give: 2-chloro-4-fluoro-1-methylcycloheptane."
+    "a": 0,
+    "e": "The lowest locant set is 1,3 in either direction. Ethyl precedes methyl alphabetically, so ethyl receives 1. The drawing does not specify cis/trans."
+  },
+  {
+    "q": "A three-carbon ring is attached at the end of a straight four-carbon chain. Which parent and name apply?",
+    "c": [
+      "The ring is the parent: butylcyclopropane",
+      "The chain is the parent: 2-cyclopropylbutane",
+      "The chain is the parent: 1-cyclopropylbutane",
+      "The ring is the parent: cyclobutylpropane"
+    ],
+    "a": 2,
+    "e": "For this simple ring-and-chain case, the four-carbon chain is longer than the three-carbon ring. The chain is butane and the terminal ring substituent is cyclopropyl at C-1."
+  },
+  {
+    "q": "Which statement best explains why the chair conformation of cyclohexane has low ring strain?",
+    "c": [
+      "It is a perfectly flat hexagon with 120° bond angles",
+      "It contains no carbon–hydrogen bonds",
+      "Its C–C bonds are double bonds",
+      "Its puckered chair has near-tetrahedral angles and largely staggered bonds"
+    ],
+    "a": 3,
+    "e": "The nonplanar chair allows nearly tetrahedral bond angles and mostly staggered neighboring bonds, reducing angle and torsional strain."
+  },
+  {
+    "q": "What is the molecular formula of methylcyclohexane?",
+    "c": [
+      "C₆H₁₂",
+      "C₇H₁₄",
+      "C₇H₁₆",
+      "C₈H₁₆"
+    ],
+    "a": 1,
+    "e": "Six ring carbons plus one methyl carbon gives seven. This saturated hydrocarbon has one ring, so its formula is C₇H₁₄."
+  },
+  {
+    "q": "For a cyclohexane with two methyl groups on one carbon and an ethyl group on another, which locant set is preferred: 1,1,3 or 1,3,3?",
+    "c": [
+      "1,1,3, because it is lower at the first point of difference",
+      "1,3,3, because ethyl always receives locant 1",
+      "Both are equally preferred",
+      "The set with the larger sum is preferred"
+    ],
+    "a": 0,
+    "e": "Compare the sorted sets in order: the first locants tie at 1, then 1 is lower than 3. Alphabetical priority does not override a lower locant set."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -267,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -287,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -295,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -332,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -355,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -379,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
