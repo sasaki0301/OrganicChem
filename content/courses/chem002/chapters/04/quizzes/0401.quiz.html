@@ -28,6 +28,12 @@
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
@@ -146,6 +152,8 @@
     .question { font-size: 1.15em; }
     .stars { font-size: 2em; }
   }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
@@ -154,6 +162,7 @@
 <div class="quiz-container">
   <h2>Lesson 1 Quiz – Alkanes & Alkane Isomers</h2>
 
+  <p>12 questions · Pass: 10/12 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
   <div id="progressText" class="progress-text">Question 1 of 12</div>
   <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
@@ -168,91 +177,136 @@
 
 const quizData = [
   {
-    q: "1. What is the general molecular formula for any open-chain alkane?",
-    c: ["CₙH₂ₙ", "CₙH₂ₙ₊₂", "CₙHₙ", "CₙH₂ₙ₋₂"],
-    a: 1,
-    e: "Acyclic alkanes always follow CₙH₂ₙ₊₂ because each carbon is fully saturated with hydrogens."
-  },
-  {
-    q: "2. Which term best describes hydrocarbons containing only single C–C and C–H bonds?",
-    c: ["Alkynes", "Arenes", "Alkanes", "Alkenes"],
-    a: 2,
-    e: "Alkanes are saturated hydrocarbons containing only σ (single) bonds."
-  },
-  {
-    q: "3. Which representation is the fastest way to sketch organic structures?",
-    c: ["Full Lewis structure", "Condensed structure", "Skeletal (line-angle) structure", "3D ball-and-stick model"],
-    a: 2,
-    e: "Skeletal diagrams simplify carbon chains and are the preferred format in organic chemistry."
-  },
-  {
-    q: "4. n-Pentane, isopentane, and neopentane all share the same molecular formula. What does this make them?",
-    c: ["Conformers", "Constitutional isomers", "Identical molecules", "Enantiomers"],
-    a: 1,
-    e: "They have the same formula but different connectivity → structural (constitutional) isomers."
-  },
-  {
-    q: "5. How many constitutional isomers exist for C₄H₁₀?",
-    c: ["1", "2", "3", "4"],
-    a: 1,
-    e: "C₄H₁₀ has only n-butane and isobutane (2-methylpropane)."
-  },
-  {
-    q: "6. Which statement correctly describes constitutional isomers?",
-    c: [
-      "They differ only in rotation around single bonds",
-      "They have the same connectivity but differ in 3D shape",
-      "They have the same formula but different atom connectivity",
-      "They differ only in orientation of substituents"
+    "q": "Which general formula applies to an acyclic alkane with n carbon atoms?",
+    "c": [
+      "CₙH₂ₙ",
+      "CₙH₂ₙ₊₂",
+      "CₙH₂ₙ₋₂",
+      "CₙHₙ"
     ],
-    a: 2,
-    e: "Constitutional isomers differ in connectivity, not just shape."
+    "a": 1,
+    "e": "An acyclic saturated hydrocarbon has formula CₙH₂ₙ₊₂. The formula is for open-chain alkanes."
   },
   {
-    q: "7. Which has the higher boiling point?",
-    c: ["Highly branched alkanes", "Straight-chain alkanes"],
-    a: 1,
-    e: "Straight chains pack better → stronger dispersion forces → higher boiling points."
-  },
-  {
-    q: "8. A skeletal structure shows three carbon atoms in a straight line. Which alkane is this?",
-    c: ["Methane", "Ethane", "Propane", "Butane"],
-    a: 2,
-    e: "Three carbons in a row is propane (CH₃–CH₂–CH₃)."
-  },
-  {
-    q: "9. How many constitutional isomers does C₅H₁₂ have?",
-    c: ["1", "2", "3", "5"],
-    a: 2,
-    e: "C₅H₁₂ has exactly three: n-pentane, isopentane, and neopentane."
-  },
-  {
-    q: "10. Which molecule would be expected to have the lowest boiling point?",
-    c: ["n-hexane", "2-methylpentane", "2,2-dimethylbutane", "n-heptane"],
-    a: 2,
-    e: "2,2-dimethylbutane is the most branched, the most compact, and therefore has the weakest dispersion forces."
-  },
-  {
-    q: "11. Which statement is TRUE about skeletal formulas?",
-    c: [
-      "Hydrogen atoms on carbons are shown explicitly",
-      "Each line end represents a carbon atom",
-      "Double bonds must be shown as dotted lines",
-      "Carbons are labeled with C unless chiral"
+    "q": "What is the molecular formula of an acyclic alkane with seven carbon atoms?",
+    "c": [
+      "C₇H₁₄",
+      "C₇H₁₆",
+      "C₇H₁₂",
+      "C₇H₁₈"
     ],
-    a: 1,
-    e: "Line ends and intersections represent carbon atoms; hydrogens on carbon are usually omitted."
+    "a": 1,
+    "e": "Use H = 2n + 2. With n = 7, H = 16, giving C₇H₁₆."
   },
   {
-    q: "12. You draw two possible isomers for C₆H₁₄ that look different. How do you confirm whether they are identical or different?",
-    c: [
-      "Check if the wedge/dash directions match",
-      "Rotate and reflect the structures to compare connectivity",
-      "Compare boiling points in a data book",
-      "Count hydrogens only"
+    "q": "Which description best fits an alkane?",
+    "c": [
+      "A hydrocarbon containing only single bonds",
+      "A hydrocarbon containing at least one C=C bond",
+      "A compound containing carbon and oxygen",
+      "A hydrocarbon containing at least one C≡C bond"
     ],
-    a: 1,
-    e: "Rotation and reflection help determine whether connectivity is actually the same."
+    "a": 0,
+    "e": "Alkanes are saturated hydrocarbons containing carbon and hydrogen joined by single bonds."
+  },
+  {
+    "q": "How many carbon atoms are shown in this skeletal structure?<svg viewBox=\"0 0 300 120\" role=\"img\" aria-label=\"A zigzag of three connected segments, with four unlabeled carbon positions\" style=\"display:block;width:100%;max-width:300px;height:auto;margin:12px auto\"><path d=\"M30 80 L100 35 L170 80 L240 35\" fill=\"none\" stroke=\"#174ea6\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+    "c": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "a": 1,
+    "e": "Count both ends and both corners. The three bonds connect four carbon positions."
+  },
+  {
+    "q": "What is the molecular formula represented by CH₃CH(CH₃)CH₃?",
+    "c": [
+      "C₃H₈",
+      "C₄H₈",
+      "C₄H₁₀",
+      "C₅H₁₂"
+    ],
+    "a": 2,
+    "e": "The parenthesized CH₃ is attached to the preceding CH. Counting all groups gives four carbons and ten hydrogens."
+  },
+  {
+    "q": "Which statement describes constitutional isomers?",
+    "c": [
+      "Same molecular formula and different atom connectivity",
+      "Same connectivity and only a different orientation on the page",
+      "Different molecular formulas and the same connectivity",
+      "Same connectivity and only a rotation about a single bond"
+    ],
+    "a": 0,
+    "e": "Constitutional isomers have the same molecular formula but differ in how atoms are connected."
+  },
+  {
+    "q": "What is the relationship between butane and 2-methylpropane?",
+    "c": [
+      "They have different molecular formulas",
+      "They are constitutional isomers of C₄H₁₀",
+      "They are the same molecule drawn backwards",
+      "They are cis–trans isomers"
+    ],
+    "a": 1,
+    "e": "Both are C₄H₁₀, but their carbon connectivity differs. They are the two constitutional isomers of this formula."
+  },
+  {
+    "q": "Which structure represents the same connectivity as CH₃CH₂CH(CH₃)CH₃?",
+    "c": [
+      "CH₃CH(CH₃)CH₂CH₃",
+      "CH₃CH₂CH₂CH₂CH₃",
+      "C(CH₃)₄",
+      "CH₃CH(CH₃)CH₃"
+    ],
+    "a": 0,
+    "e": "Reading from the other end gives CH₃CH(CH₃)CH₂CH₃. Both drawings represent 2-methylbutane."
+  },
+  {
+    "q": "What is the IUPAC name of the alkane represented by this skeletal structure?<svg viewBox=\"0 0 300 150\" role=\"img\" aria-label=\"One central vertex is connected to three unlabeled endpoints\" style=\"display:block;width:100%;max-width:300px;height:auto;margin:12px auto\"><path d=\"M55 100 L150 48 L245 100 M150 48 L150 8\" fill=\"none\" stroke=\"#174ea6\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+    "c": [
+      "Butane",
+      "2-Methylpropane",
+      "2-Methylbutane",
+      "Propane"
+    ],
+    "a": 1,
+    "e": "There are four carbons total. The longest chain has three carbons, with a methyl group on carbon 2: 2-methylpropane."
+  },
+  {
+    "q": "How many constitutional isomers does C₅H₁₂ have?",
+    "c": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "a": 1,
+    "e": "There are three: pentane, 2-methylbutane, and 2,2-dimethylpropane."
+  },
+  {
+    "q": "Which pair consists of two distinct constitutional isomers of C₆H₁₄?",
+    "c": [
+      "2-Methylpentane and 3-methylpentane",
+      "2-Methylpentane and 4-methylpentane",
+      "Hexane and heptane",
+      "Butane and 2-methylpropane"
+    ],
+    "a": 0,
+    "e": "Both have six carbons and fourteen hydrogens, but their methyl branches are on different positions that cannot be matched by reversing the chain."
+  },
+  {
+    "q": "At the same pressure, which of these C₆H₁₄ isomers is expected to have the higher boiling point?",
+    "c": [
+      "Hexane",
+      "2,2-Dimethylbutane",
+      "Both necessarily have the same boiling point",
+      "Neither can boil"
+    ],
+    "a": 0,
+    "e": "Hexane boils at a higher temperature than the compact, highly branched 2,2-dimethylbutane. This comparison is between isomers with the same molecular formula."
   }
 ];
 
@@ -272,7 +326,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -292,6 +346,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -300,7 +356,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -337,7 +393,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -360,7 +416,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
