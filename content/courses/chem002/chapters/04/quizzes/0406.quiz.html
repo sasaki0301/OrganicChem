@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 4 – Lesson 6 Quiz: Cis–Trans Isomerism in Cycloalkanes</title>
+<title>Chapter 4 – Lesson 6 Quiz: Cis–Trans Isomerism</title>
 
 <style>
   body {
@@ -22,18 +22,32 @@
     background: #ffffff;
     border-radius: 18px;
     padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     width: 95%;
     max-width: 850px;
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -48,58 +62,44 @@
     width: 0%;
     transition: width 0.4s ease;
   }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
 
+  /* Question */
   .question {
     font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
     margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
-    transition: all 0.2s ease;
+    transition: 0.2s;
   }
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: white; transform: scale(1.02); }
-
-  img {
-    width: 70%;
-    max-width: 380px;
-    margin: 15px auto;
-    display: block;
-    border-radius: 10px;
-  }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
     border-radius: 10px;
     padding: 14px 18px;
+    margin-top: 10px;
     display: none;
     text-align: left;
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -107,18 +107,19 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
-    display: none;
+    cursor: pointer;
+    transition: 0.2s;
     margin-top: 15px;
   }
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
-    margin-top: 20px;
+    margin-top: 12px;
   }
   .stars {
     font-size: 2.5em;
@@ -129,9 +130,9 @@
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
@@ -139,12 +140,20 @@
     border-radius: 8px;
     padding: 10px 20px;
     cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
-  .quiz-btn.primary {
-    background: #136f63;
-    color: white;
-  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
@@ -153,113 +162,135 @@
 <div class="quiz-container">
   <h2>Lesson 6 Quiz – Cis–Trans Isomerism in Cycloalkanes</h2>
 
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn">Next</button>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. Why can cycloalkanes exhibit cis–trans isomerism while open-chain alkanes cannot?",
-    c: [
-      "Cycloalkanes contain double bonds.",
-      "Cycloalkanes cannot freely rotate due to ring strain.",
-      "Cycloalkanes have more hydrogens.",
-      "Cycloalkanes contain heteroatoms."
+    "q": "What does cis mean for two specified substituents on different carbons of a ring?",
+    "c": [
+      "They are on the same face of the ring.",
+      "They are on opposite faces of the ring.",
+      "They must both be axial.",
+      "They must be different types of groups."
     ],
-    a: 1,
-    e: "The ring structure prevents rotation, locking substituents in fixed positions."
+    "a": 0,
+    "e": "Cis means that the two specified substituents are on the same face, whether both up or both down."
   },
   {
-    q: "2. In cis isomers, substituents on a ring are:",
-    c: [
-      "On opposite sides of the ring",
-      "One axial and one equatorial",
-      "On the same side (both up or both down)",
-      "Rotating freely between positions"
+    "q": "What is the relationship between the methyl groups in these drawings?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st1t st1d\"><title id=\"st1t\">Semi-displayed structural formula</title><desc id=\"st1d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,92.0 218.0,49.0 202.0,49.0\" fill=\"#174ea6\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><polygon points=\"294.9,141.0 336.1,126.4 328.1,112.6\" fill=\"#174ea6\"/><text x=\"353.8\" y=\"113.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st2t st2d\"><title id=\"st2t\">Skeletal formula</title><desc id=\"st2d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,111.0 218.0,37.0 202.0,37.0\" fill=\"#174ea6\"/><polygon points=\"278.4,150.5 346.5,120.4 338.5,106.6\" fill=\"#174ea6\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "trans",
+      "cis",
+      "Not specified",
+      "Constitutional isomers"
     ],
-    a: 2,
-    e: "Cis means both substituents point the same direction: both up or both down."
+    "a": 1,
+    "e": "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis."
   },
   {
-    q: "3. Can 1-methylcyclohexane exhibit cis–trans isomerism?",
-    c: ["Yes", "No"],
-    a: 1,
-    e: "Only one substituent is present → no cis/trans possible."
-  },
-  {
-    q: "4. Identify the isomer shown:",
-    img: "https://i.imgur.com/i26AqoY.png",
-    c: ["cis-1,4-dimethylcyclohexane", "trans-1,4-dimethylcyclohexane"],
-    a: 0,
-    e: "Both methyl groups point up, so it is the cis isomer."
-  },
-  {
-    q: "5. What determines cis/trans orientation in cyclohexane?",
-    c: [
-      "Axial vs equatorial position",
-      "Bond angle distortion",
-      "Up vs down direction of substituents",
-      "Energy difference between chairs"
+    "q": "What is the relationship between the methyl groups in these drawings?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st3t st3d\"><title id=\"st3t\">Semi-displayed structural formula</title><desc id=\"st3d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,92.0 218.0,49.0 202.0,49.0\" fill=\"#174ea6\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"302.2\" y1=\"139.3\" x2=\"300.0\" y2=\"135.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"309.0\" y1=\"136.7\" x2=\"305.6\" y2=\"130.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"315.7\" y1=\"134.1\" x2=\"311.2\" y2=\"126.4\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"322.5\" y1=\"131.6\" x2=\"316.9\" y2=\"121.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"329.3\" y1=\"129.0\" x2=\"322.5\" y2=\"117.2\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"353.8\" y=\"113.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st4t st4d\"><title id=\"st4t\">Skeletal formula</title><desc id=\"st4d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,111.0 218.0,37.0 202.0,37.0\" fill=\"#174ea6\"/><line x1=\"290.2\" y1=\"146.2\" x2=\"288.0\" y2=\"142.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"301.4\" y1=\"141.1\" x2=\"298.1\" y2=\"135.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"312.7\" y1=\"135.9\" x2=\"308.2\" y2=\"128.1\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"324.0\" y1=\"130.7\" x2=\"318.3\" y2=\"120.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"335.2\" y1=\"125.6\" x2=\"328.4\" y2=\"113.7\" stroke=\"#174ea6\" stroke-width=\"2\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "cis",
+      "Not specified",
+      "trans",
+      "They are on the same carbon"
     ],
-    a: 2,
-    e: "Cis/trans is only based on up/down orientation, NOT axial/equatorial."
+    "a": 2,
+    "e": "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans."
   },
   {
-    q: "6. Identify the correct name for this structure:",
-    img: "https://i.imgur.com/crgWLSu.png",
-    c: [
-      "cis-1,2-dimethylcyclobutane",
-      "trans-1,2-dimethylcyclobutane",
-      "cis-1,3-dimethylcyclobutane",
-      "trans-1,3-dimethylcyclobutane"
+    "q": "Both methyl groups are shown with dashed wedges. What is their relative relationship?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st11t st11d\"><title id=\"st11t\">Semi-displayed structural formula</title><desc id=\"st11d\">A 6-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"84.8\" x2=\"207.8\" y2=\"84.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"77.7\" x2=\"206.7\" y2=\"77.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"70.5\" x2=\"205.5\" y2=\"70.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"63.3\" x2=\"204.3\" y2=\"63.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"56.2\" x2=\"203.2\" y2=\"56.2\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"300.0\" y1=\"244.5\" x2=\"302.2\" y2=\"240.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"305.6\" y1=\"249.1\" x2=\"309.0\" y2=\"243.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"311.2\" y1=\"253.6\" x2=\"315.7\" y2=\"245.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"316.9\" y1=\"258.2\" x2=\"322.5\" y2=\"248.4\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"322.5\" y1=\"262.8\" x2=\"329.3\" y2=\"251.0\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"353.8\" y=\"279.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st12t st12d\"><title id=\"st12t\">Skeletal formula</title><desc id=\"st12d\">A 6-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"98.7\" x2=\"207.8\" y2=\"98.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"86.3\" x2=\"206.7\" y2=\"86.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"74.0\" x2=\"205.5\" y2=\"74.0\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"61.7\" x2=\"204.3\" y2=\"61.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"49.3\" x2=\"203.2\" y2=\"49.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"288.0\" y1=\"237.5\" x2=\"290.2\" y2=\"233.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"298.1\" y1=\"244.7\" x2=\"301.4\" y2=\"238.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"308.2\" y1=\"251.9\" x2=\"312.7\" y2=\"244.1\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"318.3\" y1=\"259.1\" x2=\"324.0\" y2=\"249.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"328.4\" y1=\"266.3\" x2=\"335.2\" y2=\"254.4\" stroke=\"#174ea6\" stroke-width=\"2\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "trans",
+      "No methyl groups are present",
+      "Cannot be determined",
+      "cis"
     ],
-    a: 1,
-    e: "The substituents are on opposite sides → trans, and the locants are 1,2."
+    "a": 3,
+    "e": "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis."
   },
   {
-    q: "7. What must be true for cycloalkanes to show cis/trans stereoisomerism?",
-    c: [
-      "There must be at least two substituents",
-      "The ring must contain nitrogen",
-      "The ring must contain 6 carbons",
-      "There must be a double bond present"
+    "q": "What can be determined about the relative stereochemistry shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st13t st13d\"><title id=\"st13t\">Semi-displayed structural formula</title><desc id=\"st13d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 3 drawn on an ordinary bond. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,92.0 218.0,49.0 202.0,49.0\" fill=\"#174ea6\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"294.9\" y1=\"239.0\" x2=\"332.1\" y2=\"260.5\" stroke=\"#174ea6\" stroke-width=\"3\"/><text x=\"353.8\" y=\"279.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st14t st14d\"><title id=\"st14t\">Skeletal formula</title><desc id=\"st14d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 3 drawn on an ordinary bond. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,111.0 218.0,37.0 202.0,37.0\" fill=\"#174ea6\"/><line x1=\"278.4\" y1=\"229.5\" x2=\"342.5\" y2=\"266.5\" stroke=\"#174ea6\" stroke-width=\"3\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "It is definitely cis.",
+      "The cis/trans relationship is not specified.",
+      "It is definitely trans.",
+      "The ring contains only three carbons."
     ],
-    a: 0,
-    e: "A minimum of two substituents is required so their relative orientation can differ."
+    "a": 1,
+    "e": "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans."
   },
   {
-    q: "8. If one substituent is up and the other is down, the isomer is:",
-    c: ["Cis", "Trans"],
-    a: 1,
-    e: "Opposite directions indicate the trans isomer."
-  },
-  {
-    q: "9. In chair conformations, cis/trans depends on:",
-    c: [
-      "Whether substituents are axial/equatorial",
-      "Whether substituents are rotated through the ring",
-      "Whether substituents are both large groups",
-      "Whether substituents are up/down relative to the ring"
+    "q": "What is the complete name of this structure?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st15t st15d\"><title id=\"st15t\">Semi-displayed structural formula</title><desc id=\"st15d\">A 5-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"224.56\" y1=\"122.58\" x2=\"269.62\" y2=\"155.32\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"278.62\" y1=\"183.02\" x2=\"261.41\" y2=\"235.98\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"237.85\" y1=\"253.10\" x2=\"182.15\" y2=\"253.10\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.59\" y1=\"235.98\" x2=\"141.38\" y2=\"183.02\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"150.38\" y1=\"155.32\" x2=\"195.44\" y2=\"122.58\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"84.8\" x2=\"207.8\" y2=\"84.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"77.7\" x2=\"206.7\" y2=\"77.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"70.5\" x2=\"205.5\" y2=\"70.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"63.3\" x2=\"204.3\" y2=\"63.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"56.2\" x2=\"203.2\" y2=\"56.2\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><polygon points=\"267.6,269.3 286.4,308.8 299.3,299.4\" fill=\"#174ea6\"/><text x=\"307.6\" y=\"330.3\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"284.2\" y=\"172.9\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"255.8\" y=\"260.1\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"164.2\" y=\"260.1\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"135.8\" y=\"172.9\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st16t st16d\"><title id=\"st16t\">Skeletal formula</title><desc id=\"st16d\">A 5-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"284.18\" y2=\"165.90\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"284.18\" y1=\"165.90\" x2=\"255.85\" y2=\"253.10\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"255.85\" y1=\"253.10\" x2=\"164.15\" y2=\"253.10\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"164.15\" y1=\"253.10\" x2=\"135.82\" y2=\"165.90\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"135.82\" y1=\"165.90\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"98.7\" x2=\"207.8\" y2=\"98.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"86.3\" x2=\"206.7\" y2=\"86.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"74.0\" x2=\"205.5\" y2=\"74.0\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"61.7\" x2=\"204.3\" y2=\"61.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"49.3\" x2=\"203.2\" y2=\"49.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><polygon points=\"256.4,253.9 293.5,318.5 306.4,309.1\" fill=\"#174ea6\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
+    "c": [
+      "trans-1,3-dimethylcyclopentane",
+      "cis-1,3-dimethylcyclopentane",
+      "trans-1,2-dimethylcyclopentane",
+      "trans-1,3-dimethylcyclohexane"
     ],
-    a: 3,
-    e: "Even in chairs, cis/trans is determined only by up/down orientation."
+    "a": 0,
+    "e": "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans."
   },
   {
-    q: "10. Which pair must differ between cis and trans isomers?",
-    c: [
-      "Connectivity",
-      "Atom arrangement in 3D space",
-      "Number of carbons",
-      "Type of substituent"
+    "q": "Which statement is correct for a simple disubstituted cycloalkane?",
+    "c": [
+      "The substituents must be different types for cis/trans to be possible.",
+      "A single substituent alone defines a cis/trans pair.",
+      "Identical groups on different ring carbons can have cis and trans arrangements.",
+      "Both substituents must be on the same ring carbon."
     ],
-    a: 1,
-    e: "Cis/trans isomers differ in 3D arrangement but have identical connectivity."
+    "a": 2,
+    "e": "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements."
+  },
+  {
+    "q": "During a cyclohexane chair flip, what happens to an axial-down substituent?",
+    "c": [
+      "It becomes axial up.",
+      "It becomes equatorial up.",
+      "It remains axial down.",
+      "It becomes equatorial down."
+    ],
+    "a": 3,
+    "e": "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down."
+  },
+  {
+    "q": "What happens to the cis/trans relationship during an ordinary cyclohexane chair flip?",
+    "c": [
+      "Cis always becomes trans.",
+      "The relationship stays the same.",
+      "Trans always becomes cis.",
+      "The substituents swap their ring carbons."
+    ],
+    "a": 1,
+    "e": "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved."
+  },
+  {
+    "q": "How do a cis and trans stereoisomer of the same disubstituted cycloalkane differ?",
+    "c": [
+      "They have the same connectivity but differ in spatial arrangement.",
+      "They must have different molecular formulas.",
+      "They differ only in how the name is capitalized.",
+      "They differ only by turning a drawing on the page."
+    ],
+    "a": 0,
+    "e": "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -273,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -293,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -301,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -338,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -361,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -385,7 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
-</script>
 
+</script>
 </body>
 </html>
