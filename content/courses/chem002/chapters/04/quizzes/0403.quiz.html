@@ -11,28 +11,43 @@
     background: linear-gradient(135deg, #e8f9f1, #f7faff);
     margin: 0;
     padding: 40px 20px;
+    color: #222;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
   }
 
   .quiz-container {
     background: #ffffff;
-    padding: 40px 50px;
     border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     width: 95%;
     max-width: 850px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
-    font-size: 1.8em;
     margin-bottom: 25px;
+    font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -41,202 +56,241 @@
     margin-bottom: 25px;
     overflow: hidden;
   }
-
   .progress-bar {
     height: 100%;
     background: linear-gradient(to right, #136f63, #2b7de9);
     width: 0%;
-    transition: 0.4s ease;
+    transition: width 0.4s ease;
   }
 
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
+  /* Question */
   .question {
-    font-size: 1.25em;
+    font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
-    padding: 14px 18px;
+    border: none;
     border-radius: 10px;
+    padding: 14px 18px;
     text-align: left;
     cursor: pointer;
-    transition: 0.2s ease;
     font-size: 1.05em;
-    border: none;
+    transition: 0.2s;
   }
-
-  .choice:hover { background:#d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background:#174ea6; color:white; transform: scale(1.02); }
-
-  .structure-img {
-    width: 70%;
-    max-width: 420px;
-    margin: 15px auto;
-    display: block;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
-    padding: 15px;
     border-radius: 10px;
-    margin-top: 12px;
+    padding: 14px 18px;
+    margin-top: 10px;
     display: none;
     text-align: left;
+    font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
-    color: white;
+    color: #fff;
+    border: none;
     padding: 12px 26px;
     border-radius: 10px;
-    margin-top: 15px;
-    border: none;
     font-size: 1.05em;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
   }
+  .next-btn:hover { background: #0f5b52; }
 
-  .next-btn:hover { background:#0f5b52; }
-
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
+    margin-top: 12px;
   }
-
   .stars {
-    font-size: 2.4em;
-    margin: 12px 0;
+    font-size: 2.5em;
+    margin-top: 10px;
   }
 
   .quiz-nav {
     margin-top: 25px;
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
-    padding: 10px 20px;
-    border-radius: 8px;
+    color: #174ea6;
     border: none;
-    font-size: 0.95em;
+    border-radius: 8px;
+    padding: 10px 20px;
     cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-  .quiz-btn:hover { background: #d3dbf8; }
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
   }
-  .quiz-btn.primary:hover { background:#0f5b52; }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
   <h2>Lesson 3 Quiz – Naming Alkanes</h2>
 
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. What is the name of the following alkane?",
-    img: "https://i.imgur.com/HyK1EvC.jpeg",
-    c: ["Propane", "Butane", "Pentane", "Hexane"],
-    a: 0,
-    e: "The structure shows 3 carbons in a straight chain → propane."
+    "q": "What is the parent name of an acyclic alkane with a longest continuous chain of seven carbons?",
+    "c": [
+      "Hexane",
+      "Heptane",
+      "Octane",
+      "Pentane"
+    ],
+    "a": 1,
+    "e": "A seven-carbon parent chain is heptane; -ane identifies the saturated hydrocarbon."
   },
   {
-    q: "2. What is the longest continuous chain in the structure below?",
-    img: "https://i.imgur.com/zFkWOxI.png",
-    c: ["4 carbons", "5 carbons", "6 carbons", "7 carbons"],
-    a: 0,
-    e: "The highlighted chain contains 4 carbons → butane backbone."
+    "q": "What is the maximum number of carbons in one continuous chain in this skeletal structure?<svg viewBox=\"0 0 390 190\" role=\"img\" aria-label=\"A skeletal drawing has a horizontal-looking five-carbon zigzag with a two-carbon path extending upward from the fourth carbon.\" style=\"display:block;width:100%;max-width:390px;height:auto;margin:12px auto\"><path d=\"M35 145 L105 100 L175 145 L245 100 L315 145 M245 100 L245 40 L315 40\" fill=\"none\" stroke=\"#174ea6\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+    "c": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "a": 2,
+    "e": "Trace from the lower-left end through the junction and along the upper path to its end. The longest continuous path contains six carbons."
   },
   {
-    q: "3. Name this branched structure:",
-    img: "https://i.imgur.com/DXjSFBP.png",
-    c: ["2,3-dimethylbutane", "3-methylbutane", "2-methylpentane", "2,3-dimethylpentane"],
-    a: 3,
-    e: "Longest chain = 5 carbons; substituent is on C-2 and 3 → 2,3-dimethylpentane."
+    "q": "What is the IUPAC name of this structure?<svg viewBox=\"0 0 380 210\" role=\"img\" aria-label=\"A four-carbon sequence CH3 bonded to C bonded to CH2 bonded to CH3; the second carbon is also bonded to two CH3 groups.\" style=\"display:block;width:100%;max-width:380px;height:auto;margin:12px auto\"><g fill=\"none\" stroke=\"#136f63\" stroke-width=\"3\"><path d=\"M55 105 H125 M155 105 H225 M265 105 H320 M140 90 V58 M140 120 V150\"/></g><g text-anchor=\"middle\" font-size=\"22\" fill=\"#174ea6\"><text x=\"35\" y=\"113\">CH₃</text><text x=\"140\" y=\"113\">C</text><text x=\"245\" y=\"113\">CH₂</text><text x=\"340\" y=\"113\">CH₃</text><text x=\"140\" y=\"48\">CH₃</text><text x=\"140\" y=\"175\">CH₃</text></g></svg>",
+    "c": [
+      "2-Methylbutane",
+      "2,3-Dimethylbutane",
+      "2,2-Dimethylbutane",
+      "2,2-Dimethylpropane"
+    ],
+    "a": 2,
+    "e": "The longest chain contains four carbons. There are two methyl substituents on carbon 2, giving 2,2-dimethylbutane."
   },
   {
-    q: "4. What is the correct numbering direction for this chain?",
-    img: "https://i.imgur.com/tyElqo2.png",
-    c: ["Left to right", "Right to left", "Either direction gives same result", "Impossible to determine"],
-    a: 1,
-    e: "Number from the side that gives the substituent the lowest possible locant."
+    "q": "Compare the locant sets 2,3,5 and 2,4,5 for the same parent. Which set is preferred?",
+    "c": [
+      "2,3,5",
+      "2,4,5",
+      "Both are equal because they start with 2",
+      "Choose the set with the larger total"
+    ],
+    "a": 0,
+    "e": "The first entries tie. At the first difference, 3 is lower than 4, so 2,3,5 is preferred."
   },
   {
-    q: "5. Name the following structure:",
-    img: "https://i.imgur.com/wAjzYbL.png",
-    c: ["3-ethylpentane", "2-ethylpentane", "4-ethylpentane", "3-methylhexane"],
-    a: 3,
-    e: "Longest chain = 6 carbons; substituent (methyl) is on C-3."
+    "q": "What is the correct name of the compound shown?<svg viewBox=\"0 0 500 220\" role=\"img\" aria-label=\"A six-carbon chain CH3 CH CH CH2 CH2 CH3; the second CH has a CH3 branch and the third CH has a CH2 CH3 branch.\" style=\"display:block;width:100%;max-width:500px;height:auto;margin:12px auto\"><g stroke=\"#136f63\" stroke-width=\"3\"><path d=\"M54 105 H87 M113 105 H152 M178 105 H222 M258 105 H302 M338 105 H382 M100 118 V158 M165 92 V48\"/></g><g text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\"><text x=\"35\" y=\"112\">CH₃</text><text x=\"100\" y=\"112\">CH</text><text x=\"165\" y=\"112\">CH</text><text x=\"240\" y=\"112\">CH₂</text><text x=\"320\" y=\"112\">CH₂</text><text x=\"400\" y=\"112\">CH₃</text><text x=\"100\" y=\"182\">CH₃</text><text x=\"165\" y=\"35\">CH₂–CH₃</text></g></svg>",
+    "c": [
+      "2-Methyl-3-ethylhexane",
+      "4-Ethyl-5-methylhexane",
+      "3-Ethyl-2-methylpentane",
+      "3-Ethyl-2-methylhexane"
+    ],
+    "a": 3,
+    "e": "A six-carbon parent gives locants 2 and 3. Ethyl precedes methyl alphabetically, so the name is 3-ethyl-2-methylhexane."
   },
   {
-    q: "6. What is the correct IUPAC name?",
-    img: "https://i.imgur.com/biSpfQ6.png",
-    c: ["4-ethyl-5-methylheptane", "3,4-didimethylheptane", "4-ethyl-3-methylheptane", "3-ethyl-4-methylheptane"],
-    a: 2,
-    e: "Locants are 4-ehtyl and 3-methyl, longest chain= 7 carbons → 4-ethyl-3-methylheptane"
+    "q": "How are di- and tri- treated when alphabetizing simple substituent names?",
+    "c": [
+      "They determine alphabetical order before the substituent name",
+      "They are ignored; alphabetize by the substituent name",
+      "They are omitted from the final name",
+      "They are used only for parent chains"
+    ],
+    "a": 1,
+    "e": "Multiplying prefixes such as di- and tri- are retained in the name but ignored when alphabetizing simple substituents."
   },
   {
-    q: "7. The correct alphabetical order for substituents is:",
-    c: ["ethyl, methyl", "methyl, ethyl", "ethyl comes after methyl", "order doesn't matter"],
-    a: 0,
-    e: "Alphabetical order ignores prefixes → ethyl before methyl."
+    "q": "A heptane has ethyl and methyl branches, and either numbering direction gives locants 3,5. Which name is correct?",
+    "c": [
+      "5-Ethyl-3-methylheptane",
+      "3-Methyl-5-ethylheptane",
+      "3-Ethyl-5-methylheptane",
+      "4-Ethyl-4-methylheptane"
+    ],
+    "a": 2,
+    "e": "The two directions give the same locant set. Ethyl comes before methyl alphabetically, so ethyl receives the lower number, 3."
   },
   {
-    q: "8. What suffix is always used for alkanes?",
-    c: ["-ene", "-yne", "-ane", "-yl"],
-    a: 2,
-    e: "Alkanes are saturated hydrocarbons with the suffix -ane."
+    "q": "Which condensed structure represents 2,3-dimethylpentane?",
+    "c": [
+      "CH₃CH(CH₃)CH(CH₃)CH₂CH₃",
+      "CH₃C(CH₃)₂CH₂CH₂CH₃",
+      "CH₃CH₂CH(CH₃)CH₂CH₃",
+      "CH₃CH(CH₃)CH₂CH₃"
+    ],
+    "a": 0,
+    "e": "The parent has five carbons with methyl groups on carbons 2 and 3: CH₃CH(CH₃)CH(CH₃)CH₂CH₃."
   },
   {
-    q: "9. What is the name of this structure?",
-    img: "https://i.imgur.com/pbmONRr.png",
-    c: ["Hexane", "Heptane", "Octane", "Nonane"],
-    a: 2,
-    e: "The chain contains 8 carbons → octane."
+    "q": "What is the IUPAC name of this structure?<svg viewBox=\"0 0 390 190\" role=\"img\" aria-label=\"A skeletal drawing has a horizontal-looking five-carbon zigzag with a two-carbon path extending upward from the fourth carbon.\" style=\"display:block;width:100%;max-width:390px;height:auto;margin:12px auto\"><path d=\"M35 145 L105 100 L175 145 L245 100 L315 145 M245 100 L245 40 L315 40\" fill=\"none\" stroke=\"#174ea6\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+    "c": [
+      "3-Ethylpentane",
+      "2-Methylpentane",
+      "4-Methylhexane",
+      "3-Methylhexane"
+    ],
+    "a": 3,
+    "e": "The longest path bends and contains six carbons. Numbering from the upper-right end puts the remaining methyl group on carbon 3."
   },
   {
-    q: "10. Which rule is MOST important when determining substituent locants?",
-    c: ["Choose the direction that gives alphabetical priority", 
-        "Choose the direction with the most hydrogens",
-        "Choose the direction giving the lowest locant numbers",
-        "Choose the direction with the longest substituent"],
-    a: 2,
-    e: "Lowest locant rule is the highest priority in naming alkanes."
+    "q": "Why is CH₃CH₂CH₂CH₂CH₃ named pentane rather than 1-methylbutane?",
+    "c": [
+      "The molecule contains only four carbon atoms",
+      "Its longest continuous carbon chain has five carbons",
+      "It contains a double bond",
+      "A methyl group cannot attach to carbon"
+    ],
+    "a": 1,
+    "e": "All five carbons form one continuous chain, so the parent is pentane and no methyl substituent remains."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -250,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -270,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -278,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -315,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -338,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -362,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
