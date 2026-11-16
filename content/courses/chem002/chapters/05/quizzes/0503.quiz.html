@@ -3,217 +3,294 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 5 – Lesson 3 Quiz: Alkene Isomerism (E–Z & Cis–Trans)</title>
+<title>Chapter 5 – Lesson 3 Quiz: Applying Cis–Trans and E–Z</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f9f1, #f7faff);
-  margin: 0;
-  padding: 40px 20px;
-  color: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 
-.quiz-container {
-  background: #fff;
-  border-radius: 18px;
-  padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-  width: 95%;
-  max-width: 850px;
-  text-align: center;
-}
+  .quiz-container {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 850px;
+    text-align: center;
+  }
 
-h2 {
-  color: #136f63;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-}
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
-.progress-wrapper {
-  background: #e9f5ef;
-  border-radius: 8px;
-  height: 14px;
-  width: 100%;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-wrapper {
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
 
-.question {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-}
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-}
-.choice:hover { background: #d3dbf8; }
-.choice.selected { background: #174ea6; color: #fff; }
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .choice {
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
+  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
-.explanation {
-  background: #eef3ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 12px;
-  display: none;
-  text-align: left;
-}
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
 
-.next-btn {
-  background: #136f63;
-  color: #fff;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-size: 1.05em;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 20px;
-}
+  /* Buttons */
+  .next-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
+  }
+  .next-btn:hover { background: #0f5b52; }
 
-.result {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 20px;
-}
-
-.quiz-nav {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.quiz-btn {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-.quiz-btn.primary {
-  background: #136f63;
-  color: #fff;
-}
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
   .stars {
-  font-size: 2.5em;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
+  .quiz-nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .quiz-btn {
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
+
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
-<h2>Lesson 3 Quiz – Alkene Isomerism (cis–trans & E–Z)</h2>
-<div class="progress-text" id="progressText"></div>
-<div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
-<div id="quizBox"></div>
-<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  <h2>Lesson 3 Quiz – Applying Cis–Trans and E–Z</h2>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
-{
-q:"1. When must the E–Z system be used instead of cis–trans?",
-c:["When the double bond is terminal",
-"When all four substituents are identical",
-"When each alkene carbon has two different substituents",
-"When the molecule is symmetric"],
-a:2,
-e:"Cis–trans fails when each double-bonded carbon has two different groups. E–Z is required."
-},
-{
-q:"2. Which alkene can show cis–trans isomerism?",
-c:["CH₂=CH₂","CH₃–CH=CH–CH₃","CH₂=CH–CH₃","CH₂=C(CH₃)₂"],
-a:1,
-e:"But-2-ene has identical groups on each carbon, allowing cis–trans isomerism."
-},
-{
-q:"3. Which pair correctly describes the same molecule?",
-c:["trans-but-2-ene and (Z)-but-2-ene",
-"cis-but-2-ene and (E)-but-2-ene",
-"cis-but-2-ene and (Z)-but-2-ene",
-"(E)-but-1-ene and trans-but-1-ene"],
-a:2,
-e:"In simple cases, cis corresponds to Z and trans corresponds to E."
-},
-{
-q:"4. What determines priority in the E–Z system?",
-c:["Atomic mass","Electronegativity","Atomic number","Bond order"],
-a:2,
-e:"Priority is assigned by atomic number — higher atomic number = higher priority."
-},
-{
-q:"5. Which alkene has no geometric isomerism?",
-c:["but-2-ene","pent-2-ene","prop-1-ene","hex-3-ene"],
-a:2,
-e:"One carbon in prop-1-ene has two identical hydrogens, so no E–Z or cis–trans isomerism."
-},
-{
-q:"6. If the highest-priority groups are on opposite sides of the C=C bond, the alkene is:",
-c:["cis","Z","trans","E"],
-a:3,
-e:"Opposite-side high-priority groups correspond to the E configuration."
-},
-{
-q:"7. Which is generally more stable?",
-c:["Z-alkenes","E-alkenes","Cis alkenes","They are equally stable"],
-a:1,
-e:"E-alkenes are usually more stable due to reduced steric repulsion."
-},
-{
-q:"8. Which feature must remain unchanged between resonance or isomeric drawings?",
-c:["Electron placement","Bond order","Atomic positions","Formal charges"],
-a:2,
-e:"Atoms never move in isomerism — only electron arrangement differs."
-},
-{
-q:"9. Which alkene must be named using E–Z?",
-c:["but-2-ene","hex-3-ene","2-methylpropene","pent-2-ene"],
-a:1,
-e:"Hex-3-ene has four different substituents around the double bond, requiring E–Z."
-},
-{
-q:"10. Why is cis–trans naming considered limited?",
-c:["It ignores functional groups",
-"It applies only to cycloalkanes",
-"It cannot handle four different substituents",
-"It is outdated"],
-a:2,
-e:"Cis–trans fails when substituents are all different — E–Z is more general."
-}
+  {
+    "q": "Which alkene can have E/Z stereoisomers?",
+    "c": [
+      "CH₂=CH₂",
+      "CH₂=CH–CH₃",
+      "CH₃–CH=CH–CH₃",
+      "CH₂=C(CH₃)₂"
+    ],
+    "a": 2,
+    "e": "In but-2-ene each C=C carbon has H and CH₃, so each end has two different groups. The other options have two identical substituents on at least one double-bond carbon."
+  },
+  {
+    "q": "Which cis–trans name describes the but-2-ene shown?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk1t alk1d\"><title id=\"alk1t\">semi-displayed structural formula</title><desc id=\"alk1d\">A central C double bond C. On the left: CH₃ above and H below. On the right: CH₃ above and H below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"198\" y1=\"126\" x2=\"302\" y2=\"126\"/><line x1=\"198\" y1=\"134\" x2=\"302\" y2=\"134\"/></g><g fill=\"#174ea6\" font-size=\"21\" text-anchor=\"middle\"><text x=\"184\" y=\"138\">C</text><text x=\"316\" y=\"138\">C</text></g><line x1=\"169.6\" y1=\"117.6\" x2=\"134.4\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"169.6\" y1=\"142.4\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"330.4\" y1=\"117.6\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"330.4\" y1=\"142.4\" x2=\"365.6\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text></svg>",
+    "c": [
+      "trans-but-2-ene",
+      "cis-but-2-ene",
+      "cis-but-1-ene",
+      "trans-but-1-ene"
+    ],
+    "a": 1,
+    "e": "The two CH₃ groups lie on the same side of the C=C, so this drawing represents cis-but-2-ene."
+  },
+  {
+    "q": "Which complete description matches the skeletal formula?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk4t alk4d\"><title id=\"alk4t\">skeletal formula</title><desc id=\"alk4d\">A central C double bond C. On the left: CH₃ above and H below. On the right: H above and CH₃ below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"184\" y1=\"130\" x2=\"316\" y2=\"130\"/><line x1=\"190\" y1=\"137\" x2=\"310\" y2=\"137\"/></g><line x1=\"184.0\" y1=\"130.0\" x2=\"120.0\" y2=\"75.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"184.0\" y1=\"130.0\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"316.0\" y1=\"130.0\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"316.0\" y1=\"130.0\" x2=\"380.0\" y2=\"185.0\" stroke=\"#136f63\" stroke-width=\"3\"/></svg>",
+    "c": [
+      "cis and (Z)-but-2-ene",
+      "trans and (Z)-but-2-ene",
+      "cis and (E)-but-2-ene",
+      "trans and (E)-but-2-ene"
+    ],
+    "a": 3,
+    "e": "The line ends are methyl groups on opposite sides, making the structure trans. Methyl outranks H at each end, so the higher-priority groups are opposite and the configuration is E."
+  },
+  {
+    "q": "When ranking –CH₂CH₃ and –CH₃ attached to the same C=C carbon, which has higher CIP priority?",
+    "c": [
+      "–CH₂CH₃",
+      "–CH₃",
+      "They always tie because both attach through carbon",
+      "Neither group can be ranked"
+    ],
+    "a": 0,
+    "e": "The directly attached atoms are both C. Compare the next atoms: ethyl has [C,H,H] and methyl [H,H,H]. Carbon outranks hydrogen, so ethyl wins."
+  },
+  {
+    "q": "Assign E or Z to the double bond in the structure shown.<svg viewBox=\"0 0 420 210\" role=\"img\" aria-label=\"Two double-bonded carbons: on the left chlorine is above and bromine below; on the right fluorine is above and iodine below.\" style=\"display:block;width:100%;max-width:420px;height:auto;margin:12px auto\"><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><path d=\"M170 100 H250 M170 108 H250 M160 94 L117 60 M160 115 L117 149 M260 94 L303 60 M260 115 L303 149\"/></g><g fill=\"#174ea6\" font-size=\"23\" text-anchor=\"middle\"><text x=\"155\" y=\"111\">C</text><text x=\"265\" y=\"111\">C</text><text x=\"103\" y=\"58\">Cl</text><text x=\"103\" y=\"171\">Br</text><text x=\"316\" y=\"58\">F</text><text x=\"316\" y=\"171\">I</text></g></svg>",
+    "c": [
+      "E",
+      "Z",
+      "No E/Z: all four groups are different",
+      "No E/Z: both ends contain halogens"
+    ],
+    "a": 1,
+    "e": "Br outranks Cl on the left and I outranks F on the right. Both higher-priority groups are below the C=C, so the configuration is Z."
+  },
+  {
+    "q": "What is the E/Z designation of this structure?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk9t alk9d\"><title id=\"alk9t\">semi-displayed structural formula</title><desc id=\"alk9d\">A central C double bond C. On the left: CH₃ above and H below. On the right: CH₃ above and CH₂CH₃ below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"198\" y1=\"126\" x2=\"302\" y2=\"126\"/><line x1=\"198\" y1=\"134\" x2=\"302\" y2=\"134\"/></g><g fill=\"#174ea6\" font-size=\"21\" text-anchor=\"middle\"><text x=\"184\" y=\"138\">C</text><text x=\"316\" y=\"138\">C</text></g><line x1=\"169.6\" y1=\"117.6\" x2=\"134.4\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"169.6\" y1=\"142.4\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"330.4\" y1=\"117.6\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"330.4\" y1=\"142.4\" x2=\"365.6\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₂CH₃</text></svg>",
+    "c": [
+      "Z, because the methyl groups are together",
+      "No E/Z, because methyl appears at both ends",
+      "E, because the higher-priority groups are opposite",
+      "No E/Z, because carbon appears on both ends"
+    ],
+    "a": 2,
+    "e": "On the left CH₃ outranks H; on the right ethyl outranks methyl. These higher-priority groups lie on opposite sides, so this is E."
+  },
+  {
+    "q": "The methyl groups in this structure are cis. Which E/Z designation is correct?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk14t alk14d\"><title id=\"alk14t\">skeletal formula</title><desc id=\"alk14d\">A central C double bond C. On the left: CH₃ above and Cl below. On the right: CH₃ above and H below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"184\" y1=\"130\" x2=\"316\" y2=\"130\"/><line x1=\"190\" y1=\"137\" x2=\"310\" y2=\"137\"/></g><line x1=\"184.0\" y1=\"130.0\" x2=\"120.0\" y2=\"75.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"184.0\" y1=\"130.0\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">Cl</text><line x1=\"316.0\" y1=\"130.0\" x2=\"380.0\" y2=\"75.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"316.0\" y1=\"130.0\" x2=\"365.6\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text></svg>",
+    "c": [
+      "Z: cis always means Z",
+      "E: the higher-priority groups are opposite",
+      "Neither E nor Z: methyl occurs at both ends",
+      "Neither E nor Z: chlorine is present"
+    ],
+    "a": 1,
+    "e": "Cl outranks CH₃ on the left, while CH₃ outranks H on the right. These groups are opposite: E. Cis describes the two methyl groups; it need not mean Z."
+  },
+  {
+    "q": "What can be concluded from the condensed formula CH₃CH=CHCH₃ alone?",
+    "c": [
+      "The structure must be (E)-but-2-ene",
+      "The structure must be (Z)-but-2-ene",
+      "It represents but-2-ene, but its E/Z configuration is unspecified",
+      "It cannot have E/Z stereoisomers"
+    ],
+    "a": 2,
+    "e": "The condensed formula describes connectivity but does not state the relative positions of the groups. Both (E)- and (Z)-but-2-ene are possible."
+  },
+  {
+    "q": "What is the full name of the alkene drawn?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk5t alk5d\"><title id=\"alk5t\">semi-displayed structural formula</title><desc id=\"alk5d\">A central C double bond C. On the left: Br above and H below. On the right: CH₃ above and H below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"198\" y1=\"126\" x2=\"302\" y2=\"126\"/><line x1=\"198\" y1=\"134\" x2=\"302\" y2=\"134\"/></g><g fill=\"#174ea6\" font-size=\"21\" text-anchor=\"middle\"><text x=\"184\" y=\"138\">C</text><text x=\"316\" y=\"138\">C</text></g><line x1=\"169.6\" y1=\"117.6\" x2=\"134.4\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">Br</text><line x1=\"169.6\" y1=\"142.4\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"330.4\" y1=\"117.6\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"330.4\" y1=\"142.4\" x2=\"365.6\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text></svg>",
+    "c": [
+      "(E)-1-bromoprop-1-ene",
+      "(Z)-1-bromoprop-1-ene",
+      "(Z)-3-bromoprop-2-ene",
+      "(E)-1-bromoprop-2-ene"
+    ],
+    "a": 1,
+    "e": "The parent is prop-1-ene with bromo at C-1. Br outranks H on the left and CH₃ outranks H on the right; they are on the same side, giving Z."
+  },
+  {
+    "q": "For the specific pair (E)-hex-3-ene and (Z)-hex-3-ene, which is generally more stable?",
+    "c": [
+      "(E)-hex-3-ene, because the ethyl groups are opposite and experience less crowding",
+      "(Z)-hex-3-ene, because its ethyl groups are opposite",
+      "Both must have identical stability because their formulas match",
+      "(Z)-hex-3-ene, because every Z alkene is more stable than every E alkene"
+    ],
+    "a": 0,
+    "e": "For this particular pair, E puts the ethyl groups opposite and usually reduces steric crowding. E/Z is based on CIP priority, so E is not a universal stability rule."
+  }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -227,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -247,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -255,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -292,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -315,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -339,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
