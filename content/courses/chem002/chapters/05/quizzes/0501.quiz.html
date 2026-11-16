@@ -22,18 +22,32 @@
     background: #ffffff;
     border-radius: 18px;
     padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     width: 95%;
     max-width: 850px;
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -48,58 +62,44 @@
     width: 0%;
     transition: width 0.4s ease;
   }
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
 
+  /* Question */
   .question {
     font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
     margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
-    transition: all 0.2s ease;
+    transition: 0.2s;
   }
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: white; transform: scale(1.02); }
-
-  img {
-    width: 70%;
-    max-width: 380px;
-    margin: 15px auto;
-    display: block;
-    border-radius: 10px;
-  }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
     border-radius: 10px;
     padding: 14px 18px;
+    margin-top: 10px;
     display: none;
     text-align: left;
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -107,18 +107,19 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
-    display: none;
+    cursor: pointer;
+    transition: 0.2s;
     margin-top: 15px;
   }
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
-    margin-top: 20px;
+    margin-top: 12px;
   }
   .stars {
     font-size: 2.5em;
@@ -129,9 +130,9 @@
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
@@ -139,12 +140,20 @@
     border-radius: 8px;
     padding: 10px 20px;
     cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
-  .quiz-btn.primary {
-    background: #136f63;
-    color: white;
-  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
@@ -153,93 +162,135 @@
 <div class="quiz-container">
   <h2>Lesson 1 Quiz – Naming Alkenes</h2>
 
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn">Next</button>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
-
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. What suffix is used for alkenes?",
-    c: ["-ane", "-yne", "-ene", "-anol"],
-    a: 2,
-    e: "Alkenes always use the suffix -ene because they contain a C=C double bond."
-  },
-  {
-    q: "2. Which of the following is the correct general formula for an alkene?",
-    c: ["CₙH₂ₙ₊₂", "CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙH₂ₙ₊₁"],
-    a: 1,
-    e: "Alkenes follow CₙH₂ₙ because each double bond reduces the hydrogen count."
-  },
-  {
-    q: "3. Identify the correct IUPAC name: CH₂=CH–CH₂–CH₃",
-    img: "https://i.imgur.com/u6dOjjT.png",
-    c: ["but-3-ene", "but-1-ene", "prop-1-ene", "pent-1-ene"],
-    a: 1,
-    e: "The double bond is at carbon 1 → but-1-ene."
-  },
-  {
-    q: "4. Which chain must be chosen as the parent chain in alkenes?",
-    c: [
-      "The longest chain overall",
-      "The chain with the most substituents",
-      "The chain that includes the double bond",
-      "Any chain as long as it’s continuous"
+    "q": "Which feature identifies an alkene?",
+    "c": [
+      "A carbon–carbon single bond only",
+      "A carbon–carbon triple bond",
+      "At least one carbon–carbon double bond",
+      "A carbon–oxygen double bond"
     ],
-    a: 2,
-    e: "Even if another chain is longer, the parent must contain the C=C bond."
+    "a": 2,
+    "e": "An alkene is a hydrocarbon containing at least one C=C double bond."
   },
   {
-    q: "5. In naming an alkene, numbering must start from the end that:",
-    c: [
-      "Gives the substituent the lowest number",
-      "Gives the double bond the lowest number",
-      "Gives the last carbon the lowest number",
-      "Alphabetizes substituents"
+    "q": "An acyclic hydrocarbon has one C=C and no other multiple bonds. What general formula does it follow?",
+    "c": [
+      "CₙH₂ₙ₊₂",
+      "CₙH₂ₙ",
+      "CₙH₂ₙ₋₂",
+      "CₙH₂ₙ₊₁"
     ],
-    a: 1,
-    e: "The double bond always gets priority when numbering."
+    "a": 1,
+    "e": "For an acyclic hydrocarbon with exactly one double bond and no other multiple bonds, the formula is CₙH₂ₙ."
   },
   {
-    q: "6. What is the name of CH₃–CH₂–CH₂–CH=CH₂?",img: "https://i.imgur.com/jztLtNw.png",
-    c: ["but-1-ene", "but-2-ene", "prop-1-ene", "pent-1-ene"],
-    a: 3,
-    e: "Numbering from the end closest to the double bond → but-1-ene."
-  },
-  {
-    q: "7. A 5-carbon chain with a double bond starting at carbon 2 is named:", img: "https://i.imgur.com/ZLaJMRg.png",
-    c: ["pent-1-ene", "pent-3-ene", "pent-2-ene", "pent-4-ene"],
-    a: 2,
-    e: "Double bond begins at C2 → pent-2-ene."
-  },
-  {
-    q: "8. What is the correct name for the structure shown?", img: "https://i.imgur.com/5dUohUl.png",
-    c: ["3-methylbut-1-ene", "2-methylbut-1-ene", "3-methylbut-2-ene", "2-methylpent-1-ene"],
-    a: 0,
-    e: "The substituent is on carbon 2 and the double bond is at carbon 1."
-  },
-  {
-    q: "9. Which of the following names is INVALID?",
-    c: ["hex-1-ene", "hex-6-ene", "hex-2-ene", "hex-3-ene"],
-    a: 1,
-    e: "A double bond cannot start at carbon 6 in a 6-carbon chain."
-  },
-  {
-    q: "10. A compound named 4-methylhex-2-ene has:",
-    c: [
-      "A double bond between C1 and C2",
-      "A double bond between C2 and C3",
-      "A methyl group at C2",
-      "A triple bond"
+    "q": "What is the IUPAC name of CH₂=CH–CH₂–CH₃?",
+    "c": [
+      "but-2-ene",
+      "pent-1-ene",
+      "prop-1-ene",
+      "but-1-ene"
     ],
-    a: 1,
-    e: "The number before -ene (2) indicates the start of the double bond."
+    "a": 3,
+    "e": "The parent contains four carbons. Number from the double-bond end, so the C=C starts at C-1: but-1-ene."
+  },
+  {
+    "q": "For the simple acyclic alkenes in this lesson, which parent chain should be selected?",
+    "c": [
+      "The longest continuous chain containing the C=C",
+      "The longest chain whether or not it includes the C=C",
+      "The chain with the most branches, regardless of the C=C",
+      "Any continuous carbon chain"
+    ],
+    "a": 0,
+    "e": "Choose the longest continuous carbon chain that contains both double-bond carbons. A longer chain that excludes C=C is not eligible here."
+  },
+  {
+    "q": "What is the correct name of this compound?<svg viewBox=\"0 0 420 225\" role=\"img\" aria-label=\"Alkene structure; the displayed formula and its bonds are shown in the diagram.\"><title>Alkene structure</title><line x1=\"80.80\" y1=\"139.55\" x2=\"141.80\" y2=\"163.95\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"78.20\" y1=\"146.05\" x2=\"139.20\" y2=\"170.45\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"179.50\" y1=\"167.20\" x2=\"240.50\" y2=\"142.80\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"279.50\" y1=\"142.80\" x2=\"340.50\" y2=\"167.20\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"260.00\" y1=\"114.00\" x2=\"260.00\" y2=\"71.00\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><text x=\"60.0\" y=\"142.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"160.0\" y=\"182.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"260.0\" y=\"142.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"360.0\" y=\"182.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"260.0\" y=\"57.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg>",
+    "c": [
+      "2-methylbut-1-ene",
+      "3-methylbut-1-ene",
+      "2-methylbut-3-ene",
+      "3-methylpent-1-ene"
+    ],
+    "a": 1,
+    "e": "The longest chain containing C=C has four carbons. Number from the alkene end: the double bond starts at 1 and the methyl group is at 3."
+  },
+  {
+    "q": "What is the correct name of this compound?<svg viewBox=\"0 0 420 225\" role=\"img\" aria-label=\"Alkene structure; the displayed formula and its bonds are shown in the diagram.\"><title>Alkene structure</title><line x1=\"60.00\" y1=\"135.00\" x2=\"160.00\" y2=\"175.00\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"158.70\" y1=\"171.75\" x2=\"258.70\" y2=\"131.75\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"161.30\" y1=\"178.25\" x2=\"261.30\" y2=\"138.25\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"260.00\" y1=\"135.00\" x2=\"360.00\" y2=\"175.00\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"260.00\" y1=\"135.00\" x2=\"260.00\" y2=\"50.00\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg>",
+    "c": [
+      "3-methylbut-2-ene",
+      "2-methylbut-1-ene",
+      "2-methylbut-2-ene",
+      "3-methylpent-2-ene"
+    ],
+    "a": 2,
+    "e": "The double bond has locant 2 from either end. Break the tie by numbering to give methyl locant 2, rather than 3."
+  },
+  {
+    "q": "For CH₂=C(CH₂CH₃)–CH₂–CH₂–CH₃, how many carbons are in the longest continuous chain containing the double bond?",
+    "c": [
+      "5",
+      "6",
+      "4",
+      "7"
+    ],
+    "a": 0,
+    "e": "Starting at the terminal CH₂ of C=C and following the longer path gives five carbons. The six-carbon path between the other ends excludes C=C."
+  },
+  {
+    "q": "What is the correct name for CH₂=C(CH₂CH₃)–CH₂–CH₂–CH₃?",
+    "c": [
+      "2-propylbut-1-ene",
+      "3-methylhex-3-ene",
+      "2-ethylhex-1-ene",
+      "2-ethylpent-1-ene"
+    ],
+    "a": 3,
+    "e": "The longest chain including C=C has five carbons, with an ethyl group on C-2. The double bond starts at C-1."
+  },
+  {
+    "q": "What is the correct name of the skeletal structure?<svg viewBox=\"0 0 360 185\" role=\"img\" aria-label=\"A skeletal formula. A terminal double bond leads through a junction where one path has one carbon and another path has two carbons.\" style=\"display:block;width:100%;max-width:360px;height:auto;margin:12px auto\"><g stroke=\"#136f63\" stroke-width=\"3.5\" fill=\"none\" stroke-linejoin=\"round\"><path d=\"M25 130 L80 90 L135 130 L190 90 L245 130 M190 90 L245 38 L305 38\"/><path d=\"M30 138 L85 98\"/></g></svg>",
+    "c": [
+      "4-ethylpent-1-ene",
+      "4-methylhex-1-ene",
+      "3-methylhex-5-ene",
+      "3-ethylpent-1-ene"
+    ],
+    "a": 1,
+    "e": "The longest chain containing C=C turns upward at the junction and has six carbons. Number from C=C: the remaining one-carbon branch is methyl at C-4."
+  },
+  {
+    "q": "Which condensed formula represents 3-methylhex-2-ene? (Stereochemistry is unspecified.)",
+    "c": [
+      "CH₂=CH–CH(CH₃)–CH₂–CH₂–CH₃",
+      "CH₃–CH(CH₃)–CH=CH–CH₂–CH₃",
+      "CH₃–CH=C(CH₃)–CH₂–CH₂–CH₃",
+      "CH₃–CH=CH–CH(CH₃)–CH₂–CH₃"
+    ],
+    "a": 2,
+    "e": "A six-carbon parent has C=C between C-2 and C-3, with methyl attached to C-3: CH₃–CH=C(CH₃)–CH₂–CH₂–CH₃."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -253,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -273,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -281,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -318,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -341,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -365,7 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
-</script>
 
+</script>
 </body>
 </html>
