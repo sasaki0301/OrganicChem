@@ -28,12 +28,26 @@
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -42,7 +56,6 @@
     margin-bottom: 25px;
     overflow: hidden;
   }
-
   .progress-bar {
     height: 100%;
     background: linear-gradient(to right, #136f63, #2b7de9);
@@ -50,40 +63,31 @@
     transition: width 0.4s ease;
   }
 
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
+  /* Question */
   .question {
     font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
     margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
+    transition: 0.2s;
   }
-
-  .choice:hover { background: #d3dbf8; }
-  .choice.selected { background: #174ea6; color: #fff; }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
@@ -95,6 +99,7 @@
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -102,13 +107,20 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
     margin-top: 15px;
   }
-
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
   .stars {
     font-size: 2.5em;
     margin-top: 10px;
@@ -118,101 +130,167 @@
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
+    color: #174ea6;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 0.95em;
+    transition: 0.2s;
   }
-
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
-  }
-
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
   .quiz-btn.primary:hover { background: #0f5b52; }
+
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
   <h2>Lesson 6 Quiz – Cycloalkynes</h2>
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. What functional group defines a cycloalkyne?",
-    c: ["A ring with only single bonds", "A ring containing a C=C bond", "A ring containing a C≡C bond", "A ring containing oxygen"],
-    a: 2,
-    e: "Cycloalkynes are cyclic hydrocarbons that contain at least one carbon–carbon triple bond."
+    "q": "What is a cycloalkyne?",
+    "c": [
+      "A cyclic hydrocarbon with a C≡C within the ring",
+      "A cyclic hydrocarbon with only single bonds",
+      "An open-chain hydrocarbon with a C≡C",
+      "A cyclic compound with a C=C but no C≡C"
+    ],
+    "a": 0,
+    "e": "A cycloalkyne is a cyclic hydrocarbon containing a carbon–carbon triple bond within a ring."
   },
   {
-    q: "2. What hybridization do the carbons in a triple bond have?",
-    c: ["sp³", "sp²", "sp", "unhybridized"],
-    a: 2,
-    e: "Carbons in a triple bond are sp-hybridized, giving a linear geometry."
+    "q": "Which formula describes cyclooctyne: one eight-carbon ring containing one C≡C and no other multiple bonds?",
+    "c": [
+      "C₈H₁₆",
+      "C₈H₁₄",
+      "C₈H₁₂",
+      "C₈H₁₀"
+    ],
+    "a": 2,
+    "e": "For one ring and one triple bond, with no other rings or multiple bonds, CₙH₂ₙ₋₄ applies. When n = 8, the formula is C₈H₁₂."
   },
   {
-    q: "3. Why are cycloalkynes generally less stable than acyclic alkynes?",
-    c: ["They contain more hydrogens", "They have higher molecular mass", "They experience angle strain", "They lack pi bonds"],
-    a: 2,
-    e: "Triple bonds prefer a 180° angle, but rings force bending, causing severe angle strain."
+    "q": "What does the C≡C triple bond contain?",
+    "c": [
+      "Two σ bonds and one π bond",
+      "One σ bond and two π bonds",
+      "Three σ bonds and no π bonds",
+      "No σ bonds and three π bonds"
+    ],
+    "a": 1,
+    "e": "A carbon–carbon triple bond contains one sigma bond and two pi bonds."
   },
   {
-    q: "4. Which ring size is the smallest that commonly forms a stable cycloalkyne?",
-    c: ["5 carbons", "6 carbons", "7 carbons", "8 carbons"],
-    a: 3,
-    e: "Cyclooctyne is the smallest commonly stable cycloalkyne because its larger ring reduces strain."
+    "q": "Why can a small cycloalkyne ring be highly strained?",
+    "c": [
+      "The ring forces the alkyne framework to bend away from its preferred near-linear geometry",
+      "The ring removes the π bonds from C≡C",
+      "The alkyne carbons must become oxygen atoms",
+      "The molecule contains too many hydrogen atoms"
+    ],
+    "a": 0,
+    "e": "A ring can force the framework near C≡C away from the approximately linear geometry favored in an ordinary acyclic alkyne, contributing to ring strain."
   },
   {
-    q: "5. Which of the following cycloalkynes would be MOST strained?",
-    c: ["Cyclooctyne", "Cyclodecyne", "Cyclopentyne", "Cyclononyne"],
-    a: 2,
-    e: "Smaller rings force greater bending of the triple bond, making cyclopentyne extremely strained."
+    "q": "Which statement accurately compares unsubstituted cyclohexyne and cyclooctyne?",
+    "c": [
+      "Cyclohexyne is generally easier to isolate because its ring is smaller",
+      "Cyclooctyne has no ring strain",
+      "Cyclooctyne is commonly isolated, while cyclohexyne is highly strained and typically generated as a transient intermediate",
+      "Both compounds must have exactly the same stability"
+    ],
+    "a": 2,
+    "e": "Unsubstituted cyclooctyne is commonly isolated but remains strained. The smaller cyclohexyne is much more constrained and is generally generated and trapped as a transient intermediate."
   },
   {
-    q: "6. How does the triple bond affect the reactivity of cycloalkynes?",
-    c: ["It lowers reactivity", "It has no effect", "It increases reactivity due to strain", "It prevents reactions"],
-    a: 2,
-    e: "Angle strain raises the energy of cycloalkynes, making reactions that relieve strain favorable."
+    "q": "Name the skeletal structure shown.<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t4 d4\"><title id=\"t4\">Skeletal formula</title><desc id=\"d4\">8-carbon ring with a triple bond on one edge.</desc><line x1=\"200.0\" y1=\"63.0\" x2=\"258.0\" y2=\"87.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"204.7\" y1=\"72.5\" x2=\"247.9\" y2=\"90.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"208.5\" y1=\"81.7\" x2=\"238.8\" y2=\"94.2\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"258.0\" y1=\"87.0\" x2=\"282.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"282.0\" y1=\"145.0\" x2=\"258.0\" y2=\"203.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"258.0\" y1=\"203.0\" x2=\"200.0\" y2=\"227.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"227.0\" x2=\"142.0\" y2=\"203.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"203.0\" x2=\"118.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"118.0\" y1=\"145.0\" x2=\"142.0\" y2=\"87.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"87.0\" x2=\"200.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"3\" /></svg>",
+    "c": [
+      "cyclohexyne",
+      "cyclooctane",
+      "cyclooctene",
+      "cyclooctyne"
+    ],
+    "a": 3,
+    "e": "The skeletal ring has eight carbon vertices and one endocyclic triple bond. Its name is cyclooctyne, also written cyclooct-1-yne."
   },
   {
-    q: "7. How are cycloalkynes named?",
-    c: ["Using the suffix -ene", "Using the suffix -ane", "Using the suffix -yne", "Using aromatic naming rules"],
-    a: 2,
-    e: "Cycloalkynes use the suffix -yne, just like acyclic alkynes."
+    "q": "What is the IUPAC name for the structural formula shown?<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t5 d5\"><title id=\"t5\">Displayed structural formula</title><desc id=\"d5\">8-carbon ring with a triple bond on one edge and methyl attached to a ring carbon.</desc><line x1=\"219.4\" y1=\"71.0\" x2=\"238.6\" y2=\"79.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"218.6\" y1=\"78.3\" x2=\"234.1\" y2=\"84.7\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"218.7\" y1=\"85.9\" x2=\"228.6\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"266.0\" y1=\"106.4\" x2=\"274.0\" y2=\"125.6\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"274.0\" y1=\"164.4\" x2=\"266.0\" y2=\"183.6\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"238.6\" y1=\"211.0\" x2=\"219.4\" y2=\"219.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"180.6\" y1=\"219.0\" x2=\"161.4\" y2=\"211.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"134.0\" y1=\"183.6\" x2=\"126.0\" y2=\"164.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"126.0\" y1=\"125.6\" x2=\"134.0\" y2=\"106.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"161.4\" y1=\"79.0\" x2=\"180.6\" y2=\"71.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"303.0\" y1=\"145.0\" x2=\"310.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><text x=\"330.0\" y=\"151.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"200.0\" y=\"69.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"258.0\" y=\"93.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"282.0\" y=\"151.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"258.0\" y=\"209.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"200.0\" y=\"233.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"142.0\" y=\"209.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"118.0\" y=\"151.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"142.0\" y=\"93.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text></svg>",
+    "c": [
+      "8-methylcyclooct-1-yne",
+      "3-methylcyclooct-1-yne",
+      "3-ethylcyclooct-1-yne",
+      "1-methylcyclooct-3-yne"
+    ],
+    "a": 1,
+    "e": "Number the ring triple-bond carbons 1 and 2. Choose the direction that gives the methyl-bearing carbon locant 3 rather than 8."
   },
   {
-    q: "8. When numbering a cycloalkyne, what gets priority?",
-    c: ["Substituents", "The triple bond", "Alphabetical order", "Ring size"],
-    a: 1,
-    e: "The triple bond must receive the lowest possible locant."
+    "q": "Name the skeletal structure shown; stereochemistry is unspecified.<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t8 d8\"><title id=\"t8\">Skeletal formula</title><desc id=\"d8\">8-carbon ring with a triple bond on one edge and ethyl attached to a ring carbon, methyl attached to a ring carbon.</desc><line x1=\"200.0\" y1=\"63.0\" x2=\"258.0\" y2=\"87.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"204.7\" y1=\"72.5\" x2=\"247.9\" y2=\"90.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"208.5\" y1=\"81.7\" x2=\"238.8\" y2=\"94.2\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"258.0\" y1=\"87.0\" x2=\"282.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"282.0\" y1=\"145.0\" x2=\"258.0\" y2=\"203.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"258.0\" y1=\"203.0\" x2=\"200.0\" y2=\"227.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"227.0\" x2=\"142.0\" y2=\"203.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"203.0\" x2=\"118.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"118.0\" y1=\"145.0\" x2=\"142.0\" y2=\"87.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"87.0\" x2=\"200.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"282.0\" y1=\"145.0\" x2=\"330.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"330.0\" y1=\"145.0\" x2=\"367.1\" y2=\"159.8\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"203.0\" x2=\"108.1\" y2=\"236.9\" stroke=\"#136f63\" stroke-width=\"3\" /></svg>",
+    "c": [
+      "5-methyl-8-ethylcyclooct-1-yne",
+      "3-methyl-6-ethylcyclooct-1-yne",
+      "3-ethyl-6-methylcyclooct-1-yne",
+      "3-ethyl-6-methylcyclohex-1-yne"
+    ],
+    "a": 2,
+    "e": "The two numbering directions give sorted locant sets 3,6 and 5,8; 3,6 wins. List the different substituents alphabetically: ethyl before methyl."
   },
   {
-    q: "9. Why is cyclobutyne not commonly isolated?",
-    c: ["It is too heavy", "It lacks pi bonds", "It has extreme angle strain", "It is aromatic"],
-    a: 2,
-    e: "Small rings force extreme bending of the triple bond, making cyclobutyne highly unstable."
+    "q": "For a simple monocyclic ring with one endocyclic triple bond and alkyl substituents, which numbering procedure should be used?",
+    "c": [
+      "Give the triple-bond carbons locants 1 and 2, then choose the lowest substituent locants",
+      "Give the largest substituent locant 1, regardless of the triple bond",
+      "Number only the substituents and omit the ring carbons",
+      "Always begin at an unsubstituted ring carbon farthest from C≡C"
+    ],
+    "a": 0,
+    "e": "For the simple examples in this lesson, the triple bond is assigned carbons 1 and 2; choose the direction that gives the lower substituent locant set."
   },
   {
-    q: "10. Why are cycloalkynes useful in specialized organic synthesis?",
-    c: ["They are inert", "They have low energy", "They release energy by relieving strain", "They contain metals"],
-    a: 2,
-    e: "Their high strain makes them highly reactive, which is useful in selective chemical reactions."
+    "q": "Which statement about cyclooctyne-based reagents is accurate?",
+    "c": [
+      "They are always inert toward azides",
+      "Some can react with organic azides in copper-free strain-promoted cycloaddition",
+      "Every cycloalkyne reacts at the same rate under all conditions",
+      "They must contain a metal atom to react"
+    ],
+    "a": 1,
+    "e": "Some suitably designed cyclooctyne reagents react with azides by strain-promoted azide–alkyne cycloaddition without a copper catalyst. Reactivity depends on the reagents and conditions."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -226,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -246,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -254,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -291,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -314,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -338,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
