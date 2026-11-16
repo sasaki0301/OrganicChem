@@ -3,246 +3,514 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 5 – Comprehensive Assessment: Alkenes & Alkynes</title>
+<title>Chapter 5 – Comprehensive Assessment: Alkenes and Alkynes</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f9f1, #f7faff);
-  margin: 0;
-  padding: 40px 20px;
-  color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 
-.quiz-container {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-  width: 95%;
-  max-width: 900px;
-  text-align: center;
-}
+  .quiz-container {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 850px;
+    text-align: center;
+  }
 
-h2 {
-  color: #136f63;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-}
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
-.progress-wrapper {
-  background: #e9f5ef;
-  border-radius: 8px;
-  height: 14px;
-  width: 100%;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-wrapper {
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
 
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  width: 0%;
-  transition: width 0.4s ease;
-}
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .choice {
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
+  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
 
-.question {
-  font-size: 1.25em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-}
+  /* Buttons */
+  .next-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
+  }
+  .next-btn:hover { background: #0f5b52; }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
-}
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
+  .stars {
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-}
+  .quiz-nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .quiz-btn {
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-.choice:hover { background: #d3dbf8; }
-.choice.selected { background: #174ea6; color: #fff; }
-
-.explanation {
-  background: #eef3ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 10px;
-  display: none;
-  text-align: left;
-}
-
-.next-btn {
-  background: #136f63;
-  color: #fff;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-size: 1.05em;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.result {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 20px;
-}
-
-.stars {
-  font-size: 2.5em;
-  margin-top: 10px;
-}
-
-.quiz-nav {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.quiz-btn {
-  background: #e8ecf8;
-  color: #174ea6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.quiz-btn.primary {
-  background: #136f63;
-  color: #fff;
-}
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
-<h2>Chapter 5 Comprehensive Assessment<br>Alkenes & Alkynes</h2>
+  <h2>Chapter 5 – Comprehensive Assessment: Alkenes and Alkynes</h2>
 
-<div class="progress-text" id="progressText"></div>
-<div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <p>30 questions · Pass: 24/30 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 30</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
-<div id="quizBox"></div>
-<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
-{ q:"1. Which statement best describes an alkene?", c:["Contains only single bonds","Contains at least one C=C bond","Contains a C≡C bond","Is always cyclic"], a:1,
-e:"Alkenes are unsaturated hydrocarbons containing at least one carbon–carbon double bond." },
-
-{ q:"2. What is the general formula of an acyclic alkene?", c:["CnH2n+2","CnH2n","CnH2n−2","CnHn"], a:1,
-e:"Acyclic alkenes follow the formula CₙH₂ₙ." },
-
-{ q:"3. Which factor causes cis–trans isomerism in alkenes?", c:["Free rotation","Presence of triple bond","Restricted rotation of C=C","High molecular mass"], a:2,
-e:"The π bond prevents free rotation, locking substituents in place." },
-
-{ q:"4. When must E–Z notation be used?", c:["When molecule is cyclic","When four substituents differ","When double bond is terminal","When alkane is branched"], a:1,
-e:"E–Z is required when all four substituents on the double bond are different." },
-
-{ q:"5. Which priority rule is used for E–Z assignment?", c:["Chain length","Atomic number","Bond angle","Molecular mass"], a:1,
-e:"Higher atomic number = higher priority (CIP rules)." },
-
-{ q:"6. What does the prefix 'cyclo-' indicate?", c:["Triple bond","Ring structure","Aromaticity","Isomerism"], a:1,
-e:"Cyclo- indicates a ring structure." },
-
-{ q:"7. Which compound can show cis–trans isomerism?", c:["Ethene","But-1-ene","But-2-ene","Ethyne"], a:2,
-e:"But-2-ene has two different substituents on each C of the double bond." },
-
-{ q:"8. Why don’t alkynes show cis–trans isomerism?", c:["Too reactive","Linear geometry","Too many hydrogens","Lack of pi bonds"], a:1,
-e:"Triple bonds are linear, so no geometric isomerism occurs." },
-
-{ q:"9. What suffix is used for alkynes?", c:["-ane","-ene","-yne","-yl"], a:2,
-e:"Alkynes use the suffix -yne." },
-
-{ q:"10. Which has the highest degree of unsaturation?", c:["Alkane","Alkene","Alkyne","Cycloalkane"], a:2,
-e:"Alkynes have two π bonds, making them most unsaturated." },
-
-{ q:"11. What is the priority in numbering mixed enyne chains?", c:["Triple bond first","Alphabetical order","Double bond first","Longest chain only"], a:2,
-e:"If locants tie, the double bond receives the lower number." },
-
-{ q:"12. Which name is correct?", c:["3-ethylhex-1-ene","hex-1-ene-3-ethyl","1-hexene-3-ethyl","ethyl-hexene"], a:0,
-e:"Substituents precede the parent name; double bond position is included." },
-
-{ q:"13. How many pi bonds are in an alkyne?", c:["0","1","2","3"], a:2,
-e:"Triple bonds contain two π bonds." },
-
-{ q:"14. Which compound is a cycloalkene?", c:["Hex-1-ene","Cyclohexane","Cyclohexene","Benzene"], a:2,
-e:"Cyclohexene contains a ring and a C=C bond." },
-
-{ q:"15. What does Z mean in E–Z notation?", c:["Opposite sides","Same side","Lowest priority","Linear"], a:1,
-e:"Z (zusammen) means higher-priority groups are on the same side." },
-
-{ q:"16. Which bond prevents free rotation?", c:["σ bond","π bond","Hydrogen bond","Ionic bond"], a:1,
-e:"The π bond restricts rotation." },
-
-{ q:"17. Which is the correct formula for an alkyne with 6 carbons?", c:["C6H14","C6H12","C6H10","C6H8"], a:2,
-e:"Alkynes follow CₙH₂ₙ₋₂ → C6H10." },
-
-{ q:"18. Which molecule requires E–Z notation?", c:["Propene","But-1-ene","2-chlorobut-2-ene","Ethyne"], a:2,
-e:"Four different substituents require E–Z naming." },
-
-{ q:"19. What type of hybridization occurs in alkenes?", c:["sp","sp²","sp³","sp⁴"], a:1,
-e:"Alkene carbons are sp² hybridized." },
-
-{ q:"20. What type of hybridization occurs in alkynes?", c:["sp","sp²","sp³","sp⁴"], a:0,
-e:"Alkyne carbons are sp hybridized." },
-
-{ q:"21. Why are cycloalkenes rigid?", c:["Ionic bonding","Ring strain","Free rotation","Hydrogen bonding"], a:1,
-e:"Ring strain and π bonds restrict rotation." },
-
-{ q:"22. Which compound is unsaturated?", c:["Pentane","Cyclopentane","Pentene","Neopentane"], a:2,
-e:"Unsaturated compounds contain double or triple bonds." },
-
-{ q:"23. Which suffix indicates two multiple bonds?", c:["-diene","-yne","-ene","-ane"], a:0,
-e:"-diene indicates two double bonds." },
-
-{ q:"24. Which is named correctly?", c:["Hex-3-yne","3-yne-hex","Hexyne-3","Hexyne"], a:0,
-e:"Correct format places bond location before suffix." },
-
-{ q:"25. Why does E–Z replace cis–trans?", c:["More complex","More universal","Older system","Easier spelling"], a:1,
-e:"E–Z applies to all substituted alkenes." },
-
-{ q:"26. Which is a mixed unsaturated compound?", c:["Pentene","Hexyne","Hept-2-en-4-yne","Cyclopropane"], a:2,
-e:"Contains both C=C and C≡C bonds." },
-
-{ q:"27. What determines major product geometry?", c:["Bond energy","Electron delocalization","Priority groups","Chain length"], a:2,
-e:"Priority groups define E or Z configuration." },
-
-{ q:"28. Which compound has cis–trans isomerism?", c:["Ethene","But-2-ene","Propene","Ethyne"], a:1,
-e:"But-2-ene meets cis–trans requirements." },
-
-{ q:"29. What does 'ene' indicate?", c:["Triple bond","Single bond","Double bond","Ring"], a:2,
-e:"-ene indicates a C=C bond." },
-
-{ q:"30. Which feature distinguishes alkenes from alkanes?", c:["Linear shape","Double bond","More hydrogens","sp³ hybridization"], a:1,
-e:"Alkenes contain a C=C bond; alkanes do not." }
+  {
+    "q": "What is the IUPAC name of CH₂=CH–CH₂–CH₃?",
+    "c": [
+      "but-2-ene",
+      "pent-1-ene",
+      "prop-1-ene",
+      "but-1-ene"
+    ],
+    "a": 3,
+    "e": "The parent contains four carbons. Number from the double-bond end, so the C=C starts at C-1: but-1-ene."
+  },
+  {
+    "q": "What is the correct name of this compound?<svg viewBox=\"0 0 420 225\" role=\"img\" aria-label=\"Alkene structure; the displayed formula and its bonds are shown in the diagram.\"><title>Alkene structure</title><line x1=\"80.80\" y1=\"139.55\" x2=\"141.80\" y2=\"163.95\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"78.20\" y1=\"146.05\" x2=\"139.20\" y2=\"170.45\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"179.50\" y1=\"167.20\" x2=\"240.50\" y2=\"142.80\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"279.50\" y1=\"142.80\" x2=\"340.50\" y2=\"167.20\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"260.00\" y1=\"114.00\" x2=\"260.00\" y2=\"71.00\" stroke=\"#136f63\" stroke-width=\"3\" stroke-linecap=\"round\"/><text x=\"60.0\" y=\"142.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH₂</text><text x=\"160.0\" y=\"182.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"260.0\" y=\"142.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH</text><text x=\"360.0\" y=\"182.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text><text x=\"260.0\" y=\"57.0\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg>",
+    "c": [
+      "2-methylbut-1-ene",
+      "3-methylbut-1-ene",
+      "2-methylbut-3-ene",
+      "3-methylpent-1-ene"
+    ],
+    "a": 1,
+    "e": "The longest chain containing C=C has four carbons. Number from the alkene end: the double bond starts at 1 and the methyl group is at 3."
+  },
+  {
+    "q": "For CH₂=C(CH₂CH₃)–CH₂–CH₂–CH₃, how many carbons are in the longest continuous chain containing the double bond?",
+    "c": [
+      "5",
+      "6",
+      "4",
+      "7"
+    ],
+    "a": 0,
+    "e": "Starting at the terminal CH₂ of C=C and following the longer path gives five carbons. The six-carbon path between the other ends excludes C=C."
+  },
+  {
+    "q": "What is the correct name of the skeletal structure?<svg viewBox=\"0 0 360 185\" role=\"img\" aria-label=\"A skeletal formula. A terminal double bond leads through a junction where one path has one carbon and another path has two carbons.\" style=\"display:block;width:100%;max-width:360px;height:auto;margin:12px auto\"><g stroke=\"#136f63\" stroke-width=\"3.5\" fill=\"none\" stroke-linejoin=\"round\"><path d=\"M25 130 L80 90 L135 130 L190 90 L245 130 M190 90 L245 38 L305 38\"/><path d=\"M30 138 L85 98\"/></g></svg>",
+    "c": [
+      "4-ethylpent-1-ene",
+      "4-methylhex-1-ene",
+      "3-methylhex-5-ene",
+      "3-ethylpent-1-ene"
+    ],
+    "a": 1,
+    "e": "The longest chain containing C=C turns upward at the junction and has six carbons. Number from C=C: the remaining one-carbon branch is methyl at C-4."
+  },
+  {
+    "q": "Which condensed formula represents 3-methylhex-2-ene? (Stereochemistry is unspecified.)",
+    "c": [
+      "CH₂=CH–CH(CH₃)–CH₂–CH₂–CH₃",
+      "CH₃–CH(CH₃)–CH=CH–CH₂–CH₃",
+      "CH₃–CH=C(CH₃)–CH₂–CH₂–CH₃",
+      "CH₃–CH=CH–CH(CH₃)–CH₂–CH₃"
+    ],
+    "a": 2,
+    "e": "A six-carbon parent has C=C between C-2 and C-3, with methyl attached to C-3: CH₃–CH=C(CH₃)–CH₂–CH₂–CH₃."
+  },
+  {
+    "q": "For an ordinary acyclic alkene, which condition is needed for a C=C to have E/Z stereoisomers?",
+    "c": [
+      "All four groups must be different from one another",
+      "Both carbons must have two identical groups",
+      "Each double-bond carbon must have two different substituents",
+      "The molecule must contain a ring"
+    ],
+    "a": 2,
+    "e": "Compare the two groups on each carbon separately. Each carbon must have two different groups; the same group can appear at both ends."
+  },
+  {
+    "q": "Why does propene, CH₂=CH–CH₃, not have an E/Z designation?",
+    "c": [
+      "Its double bond is at carbon 1",
+      "One C=C carbon has two identical hydrogen substituents",
+      "Its other C=C carbon is bonded to carbon",
+      "It contains a π bond"
+    ],
+    "a": 1,
+    "e": "The terminal CH₂ carbon has two H atoms. Since its substituents are identical, the C=C cannot form an E/Z pair."
+  },
+  {
+    "q": "Which group has higher CIP priority: –CH₂CH₃ or –CH₃, when both attach through carbon?",
+    "c": [
+      "–CH₃, because it is shorter",
+      "–CH₂CH₃, at the first point of difference",
+      "They are always equal because both attach through carbon",
+      "Neither can be ranked using CIP"
+    ],
+    "a": 1,
+    "e": "The first atoms tie at C. The next attached atoms are [C,H,H] for ethyl and [H,H,H] for methyl; C outranks H, so ethyl ranks higher."
+  },
+  {
+    "q": "Assign E or Z to this alkene.<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk5t alk5d\"><title id=\"alk5t\">semi-displayed structural formula</title><desc id=\"alk5d\">A central C double bond C. On the left: Br above and H below. On the right: CH₃ above and H below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"198\" y1=\"126\" x2=\"302\" y2=\"126\"/><line x1=\"198\" y1=\"134\" x2=\"302\" y2=\"134\"/></g><g fill=\"#174ea6\" font-size=\"21\" text-anchor=\"middle\"><text x=\"184\" y=\"138\">C</text><text x=\"316\" y=\"138\">C</text></g><line x1=\"169.6\" y1=\"117.6\" x2=\"134.4\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">Br</text><line x1=\"169.6\" y1=\"142.4\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"330.4\" y1=\"117.6\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"330.4\" y1=\"142.4\" x2=\"365.6\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text></svg>",
+    "c": [
+      "E",
+      "Z",
+      "No E/Z is possible",
+      "Cannot decide because both carbons have H"
+    ],
+    "a": 1,
+    "e": "Br outranks H on the left and CH₃ outranks H on the right. Both higher-priority groups are above C=C, giving Z."
+  },
+  {
+    "q": "Which complete description matches the skeletal formula?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk4t alk4d\"><title id=\"alk4t\">skeletal formula</title><desc id=\"alk4d\">A central C double bond C. On the left: CH₃ above and H below. On the right: H above and CH₃ below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"184\" y1=\"130\" x2=\"316\" y2=\"130\"/><line x1=\"190\" y1=\"137\" x2=\"310\" y2=\"137\"/></g><line x1=\"184.0\" y1=\"130.0\" x2=\"120.0\" y2=\"75.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"184.0\" y1=\"130.0\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"316.0\" y1=\"130.0\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"316.0\" y1=\"130.0\" x2=\"380.0\" y2=\"185.0\" stroke=\"#136f63\" stroke-width=\"3\"/></svg>",
+    "c": [
+      "cis and (Z)-but-2-ene",
+      "trans and (Z)-but-2-ene",
+      "cis and (E)-but-2-ene",
+      "trans and (E)-but-2-ene"
+    ],
+    "a": 3,
+    "e": "The line ends are methyl groups on opposite sides, making the structure trans. Methyl outranks H at each end, so the higher-priority groups are opposite and the configuration is E."
+  },
+  {
+    "q": "Assign E or Z to the double bond in the structure shown.<svg viewBox=\"0 0 420 210\" role=\"img\" aria-label=\"Two double-bonded carbons: on the left chlorine is above and bromine below; on the right fluorine is above and iodine below.\" style=\"display:block;width:100%;max-width:420px;height:auto;margin:12px auto\"><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><path d=\"M170 100 H250 M170 108 H250 M160 94 L117 60 M160 115 L117 149 M260 94 L303 60 M260 115 L303 149\"/></g><g fill=\"#174ea6\" font-size=\"23\" text-anchor=\"middle\"><text x=\"155\" y=\"111\">C</text><text x=\"265\" y=\"111\">C</text><text x=\"103\" y=\"58\">Cl</text><text x=\"103\" y=\"171\">Br</text><text x=\"316\" y=\"58\">F</text><text x=\"316\" y=\"171\">I</text></g></svg>",
+    "c": [
+      "E",
+      "Z",
+      "No E/Z: all four groups are different",
+      "No E/Z: both ends contain halogens"
+    ],
+    "a": 1,
+    "e": "Br outranks Cl on the left and I outranks F on the right. Both higher-priority groups are below the C=C, so the configuration is Z."
+  },
+  {
+    "q": "What is the E/Z designation of this structure?<svg style=\"display:block;width:100%;max-width:440px;height:auto;margin:12px auto\" viewBox=\"0 0 500 260\" role=\"img\" aria-labelledby=\"alk9t alk9d\"><title id=\"alk9t\">semi-displayed structural formula</title><desc id=\"alk9d\">A central C double bond C. On the left: CH₃ above and H below. On the right: CH₃ above and CH₂CH₃ below.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"198\" y1=\"126\" x2=\"302\" y2=\"126\"/><line x1=\"198\" y1=\"134\" x2=\"302\" y2=\"134\"/></g><g fill=\"#174ea6\" font-size=\"21\" text-anchor=\"middle\"><text x=\"184\" y=\"138\">C</text><text x=\"316\" y=\"138\">C</text></g><line x1=\"169.6\" y1=\"117.6\" x2=\"134.4\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"169.6\" y1=\"142.4\" x2=\"134.4\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"120\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">H</text><line x1=\"330.4\" y1=\"117.6\" x2=\"365.6\" y2=\"87.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"82\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"330.4\" y1=\"142.4\" x2=\"365.6\" y2=\"172.6\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"380\" y=\"192\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₂CH₃</text></svg>",
+    "c": [
+      "Z, because the methyl groups are together",
+      "No E/Z, because methyl appears at both ends",
+      "E, because the higher-priority groups are opposite",
+      "No E/Z, because carbon appears on both ends"
+    ],
+    "a": 2,
+    "e": "On the left CH₃ outranks H; on the right ethyl outranks methyl. These higher-priority groups lie on opposite sides, so this is E."
+  },
+  {
+    "q": "What can be concluded from the condensed formula CH₃CH=CHCH₃ alone?",
+    "c": [
+      "The structure must be (E)-but-2-ene",
+      "The structure must be (Z)-but-2-ene",
+      "It represents but-2-ene, but its E/Z configuration is unspecified",
+      "It cannot have E/Z stereoisomers"
+    ],
+    "a": 2,
+    "e": "The condensed formula describes connectivity but does not state the relative positions of the groups. Both (E)- and (Z)-but-2-ene are possible."
+  },
+  {
+    "q": "Name the structure shown.<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t3 d3\"><title id=\"t3\">Displayed structural formula</title><desc id=\"d3\">5-carbon ring with a double bond on one edge and methyl attached to a ring carbon.</desc><line x1=\"217.0\" y1=\"75.3\" x2=\"261.0\" y2=\"107.3\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"214.5\" y1=\"82.2\" x2=\"255.3\" y2=\"111.8\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"271.5\" y1=\"139.6\" x2=\"254.7\" y2=\"191.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"227.2\" y1=\"211.3\" x2=\"172.8\" y2=\"211.3\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"145.3\" y1=\"191.4\" x2=\"128.5\" y2=\"139.6\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"139.0\" y1=\"107.3\" x2=\"183.0\" y2=\"75.3\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"42.0\" x2=\"200.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"3\" /><text x=\"200.0\" y=\"21.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"200.0\" y=\"69.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"278.0\" y=\"125.7\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"248.2\" y=\"217.3\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"151.8\" y=\"217.3\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"122.0\" y=\"125.7\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text></svg>",
+    "c": [
+      "2-methylcyclopent-1-ene",
+      "3-methylcyclopent-1-ene",
+      "1-methylcyclopentane",
+      "1-methylcyclopent-1-ene"
+    ],
+    "a": 3,
+    "e": "The parent is a five-carbon ring with C=C at 1 and 2. Number the substituted double-bond carbon as C-1 to give methyl the lowest locant."
+  },
+  {
+    "q": "What is the IUPAC name of this skeletal structure?<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t6 d6\"><title id=\"t6\">Skeletal formula</title><desc id=\"d6\">6-carbon ring with a double bond on one edge and ethyl attached to a ring carbon.</desc><line x1=\"200.0\" y1=\"63.0\" x2=\"271.0\" y2=\"104.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"203.4\" y1=\"73.1\" x2=\"260.6\" y2=\"106.1\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"271.0\" y1=\"104.0\" x2=\"271.0\" y2=\"186.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"271.0\" y1=\"186.0\" x2=\"200.0\" y2=\"227.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"227.0\" x2=\"129.0\" y2=\"186.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"129.0\" y1=\"186.0\" x2=\"129.0\" y2=\"104.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"129.0\" y1=\"104.0\" x2=\"200.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"271.0\" y1=\"186.0\" x2=\"312.6\" y2=\"210.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"312.6\" y1=\"210.0\" x2=\"337.3\" y2=\"241.4\" stroke=\"#136f63\" stroke-width=\"3\" /></svg>",
+    "c": [
+      "3-methylcyclohex-1-ene",
+      "6-ethylcyclohex-1-ene",
+      "3-ethylcyclohex-1-ene",
+      "3-ethylcyclopent-1-ene"
+    ],
+    "a": 2,
+    "e": "The ring has six carbons, and the two-carbon branch is ethyl. Number the double bond 1,2 in the direction that places ethyl at C-3 instead of C-6."
+  },
+  {
+    "q": "Name the substituted ring shown; stereochemistry is unspecified.<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t8 d8\"><title id=\"t8\">Skeletal formula</title><desc id=\"d8\">6-carbon ring with a double bond on one edge and methyl attached to a ring carbon, ethyl attached to a ring carbon.</desc><line x1=\"200.0\" y1=\"63.0\" x2=\"271.0\" y2=\"104.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"203.4\" y1=\"73.1\" x2=\"260.6\" y2=\"106.1\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"271.0\" y1=\"104.0\" x2=\"271.0\" y2=\"186.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"271.0\" y1=\"186.0\" x2=\"200.0\" y2=\"227.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"227.0\" x2=\"129.0\" y2=\"186.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"129.0\" y1=\"186.0\" x2=\"129.0\" y2=\"104.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"129.0\" y1=\"104.0\" x2=\"200.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"63.0\" x2=\"200.0\" y2=\"15.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"129.0\" y1=\"186.0\" x2=\"87.4\" y2=\"210.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"87.4\" y1=\"210.0\" x2=\"47.8\" y2=\"215.7\" stroke=\"#136f63\" stroke-width=\"3\" /></svg>",
+    "c": [
+      "4-ethyl-2-methylcyclohex-1-ene",
+      "1-methyl-5-ethylcyclohex-1-ene",
+      "5-ethyl-1-methylcyclohex-1-ene",
+      "5-methyl-1-ethylcyclohex-1-ene"
+    ],
+    "a": 2,
+    "e": "The two directions give substituent locant sets 1,5 and 2,4; 1,5 wins at the first difference. Write ethyl before methyl alphabetically."
+  },
+  {
+    "q": "Which statement about cycloalkene stereoisomerism is most accurate?",
+    "c": [
+      "Every ring containing C=C necessarily has an E/Z pair",
+      "The ring makes rotation around C=C completely free",
+      "Restricted rotation alone does not guarantee a distinct E/Z pair",
+      "Every plain ring drawing specifies all stereochemistry"
+    ],
+    "a": 2,
+    "e": "The double bond restricts rotation, but distinct stereoisomers also depend on the substituents and the geometry allowed by the ring."
+  },
+  {
+    "q": "Name the alkyne represented by this skeletal formula.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 220\" role=\"img\" aria-labelledby=\"t4 d4\"><title id=\"t4\">Skeletal formula</title><desc id=\"d4\">Six-carbon chain with a triple bond between the second and third carbons.</desc><line x1=\"40.0\" y1=\"130.0\" x2=\"90.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"90.0\" y1=\"130.0\" x2=\"140.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"90.0\" y1=\"124.0\" x2=\"140.0\" y2=\"124.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"90.0\" y1=\"136.0\" x2=\"140.0\" y2=\"136.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"140.0\" y1=\"130.0\" x2=\"190.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"190.0\" y1=\"130.0\" x2=\"235.0\" y2=\"95.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"235.0\" y1=\"95.0\" x2=\"280.0\" y2=\"125.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/></svg>",
+    "c": [
+      "hex-4-yne",
+      "pent-2-yne",
+      "hex-1-yne",
+      "hex-2-yne"
+    ],
+    "a": 3,
+    "e": "The continuous chain has six carbons. The triple bond begins at carbon 2 when numbered from the nearer end, giving hex-2-yne."
+  },
+  {
+    "q": "Which name describes the structural formula?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 220\" role=\"img\" aria-labelledby=\"t5 d5\"><title id=\"t5\">Structural formula</title><desc id=\"d5\">A chain with a terminal triple bond and two paths at a junction; one path has two carbons and the other one carbon.</desc><line x1=\"54.0\" y1=\"130.0\" x2=\"66.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"54.0\" y1=\"124.0\" x2=\"66.0\" y2=\"124.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"54.0\" y1=\"136.0\" x2=\"66.0\" y2=\"136.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"104.0\" y1=\"130.0\" x2=\"116.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"154.0\" y1=\"130.0\" x2=\"166.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"198.4\" y1=\"116.6\" x2=\"216.6\" y2=\"98.4\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"249.0\" y1=\"85.0\" x2=\"261.0\" y2=\"85.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"198.4\" y1=\"143.4\" x2=\"216.6\" y2=\"161.6\" stroke=\"#136f63\" stroke-width=\"2.6\"/><text x=\"35\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"85\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"135\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"185\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"230\" y=\"91\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"280\" y=\"91\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"230\" y=\"181\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "4-methylhex-1-yne",
+      "3-ethylpent-1-yne",
+      "3-methylhex-5-yne",
+      "4-methylpent-1-yne"
+    ],
+    "a": 0,
+    "e": "Follow the longest chain containing C≡C through the two-carbon path at the junction. It has six carbons; the remaining branch is methyl at C-4."
+  },
+  {
+    "q": "What is the molecular formula of an acyclic hydrocarbon with six carbon atoms, exactly one triple bond, and no other multiple bonds?",
+    "c": [
+      "C₆H₁₄",
+      "C₆H₁₂",
+      "C₆H₈",
+      "C₆H₁₀"
+    ],
+    "a": 3,
+    "e": "For an acyclic hydrocarbon with exactly one C≡C and no other multiple bonds, CₙH₂ₙ₋₂ applies. For n = 6, the formula is C₆H₁₀."
+  },
+  {
+    "q": "What is the correct name for CH₃–CH(CH₃)–C≡C–CH₂–CH₃?",
+    "c": [
+      "5-methylhex-3-yne",
+      "2-methylhex-2-yne",
+      "2-methylhex-3-yne",
+      "3-methylhex-3-yne"
+    ],
+    "a": 2,
+    "e": "The six-carbon parent has C≡C at 3 from either end. Break the tie by giving methyl locant 2 rather than 5."
+  },
+  {
+    "q": "Which formula describes cyclooctyne: one eight-carbon ring containing one C≡C and no other multiple bonds?",
+    "c": [
+      "C₈H₁₆",
+      "C₈H₁₄",
+      "C₈H₁₂",
+      "C₈H₁₀"
+    ],
+    "a": 2,
+    "e": "For one ring and one triple bond, with no other rings or multiple bonds, CₙH₂ₙ₋₄ applies. When n = 8, the formula is C₈H₁₂."
+  },
+  {
+    "q": "Which statement accurately compares unsubstituted cyclohexyne and cyclooctyne?",
+    "c": [
+      "Cyclohexyne is generally easier to isolate because its ring is smaller",
+      "Cyclooctyne has no ring strain",
+      "Cyclooctyne is commonly isolated, while cyclohexyne is highly strained and typically generated as a transient intermediate",
+      "Both compounds must have exactly the same stability"
+    ],
+    "a": 2,
+    "e": "Unsubstituted cyclooctyne is commonly isolated but remains strained. The smaller cyclohexyne is much more constrained and is generally generated and trapped as a transient intermediate."
+  },
+  {
+    "q": "What is the IUPAC name for the structural formula shown?<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t5 d5\"><title id=\"t5\">Displayed structural formula</title><desc id=\"d5\">8-carbon ring with a triple bond on one edge and methyl attached to a ring carbon.</desc><line x1=\"219.4\" y1=\"71.0\" x2=\"238.6\" y2=\"79.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"218.6\" y1=\"78.3\" x2=\"234.1\" y2=\"84.7\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"218.7\" y1=\"85.9\" x2=\"228.6\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"266.0\" y1=\"106.4\" x2=\"274.0\" y2=\"125.6\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"274.0\" y1=\"164.4\" x2=\"266.0\" y2=\"183.6\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"238.6\" y1=\"211.0\" x2=\"219.4\" y2=\"219.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"180.6\" y1=\"219.0\" x2=\"161.4\" y2=\"211.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"134.0\" y1=\"183.6\" x2=\"126.0\" y2=\"164.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"126.0\" y1=\"125.6\" x2=\"134.0\" y2=\"106.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"161.4\" y1=\"79.0\" x2=\"180.6\" y2=\"71.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"303.0\" y1=\"145.0\" x2=\"310.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><text x=\"330.0\" y=\"151.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"200.0\" y=\"69.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"258.0\" y=\"93.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"282.0\" y=\"151.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"258.0\" y=\"209.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"200.0\" y=\"233.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"142.0\" y=\"209.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"118.0\" y=\"151.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"142.0\" y=\"93.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text></svg>",
+    "c": [
+      "8-methylcyclooct-1-yne",
+      "3-methylcyclooct-1-yne",
+      "3-ethylcyclooct-1-yne",
+      "1-methylcyclooct-3-yne"
+    ],
+    "a": 1,
+    "e": "Number the ring triple-bond carbons 1 and 2. Choose the direction that gives the methyl-bearing carbon locant 3 rather than 8."
+  },
+  {
+    "q": "Name the skeletal structure shown; stereochemistry is unspecified.<svg style=\"display:block;width:100%;max-width:370px;height:auto;margin:12px auto\" viewBox=\"0 0 400 290\" role=\"img\" aria-labelledby=\"t8 d8\"><title id=\"t8\">Skeletal formula</title><desc id=\"d8\">8-carbon ring with a triple bond on one edge and ethyl attached to a ring carbon, methyl attached to a ring carbon.</desc><line x1=\"200.0\" y1=\"63.0\" x2=\"258.0\" y2=\"87.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"204.7\" y1=\"72.5\" x2=\"247.9\" y2=\"90.4\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"208.5\" y1=\"81.7\" x2=\"238.8\" y2=\"94.2\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"258.0\" y1=\"87.0\" x2=\"282.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"282.0\" y1=\"145.0\" x2=\"258.0\" y2=\"203.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"258.0\" y1=\"203.0\" x2=\"200.0\" y2=\"227.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"200.0\" y1=\"227.0\" x2=\"142.0\" y2=\"203.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"203.0\" x2=\"118.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"118.0\" y1=\"145.0\" x2=\"142.0\" y2=\"87.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"87.0\" x2=\"200.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"282.0\" y1=\"145.0\" x2=\"330.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"330.0\" y1=\"145.0\" x2=\"367.1\" y2=\"159.8\" stroke=\"#136f63\" stroke-width=\"3\" /><line x1=\"142.0\" y1=\"203.0\" x2=\"108.1\" y2=\"236.9\" stroke=\"#136f63\" stroke-width=\"3\" /></svg>",
+    "c": [
+      "5-methyl-8-ethylcyclooct-1-yne",
+      "3-methyl-6-ethylcyclooct-1-yne",
+      "3-ethyl-6-methylcyclooct-1-yne",
+      "3-ethyl-6-methylcyclohex-1-yne"
+    ],
+    "a": 2,
+    "e": "The two numbering directions give sorted locant sets 3,6 and 5,8; 3,6 wins. List the different substituents alphabetically: ethyl before methyl."
+  },
+  {
+    "q": "Two numbering directions for the same simple enyne give multiple-bond locant sets 1,3 and 2,4. Which is preferred?",
+    "c": [
+      "2,4, because 2 is closer to the center",
+      "Either set, because both bonds are included",
+      "1,3, because 1 is lower at the first difference",
+      "The set that always gives the double bond carbon 1"
+    ],
+    "a": 2,
+    "e": "Compare the sorted sets at the first point of difference. Since 1 is lower than 2, choose 1,3 even if the triple bond receives locant 1."
+  },
+  {
+    "q": "For CH₂=CH–CH₂–C≡CH, both numbering directions give the sorted multiple-bond set 1,4. What is the preferred name?",
+    "c": [
+      "pent-4-en-1-yne",
+      "pent-1-en-4-yne",
+      "pent-1-yne-4-ene",
+      "pent-2-en-4-yne"
+    ],
+    "a": 1,
+    "e": "The sorted sets tie, so give the double bond the lower locant. Write en before yne: pent-1-en-4-yne."
+  },
+  {
+    "q": "What is the correct name of the structural formula shown?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 240\" role=\"img\" aria-labelledby=\"t5 d5\"><title id=\"t5\">Structural formula</title><desc id=\"d5\">Five-carbon chain with a terminal triple bond, an internal double bond and a methyl group on the double-bond carbon.</desc><line x1=\"52.0\" y1=\"145.0\" x2=\"68.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"52.0\" y1=\"140.5\" x2=\"68.0\" y2=\"140.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"52.0\" y1=\"149.5\" x2=\"68.0\" y2=\"149.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"102.0\" y1=\"145.0\" x2=\"118.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"149.6\" y1=\"136.3\" x2=\"170.4\" y2=\"123.7\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"152.7\" y1=\"141.4\" x2=\"173.5\" y2=\"128.9\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"199.6\" y1=\"123.7\" x2=\"220.4\" y2=\"136.3\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"185.0\" y1=\"98.0\" x2=\"185.0\" y2=\"72.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><text x=\"35\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"85\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"135\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"185\" y=\"121\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"235\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"185\" y=\"61\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "2-methylpent-2-en-4-yne",
+      "4-methylpent-1-en-3-yne",
+      "3-methylpent-3-en-1-yne",
+      "4-methylpent-3-en-1-yne"
+    ],
+    "a": 3,
+    "e": "The five-carbon chain gives multiple-bond locants 1 and 3 from the alkyne end, compared with 2 and 4 from the other end. Methyl is on C-4; en is written before yne."
+  },
+  {
+    "q": "Name the compound represented by this skeletal formula.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 240\" role=\"img\" aria-labelledby=\"t8 d8\"><title id=\"t8\">Skeletal formula</title><desc id=\"d8\">An enyne chain at a junction: the upper path has two carbons and the lower path has one.</desc><line x1=\"25.0\" y1=\"180.0\" x2=\"70.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"28.3\" y1=\"185.0\" x2=\"73.3\" y2=\"155.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"70.0\" y1=\"150.0\" x2=\"115.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"150.0\" x2=\"160.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"145.5\" x2=\"160.0\" y2=\"145.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"154.5\" x2=\"160.0\" y2=\"154.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"160.0\" y1=\"150.0\" x2=\"205.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"150.0\" x2=\"250.0\" y2=\"105.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"250.0\" y1=\"105.0\" x2=\"295.0\" y2=\"105.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"150.0\" x2=\"250.0\" y2=\"195.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/></svg>",
+    "c": [
+      "5-methylhept-1-en-3-yne",
+      "5-ethylhex-1-en-3-yne",
+      "3-methylhept-6-en-4-yne",
+      "5-methylhept-3-en-1-yne"
+    ],
+    "a": 0,
+    "e": "The longest chain containing both multiple bonds turns along the two-carbon path and has seven carbons. The double bond is at 1, triple bond at 3, and methyl at 5."
+  },
+  {
+    "q": "Which condensed formula represents hex-1-en-3-yne?",
+    "c": [
+      "CH₃–CH=CH–C≡C–CH₃",
+      "CH₂=CH–CH₂–C≡C–CH₃",
+      "HC≡C–CH₂–CH₂–CH=CH₂",
+      "CH₂=CH–C≡C–CH₂–CH₃"
+    ],
+    "a": 3,
+    "e": "Hex-1-en-3-yne has six carbons, C=C between C-1 and C-2, and C≡C between C-3 and C-4: CH₂=CH–C≡C–CH₂–CH₃."
+  }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -256,7 +524,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -276,6 +544,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -284,7 +554,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -321,7 +591,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -344,7 +614,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -368,6 +638,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
