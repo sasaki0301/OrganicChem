@@ -3,260 +3,294 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 5 – Lesson 7 Quiz: Mixed Alkene–Alkyne</title>
+<title>Chapter 5 – Lesson 7 Quiz: Mixed Alkene–Alkyne Compounds</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f9f1, #f7faff);
-  margin: 0;
-  padding: 40px 20px;
-  color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 
-.quiz-container {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-  width: 95%;
-  max-width: 850px;
-  text-align: center;
-}
+  .quiz-container {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 850px;
+    text-align: center;
+  }
 
-h2 {
-  color: #136f63;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-}
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
-.progress-wrapper {
-  background: #e9f5ef;
-  border-radius: 8px;
-  height: 14px;
-  width: 100%;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-wrapper {
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
 
-.question {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-}
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .choice {
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
+  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
-}
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
 
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-  transition: all 0.2s ease;
-}
+  /* Buttons */
+  .next-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
+  }
+  .next-btn:hover { background: #0f5b52; }
 
-.choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-.choice.selected { background: #174ea6; color: #fff; }
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
+  .stars {
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
-.explanation {
-  background: #eef3ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 10px;
-  display: none;
-  text-align: left;
-  font-size: 1.05em;
-}
+  .quiz-nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .quiz-btn {
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-.next-btn {
-  background: #136f63;
-  color: #fff;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-size: 1.05em;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.next-btn:hover { background: #0f5b52; }
-
-.result {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 20px;
-}
-
-.stars {
-  font-size: 2.5em;
-  margin-top: 10px;
-}
-
-.quiz-nav {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.quiz-btn {
-  background: #e8ecf8;
-  color: #174ea6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-.quiz-btn.primary {
-  background: #136f63;
-  color: #fff;
-}
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
-<h2>Lesson 7 Quiz – Mixed Alkene–Alkyne</h2>
+  <h2>Lesson 7 Quiz – Mixed Alkene–Alkyne Compounds</h2>
 
-<div class="progress-text" id="progressText"></div>
-<div class="progress-wrapper">
-  <div class="progress-bar" id="progressBar"></div>
-</div>
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
-<div id="quizBox"></div>
-<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
-{
-q: "1. Which suffix is used for a hydrocarbon containing both a C=C and a C≡C bond?",
-c: ["-diyne", "-ene-yne", "-en-yne", "-alkyne"],
-a: 2,
-e: "Compounds containing both a double and triple bond use the combined suffix -en-yne."
-},
-{
-q: "2. What rule determines how a mixed alkene–alkyne chain is numbered?",
-c: [
-"The triple bond always gets the lowest number",
-"The longest chain rule only",
-"The lowest set of locants rule",
-"Alphabetical order of bonds"
-],
-a: 2,
-e: "Numbering follows the lowest set of locants rule to minimize bond positions."
-},
-{
-q: "3. If numbering from either end gives identical locants, which bond gets priority?",
-c: ["Triple bond", "Single bond", "Double bond", "Substituent"],
-a: 2,
-e: "If there is a tie, the double bond (ene) receives the lower number."
-},
-{
-q: "4. Which parent chain is correct for naming mixed unsaturated compounds?",
-c: [
-"Any chain containing a multiple bond",
-"The longest chain containing both C=C and C≡C",
-"The chain with more substituents",
-"The chain with the triple bond only"
-],
-a: 1,
-e: "The parent chain must include both the alkene and alkyne."
-},
-{
-q: "5. What does the name hex-3-en-1-yne indicate?",
-c: [
-"6 carbons, double bond at C-1, triple bond at C-3",
-"6 carbons, double bond at C-3, triple bond at C-1",
-"6 carbons, two double bonds",
-"6 carbons, one triple bond only"
-],
-a: 1,
-e: "The name shows a 6-carbon chain with a double bond at C-3 and a triple bond at C-1."
-},
-{
-q: "6. Which name correctly follows IUPAC rules?",
-c: [
-"pent-4-yne-2-ene",
-"pent-2-ene-4-yne",
-"pent-yne-ene",
-"pent-ene-yne"
-],
-a: 1,
-e: "The correct format is parent chain + double bond + triple bond → pent-2-ene-4-yne."
-},
-{
-q: "7. Why must both multiple bonds be included in the parent chain?",
-c: [
-"To increase molecular mass",
-"To avoid resonance",
-"To correctly represent molecular identity",
-"Because substituents require it"
-],
-a: 2,
-e: "The parent chain defines the molecule and must include all principal functional features."
-},
-{
-q: "8. Which situation requires giving the double bond the lower number?",
-c: [
-"When the triple bond is terminal",
-"When both numbering directions give the same locants",
-"When substituents are present",
-"When the chain is cyclic"
-],
-a: 1,
-e: "If numbering gives a tie, the double bond gets priority."
-},
-{
-q: "9. What type of hydrocarbon is hex-1-en-5-yne?",
-c: [
-"Saturated",
-"Branched alkane",
-"Mixed unsaturated",
-"Cycloalkene"
-],
-a: 2,
-e: "It contains both a double and a triple bond, making it a mixed unsaturated hydrocarbon."
-},
-{
-q: "10. Which statement about mixed alkene–alkyne naming is TRUE?",
-c: [
-"The triple bond is always named first",
-"The suffix order is -yne-en",
-"Both multiple bonds affect numbering",
-"Only the longest bond is considered"
-],
-a: 2,
-e: "Both multiple bonds influence numbering and naming."
-}
+  {
+    "q": "Which feature identifies an enyne?",
+    "c": [
+      "It contains C=C and C≡C bonds",
+      "It contains only C–C single bonds",
+      "It contains two C≡C bonds and no C=C bond",
+      "It contains a carbon ring with only single bonds"
+    ],
+    "a": 0,
+    "e": "An enyne contains both a carbon–carbon double bond and a carbon–carbon triple bond."
+  },
+  {
+    "q": "Two numbering directions for the same simple enyne give multiple-bond locant sets 1,3 and 2,4. Which is preferred?",
+    "c": [
+      "2,4, because 2 is closer to the center",
+      "Either set, because both bonds are included",
+      "1,3, because 1 is lower at the first difference",
+      "The set that always gives the double bond carbon 1"
+    ],
+    "a": 2,
+    "e": "Compare the sorted sets at the first point of difference. Since 1 is lower than 2, choose 1,3 even if the triple bond receives locant 1."
+  },
+  {
+    "q": "For CH₂=CH–CH₂–C≡CH, both numbering directions give the sorted multiple-bond set 1,4. What is the preferred name?",
+    "c": [
+      "pent-4-en-1-yne",
+      "pent-1-en-4-yne",
+      "pent-1-yne-4-ene",
+      "pent-2-en-4-yne"
+    ],
+    "a": 1,
+    "e": "The sorted sets tie, so give the double bond the lower locant. Write en before yne: pent-1-en-4-yne."
+  },
+  {
+    "q": "What is the correct name of the structural formula shown?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 240\" role=\"img\" aria-labelledby=\"t5 d5\"><title id=\"t5\">Structural formula</title><desc id=\"d5\">Five-carbon chain with a terminal triple bond, an internal double bond and a methyl group on the double-bond carbon.</desc><line x1=\"52.0\" y1=\"145.0\" x2=\"68.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"52.0\" y1=\"140.5\" x2=\"68.0\" y2=\"140.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"52.0\" y1=\"149.5\" x2=\"68.0\" y2=\"149.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"102.0\" y1=\"145.0\" x2=\"118.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"149.6\" y1=\"136.3\" x2=\"170.4\" y2=\"123.7\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"152.7\" y1=\"141.4\" x2=\"173.5\" y2=\"128.9\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"199.6\" y1=\"123.7\" x2=\"220.4\" y2=\"136.3\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"185.0\" y1=\"98.0\" x2=\"185.0\" y2=\"72.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><text x=\"35\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"85\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"135\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"185\" y=\"121\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"235\" y=\"151\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"185\" y=\"61\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "2-methylpent-2-en-4-yne",
+      "4-methylpent-1-en-3-yne",
+      "3-methylpent-3-en-1-yne",
+      "4-methylpent-3-en-1-yne"
+    ],
+    "a": 3,
+    "e": "The five-carbon chain gives multiple-bond locants 1 and 3 from the alkyne end, compared with 2 and 4 from the other end. Methyl is on C-4; en is written before yne."
+  },
+  {
+    "q": "Name the compound represented by this skeletal formula.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 240\" role=\"img\" aria-labelledby=\"t8 d8\"><title id=\"t8\">Skeletal formula</title><desc id=\"d8\">An enyne chain at a junction: the upper path has two carbons and the lower path has one.</desc><line x1=\"25.0\" y1=\"180.0\" x2=\"70.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"28.3\" y1=\"185.0\" x2=\"73.3\" y2=\"155.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"70.0\" y1=\"150.0\" x2=\"115.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"150.0\" x2=\"160.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"145.5\" x2=\"160.0\" y2=\"145.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"154.5\" x2=\"160.0\" y2=\"154.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"160.0\" y1=\"150.0\" x2=\"205.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"150.0\" x2=\"250.0\" y2=\"105.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"250.0\" y1=\"105.0\" x2=\"295.0\" y2=\"105.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"150.0\" x2=\"250.0\" y2=\"195.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/></svg>",
+    "c": [
+      "5-methylhept-1-en-3-yne",
+      "5-ethylhex-1-en-3-yne",
+      "3-methylhept-6-en-4-yne",
+      "5-methylhept-3-en-1-yne"
+    ],
+    "a": 0,
+    "e": "The longest chain containing both multiple bonds turns along the two-carbon path and has seven carbons. The double bond is at 1, triple bond at 3, and methyl at 5."
+  },
+  {
+    "q": "What is the correct name of this structural formula?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 240\" role=\"img\" aria-labelledby=\"t9 d9\"><title id=\"t9\">Structural formula</title><desc id=\"d9\">An enyne chain continuing through two junctions with a methyl group at each.</desc><line x1=\"32.0\" y1=\"173.0\" x2=\"43.0\" y2=\"162.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"36.3\" y1=\"177.2\" x2=\"47.2\" y2=\"166.3\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"72.0\" y1=\"150.0\" x2=\"78.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"112.0\" y1=\"150.0\" x2=\"118.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"112.0\" y1=\"145.5\" x2=\"118.0\" y2=\"145.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"112.0\" y1=\"154.5\" x2=\"118.0\" y2=\"154.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"152.0\" y1=\"150.0\" x2=\"158.0\" y2=\"150.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"187.0\" y1=\"138.0\" x2=\"203.0\" y2=\"122.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"232.0\" y1=\"110.0\" x2=\"238.0\" y2=\"110.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"267.8\" y1=\"98.8\" x2=\"282.2\" y2=\"86.2\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"175.0\" y1=\"167.0\" x2=\"175.0\" y2=\"183.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"215.0\" y1=\"93.0\" x2=\"215.0\" y2=\"72.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><text x=\"20\" y=\"191\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"55\" y=\"156\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"95\" y=\"156\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"135\" y=\"156\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"175\" y=\"156\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"215\" y=\"116\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"255\" y=\"116\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"295\" y=\"81\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"175\" y=\"206\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"215\" y=\"61\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "3,4-dimethyloct-7-en-5-yne",
+      "5,6-dimethyloct-1-en-3-yne",
+      "5-ethyloct-1-en-3-yne",
+      "5,6-dimethylhept-1-en-3-yne"
+    ],
+    "a": 1,
+    "e": "The parent path containing both multiple bonds has eight carbons. Number from the alkene end to give C=C at 1, C≡C at 3, and methyl groups at 5 and 6."
+  },
+  {
+    "q": "Which name matches the skeletal formula?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 240\" role=\"img\" aria-labelledby=\"t4 d4\"><title id=\"t4\">Skeletal formula</title><desc id=\"d4\">Five-carbon chain with a terminal double bond and terminal triple bond.</desc><line x1=\"35.0\" y1=\"165.0\" x2=\"85.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"38.4\" y1=\"169.9\" x2=\"88.4\" y2=\"134.9\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"85.0\" y1=\"130.0\" x2=\"135.0\" y2=\"165.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"135.0\" y1=\"165.0\" x2=\"185.0\" y2=\"165.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"185.0\" y1=\"165.0\" x2=\"235.0\" y2=\"165.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"185.0\" y1=\"160.5\" x2=\"235.0\" y2=\"160.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"185.0\" y1=\"169.5\" x2=\"235.0\" y2=\"169.5\" stroke=\"#136f63\" stroke-width=\"2.6\"/></svg>",
+    "c": [
+      "pent-4-en-1-yne",
+      "pent-1-en-3-yne",
+      "pent-1-en-4-yne",
+      "hex-1-en-5-yne"
+    ],
+    "a": 2,
+    "e": "The five-carbon chain has terminal multiple bonds. Both directions give 1,4, so the double bond receives locant 1: pent-1-en-4-yne."
+  },
+  {
+    "q": "Which condensed formula represents hex-1-en-3-yne?",
+    "c": [
+      "CH₃–CH=CH–C≡C–CH₃",
+      "CH₂=CH–CH₂–C≡C–CH₃",
+      "HC≡C–CH₂–CH₂–CH=CH₂",
+      "CH₂=CH–C≡C–CH₂–CH₃"
+    ],
+    "a": 3,
+    "e": "Hex-1-en-3-yne has six carbons, C=C between C-1 and C-2, and C≡C between C-3 and C-4: CH₂=CH–C≡C–CH₂–CH₃."
+  },
+  {
+    "q": "What is the molecular formula of an acyclic six-carbon hydrocarbon with exactly one C=C and one C≡C, and no other multiple bonds?",
+    "c": [
+      "C₆H₈",
+      "C₆H₁₀",
+      "C₆H₁₂",
+      "C₆H₁₄"
+    ],
+    "a": 0,
+    "e": "One double bond and one triple bond reduce the acyclic alkane hydrogen count by six. Starting from C₆H₁₄ gives C₆H₈."
+  },
+  {
+    "q": "In the name 4-methylpent-3-en-1-yne, why is en written before yne?",
+    "c": [
+      "Because the double-bond locant is always lower",
+      "Because substituents are ignored in naming",
+      "Because the parent name places en before yne even when the triple-bond locant is lower",
+      "Because the triple bond has no locant"
+    ],
+    "a": 2,
+    "e": "In a name containing both, en is written before yne. Numbering is decided separately by comparing the multiple-bond locant sets."
+  }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -270,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -290,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -298,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -335,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -358,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -382,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
