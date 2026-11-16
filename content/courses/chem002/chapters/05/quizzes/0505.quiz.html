@@ -8,7 +8,7 @@
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f0fbff, #f7faff);
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
     margin: 0;
     padding: 40px 20px;
     color: #222;
@@ -22,18 +22,32 @@
     background: #ffffff;
     border-radius: 18px;
     padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     width: 95%;
     max-width: 850px;
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -42,7 +56,6 @@
     margin-bottom: 25px;
     overflow: hidden;
   }
-
   .progress-bar {
     height: 100%;
     background: linear-gradient(to right, #136f63, #2b7de9);
@@ -50,48 +63,31 @@
     transition: width 0.4s ease;
   }
 
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
+  /* Question */
   .question {
     font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
     margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
     transition: 0.2s;
   }
-
-  .choice:hover {
-    background: #d3dbf8;
-    transform: translateY(-2px);
-  }
-
-  .choice.selected {
-    background: #174ea6;
-    color: #fff;
-  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
@@ -103,6 +99,7 @@
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -110,20 +107,20 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
     margin-top: 15px;
   }
-
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
-    margin-top: 20px;
+    margin-top: 12px;
   }
-
   .stars {
     font-size: 2.5em;
     margin-top: 10px;
@@ -133,9 +130,9 @@
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
@@ -143,98 +140,157 @@
     border-radius: 8px;
     padding: 10px 20px;
     cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
-
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
-  }
-
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
   .quiz-btn.primary:hover { background: #0f5b52; }
+
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
   <h2>Lesson 5 Quiz – Alkynes and Naming Alkynes</h2>
 
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. What functional group defines an alkyne?",
-    c: ["C=C double bond", "C≡C triple bond", "C–C single bond", "C–O bond"],
-    a: 1,
-    e: "Alkynes are hydrocarbons that contain at least one carbon–carbon triple bond (C≡C)."
-  },
-  {
-    q: "2. What suffix is used for alkynes in IUPAC nomenclature?",
-    c: ["-ane", "-ene", "-yne", "-ol"],
-    a: 2,
-    e: "The suffix '-yne' is used to indicate the presence of a triple bond."
-  },
-  {
-    q: "3. Which molecule is an alkyne?",
-    c: ["C₂H₆", "C₂H₄", "C₂H₂", "CH₄"],
-    a: 2,
-    e: "C₂H₂ (ethyne) contains a triple bond and is the simplest alkyne."
-  },
-  {
-    q: "4. What is the correct name for HC≡CH?",
-    c: ["Ethane", "Ethene", "Ethyne", "Prop-1-yne"],
-    a: 2,
-    e: "HC≡CH has two carbons and a triple bond, so it is named ethyne."
-  },
-  {
-    q: "5. When numbering an alkyne, where should numbering begin?",
-    c: [
-      "From the end nearest the triple bond",
-      "From the end nearest a substituent",
-      "From either end",
-      "From the middle of the chain"
+    "q": "Which bond identifies a hydrocarbon as an alkyne?",
+    "c": [
+      "A carbon–carbon triple bond",
+      "A carbon–carbon double bond",
+      "A carbon–carbon single bond",
+      "A carbon–oxygen double bond"
     ],
-    a: 0,
-    e: "The chain is numbered so the triple bond gets the lowest possible locant."
+    "a": 0,
+    "e": "Alkynes are hydrocarbons containing at least one carbon–carbon triple bond, written C≡C."
   },
   {
-    q: "6. What is the correct name for a 4-carbon alkyne with the triple bond starting at carbon 1?",
-    c: ["butyne", "but-1-yne", "but-2-yne", "prop-1-yne"],
-    a: 1,
-    e: "A four-carbon chain with a triple bond at carbon 1 is named but-1-yne."
+    "q": "Which statement describes a terminal alkyne?",
+    "c": [
+      "Both carbons of C≡C are bonded to other carbons",
+      "A hydrogen is bonded to one carbon of C≡C",
+      "The triple bond is always between carbons 2 and 3",
+      "It contains a carbon–carbon double bond"
+    ],
+    "a": 1,
+    "e": "A terminal alkyne contains a hydrogen directly bonded to a triple-bond carbon, as in HC≡C–CH₃."
   },
   {
-    q: "7. Which of the following names is INCORRECT?",
-    c: ["ethyne", "prop-1-yne", "but-3-yne", "but-2-yne"],
-    a: 2,
-    e: "but-3-yne is incorrect because numbering must give the triple bond the lowest possible number (but-1-yne instead)."
+    "q": "What is the correct name of this structure?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 220\" role=\"img\" aria-labelledby=\"t1 d1\"><title id=\"t1\">Structural formula</title><desc id=\"d1\">Four-carbon chain with a terminal triple bond.</desc><line x1=\"84.0\" y1=\"125.0\" x2=\"106.0\" y2=\"125.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"84.0\" y1=\"119.0\" x2=\"106.0\" y2=\"119.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"84.0\" y1=\"131.0\" x2=\"106.0\" y2=\"131.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"144.0\" y1=\"125.0\" x2=\"166.0\" y2=\"125.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"204.0\" y1=\"125.0\" x2=\"226.0\" y2=\"125.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><text x=\"65\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"125\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"185\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"245\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "but-2-yne",
+      "prop-1-yne",
+      "but-1-yne",
+      "pent-1-yne"
+    ],
+    "a": 2,
+    "e": "The parent chain contains four carbons. Number from the triple-bond end, giving but-1-yne."
   },
   {
-    q: "8. How many sigma (σ) bonds are present in a C≡C triple bond?",
-    c: ["1", "2", "3", "0"],
-    a: 0,
-    e: "A triple bond contains one sigma bond and two pi bonds."
+    "q": "Name the alkyne represented by this skeletal formula.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 220\" role=\"img\" aria-labelledby=\"t4 d4\"><title id=\"t4\">Skeletal formula</title><desc id=\"d4\">Six-carbon chain with a triple bond between the second and third carbons.</desc><line x1=\"40.0\" y1=\"130.0\" x2=\"90.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"90.0\" y1=\"130.0\" x2=\"140.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"90.0\" y1=\"124.0\" x2=\"140.0\" y2=\"124.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"90.0\" y1=\"136.0\" x2=\"140.0\" y2=\"136.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"140.0\" y1=\"130.0\" x2=\"190.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"190.0\" y1=\"130.0\" x2=\"235.0\" y2=\"95.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"235.0\" y1=\"95.0\" x2=\"280.0\" y2=\"125.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/></svg>",
+    "c": [
+      "hex-4-yne",
+      "pent-2-yne",
+      "hex-1-yne",
+      "hex-2-yne"
+    ],
+    "a": 3,
+    "e": "The continuous chain has six carbons. The triple bond begins at carbon 2 when numbered from the nearer end, giving hex-2-yne."
   },
   {
-    q: "9. Which hybridization is found in the carbon atoms of a triple bond?",
-    c: ["sp³", "sp²", "sp", "s"],
-    a: 2,
-    e: "Carbons in a triple bond are sp-hybridized, giving a linear geometry."
+    "q": "Which name describes the structural formula?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 220\" role=\"img\" aria-labelledby=\"t5 d5\"><title id=\"t5\">Structural formula</title><desc id=\"d5\">A chain with a terminal triple bond and two paths at a junction; one path has two carbons and the other one carbon.</desc><line x1=\"54.0\" y1=\"130.0\" x2=\"66.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"54.0\" y1=\"124.0\" x2=\"66.0\" y2=\"124.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"54.0\" y1=\"136.0\" x2=\"66.0\" y2=\"136.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"104.0\" y1=\"130.0\" x2=\"116.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"154.0\" y1=\"130.0\" x2=\"166.0\" y2=\"130.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"198.4\" y1=\"116.6\" x2=\"216.6\" y2=\"98.4\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"249.0\" y1=\"85.0\" x2=\"261.0\" y2=\"85.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"198.4\" y1=\"143.4\" x2=\"216.6\" y2=\"161.6\" stroke=\"#136f63\" stroke-width=\"2.6\"/><text x=\"35\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"85\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"135\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"185\" y=\"136\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"230\" y=\"91\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"280\" y=\"91\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"230\" y=\"181\" text-anchor=\"middle\" font-size=\"16\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "4-methylhex-1-yne",
+      "3-ethylpent-1-yne",
+      "3-methylhex-5-yne",
+      "4-methylpent-1-yne"
+    ],
+    "a": 0,
+    "e": "Follow the longest chain containing C≡C through the two-carbon path at the junction. It has six carbons; the remaining branch is methyl at C-4."
   },
   {
-    q: "10. Which name correctly follows IUPAC rules?",
-    c: ["pent-4-yne", "pent-3-yne", "pent-2-yne", "pent-0-yne"],
-    a: 2,
-    e: "pent-2-yne gives the triple bond the lowest possible locant and follows IUPAC rules."
+    "q": "Name this skeletal structure.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 330 220\" role=\"img\" aria-labelledby=\"t8 d8\"><title id=\"t8\">Skeletal formula</title><desc id=\"d8\">A seven-carbon chain including a triple bond, an ethyl side chain and a methyl side chain.</desc><line x1=\"25.0\" y1=\"135.0\" x2=\"70.0\" y2=\"135.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"70.0\" y1=\"135.0\" x2=\"115.0\" y2=\"135.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"70.0\" y1=\"129.0\" x2=\"115.0\" y2=\"129.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"70.0\" y1=\"141.0\" x2=\"115.0\" y2=\"141.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"115.0\" y1=\"135.0\" x2=\"160.0\" y2=\"135.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"160.0\" y1=\"135.0\" x2=\"205.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"90.0\" x2=\"250.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"250.0\" y1=\"90.0\" x2=\"295.0\" y2=\"90.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"160.0\" y1=\"135.0\" x2=\"205.0\" y2=\"180.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"180.0\" x2=\"250.0\" y2=\"180.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/><line x1=\"205.0\" y1=\"90.0\" x2=\"205.0\" y2=\"45.0\" stroke=\"#136f63\" stroke-width=\"2.6\"/></svg>",
+    "c": [
+      "4-methyl-5-ethylhept-2-yne",
+      "4-ethyl-5-methylhept-2-yne",
+      "3-ethyl-4-methylhept-5-yne",
+      "4-ethyl-5-methylhex-2-yne"
+    ],
+    "a": 1,
+    "e": "The longest path containing C≡C has seven carbons and turns at the junction. Numbering gives the triple bond at 2, ethyl at 4, and methyl at 5; ethyl comes first alphabetically."
+  },
+  {
+    "q": "What is the molecular formula of an acyclic hydrocarbon with six carbon atoms, exactly one triple bond, and no other multiple bonds?",
+    "c": [
+      "C₆H₁₄",
+      "C₆H₁₂",
+      "C₆H₈",
+      "C₆H₁₀"
+    ],
+    "a": 3,
+    "e": "For an acyclic hydrocarbon with exactly one C≡C and no other multiple bonds, CₙH₂ₙ₋₂ applies. For n = 6, the formula is C₆H₁₀."
+  },
+  {
+    "q": "What is the correct name for HC≡C–CH₂–CH(CH₃)–CH₃?",
+    "c": [
+      "2-methylpent-4-yne",
+      "4-methylpent-1-yne",
+      "4-methylhex-1-yne",
+      "2-methylpent-1-yne"
+    ],
+    "a": 1,
+    "e": "The parent has five carbons. Number from the end nearest C≡C, giving the triple bond locant 1 and the methyl branch locant 4."
+  },
+  {
+    "q": "How many σ and π bonds make up one C≡C triple bond?",
+    "c": [
+      "One σ and two π",
+      "Two σ and one π",
+      "Three σ and no π",
+      "No σ and three π"
+    ],
+    "a": 0,
+    "e": "The C≡C triple bond consists of one sigma bond and two pi bonds."
+  },
+  {
+    "q": "What is the correct name for CH₃–CH(CH₃)–C≡C–CH₂–CH₃?",
+    "c": [
+      "5-methylhex-3-yne",
+      "2-methylhex-2-yne",
+      "2-methylhex-3-yne",
+      "3-methylhex-3-yne"
+    ],
+    "a": 2,
+    "e": "The six-carbon parent has C≡C at 3 from either end. Break the tie by giving methyl locant 2 rather than 5."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -248,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -268,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -276,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -313,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -336,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -360,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
