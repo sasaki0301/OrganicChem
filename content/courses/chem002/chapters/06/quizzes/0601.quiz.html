@@ -6,138 +6,154 @@
 <title>Chapter 6 – Lesson 1 Quiz: Alcohols and Naming Alcohols</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f9f1, #f7faff);
-  margin: 0;
-  padding: 40px 20px;
-  color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 
-.quiz-container {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-  width: 95%;
-  max-width: 850px;
-  text-align: center;
-}
+  .quiz-container {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 850px;
+    text-align: center;
+  }
 
-h2 {
-  color: #136f63;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-}
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-wrapper {
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
 
-.progress-wrapper {
-  background: #e9f5ef;
-  border-radius: 8px;
-  height: 14px;
-  width: 100%;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .choice {
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
+  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  width: 0%;
-  transition: width 0.4s ease;
-}
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
 
-.question {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-}
+  /* Buttons */
+  .next-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
+  }
+  .next-btn:hover { background: #0f5b52; }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
-}
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
+  .stars {
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-}
+  .quiz-nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .quiz-btn {
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-.choice:hover { background: #d3dbf8; }
-.choice.selected { background: #174ea6; color: #fff; }
-
-.explanation {
-  background: #eef3ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 10px;
-  display: none;
-  text-align: left;
-}
-
-.next-btn {
-  background: #136f63;
-  color: #fff;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-size: 1.05em;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-.result {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 20px;
-}
-
-.stars {
-  font-size: 2.5em;
-  margin-top: 10px;
-}
-
-.quiz-nav {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.quiz-btn {
-  background: #e8ecf8;
-  color: #174ea6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.quiz-btn.primary {
-  background: #136f63;
-  color: #fff;
-}
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
@@ -145,83 +161,136 @@ h2 {
 
 <div class="quiz-container">
   <h2>Lesson 1 Quiz – Alcohols and Naming Alcohols</h2>
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
-{
-  q: "1. Which functional group defines an alcohol?",
-  c: ["–COOH", "–OH", "–NH₂", "–CHO"],
-  a: 1,
-  e: "Alcohols are characterized by the hydroxyl (–OH) functional group."
-},
-{
-  q: "2. What is the correct IUPAC name for CH₃CH₂CH₂OH?",
-  c: ["propanol", "propan-1-ol", "2-propanol", "propyl alcohol"],
-  a: 1,
-  e: "The –OH group is on carbon 1 of a three-carbon chain → propan-1-ol."
-},
-{
-  q: "3. Which compound is a primary alcohol?",
-  c: ["CH₃OH", "CH₃CH(OH)CH₃", "(CH₃)₃COH", "CH₃C(CH₃)₂OH"],
-  a: 0,
-  e: "In CH₃OH, the –OH carbon is attached to no other carbon atoms → primary alcohol."
-},
-{
-  q: "4. What is the correct name of CH₃CH(OH)CH₃?",
-  c: ["propan-1-ol", "propan-2-ol", "ethanol", "2-methylethanol"],
-  a: 1,
-  e: "The –OH group is on the second carbon of propane → propan-2-ol."
-},
-{
-  q: "5. Which alcohol is classified as secondary?",
-  c: ["CH₃OH", "CH₃CH₂OH", "CH₃CH(OH)CH₃", "(CH₃)₃COH"],
-  a: 2,
-  e: "The –OH carbon in CH₃CH(OH)CH₃ is attached to two other carbons → secondary alcohol."
-},
-{
-  q: "6. What is the correct IUPAC name for (CH₃)₂CHCH₂OH?",
-  c: ["2-methylpropan-2-ol", "butan-1-ol", "2-methylpropan-1-ol", "isobutanol"],
-  a: 2,
-  e: "Longest chain has 3 carbons with a methyl substituent → 2-methylpropan-1-ol."
-},
-{
-  q: "7. Which rule is MOST important when numbering an alcohol?",
-  c: [
-    "Alphabetize substituents",
-    "Give the –OH group the lowest possible number",
-    "Number the longest chain only",
-    "Minimize substituent numbers first"
-  ],
-  a: 1,
-  e: "The hydroxyl group has priority and must receive the lowest possible locant."
-},
-{
-  q: "8. Which compound is a tertiary alcohol?",
-  c: ["CH₃CH₂OH", "CH₃CH(OH)CH₃", "(CH₃)₃COH", "CH₃OH"],
-  a: 2,
-  e: "The –OH carbon in (CH₃)₃COH is bonded to three other carbons → tertiary alcohol."
-},
-{
-  q: "9. What suffix is used in IUPAC names for alcohols?",
-  c: ["–ane", "–ene", "–ol", "–one"],
-  a: 2,
-  e: "Alcohols are named using the suffix –ol."
-},
-{
-  q: "10. Which name is INCORRECT?",
-  c: ["butan-2-ol", "ethanol", "2-propanol", "methan-2-ol"],
-  a: 3,
-  e: "Methanol has only one carbon; methan-2-ol is impossible."
-}
+  {
+    "q": "Which feature identifies a simple alcohol?",
+    "c": [
+      "A hydroxyl group attached to a saturated carbon",
+      "A carbon–carbon double bond without an OH group",
+      "A hydroxyl group directly attached to an aromatic ring",
+      "A carbonyl group with no OH group"
+    ],
+    "a": 0,
+    "e": "A simple alcohol has an OH group attached to a saturated carbon. An OH directly attached to an aromatic ring is classified as a phenol."
+  },
+  {
+    "q": "How is ethanol, CH₃CH₂OH, classified?",
+    "c": [
+      "Secondary",
+      "Tertiary",
+      "Primary",
+      "Quaternary"
+    ],
+    "a": 2,
+    "e": "The OH-bearing carbon in ethanol is directly attached to one other carbon, so ethanol is a primary alcohol."
+  },
+  {
+    "q": "Classify the alcohol shown.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title3 desc3\"><title id=\"title3\">Structural formula</title><desc id=\"desc3\">Three carbon atoms in a chain; the middle carbon is bonded to OH.</desc><line x1=\"82.4\" y1=\"135.2\" x2=\"127.6\" y2=\"109.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"162.4\" y1=\"109.8\" x2=\"207.6\" y2=\"135.2\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"80.0\" x2=\"145.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"145\" y=\"41\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text><text x=\"65\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"145\" y=\"106\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"225\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "It contains no OH group"
+    ],
+    "a": 1,
+    "e": "The carbon bonded to OH has two carbon neighbours, making this a secondary alcohol."
+  },
+  {
+    "q": "How is the alcohol in this skeletal formula classified?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title16 desc16\"><title id=\"title16\">Skeletal formula</title><desc id=\"desc16\">A central carbon is bonded to OH and three methyl groups.</desc><line x1=\"65.0\" y1=\"145.0\" x2=\"145.0\" y2=\"100.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"100.0\" x2=\"225.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"100.0\" x2=\"145.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"100.0\" x2=\"193.6\" y2=\"66.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"210\" y=\"61\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text></svg>",
+    "c": [
+      "Secondary",
+      "Primary",
+      "Tertiary",
+      "It has no OH group"
+    ],
+    "a": 2,
+    "e": "The carbon bearing OH is directly bonded to three other carbon atoms, so this is a tertiary alcohol."
+  },
+  {
+    "q": "What is the correct name of the alcohol shown?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title6 desc6\"><title id=\"title6\">Skeletal formula</title><desc id=\"desc6\">A three-carbon path with a methyl branch at the middle carbon and OH on an end carbon.</desc><line x1=\"50.0\" y1=\"145.0\" x2=\"120.0\" y2=\"100.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"120.0\" y1=\"100.0\" x2=\"190.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"120.0\" y1=\"100.0\" x2=\"120.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"190.0\" y1=\"145.0\" x2=\"243.2\" y2=\"110.8\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"260\" y=\"106\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text></svg>",
+    "c": [
+      "2-methylpropan-2-ol",
+      "butan-1-ol",
+      "3-methylpropan-1-ol",
+      "2-methylpropan-1-ol"
+    ],
+    "a": 3,
+    "e": "The longest chain containing the OH-bearing carbon has three carbons. Number from the OH end: OH at 1 and methyl at 2."
+  },
+  {
+    "q": "Name this skeletal structure; stereochemistry is unspecified.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title8 desc8\"><title id=\"title8\">Skeletal formula</title><desc id=\"desc8\">An OH-bearing carbon chain reaches a junction; its upper path has two carbon atoms and its lower path has one.</desc><line x1=\"25.0\" y1=\"145.0\" x2=\"85.0\" y2=\"110.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"85.0\" y1=\"110.0\" x2=\"145.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"145.0\" x2=\"205.0\" y2=\"110.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"205.0\" y1=\"110.0\" x2=\"260.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"260.0\" y1=\"55.0\" x2=\"320.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"205.0\" y1=\"110.0\" x2=\"260.0\" y2=\"165.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"85.0\" y1=\"110.0\" x2=\"85.0\" y2=\"65.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"85\" y=\"51\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text></svg>",
+    "c": [
+      "4-methylhexan-2-ol",
+      "3-methylhexan-5-ol",
+      "4-ethylpentan-2-ol",
+      "4-methylhexan-5-ol"
+    ],
+    "a": 0,
+    "e": "The six-carbon parent follows the longer path through the junction and contains OH. Number from the nearer end: OH at 2 and methyl at 4."
+  },
+  {
+    "q": "What is the correct name of the structural formula shown?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title9 desc9\"><title id=\"title9\">Structural formula</title><desc id=\"desc9\">A six-carbon path has OH at its third carbon and a two-carbon branch at its fourth carbon.</desc><line x1=\"46.9\" y1=\"134.3\" x2=\"68.1\" y2=\"120.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"101.9\" y1=\"120.7\" x2=\"123.1\" y2=\"134.3\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"156.9\" y1=\"134.3\" x2=\"178.1\" y2=\"120.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"211.9\" y1=\"120.7\" x2=\"233.1\" y2=\"134.3\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"266.9\" y1=\"134.3\" x2=\"288.1\" y2=\"120.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"195.0\" y1=\"90.0\" x2=\"195.0\" y2=\"65.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"215.0\" y1=\"45.0\" x2=\"230.0\" y2=\"45.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"140.0\" y1=\"165.0\" x2=\"140.0\" y2=\"190.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"140\" y=\"216\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text><text x=\"30\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"85\" y=\"116\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"140\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"195\" y=\"116\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"250\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"305\" y=\"116\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"195\" y=\"51\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"250\" y=\"51\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "3-ethylhexan-4-ol",
+      "4-methylheptan-3-ol",
+      "4-ethylhexan-3-ol",
+      "4-ethylpentan-3-ol"
+    ],
+    "a": 2,
+    "e": "The longest chain containing the OH-bearing carbon has six carbons. Number toward OH: OH at C-3 and ethyl at C-4."
+  },
+  {
+    "q": "What is the IUPAC name of CH₃CH₂CH(OH)CH₂CH₃?",
+    "c": [
+      "pentan-1-ol",
+      "pentan-3-ol",
+      "butan-2-ol",
+      "pentan-2-ol"
+    ],
+    "a": 1,
+    "e": "The continuous parent chain has five carbons and the OH group is attached to carbon 3: pentan-3-ol."
+  },
+  {
+    "q": "Which condensed formula represents 2-methylpropan-1-ol?",
+    "c": [
+      "CH₃CH₂CH₂CH₂OH",
+      "CH₃C(OH)(CH₃)CH₃",
+      "CH₃CH(OH)CH₂CH₃",
+      "CH₃CH(CH₃)CH₂OH"
+    ],
+    "a": 3,
+    "e": "Propan-1-ol has a three-carbon parent with OH at C-1; adding methyl at C-2 gives CH₃CH(CH₃)CH₂OH."
+  },
+  {
+    "q": "For a simple saturated alcohol where OH is the principal group, which parent should be chosen?",
+    "c": [
+      "The longest continuous carbon chain containing the OH-bearing carbon",
+      "The longest chain regardless of whether it contains the OH-bearing carbon",
+      "Any chain with the most substituents",
+      "The shortest chain containing a carbon atom"
+    ],
+    "a": 0,
+    "e": "Choose the longest continuous carbon chain that includes the carbon bonded to the principal OH group; it can turn through a junction."
+  }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -235,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -255,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -263,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -300,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -323,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -347,7 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
-</script>
 
+</script>
 </body>
 </html>
