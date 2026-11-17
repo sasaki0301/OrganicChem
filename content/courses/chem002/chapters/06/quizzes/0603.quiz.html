@@ -6,173 +6,456 @@
 <title>Chapter 6 – Comprehensive Assessment: Alcohols</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f9f1, #f7faff);
-  margin: 0;
-  padding: 40px 20px;
-  color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 
-.quiz-container {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-  width: 95%;
-  max-width: 900px;
-  text-align: center;
-}
+  .quiz-container {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 850px;
+    text-align: center;
+  }
 
-h2 {
-  color: #136f63;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-}
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
-.progress-wrapper {
-  background: #e9f5ef;
-  border-radius: 8px;
-  height: 14px;
-  width: 100%;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-wrapper {
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
 
-.question {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-}
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .choice {
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
+  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
 
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-  transition: all 0.2s ease;
-}
-.choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-.choice.selected { background: #174ea6; color: #fff; }
+  /* Buttons */
+  .next-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
+  }
+  .next-btn:hover { background: #0f5b52; }
 
-.explanation {
-  background: #eef3ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 10px;
-  display: none;
-  text-align: left;
-}
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
+  .stars {
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
-.next-btn {
-  background: #136f63;
-  color: #fff;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-size: 1.05em;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 15px;
-}
-.next-btn:hover { background: #0f5b52; }
+  .quiz-nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .quiz-btn {
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-.result {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 20px;
-}
-.stars {
-  font-size: 2.5em;
-  margin-top: 10px;
-}
-
-.quiz-nav {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.quiz-btn {
-  background: #e8ecf8;
-  color: #174ea6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-.quiz-btn.primary {
-  background: #136f63;
-  color: #fff;
-}
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
-  <h2>Chapter 6 Assessment – Alcohols</h2>
-  <div class="progress-text" id="progressText"></div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <h2>Chapter 6 – Comprehensive Assessment: Alcohols</h2>
+
+  <p>30 questions · Pass: 24/30 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 30</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
+
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
-{ q:"1. Which functional group defines alcohols?", c:["–COOH","–OH","–NH₂","–CHO"], a:1, e:"Alcohols are defined by the hydroxyl (–OH) group."},
-  { q:"2. What is the general formula of alcohols?", c:["R–COOH","R–OH","R–NH₂","R–CHO"], a:1, e:"Alcohols have the general structure R–OH."},
-  { q:"3. Which bond makes alcohols polar?", c:["C–C","C–H","O–H","C–O"], a:2, e:"The O–H bond is highly polar due to electronegativity difference."},
-  { q:"4. Why do alcohols have higher boiling points than alkanes?", c:["Larger size","Hydrogen bonding","Stronger covalent bonds","Higher molar mass"], a:1, e:"Hydrogen bonding increases intermolecular attraction."},
-  { q:"5. Which alcohol is completely miscible with water?", c:["Methanol","Pentanol","Hexanol","Octanol"], a:0, e:"Methanol has a very short hydrocarbon chain."},
-  { q:"6. Increasing carbon chain length generally causes alcohol solubility to:", c:["Increase","Remain constant","Decrease","Become zero"], a:2, e:"Longer nonpolar chains reduce water solubility."},
-  { q:"7. What suffix is used for alcohols in IUPAC naming?", c:["-ane","-ene","-ol","-al"], a:2, e:"Alcohols use the suffix –ol."},
-  { q:"8. Why is the –OH group given priority in numbering?", c:["It increases mass","It affects geometry","It is the functional group","It adds polarity"], a:2, e:"The functional group determines the suffix and numbering."},
-  { q:"9. Which alcohol would have the lowest boiling point?", c:["Methanol","Ethanol","Propanol","Butanol"], a:0, e:"Smaller alcohols have weaker intermolecular forces."},
-  { q:"10. Alcohols are best described as:", c:["Strong acids","Weak bases","Weak acids","Neutral compounds"], a:2, e:"Alcohols can donate protons but only weakly."},
-  { q:"11. Why are alcohols weaker acids than water?", c:["Less polar","Alkyl groups donate electrons","They lack hydrogen bonds","They have larger size"], a:1, e:"Alkyl groups stabilize the O–H bond, reducing acidity."},
-  { q:"12. Which interaction dominates between alcohol molecules?", c:["Ionic bonding","Covalent bonding","Hydrogen bonding","Metallic bonding"], a:2, e:"Hydrogen bonding dominates alcohol interactions."},
-  { q:"13. Which compound is an alcohol?", c:["CH₃COOH","CH₃CH₂OH","CH₃CHO","CH₃NH₂"], a:1, e:"CH₃CH₂OH contains the –OH group."},
-  { q:"14. Which alcohol is least soluble in water?", c:["Ethanol","Propanol","Butanol","Hexanol"], a:3, e:"Longer hydrocarbon chains reduce solubility."},
-  { q:"15. Which property is directly caused by hydrogen bonding?", c:["Low density","High reactivity","High boiling point","Color"], a:2, e:"Hydrogen bonding raises boiling point."},
-  { q:"16. Which bond breaks when alcohols act as acids?", c:["C–O","O–H","C–C","C–H"], a:1, e:"The proton is donated from the O–H bond."},
-  { q:"17. Why are short-chain alcohols miscible with water?", c:["Large size","Strong dispersion forces","Hydrogen bonding","High acidity"], a:2, e:"They hydrogen bond effectively with water."},
-  { q:"18. What happens to boiling point as alcohol chain length increases?", c:["Decreases","Stays constant","Increases","Becomes unpredictable"], a:2, e:"Larger molecules have stronger intermolecular forces."},
-  { q:"19. Which alcohol has the strongest hydrogen bonding?", c:["Methanol","Ethanol","Propanol","All similar"], a:3, e:"All alcohols form hydrogen bonds via –OH."},
-  { q:"20. Alcohols differ from alkanes mainly due to:", c:["Mass","Structure","Functional group","Chain length"], a:2, e:"The –OH functional group changes properties dramatically."},
-  { q:"21. Which term describes complete solubility?", c:["Polar","Miscible","Dilute","Aqueous"], a:1, e:"Miscible liquids mix in all proportions."},
-  { q:"22. Which alcohol would be most acidic?", c:["Methanol","Ethanol","Propanol","Butanol"], a:0, e:"Smaller alkyl groups donate fewer electrons."},
-  { q:"23. What causes polarity in alcohols?", c:["Unequal charge distribution","Molecular size","Hydrogen bonding","Covalent bonding"], a:0, e:"Unequal electronegativity causes polarity."},
-  { q:"24. Which statement is TRUE?", c:["Alcohols are nonpolar","Alcohols lack hydrogen bonding","Alcohols are weak acids","Alcohols are ionic"], a:2, e:"Alcohols donate protons weakly."},
-  { q:"25. Which feature most influences alcohol properties?", c:["Carbon chain","Hydroxyl group","Molecular mass","Bond angle"], a:1, e:"The –OH group controls polarity, bonding, and acidity."}
+  {
+    "q": "Which feature identifies a simple alcohol?",
+    "c": [
+      "A hydroxyl group attached to a saturated carbon",
+      "A carbon–carbon double bond without an OH group",
+      "A hydroxyl group directly attached to an aromatic ring",
+      "A carbonyl group with no OH group"
+    ],
+    "a": 0,
+    "e": "A simple alcohol has an OH group attached to a saturated carbon. An OH directly attached to an aromatic ring is classified as a phenol."
+  },
+  {
+    "q": "In the O–H bond of ethanol, which partial charges are expected?",
+    "c": [
+      "Oxygen δ−; the O–H hydrogen δ+",
+      "Oxygen δ+; the O–H hydrogen δ−",
+      "Both atoms have full ionic charges",
+      "Both atoms must have identical electron density"
+    ],
+    "a": 0,
+    "e": "Oxygen attracts shared electrons more strongly than hydrogen, giving oxygen partial negative and the O–H hydrogen partial positive character."
+  },
+  {
+    "q": "How is ethanol, CH₃CH₂OH, classified?",
+    "c": [
+      "Secondary",
+      "Tertiary",
+      "Primary",
+      "Quaternary"
+    ],
+    "a": 2,
+    "e": "The OH-bearing carbon in ethanol is directly attached to one other carbon, so ethanol is a primary alcohol."
+  },
+  {
+    "q": "What does the dotted line between ethanol and water represent?<svg style=\"display:block;width:100%;max-width:600px;height:auto;margin:12px auto\" viewBox=\"0 0 650 210\" role=\"img\" aria-labelledby=\"hbtitle hbdesc\"><title id=\"hbtitle\">Ethanol and water diagram</title><desc id=\"hbdesc\">A dotted line joins the hydrogen of an ethanol OH group and the oxygen of a water molecule; solid lines show covalent bonds.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"190\" y1=\"94\" x2=\"225\" y2=\"94\"/><line x1=\"257\" y1=\"94\" x2=\"290\" y2=\"94\"/><line x1=\"407\" y1=\"86\" x2=\"438\" y2=\"57\"/><line x1=\"407\" y1=\"102\" x2=\"438\" y2=\"132\"/></g><line x1=\"324\" y1=\"94\" x2=\"373\" y2=\"94\" stroke=\"#b36a00\" stroke-width=\"3\" stroke-dasharray=\"5 5\"/><g font-family=\"Segoe UI,Arial\" font-size=\"25\" fill=\"#174ea6\" text-anchor=\"middle\"><text x=\"114\" y=\"102\">CH₃CH₂</text><text x=\"241\" y=\"102\">O</text><text x=\"308\" y=\"102\">H</text><text x=\"390\" y=\"102\">O</text><text x=\"452\" y=\"57\">H</text><text x=\"452\" y=\"149\">H</text></g></svg>",
+    "c": [
+      "A covalent O–H bond within ethanol",
+      "A hydrogen bond between molecules",
+      "An ionic bond between oxygen atoms",
+      "A covalent carbon–carbon bond"
+    ],
+    "a": 1,
+    "e": "The dotted line represents an intermolecular hydrogen bond between the ethanol O–H hydrogen and the water oxygen. Solid lines show covalent bonds."
+  },
+  {
+    "q": "Classify the alcohol shown.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title3 desc3\"><title id=\"title3\">Structural formula</title><desc id=\"desc3\">Three carbon atoms in a chain; the middle carbon is bonded to OH.</desc><line x1=\"82.4\" y1=\"135.2\" x2=\"127.6\" y2=\"109.8\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"162.4\" y1=\"109.8\" x2=\"207.6\" y2=\"135.2\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"80.0\" x2=\"145.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"145\" y=\"41\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text><text x=\"65\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"145\" y=\"106\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"225\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "It contains no OH group"
+    ],
+    "a": 1,
+    "e": "The carbon bonded to OH has two carbon neighbours, making this a secondary alcohol."
+  },
+  {
+    "q": "Ethanol and dimethyl ether both have formula C₂H₆O. Why does ethanol have the higher normal boiling point?",
+    "c": [
+      "Ethanol has an O–H group and can donate hydrogen bonds to other ethanol molecules",
+      "Dimethyl ether has no oxygen atom",
+      "Ethanol is ionic while dimethyl ether is covalent",
+      "Dimethyl ether has no intermolecular forces"
+    ],
+    "a": 0,
+    "e": "Ethanol molecules can donate hydrogen bonds to one another. Pure dimethyl ether has no O–H bond to donate such bonds, although it has other intermolecular attractions."
+  },
+  {
+    "q": "How is the alcohol in this skeletal formula classified?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title16 desc16\"><title id=\"title16\">Skeletal formula</title><desc id=\"desc16\">A central carbon is bonded to OH and three methyl groups.</desc><line x1=\"65.0\" y1=\"145.0\" x2=\"145.0\" y2=\"100.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"100.0\" x2=\"225.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"100.0\" x2=\"145.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"100.0\" x2=\"193.6\" y2=\"66.4\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"210\" y=\"61\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text></svg>",
+    "c": [
+      "Secondary",
+      "Primary",
+      "Tertiary",
+      "It has no OH group"
+    ],
+    "a": 2,
+    "e": "The carbon bearing OH is directly bonded to three other carbon atoms, so this is a tertiary alcohol."
+  },
+  {
+    "q": "What happens to covalent bonds within ethanol molecules during ordinary boiling?",
+    "c": [
+      "All O–H bonds break",
+      "The C–C bond breaks",
+      "The molecules remain intact while intermolecular attractions are overcome",
+      "Ethanol forms ions in the vapor"
+    ],
+    "a": 2,
+    "e": "Boiling separates molecules into a gas by overcoming intermolecular attractions; ordinary covalent bonds within each ethanol molecule remain intact."
+  },
+  {
+    "q": "What is the correct name of the alcohol shown?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title6 desc6\"><title id=\"title6\">Skeletal formula</title><desc id=\"desc6\">A three-carbon path with a methyl branch at the middle carbon and OH on an end carbon.</desc><line x1=\"50.0\" y1=\"145.0\" x2=\"120.0\" y2=\"100.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"120.0\" y1=\"100.0\" x2=\"190.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"120.0\" y1=\"100.0\" x2=\"120.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"190.0\" y1=\"145.0\" x2=\"243.2\" y2=\"110.8\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"260\" y=\"106\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text></svg>",
+    "c": [
+      "2-methylpropan-2-ol",
+      "butan-1-ol",
+      "3-methylpropan-1-ol",
+      "2-methylpropan-1-ol"
+    ],
+    "a": 3,
+    "e": "The longest chain containing the OH-bearing carbon has three carbons. Number from the OH end: OH at 1 and methyl at 2."
+  },
+  {
+    "q": "At the same temperature, which is more soluble in water: ethanol or pentan-1-ol?",
+    "c": [
+      "Pentan-1-ol",
+      "Ethanol",
+      "They are necessarily equally miscible",
+      "Neither can interact with water"
+    ],
+    "a": 1,
+    "e": "Both have an OH group, but pentan-1-ol has a larger hydrocarbon portion. Ethanol is miscible with water, whereas pentan-1-ol is less soluble."
+  },
+  {
+    "q": "Name this skeletal structure; stereochemistry is unspecified.<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title8 desc8\"><title id=\"title8\">Skeletal formula</title><desc id=\"desc8\">An OH-bearing carbon chain reaches a junction; its upper path has two carbon atoms and its lower path has one.</desc><line x1=\"25.0\" y1=\"145.0\" x2=\"85.0\" y2=\"110.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"85.0\" y1=\"110.0\" x2=\"145.0\" y2=\"145.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"145.0\" y1=\"145.0\" x2=\"205.0\" y2=\"110.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"205.0\" y1=\"110.0\" x2=\"260.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"260.0\" y1=\"55.0\" x2=\"320.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"205.0\" y1=\"110.0\" x2=\"260.0\" y2=\"165.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"85.0\" y1=\"110.0\" x2=\"85.0\" y2=\"65.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"85\" y=\"51\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text></svg>",
+    "c": [
+      "4-methylhexan-2-ol",
+      "3-methylhexan-5-ol",
+      "4-ethylpentan-2-ol",
+      "4-methylhexan-5-ol"
+    ],
+    "a": 0,
+    "e": "The six-carbon parent follows the longer path through the junction and contains OH. Number from the nearer end: OH at 2 and methyl at 4."
+  },
+  {
+    "q": "For similar straight-chain alcohols with one OH group, what generally happens to water solubility as carbon-chain length increases?",
+    "c": [
+      "It generally decreases",
+      "It always increases",
+      "It becomes exactly zero",
+      "It is fixed by the OH group alone"
+    ],
+    "a": 0,
+    "e": "As the hydrocarbon portion grows, the balance of interactions changes and water solubility generally decreases. Temperature and molecular structure also matter."
+  },
+  {
+    "q": "What is the correct name of the structural formula shown?<svg style=\"display:block;width:100%;max-width:400px;height:auto;margin:12px auto\" viewBox=\"0 0 370 245\" role=\"img\" aria-labelledby=\"title9 desc9\"><title id=\"title9\">Structural formula</title><desc id=\"desc9\">A six-carbon path has OH at its third carbon and a two-carbon branch at its fourth carbon.</desc><line x1=\"46.9\" y1=\"134.3\" x2=\"68.1\" y2=\"120.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"101.9\" y1=\"120.7\" x2=\"123.1\" y2=\"134.3\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"156.9\" y1=\"134.3\" x2=\"178.1\" y2=\"120.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"211.9\" y1=\"120.7\" x2=\"233.1\" y2=\"134.3\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"266.9\" y1=\"134.3\" x2=\"288.1\" y2=\"120.7\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"195.0\" y1=\"90.0\" x2=\"195.0\" y2=\"65.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"215.0\" y1=\"45.0\" x2=\"230.0\" y2=\"45.0\" stroke=\"#136f63\" stroke-width=\"3\"/><line x1=\"140.0\" y1=\"165.0\" x2=\"140.0\" y2=\"190.0\" stroke=\"#136f63\" stroke-width=\"3\"/><text x=\"140\" y=\"216\" text-anchor=\"middle\" font-size=\"18\" fill=\"#ac3440\" font-weight=\"700\">OH</text><text x=\"30\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"85\" y=\"116\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"140\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"195\" y=\"116\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"250\" y=\"151\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"305\" y=\"116\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text><text x=\"195\" y=\"51\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₂</text><text x=\"250\" y=\"51\" text-anchor=\"middle\" font-size=\"18\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg>",
+    "c": [
+      "3-ethylhexan-4-ol",
+      "4-methylheptan-3-ol",
+      "4-ethylhexan-3-ol",
+      "4-ethylpentan-3-ol"
+    ],
+    "a": 2,
+    "e": "The longest chain containing the OH-bearing carbon has six carbons. Number toward OH: OH at C-3 and ethyl at C-4."
+  },
+  {
+    "q": "What does it mean when ethanol and water are described as miscible?",
+    "c": [
+      "Ethanol can dissolve only at one fixed ratio",
+      "The liquids mix in all proportions",
+      "The liquids form a new covalent compound",
+      "Both liquids must have the same boiling point"
+    ],
+    "a": 1,
+    "e": "Miscible liquids mix in all proportions. A substance can be soluble to a limited extent without being miscible."
+  },
+  {
+    "q": "What is the IUPAC name of CH₃CH₂CH(OH)CH₂CH₃?",
+    "c": [
+      "pentan-1-ol",
+      "pentan-3-ol",
+      "butan-2-ol",
+      "pentan-2-ol"
+    ],
+    "a": 1,
+    "e": "The continuous parent chain has five carbons and the OH group is attached to carbon 3: pentan-3-ol."
+  },
+  {
+    "q": "What is the conjugate base formed when ethanol loses H⁺ from its OH group?",
+    "c": [
+      "CH₃CH₂OH₂⁺",
+      "CH₃CH₃",
+      "CH₃CH₂O⁻",
+      "CH₃COO⁻"
+    ],
+    "a": 2,
+    "e": "Removing H⁺ from the O–H group of ethanol gives ethoxide, CH₃CH₂O⁻."
+  },
+  {
+    "q": "Which condensed formula represents 2-methylpropan-1-ol?",
+    "c": [
+      "CH₃CH₂CH₂CH₂OH",
+      "CH₃C(OH)(CH₃)CH₃",
+      "CH₃CH(OH)CH₂CH₃",
+      "CH₃CH(CH₃)CH₂OH"
+    ],
+    "a": 3,
+    "e": "Propan-1-ol has a three-carbon parent with OH at C-1; adding methyl at C-2 gives CH₃CH(CH₃)CH₂OH."
+  },
+  {
+    "q": "Which statement best describes the acidity of simple alcohols?",
+    "c": [
+      "They are strong acids that completely ionize in water",
+      "They can never donate a proton",
+      "They are very weak acids, broadly comparable to water; acidity depends on structure and solvent",
+      "They are always much stronger acids than carboxylic acids"
+    ],
+    "a": 2,
+    "e": "Simple alcohols are very weak acids. Their acidities are broadly comparable to water and depend on the particular molecule and solvent."
+  },
+  {
+    "q": "For a simple saturated alcohol where OH is the principal group, which parent should be chosen?",
+    "c": [
+      "The longest continuous carbon chain containing the OH-bearing carbon",
+      "The longest chain regardless of whether it contains the OH-bearing carbon",
+      "Any chain with the most substituents",
+      "The shortest chain containing a carbon atom"
+    ],
+    "a": 0,
+    "e": "Choose the longest continuous carbon chain that includes the carbon bonded to the principal OH group; it can turn through a junction."
+  },
+  {
+    "q": "Which statement correctly describes hydrogen bonding involving dimethyl ether and water?",
+    "c": [
+      "Dimethyl ether can donate an O–H hydrogen bond because it has an OH group",
+      "Dimethyl ether can accept a hydrogen bond from water at its oxygen",
+      "Dimethyl ether has no oxygen and cannot accept a hydrogen bond",
+      "Water cannot donate hydrogen bonds"
+    ],
+    "a": 1,
+    "e": "Dimethyl ether contains an oxygen with lone pairs, allowing it to accept a hydrogen bond from water. It has no O–H bond to donate one."
+  },
+  {
+    "q": "Which name matches CH₃CH₂CH(OH)CH(CH₂CH₃)CH₂CH₃?",
+    "c": [
+      "3-ethylhexan-4-ol",
+      "4-ethylhexan-3-ol",
+      "4-methylheptan-3-ol",
+      "4-ethylpentan-3-ol"
+    ],
+    "a": 1,
+    "e": "The longest chain containing the OH-bearing carbon has six carbons. Numbering from the nearer end gives OH at C-3 and an ethyl substituent at C-4."
+  },
+  {
+    "q": "A student says that every compound with an OH group is an alcohol. Which example challenges this claim?",
+    "c": [
+      "Ethanol: OH bonded to a saturated carbon",
+      "Propan-2-ol: OH bonded to a saturated carbon",
+      "Phenol: OH bonded directly to an aromatic ring",
+      "Pentan-1-ol: OH bonded to a saturated carbon"
+    ],
+    "a": 2,
+    "e": "Phenol has OH directly attached to an aromatic ring and is classified separately from the simple alcohols studied here."
+  },
+  {
+    "q": "Which condensed formula represents butan-2-ol?",
+    "c": [
+      "CH₃CH₂CH₂CH₂OH",
+      "CH₃CH(OH)CH₂CH₃",
+      "CH₃CH₂CH₂OH",
+      "CH₃C(OH)(CH₃)CH₃"
+    ],
+    "a": 1,
+    "e": "Butan-2-ol has a four-carbon chain with the hydroxyl group at carbon 2: CH₃CH(OH)CH₂CH₃."
+  },
+  {
+    "q": "Two similar straight-chain alcohols each have one OH group. As their chains get longer, which trend is generally expected?",
+    "c": [
+      "Water solubility generally decreases and boiling point generally increases",
+      "Water solubility and boiling point both become zero",
+      "Water solubility generally increases and boiling point generally decreases",
+      "The OH group disappears as the chain grows"
+    ],
+    "a": 0,
+    "e": "A longer hydrocarbon portion generally reduces water solubility; larger molecules also tend to have stronger dispersion forces and higher boiling points within this comparison."
+  },
+  {
+    "q": "Which statement correctly compares an alcohol and its alkoxide conjugate base?",
+    "c": [
+      "The alkoxide has gained H⁺ at oxygen",
+      "The alkoxide forms when the alcohol loses H⁺ from O–H",
+      "The alcohol and alkoxide differ only in carbon count",
+      "The alkoxide forms by removing a proton from a C–C bond"
+    ],
+    "a": 1,
+    "e": "An alcohol ROH can donate H⁺ from its O–H group, forming its alkoxide conjugate base RO⁻."
+  }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -186,7 +469,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -206,6 +489,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -214,7 +499,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -251,7 +536,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -274,7 +559,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -298,6 +583,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
