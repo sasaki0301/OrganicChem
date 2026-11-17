@@ -28,21 +28,34 @@
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
     height: 14px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     overflow: hidden;
   }
-
   .progress-bar {
     height: 100%;
     background: linear-gradient(to right, #136f63, #2b7de9);
@@ -50,41 +63,31 @@
     transition: width 0.4s ease;
   }
 
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-
+  /* Question */
   .question {
     font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
     margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
-    transition: all 0.2s ease;
+    transition: 0.2s;
   }
-
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
@@ -96,6 +99,7 @@
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -103,35 +107,32 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
     transition: 0.2s;
     margin-top: 15px;
-    display: none;
   }
-
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
-    margin-top: 20px;
+    margin-top: 12px;
   }
-
   .stars {
     font-size: 2.5em;
-    margin: 10px 0;
+    margin-top: 10px;
   }
 
   .quiz-nav {
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
     color: #174ea6;
@@ -140,12 +141,19 @@
     padding: 10px 20px;
     cursor: pointer;
     font-size: 0.95em;
+    transition: 0.2s;
   }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
   }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
@@ -153,113 +161,136 @@
 
 <div class="quiz-container">
   <h2>Lesson 2 Quiz – Properties of Alcohols</h2>
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn">Next</button>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. Which functional group is responsible for the unique properties of alcohols?",
-    c: ["Alkyl group", "Carbonyl group", "Hydroxyl group", "Carboxyl group"],
-    a: 2,
-    e: "The hydroxyl (–OH) group gives alcohols their polarity and ability to hydrogen bond."
-  },
-  {
-    q: "2. Why are alcohols polar molecules?",
-    c: [
-      "Because carbon forms four bonds",
-      "Because oxygen attracts electrons strongly",
-      "Because hydrogen atoms repel each other",
-      "Because alcohols contain double bonds"
+    "q": "In the O–H bond of ethanol, which partial charges are expected?",
+    "c": [
+      "Oxygen δ−; the O–H hydrogen δ+",
+      "Oxygen δ+; the O–H hydrogen δ−",
+      "Both atoms have full ionic charges",
+      "Both atoms must have identical electron density"
     ],
-    a: 1,
-    e: "Oxygen is highly electronegative, creating a polar O–H bond."
+    "a": 0,
+    "e": "Oxygen attracts shared electrons more strongly than hydrogen, giving oxygen partial negative and the O–H hydrogen partial positive character."
   },
   {
-    q: "3. What type of intermolecular force is strongest in alcohols?",
-    c: [
-      "London dispersion forces",
-      "Dipole–dipole forces",
-      "Hydrogen bonding",
-      "Ionic bonding"
+    "q": "What does the dotted line between ethanol and water represent?<svg style=\"display:block;width:100%;max-width:600px;height:auto;margin:12px auto\" viewBox=\"0 0 650 210\" role=\"img\" aria-labelledby=\"hbtitle hbdesc\"><title id=\"hbtitle\">Ethanol and water diagram</title><desc id=\"hbdesc\">A dotted line joins the hydrogen of an ethanol OH group and the oxygen of a water molecule; solid lines show covalent bonds.</desc><g stroke=\"#136f63\" stroke-width=\"3\" fill=\"none\"><line x1=\"190\" y1=\"94\" x2=\"225\" y2=\"94\"/><line x1=\"257\" y1=\"94\" x2=\"290\" y2=\"94\"/><line x1=\"407\" y1=\"86\" x2=\"438\" y2=\"57\"/><line x1=\"407\" y1=\"102\" x2=\"438\" y2=\"132\"/></g><line x1=\"324\" y1=\"94\" x2=\"373\" y2=\"94\" stroke=\"#b36a00\" stroke-width=\"3\" stroke-dasharray=\"5 5\"/><g font-family=\"Segoe UI,Arial\" font-size=\"25\" fill=\"#174ea6\" text-anchor=\"middle\"><text x=\"114\" y=\"102\">CH₃CH₂</text><text x=\"241\" y=\"102\">O</text><text x=\"308\" y=\"102\">H</text><text x=\"390\" y=\"102\">O</text><text x=\"452\" y=\"57\">H</text><text x=\"452\" y=\"149\">H</text></g></svg>",
+    "c": [
+      "A covalent O–H bond within ethanol",
+      "A hydrogen bond between molecules",
+      "An ionic bond between oxygen atoms",
+      "A covalent carbon–carbon bond"
     ],
-    a: 2,
-    e: "Hydrogen bonding occurs between –OH groups and is stronger than other intermolecular forces."
+    "a": 1,
+    "e": "The dotted line represents an intermolecular hydrogen bond between the ethanol O–H hydrogen and the water oxygen. Solid lines show covalent bonds."
   },
   {
-    q: "4. Compared to alkanes of similar size, alcohols have:",
-    c: [
-      "Lower boiling points",
-      "Similar boiling points",
-      "Much higher boiling points",
-      "No predictable trend"
+    "q": "Ethanol and dimethyl ether both have formula C₂H₆O. Why does ethanol have the higher normal boiling point?",
+    "c": [
+      "Ethanol has an O–H group and can donate hydrogen bonds to other ethanol molecules",
+      "Dimethyl ether has no oxygen atom",
+      "Ethanol is ionic while dimethyl ether is covalent",
+      "Dimethyl ether has no intermolecular forces"
     ],
-    a: 2,
-    e: "Hydrogen bonding greatly raises the boiling point of alcohols."
+    "a": 0,
+    "e": "Ethanol molecules can donate hydrogen bonds to one another. Pure dimethyl ether has no O–H bond to donate such bonds, although it has other intermolecular attractions."
   },
   {
-    q: "5. Which alcohol is most soluble in water?",
-    c: ["Methanol", "Butanol", "Pentanol", "Hexanol"],
-    a: 0,
-    e: "Shorter carbon chains increase solubility due to stronger hydrogen bonding with water."
-  },
-  {
-    q: "6. Why does solubility decrease as alcohol chain length increases?",
-    c: [
-      "The –OH group becomes weaker",
-      "Hydrogen bonding disappears",
-      "The nonpolar hydrocarbon portion becomes dominant",
-      "Alcohols become ionic"
+    "q": "What happens to covalent bonds within ethanol molecules during ordinary boiling?",
+    "c": [
+      "All O–H bonds break",
+      "The C–C bond breaks",
+      "The molecules remain intact while intermolecular attractions are overcome",
+      "Ethanol forms ions in the vapor"
     ],
-    a: 2,
-    e: "Long hydrocarbon chains reduce interaction with polar water molecules."
+    "a": 2,
+    "e": "Boiling separates molecules into a gas by overcoming intermolecular attractions; ordinary covalent bonds within each ethanol molecule remain intact."
   },
   {
-    q: "7. How do alcohols compare to water in terms of acidity?",
-    c: [
-      "Alcohols are much stronger acids",
-      "Alcohols are slightly less acidic",
-      "Alcohols are neutral",
-      "Alcohols are strong bases"
+    "q": "At the same temperature, which is more soluble in water: ethanol or pentan-1-ol?",
+    "c": [
+      "Pentan-1-ol",
+      "Ethanol",
+      "They are necessarily equally miscible",
+      "Neither can interact with water"
     ],
-    a: 1,
-    e: "Alkyl groups donate electron density, making proton loss less favorable than in water."
+    "a": 1,
+    "e": "Both have an OH group, but pentan-1-ol has a larger hydrocarbon portion. Ethanol is miscible with water, whereas pentan-1-ol is less soluble."
   },
   {
-    q: "8. Which bond allows alcohols to donate a proton?",
-    c: ["C–C bond", "C–H bond", "O–H bond", "C–O bond"],
-    a: 2,
-    e: "The O–H bond can release a proton, giving alcohols weak acidic character."
-  },
-  {
-    q: "9. Which statement best explains why alkanes are insoluble in water?",
-    c: [
-      "They have low boiling points",
-      "They lack hydrogen bonding",
-      "They contain oxygen",
-      "They are acidic"
+    "q": "For similar straight-chain alcohols with one OH group, what generally happens to water solubility as carbon-chain length increases?",
+    "c": [
+      "It generally decreases",
+      "It always increases",
+      "It becomes exactly zero",
+      "It is fixed by the OH group alone"
     ],
-    a: 1,
-    e: "Alkanes are nonpolar and cannot form hydrogen bonds with water."
+    "a": 0,
+    "e": "As the hydrocarbon portion grows, the balance of interactions changes and water solubility generally decreases. Temperature and molecular structure also matter."
   },
   {
-    q: "10. Which property of alcohols explains their use as solvents?",
-    c: [
-      "High density",
-      "Ability to form hydrogen bonds with many substances",
-      "Low melting points",
-      "Strong acidity"
+    "q": "What does it mean when ethanol and water are described as miscible?",
+    "c": [
+      "Ethanol can dissolve only at one fixed ratio",
+      "The liquids mix in all proportions",
+      "The liquids form a new covalent compound",
+      "Both liquids must have the same boiling point"
     ],
-    a: 1,
-    e: "Alcohols dissolve both polar and some nonpolar substances due to their dual nature."
+    "a": 1,
+    "e": "Miscible liquids mix in all proportions. A substance can be soluble to a limited extent without being miscible."
+  },
+  {
+    "q": "What is the conjugate base formed when ethanol loses H⁺ from its OH group?",
+    "c": [
+      "CH₃CH₂OH₂⁺",
+      "CH₃CH₃",
+      "CH₃CH₂O⁻",
+      "CH₃COO⁻"
+    ],
+    "a": 2,
+    "e": "Removing H⁺ from the O–H group of ethanol gives ethoxide, CH₃CH₂O⁻."
+  },
+  {
+    "q": "Which statement best describes the acidity of simple alcohols?",
+    "c": [
+      "They are strong acids that completely ionize in water",
+      "They can never donate a proton",
+      "They are very weak acids, broadly comparable to water; acidity depends on structure and solvent",
+      "They are always much stronger acids than carboxylic acids"
+    ],
+    "a": 2,
+    "e": "Simple alcohols are very weak acids. Their acidities are broadly comparable to water and depend on the particular molecule and solvent."
+  },
+  {
+    "q": "Which statement correctly describes hydrogen bonding involving dimethyl ether and water?",
+    "c": [
+      "Dimethyl ether can donate an O–H hydrogen bond because it has an OH group",
+      "Dimethyl ether can accept a hydrogen bond from water at its oxygen",
+      "Dimethyl ether has no oxygen and cannot accept a hydrogen bond",
+      "Water cannot donate hydrogen bonds"
+    ],
+    "a": 1,
+    "e": "Dimethyl ether contains an oxygen with lone pairs, allowing it to accept a hydrogen bond from water. It has no O–H bond to donate one."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -273,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -293,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -301,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -338,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -361,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -385,7 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
-</script>
 
+</script>
 </body>
 </html>
