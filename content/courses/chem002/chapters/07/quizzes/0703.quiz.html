@@ -3,186 +3,514 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 7 – Comprehensive Assessment: Aromatic Compounds & Phenols</title>
+<title>Chapter 7 – Comprehensive Assessment: Aromatic Compounds and Phenols</title>
 
 <style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e8f9f1, #f7faff);
-  margin: 0;
-  padding: 40px 20px;
-  color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 
-.quiz-container {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 40px 50px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-  width: 95%;
-  max-width: 900px;
-  text-align: center;
-}
+  .quiz-container {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    max-width: 850px;
+    text-align: center;
+  }
 
-h2 {
-  color: #136f63;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-}
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
+  h2 {
+    color: #136f63;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
 
-.progress-wrapper {
-  background: #e9f5ef;
-  border-radius: 8px;
-  height: 14px;
-  width: 100%;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-.progress-text {
-  text-align: right;
-  font-size: 0.95em;
-  color: #174ea6;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-wrapper {
+    background: #e9f5ef;
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
 
-.question {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-}
+  /* Question */
+  .question {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .choice {
+    background: #e8ecf8;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: 0.2s;
+  }
+  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
 
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-  transition: all 0.2s ease;
-}
-.choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-.choice.selected { background: #174ea6; color: #fff; }
+  /* Buttons */
+  .next-btn {
+    background: #136f63;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 15px;
+  }
+  .next-btn:hover { background: #0f5b52; }
 
-.explanation {
-  background: #eef3ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 10px;
-  display: none;
-  text-align: left;
-}
+  /* Result */
+  .result {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #174ea6;
+    margin-top: 12px;
+  }
+  .stars {
+    font-size: 2.5em;
+    margin-top: 10px;
+  }
 
-.next-btn {
-  background: #136f63;
-  color: #fff;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-size: 1.05em;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 15px;
-}
-.next-btn:hover { background: #0f5b52; }
+  .quiz-nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .quiz-btn {
+    background: #e8ecf8;
+    color: #174ea6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-.result {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 20px;
-}
-.stars {
-  font-size: 2.5em;
-  margin-top: 10px;
-}
-
-.quiz-nav {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.quiz-btn {
-  background: #e8ecf8;
-  color: #174ea6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-.quiz-btn.primary {
-  background: #136f63;
-  color: #fff;
-}
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
+  }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
+
 <div class="quiz-container">
-  <h2>Chapter 7 Comprehensive Assessment</h2>
-  <div class="progress-text" id="progressText"></div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <h2>Chapter 7 Comprehensive Assessment – Aromatic Compounds and Phenols</h2>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
+
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
-{q:"1. Which feature gives benzene its unusual stability?",c:["High molecular mass","Delocalized π electrons","Presence of triple bonds","Strong hydrogen bonding"],a:1,e:"Benzene is stabilized by delocalized π electrons spread evenly around the ring."},
-{q:"2. How many π electrons are present in benzene?",c:["4","6","8","10"],a:1,e:"Benzene has six π electrons, satisfying aromatic stability requirements."},
-{q:"3. Which compound is aromatic?",c:["Cyclohexane","Cyclohexene","Benzene","Hex-1,3-diene"],a:2,e:"Benzene has a planar ring with delocalized π electrons, making it aromatic."},
-{q:"4. What does the term aromatic originally refer to?",c:["Sweet smell","Presence of oxygen","Ring shape","Acidity"],a:0,e:"The term aromatic originally described compounds with noticeable odors."},
-{q:"5. Which condition is NOT required for aromaticity?",c:["Planar structure","Conjugated π system","4n+2 π electrons","High boiling point"],a:3,e:"Boiling point is unrelated to aromaticity."},
-
-{q:"6. What is the parent name when a benzene ring has a methyl substituent?",c:["Phenyl","Toluene","Methylbenzene","Benzyl"],a:2,e:"The systematic IUPAC name is methylbenzene (toluene is a retained name)."},
-{q:"7. What does para- indicate in a disubstituted benzene?",c:["1,2- positions","1,3- positions","1,4- positions","Adjacent carbons"],a:2,e:"Para indicates substituents at the 1,4-positions."},
-{q:"8. Which numbering gives the lowest locants?",c:["1,4","2,5","3,6","4,1"],a:0,e:"1,4 gives the lowest possible set of locants."},
-{q:"9. Which name follows IUPAC rules?",c:["p-bromotoluene","para-bromotoluene","4-bromotoluene","meta-bromotoluene"],a:2,e:"Numerical locants are preferred in IUPAC nomenclature."},
-{q:"10. When two substituents are present, which rule is applied first?",c:["Alphabetical order","Lowest locant rule","Molecular mass","Common name"],a:1,e:"The lowest locant rule determines numbering before alphabetical order."},
-
-{q:"11. What defines a phenol?",c:["An –OH on any carbon","An –OH on a benzene ring","An –OH on an alkyl group","Any aromatic compound"],a:1,e:"Phenols have an –OH group directly attached to a benzene ring."},
-{q:"12. Why is phenol more acidic than ethanol?",c:["Higher molar mass","Hydrogen bonding","Resonance stabilization of conjugate base","Presence of a ring"],a:2,e:"The phenoxide ion is stabilized by resonance."},
-{q:"13. Which ion is formed when phenol loses a proton?",c:["Phenyl ion","Phenoxide ion","Benzylium ion","Hydroxide ion"],a:1,e:"Deprotonation of phenol forms the phenoxide ion."},
-{q:"14. Which group has naming priority in aromatic compounds?",c:["Methyl","Chloro","Hydroxyl","Nitro"],a:2,e:"The hydroxyl group defines the parent name phenol."},
-{q:"15. Which name is correct?",c:["Hydroxybenzene","Phenol","Benzyl alcohol","Benzenol"],a:1,e:"Phenol is the accepted parent name."},
-
-{q:"16. What happens to electrons in aromatic rings?",c:["They remain localized","They oscillate rapidly","They are delocalized","They form σ bonds"],a:2,e:"π electrons are delocalized over the ring."},
-{q:"17. Which structure best represents benzene?",c:["Alternating single and double bonds","All single bonds","A resonance hybrid","Triple bonds"],a:2,e:"Benzene is best represented as a resonance hybrid."},
-{q:"18. What effect does an –OH group have on benzene?",c:["Makes it non-aromatic","Increases acidity","Destroys delocalization","Adds π electrons"],a:1,e:"The –OH group increases acidity via resonance effects."},
-{q:"19. Which substituent donates electron density to the ring?",c:["Nitro","Chloro","Hydroxyl","Cyano"],a:2,e:"The –OH group donates electron density through resonance."},
-{q:"20. Which compound is most acidic?",c:["Benzene","Phenol","Cyclohexanol","Toluene"],a:1,e:"Phenol is more acidic due to resonance stabilization."},
-
-{q:"21. What is the relationship between ortho and para?",c:["Same position","Adjacent","Opposite positions","Meta related"],a:2,e:"Para substituents are opposite each other on the ring."},
-{q:"22. What must remain unchanged in resonance structures?",c:["Electrons","Charges","Atoms","Bond order"],a:2,e:"Atoms never move in resonance structures."},
-{q:"23. Which statement about phenols is true?",c:["They are neutral in water","They are strong acids","They are weak acids","They do not ionize"],a:2,e:"Phenols are weak acids."},
-{q:"24. What does the prefix phenyl- indicate?",c:["Benzene as parent","Benzene as substituent","Alcohol group","Acid group"],a:1,e:"Phenyl- refers to a benzene ring acting as a substituent."},
-{q:"25. Which compound contains a phenyl group?",c:["Phenol","Toluene","Ethylbenzene","Benzenol"],a:2,e:"Ethylbenzene contains a phenyl substituent."},
-
-{q:"26. Which structure would show resonance?",c:["Cyclohexane","Phenoxide ion","Methane","Ethane"],a:1,e:"The phenoxide ion has delocalized charge."},
-{q:"27. What term describes equal bond lengths in benzene?",c:["Hyperconjugation","Resonance","Isomerism","Hybridization"],a:1,e:"Resonance explains equal bond lengths."},
-{q:"28. Why is benzene resistant to addition reactions?",c:["High polarity","Ring strain","Resonance stabilization","Low density"],a:2,e:"Addition would disrupt aromatic stability."},
-{q:"29. Which compound is NOT aromatic?",c:["Benzene","Phenol","Cyclohexane","Toluene"],a:2,e:"Cyclohexane lacks a conjugated π system."},
-{q:"30. What is the main learning focus of this chapter?",c:["Alkane reactions","Aromatic stability and naming","Alkene isomerism","Carboxylic acids"],a:1,e:"Chapter 7 focuses on aromatic compounds and phenols."}
+  {
+    "q": "What is the molecular formula of benzene?",
+    "c": [
+      "C₆H₆",
+      "C₆H₁₂",
+      "C₆H₁₄",
+      "C₆H₅OH"
+    ],
+    "a": 0,
+    "e": "Benzene contains six carbon atoms and six hydrogen atoms: C₆H₆."
+  },
+  {
+    "q": "How many π electrons are delocalized in benzene?",
+    "c": [
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "a": 2,
+    "e": "Benzene has six delocalized π electrons in its ring system."
+  },
+  {
+    "q": "Which description best represents the carbon–carbon bonds in benzene?",
+    "c": [
+      "Three fixed double bonds alternating with three single bonds",
+      "Six equivalent bonds in a resonance hybrid",
+      "Six triple bonds",
+      "Six independent single bonds"
+    ],
+    "a": 1,
+    "e": "The actual structure is a resonance hybrid with equivalent C–C bonds, rather than fixed alternating bonds."
+  },
+  {
+    "q": "What do the two Kekulé drawings of benzene represent?",
+    "c": [
+      "Two compounds in rapid equilibrium",
+      "Different valid resonance contributors to one molecule",
+      "Aromatic and nonaromatic isomers",
+      "Different arrangements of carbon atoms"
+    ],
+    "a": 1,
+    "e": "Kekulé structures differ in electron placement; the molecule is a resonance hybrid."
+  },
+  {
+    "q": "Which compound is aromatic?",
+    "c": [
+      "Cyclohexane",
+      "Benzene",
+      "Hexane",
+      "Cyclohexene"
+    ],
+    "a": 1,
+    "e": "Benzene has a planar, continuously conjugated ring with six π electrons."
+  },
+  {
+    "q": "Which statement about aromatic compounds is accurate?",
+    "c": [
+      "All must contain benzene rings",
+      "Some aromatic rings contain nitrogen or other heteroatoms",
+      "All have a strong odor",
+      "Every ring-shaped compound is aromatic"
+    ],
+    "a": 1,
+    "e": "Aromaticity is not limited to benzene rings; some aromatic systems contain heteroatoms."
+  },
+  {
+    "q": "What is a typical reaction type of benzene under suitable conditions?",
+    "c": [
+      "Electrophilic substitution",
+      "Uncatalyzed addition of water",
+      "Complete conversion into an alkane in water",
+      "Spontaneous ionic dissociation"
+    ],
+    "a": 0,
+    "e": "Benzene often undergoes electrophilic substitution, which restores its aromatic ring after substitution."
+  },
+  {
+    "q": "What does the formula C₆H₅– represent as a substituent?",
+    "c": [
+      "Benzyl",
+      "Phenyl",
+      "Methyl",
+      "Ethyl"
+    ],
+    "a": 1,
+    "e": "Phenyl is C₆H₅–, attached through a ring carbon."
+  },
+  {
+    "q": "Which formula represents a benzyl group?",
+    "c": [
+      "C₆H₅–",
+      "C₆H₅CH₂–",
+      "CH₃–",
+      "CH₃CH₂–"
+    ],
+    "a": 1,
+    "e": "Benzyl is C₆H₅CH₂– and attaches to the rest of a structure through CH₂."
+  },
+  {
+    "q": "Which formula is benzyl chloride?",
+    "c": [
+      "C₆H₅Cl",
+      "C₆H₅CH₂Cl",
+      "C₆H₅OH",
+      "C₆H₅CH₃"
+    ],
+    "a": 1,
+    "e": "In benzyl chloride, Cl is attached to a CH₂ group; chlorobenzene has Cl directly bonded to the ring."
+  },
+  {
+    "q": "What is the systematic name for C₆H₅CH₃?",
+    "c": [
+      "Ethylbenzene",
+      "Methylbenzene",
+      "Benzyl alcohol",
+      "Phenol"
+    ],
+    "a": 1,
+    "e": "A methyl group attached to benzene gives methylbenzene, also called toluene."
+  },
+  {
+    "q": "Name the aromatic compound represented by C₆H₅CH₂CH₃.",
+    "c": [
+      "Methylbenzene",
+      "Ethylbenzene",
+      "Phenol",
+      "Chlorobenzene"
+    ],
+    "a": 1,
+    "e": "The group attached to the ring is ethyl (–CH₂CH₃), so the name is ethylbenzene."
+  },
+  {
+    "q": "Which formula represents chlorobenzene?",
+    "c": [
+      "C₆H₅CH₂Cl",
+      "C₆H₅Cl",
+      "C₆H₅OH",
+      "C₆H₅CH₃"
+    ],
+    "a": 1,
+    "e": "Chlorobenzene is C₆H₅Cl; the chlorine is directly attached to the ring."
+  },
+  {
+    "q": "What is the name of this structure?<svg viewBox=\"0 0 320 245\" role=\"img\" aria-label=\"A benzene ring bearing bromine and a methyl group separated by one ring carbon.\" style=\"display:block;width:100%;max-width:300px;height:auto;margin:12px auto\"><line x1=\"160.0\" y1=\"55.0\" x2=\"216.3\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"87.5\" x2=\"216.3\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"152.5\" x2=\"160.0\" y2=\"185.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"185.0\" x2=\"103.7\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"152.5\" x2=\"103.7\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"87.5\" x2=\"160.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><circle cx=\"160\" cy=\"120\" r=\"38\" fill=\"none\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"55.0\" x2=\"160.0\" y2=\"36.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"160.0\" y=\"25.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">Br</text><line x1=\"216.3\" y1=\"152.5\" x2=\"232.7\" y2=\"162.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"246.6\" y=\"175.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg>",
+    "c": [
+      "1-bromo-2-methylbenzene",
+      "1-bromo-3-methylbenzene",
+      "1-bromo-4-methylbenzene",
+      "1-bromo-3-ethylbenzene"
+    ],
+    "a": 1,
+    "e": "The bromo and methyl groups are in a 1,3 relationship. Bromo receives locant 1 in the alphabetical tie."
+  },
+  {
+    "q": "What relative positions does para describe on a disubstituted benzene ring?",
+    "c": [
+      "1,2",
+      "1,3",
+      "1,4",
+      "1,1"
+    ],
+    "a": 2,
+    "e": "Para indicates 1,4 positions; ortho is 1,2 and meta is 1,3."
+  },
+  {
+    "q": "Which feature defines a phenol?",
+    "c": [
+      "–OH directly bonded to an aromatic ring carbon",
+      "–OH on any saturated carbon",
+      "A benzene ring with a methyl group",
+      "A carbonyl group in an acyclic chain"
+    ],
+    "a": 0,
+    "e": "A phenol has a hydroxyl group directly attached to an aromatic ring."
+  },
+  {
+    "q": "Which compound is benzyl alcohol rather than a phenol?",
+    "c": [
+      "C₆H₅OH",
+      "C₆H₅CH₂OH",
+      "C₆H₄(OH)₂",
+      "4-methylphenol"
+    ],
+    "a": 1,
+    "e": "In C₆H₅CH₂OH, the hydroxyl group is on the CH₂ side chain, not directly on the ring."
+  },
+  {
+    "q": "What ion forms when phenol donates its O–H proton?",
+    "c": [
+      "Phenoxide",
+      "Phenyl cation",
+      "Benzyl cation",
+      "Hydronium"
+    ],
+    "a": 0,
+    "e": "Loss of H⁺ from phenol produces the phenoxide ion, C₆H₅O⁻."
+  },
+  {
+    "q": "Why is phenol generally more acidic than ethanol?",
+    "c": [
+      "Its conjugate base is resonance stabilized",
+      "Phenol is an ionic salt",
+      "Ethanol has no O–H bond",
+      "Phenol has a higher molar mass"
+    ],
+    "a": 0,
+    "e": "The negative charge in phenoxide is delocalized by resonance; ethoxide lacks comparable resonance stabilization."
+  },
+  {
+    "q": "What is the name of this substituted phenol?<svg viewBox=\"0 0 320 245\" role=\"img\" aria-label=\"A benzene ring bearing adjacent hydroxyl and chlorine groups.\" style=\"display:block;width:100%;max-width:300px;height:auto;margin:12px auto\"><line x1=\"160.0\" y1=\"55.0\" x2=\"216.3\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"87.5\" x2=\"216.3\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"152.5\" x2=\"160.0\" y2=\"185.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"185.0\" x2=\"103.7\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"152.5\" x2=\"103.7\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"87.5\" x2=\"160.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><circle cx=\"160\" cy=\"120\" r=\"38\" fill=\"none\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"55.0\" x2=\"160.0\" y2=\"36.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"160.0\" y=\"25.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">OH</text><line x1=\"216.3\" y1=\"87.5\" x2=\"232.7\" y2=\"78.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"246.6\" y=\"75.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">Cl</text></svg>",
+    "c": [
+      "2-chlorophenol",
+      "3-chlorophenol",
+      "4-chlorophenol",
+      "benzyl chloride"
+    ],
+    "a": 0,
+    "e": "The –OH-bearing carbon is carbon 1; the adjacent chlorine is at carbon 2."
+  },
+  {
+    "q": "What is the name of this substituted phenol?<svg viewBox=\"0 0 320 245\" role=\"img\" aria-label=\"A benzene ring bearing hydroxyl and methyl groups separated by one ring carbon.\" style=\"display:block;width:100%;max-width:300px;height:auto;margin:12px auto\"><line x1=\"160.0\" y1=\"55.0\" x2=\"216.3\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"87.5\" x2=\"216.3\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"152.5\" x2=\"160.0\" y2=\"185.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"185.0\" x2=\"103.7\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"152.5\" x2=\"103.7\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"87.5\" x2=\"160.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><circle cx=\"160\" cy=\"120\" r=\"38\" fill=\"none\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"55.0\" x2=\"160.0\" y2=\"36.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"160.0\" y=\"25.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">OH</text><line x1=\"216.3\" y1=\"152.5\" x2=\"232.7\" y2=\"162.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"246.6\" y=\"175.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">CH₃</text></svg>",
+    "c": [
+      "2-methylphenol",
+      "3-methylphenol",
+      "4-methylphenol",
+      "ethylphenol"
+    ],
+    "a": 1,
+    "e": "Number from the hydroxyl-bearing carbon. The methyl substituent is at carbon 3."
+  },
+  {
+    "q": "What is another name for 4-methylphenol?",
+    "c": [
+      "o-cresol",
+      "m-cresol",
+      "p-cresol",
+      "catechol"
+    ],
+    "a": 2,
+    "e": "4-methylphenol has a 1,4 or para relationship and is called p-cresol."
+  },
+  {
+    "q": "A phenol has nitro at carbon 2 and methyl at carbon 4. What is its name?",
+    "c": [
+      "2-nitro-4-methylphenol",
+      "4-methyl-2-nitrophenol",
+      "2-methyl-4-nitrophenol",
+      "4-nitro-2-methylphenol"
+    ],
+    "a": 1,
+    "e": "The –OH carbon is 1; write substituents alphabetically: methyl before nitro."
+  },
+  {
+    "q": "What is a benzene ring with two directly attached hydroxyl groups called?",
+    "c": [
+      "Benzenediol",
+      "Benzyl alcohol",
+      "Cyclohexane",
+      "Methoxybenzene"
+    ],
+    "a": 0,
+    "e": "Benzenediols, also called dihydroxybenzenes, have two hydroxyl groups directly bonded to a benzene ring."
+  },
+  {
+    "q": "Which common name corresponds to benzene-1,2-diol?",
+    "c": [
+      "Catechol",
+      "Resorcinol",
+      "Hydroquinone",
+      "Toluene"
+    ],
+    "a": 0,
+    "e": "Catechol is benzene-1,2-diol; its hydroxyl groups are adjacent (ortho)."
+  },
+  {
+    "q": "Which common name corresponds to benzene-1,3-diol?",
+    "c": [
+      "Catechol",
+      "Resorcinol",
+      "Hydroquinone",
+      "Phenol"
+    ],
+    "a": 1,
+    "e": "Resorcinol is benzene-1,3-diol, with hydroxyl groups in a meta relationship."
+  },
+  {
+    "q": "Which common name corresponds to benzene-1,4-diol?",
+    "c": [
+      "Catechol",
+      "Resorcinol",
+      "Hydroquinone",
+      "Benzyl alcohol"
+    ],
+    "a": 2,
+    "e": "Hydroquinone is benzene-1,4-diol, with hydroxyl groups in a para relationship."
+  },
+  {
+    "q": "Which benzenediol is represented?<svg viewBox=\"0 0 320 245\" role=\"img\" aria-label=\"An aromatic ring bearing two hydroxyl groups on opposite ring carbons.\" style=\"display:block;width:100%;max-width:300px;height:auto;margin:12px auto\"><line x1=\"160.0\" y1=\"55.0\" x2=\"216.3\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"87.5\" x2=\"216.3\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"216.3\" y1=\"152.5\" x2=\"160.0\" y2=\"185.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"185.0\" x2=\"103.7\" y2=\"152.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"152.5\" x2=\"103.7\" y2=\"87.5\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"103.7\" y1=\"87.5\" x2=\"160.0\" y2=\"55.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><circle cx=\"160\" cy=\"120\" r=\"38\" fill=\"none\" stroke=\"#136f63\" stroke-width=\"2.5\"/><line x1=\"160.0\" y1=\"55.0\" x2=\"160.0\" y2=\"36.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"160.0\" y=\"25.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">OH</text><line x1=\"160.0\" y1=\"185.0\" x2=\"160.0\" y2=\"204.0\" stroke=\"#136f63\" stroke-width=\"2.5\"/><text x=\"160.0\" y=\"225.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"600\" fill=\"#174ea6\">OH</text></svg>",
+    "c": [
+      "Benzene-1,2-diol",
+      "Benzene-1,3-diol",
+      "Benzene-1,4-diol",
+      "Benzene-1,2,3-triol"
+    ],
+    "a": 2,
+    "e": "The hydroxyl groups are opposite each other, giving benzene-1,4-diol (hydroquinone)."
+  },
+  {
+    "q": "Which statement describes resonance structures of phenoxide?",
+    "c": [
+      "They change the arrangement of atoms",
+      "They differ in electron placement while maintaining atom connectivity",
+      "They are separate compounds in equilibrium",
+      "They always eliminate the negative charge"
+    ],
+    "a": 1,
+    "e": "Resonance contributors maintain the same atom connectivity and overall charge while depicting different electron distributions."
+  },
+  {
+    "q": "A student calls C₆H₅CH₂OH a phenol because it contains a ring and an –OH group. What correction is needed?",
+    "c": [
+      "It is benzyl alcohol because –OH is attached to the side-chain carbon",
+      "It is phenol because all aromatic alcohols are phenols",
+      "It is benzene because it has six ring carbons",
+      "It is a benzenediol because it contains oxygen"
+    ],
+    "a": 0,
+    "e": "The –OH must attach directly to the aromatic ring for the compound to be a phenol; here it is attached to CH₂."
+  }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -196,7 +524,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -216,6 +544,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -224,7 +554,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -261,7 +591,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -284,7 +614,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -308,6 +638,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
