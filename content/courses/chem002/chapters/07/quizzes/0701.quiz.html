@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 7 – Lesson 1 Quiz: Aromatic Compounds</title>
+<title>Chapter 7 – Lesson 1 Quiz: Aromatic Compounds and Naming</title>
 
 <style>
   body {
@@ -28,12 +28,26 @@
     text-align: center;
   }
 
+  * { box-sizing: border-box; }
+  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
+  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  .choice:disabled { opacity: 1; cursor: default; }
+  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
   h2 {
     color: #136f63;
     margin-bottom: 25px;
     font-size: 1.8em;
   }
 
+  /* Progress */
+  .progress-text {
+    text-align: right;
+    font-size: 0.95em;
+    color: #174ea6;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
   .progress-wrapper {
     background: #e9f5ef;
     border-radius: 8px;
@@ -42,7 +56,6 @@
     margin-bottom: 25px;
     overflow: hidden;
   }
-
   .progress-bar {
     height: 100%;
     background: linear-gradient(to right, #136f63, #2b7de9);
@@ -50,41 +63,31 @@
     transition: width 0.4s ease;
   }
 
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
+  /* Question */
   .question {
     font-size: 1.3em;
     font-weight: 600;
     color: #174ea6;
     margin-bottom: 20px;
   }
-
   .choices {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 25px;
   }
-
   .choice {
     background: #e8ecf8;
     border: none;
     border-radius: 10px;
     padding: 14px 18px;
-    cursor: pointer;
     text-align: left;
+    cursor: pointer;
     font-size: 1.05em;
-    transition: all 0.2s ease;
+    transition: 0.2s;
   }
-
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; }
+  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
   .explanation {
     background: #eef3ff;
@@ -96,6 +99,7 @@
     font-size: 1.05em;
   }
 
+  /* Buttons */
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -103,20 +107,20 @@
     padding: 12px 26px;
     border-radius: 10px;
     font-size: 1.05em;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
     margin-top: 15px;
   }
-
   .next-btn:hover { background: #0f5b52; }
 
+  /* Result */
   .result {
     font-size: 1.4em;
     font-weight: bold;
     color: #174ea6;
-    margin-top: 20px;
+    margin-top: 12px;
   }
-
   .stars {
     font-size: 2.5em;
     margin-top: 10px;
@@ -126,125 +130,167 @@
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-
   .quiz-btn {
     background: #e8ecf8;
+    color: #174ea6;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
     cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
   }
+  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
+  .quiz-btn.primary { background: #136f63; color: #fff; }
+  .quiz-btn.primary:hover { background: #0f5b52; }
 
-  .quiz-btn.primary {
-    background: #136f63;
-    color: #fff;
+  @media(max-width:600px){
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.15em; }
+    .stars { font-size: 2em; }
   }
+.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
+.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
 </style>
 </head>
 
 <body>
-<div class="quiz-container">
-  <h2>Lesson 1 Quiz – Aromatic Compounds & Naming</h2>
 
-  <div class="progress-text" id="progressText"></div>
-  <div class="progress-wrapper">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+<div class="quiz-container">
+  <h2>Lesson 1 Quiz – Aromatic Compounds and Naming</h2>
+
+  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
+  <div id="progressText" class="progress-text">Question 1 of 10</div>
+  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
 
   <div id="quizBox"></div>
   <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
 </div>
 
 <script>
+/* ============================
+     QUIZ DATA
+============================= */
+
 const quizData = [
   {
-    q: "1. Which feature is essential for a compound to be classified as aromatic?",
-    c: [
-      "Presence of any ring structure",
-      "High reactivity with bromine",
-      "A benzene ring or similar delocalized system",
-      "Containing only carbon and hydrogen"
+    "q": "What is the molecular formula of benzene?",
+    "c": [
+      "C₆H₆",
+      "C₆H₁₂",
+      "C₆H₁₄",
+      "C₆H₅OH"
     ],
-    a: 2,
-    e: "Aromatic compounds contain a benzene ring or a similar system with delocalized π electrons, giving unusual stability."
+    "a": 0,
+    "e": "Benzene is a six-carbon aromatic hydrocarbon with the formula C₆H₆."
   },
   {
-    q: "2. Which molecular formula represents benzene?",
-    c: ["C6H14", "C6H12", "C6H6", "C5H6"],
-    a: 2,
-    e: "Benzene has the molecular formula C₆H₆, despite appearing unsaturated."
-  },
-  {
-    q: "3. Why does benzene undergo substitution reactions rather than addition reactions?",
-    c: [
-      "It contains no double bonds",
-      "Addition would destroy its delocalized electron system",
-      "It reacts too slowly with reagents",
-      "It is already fully saturated"
+    "q": "How are the carbon–carbon bonds in benzene best described?",
+    "c": [
+      "Three permanently localized double bonds and three single bonds",
+      "Six equivalent bonds in a resonance hybrid",
+      "Six ordinary carbon–carbon single bonds",
+      "Three triple bonds"
     ],
-    a: 1,
-    e: "Addition reactions would break the aromatic system, so benzene prefers substitution to maintain stability."
+    "a": 1,
+    "e": "The π electrons are delocalized around the ring, so the six carbon–carbon bonds are equivalent. A Kekulé structure is a contributor, not the actual alternating-bond arrangement."
   },
   {
-    q: "4. What is the correct name for a benzene ring acting as a substituent?",
-    c: ["Benzyl", "Phenyl", "Alkyl", "Cyclohexyl"],
-    a: 1,
-    e: "A benzene ring directly attached to another structure is called a phenyl group."
-  },
-  {
-    q: "5. Which name correctly describes C₆H₅–CH₂–?",
-    c: ["Phenyl", "Benzyl", "Ethylbenzene", "Toluene"],
-    a: 1,
-    e: "C₆H₅–CH₂– is the benzyl group; the CH₂ separates the ring from the rest of the molecule."
-  },
-  {
-    q: "6. What is the correct IUPAC name for benzene with one chlorine substituent?",
-    c: ["Chlorocyclohexane", "Chlorophenyl", "Chlorobenzene", "Benzyl chloride"],
-    a: 2,
-    e: "A single chlorine attached to benzene is named chlorobenzene."
-  },
-  {
-    q: "7. What best explains why all C–C bonds in benzene are equal in length?",
-    c: [
-      "Benzene contains alternating single and double bonds",
-      "Carbon atoms are sp³ hybridized",
-      "π electrons are delocalized around the ring",
-      "Hydrogen atoms stabilize the ring"
+    "q": "Which statement about aromatic compounds is correct?",
+    "c": [
+      "Every aromatic compound must contain a benzene ring",
+      "Some aromatic compounds contain heteroatoms in their rings",
+      "Aromatic compounds are identified only by their smell",
+      "All cyclic compounds are aromatic"
     ],
-    a: 2,
-    e: "Delocalization spreads π electrons evenly, making all C–C bonds identical."
+    "a": 1,
+    "e": "Some aromatic rings contain atoms other than carbon, such as nitrogen. A benzene ring is not required in every aromatic compound."
   },
   {
-    q: "8. Which compound is correctly named using benzene as the parent?",
-    c: ["Methylcyclohexane", "Ethylphenyl", "Ethylbenzene", "Benzylmethane"],
-    a: 2,
-    e: "Ethylbenzene correctly uses benzene as the parent with an ethyl substituent."
-  },
-  {
-    q: "9. What does the term 'aromatic' refer to in organic chemistry?",
-    c: [
-      "Pleasant odor",
-      "High reactivity",
-      "Special electronic stability",
-      "Presence of oxygen"
+    "q": "Which formula represents a phenyl group attached through a ring carbon?",
+    "c": [
+      "C₆H₅–",
+      "C₆H₅CH₂–",
+      "CH₃CH₂–",
+      "CH₃–"
     ],
-    a: 2,
-    e: "Aromaticity refers to special electronic stability due to delocalized electrons, not smell."
+    "a": 0,
+    "e": "Phenyl is C₆H₅–. It is a benzene-derived substituent attached directly through a ring carbon."
   },
   {
-    q: "10. Which statement about aromatic compounds is TRUE?",
-    c: [
-      "They behave like alkenes in reactions",
-      "They easily undergo addition reactions",
-      "They are less stable than alkenes",
-      "They have delocalized π electrons"
+    "q": "Which condensed formula represents benzyl chloride?",
+    "c": [
+      "C₆H₅Cl",
+      "C₆H₅CH₂Cl",
+      "C₆H₅CH₃",
+      "C₆H₆"
     ],
-    a: 3,
-    e: "Aromatic compounds are stabilized by delocalized π electrons across the ring."
+    "a": 1,
+    "e": "In benzyl chloride, C₆H₅CH₂Cl, chlorine is attached to CH₂; in chlorobenzene, C₆H₅Cl, chlorine is attached directly to the ring."
+  },
+  {
+    "q": "Name the compound shown in this structural formula.<div style=\"margin:12px auto;max-width:330px\"><svg viewBox=\"0 0 360 270\" role=\"img\" aria-labelledby=\"s3t s3d\"><title id=\"s3t\">Structural Kekulé formula</title><desc id=\"s3d\">A six-carbon ring with methyl at a ring vertex.</desc><line x1=\"194.7\" y1=\"71.5\" x2=\"227.6\" y2=\"90.5\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"193.0\" y1=\"78.6\" x2=\"222.4\" y2=\"95.6\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"242.4\" y1=\"116.0\" x2=\"242.4\" y2=\"154.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"227.6\" y1=\"179.5\" x2=\"194.7\" y2=\"198.5\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"222.4\" y1=\"174.4\" x2=\"193.0\" y2=\"191.4\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"165.3\" y1=\"198.5\" x2=\"132.4\" y2=\"179.5\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"117.6\" y1=\"154.0\" x2=\"117.6\" y2=\"116.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"124.6\" y1=\"152.0\" x2=\"124.6\" y2=\"118.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"132.4\" y1=\"90.5\" x2=\"165.3\" y2=\"71.5\" stroke=\"#136f63\" stroke-width=\"2.7\"/><text x=\"180.0\" y=\"69.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">C</text><text x=\"242.4\" y=\"105.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"242.4\" y=\"177.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"180.0\" y=\"213.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"117.6\" y=\"177.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><text x=\"117.6\" y=\"105.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH</text><line x1=\"180.0\" y1=\"46.0\" x2=\"180.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><text x=\"180.0\" y=\"26.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">CH₃</text></svg></div>",
+    "c": [
+      "Ethylbenzene",
+      "Methylbenzene",
+      "Chlorobenzene",
+      "Benzene"
+    ],
+    "a": 1,
+    "e": "The ring bears one methyl group (–CH₃), so the name is methylbenzene, also called toluene."
+  },
+  {
+    "q": "Name the compound shown in this skeletal formula.<div style=\"margin:12px auto;max-width:330px\"><svg viewBox=\"0 0 360 270\" role=\"img\" aria-labelledby=\"s6t s6d\"><title id=\"s6t\">Skeletal aromatic formula</title><desc id=\"s6d\">A six-carbon ring with chloro at a ring vertex.</desc><line x1=\"180.0\" y1=\"63.0\" x2=\"242.4\" y2=\"99.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"242.4\" y1=\"99.0\" x2=\"242.4\" y2=\"171.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"242.4\" y1=\"171.0\" x2=\"180.0\" y2=\"207.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"180.0\" y1=\"207.0\" x2=\"117.6\" y2=\"171.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"117.6\" y1=\"171.0\" x2=\"117.6\" y2=\"99.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"117.6\" y1=\"99.0\" x2=\"180.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><circle cx=\"180\" cy=\"135\" r=\"42\" fill=\"none\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"180.0\" y1=\"63.0\" x2=\"180.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><text x=\"180.0\" y=\"26.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">Cl</text></svg></div>",
+    "c": [
+      "Benzyl chloride",
+      "Chlorocyclohexane",
+      "Chlorobenzene",
+      "Methylbenzene"
+    ],
+    "a": 2,
+    "e": "Cl is attached directly to the aromatic ring, giving chlorobenzene. Benzyl chloride has a CH₂ group between the ring and Cl."
+  },
+  {
+    "q": "What is the condensed formula of ethylbenzene?",
+    "c": [
+      "C₆H₅CH₂CH₃",
+      "C₆H₅CH₃",
+      "C₆H₅CH₂Cl",
+      "C₆H₅OH"
+    ],
+    "a": 0,
+    "e": "Ethylbenzene has an ethyl group, –CH₂CH₃, attached directly to benzene: C₆H₅CH₂CH₃."
+  },
+  {
+    "q": "Name the compound shown in this skeletal formula.<div style=\"margin:12px auto;max-width:330px\"><svg viewBox=\"0 0 360 270\" role=\"img\" aria-labelledby=\"s8t s8d\"><title id=\"s8t\">Skeletal aromatic formula</title><desc id=\"s8d\">A six-carbon ring with bromo at a ring vertex, methyl at a ring vertex.</desc><line x1=\"180.0\" y1=\"63.0\" x2=\"242.4\" y2=\"99.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"242.4\" y1=\"99.0\" x2=\"242.4\" y2=\"171.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"242.4\" y1=\"171.0\" x2=\"180.0\" y2=\"207.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"180.0\" y1=\"207.0\" x2=\"117.6\" y2=\"171.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"117.6\" y1=\"171.0\" x2=\"117.6\" y2=\"99.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"117.6\" y1=\"99.0\" x2=\"180.0\" y2=\"63.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><circle cx=\"180\" cy=\"135\" r=\"42\" fill=\"none\" stroke=\"#136f63\" stroke-width=\"2.7\"/><line x1=\"180.0\" y1=\"63.0\" x2=\"180.0\" y2=\"35.0\" stroke=\"#136f63\" stroke-width=\"2.7\"/><text x=\"180.0\" y=\"26.0\" text-anchor=\"middle\" font-size=\"17\" fill=\"#174ea6\" font-weight=\"600\">Br</text><line x1=\"242.4\" y1=\"171.0\" x2=\"279.6\" y2=\"192.5\" stroke=\"#136f63\" stroke-width=\"2.7\"/></svg></div>",
+    "c": [
+      "1-bromo-2-methylbenzene",
+      "1-bromo-3-methylbenzene",
+      "1-bromo-4-methylbenzene",
+      "1-bromo-3-ethylbenzene"
+    ],
+    "a": 1,
+    "e": "The bromo and methyl groups have a 1,3 relationship. With the same locant set in either direction, bromo receives carbon 1 because it comes first alphabetically."
+  },
+  {
+    "q": "What does para describe for two substituents on a benzene ring?",
+    "c": [
+      "Adjacent positions (1,2)",
+      "Positions separated by one carbon (1,3)",
+      "Opposite positions (1,4)",
+      "Two substituents attached to the same carbon"
+    ],
+    "a": 2,
+    "e": "Para (p-) describes the 1,4 relationship. Ortho is 1,2 and meta is 1,3."
   }
 ];
+
+/* ============================
+       QUIZ LOGIC
+============================= */
 
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
@@ -258,7 +304,7 @@ function showQuestion() {
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
-    <div class='explanation' id='explanationBox'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
   `;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
@@ -278,6 +324,8 @@ function selectChoice(i) {
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
     btn.disabled = true;
   });
   const q = quizData[current];
@@ -286,7 +334,7 @@ function selectChoice(i) {
 
   if (correct) score++;
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -323,7 +371,7 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
@@ -346,7 +394,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Result sent. Retake the quiz to meet the 80% target.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
@@ -370,6 +418,7 @@ function retryQuiz() {
 }
 
 showQuestion();
+
 </script>
 </body>
 </html>
