@@ -1,182 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chapter 4 – Lesson 6 Quiz: Cis–Trans Isomerism</title>
-
 <style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f9f1, #f7faff);
-    margin: 0;
-    padding: 40px 20px;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-  .quiz-container {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    width: 95%;
-    max-width: 850px;
-    text-align: center;
-  }
-
-  * { box-sizing: border-box; }
-  .choice:focus-visible, button:focus-visible { outline: 3px solid #ad7115; outline-offset: 3px; }
-  .choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
-  .choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
-  .choice:disabled { opacity: 1; cursor: default; }
-  .quiz-btn:disabled { opacity: .5; cursor: not-allowed; }
-  h2 {
-    color: #136f63;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-  }
-
-  /* Progress */
-  .progress-text {
-    text-align: right;
-    font-size: 0.95em;
-    color: #174ea6;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-  .progress-wrapper {
-    background: #e9f5ef;
-    border-radius: 8px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 25px;
-    overflow: hidden;
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #136f63, #2b7de9);
-    width: 0%;
-    transition: width 0.4s ease;
-  }
-
-  /* Question */
-  .question {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #174ea6;
-    margin-bottom: 20px;
-  }
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .choice {
-    background: #e8ecf8;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 18px;
-    text-align: left;
-    cursor: pointer;
-    font-size: 1.05em;
-    transition: 0.2s;
-  }
-  .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
-
-  .explanation {
-    background: #eef3ff;
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-top: 10px;
-    display: none;
-    text-align: left;
-    font-size: 1.05em;
-  }
-
-  /* Buttons */
-  .next-btn {
-    background: #136f63;
-    color: #fff;
-    border: none;
-    padding: 12px 26px;
-    border-radius: 10px;
-    font-size: 1.05em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 15px;
-  }
-  .next-btn:hover { background: #0f5b52; }
-
-  /* Result */
-  .result {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #174ea6;
-    margin-top: 12px;
-  }
-  .stars {
-    font-size: 2.5em;
-    margin-top: 10px;
-  }
-
-  .quiz-nav {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .quiz-btn {
-    background: #e8ecf8;
-    color: #174ea6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 0.95em;
-    transition: 0.2s;
-  }
-  .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
-  .quiz-btn.primary { background: #136f63; color: #fff; }
-  .quiz-btn.primary:hover { background: #0f5b52; }
-
-  @media(max-width:600px){
-    .quiz-container { padding: 25px; }
-    .question { font-size: 1.15em; }
-    .stars { font-size: 2em; }
-  }
-.choice.correct { background: #e1ecff; color: #123c80; border: 2px solid #174ea6; }
-.choice.incorrect { background: #fde9ed; color: #8a1d2a; border: 2px solid #b22b3b; }
+  :root{--green:#136f63;--blue:#174ea6;--red:#a82332;--ink:#24323d;--muted:#536575}
+  *{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#e8f9f1,#f7faff);margin:0;padding:32px 20px;color:var(--ink);min-height:100vh;line-height:1.6;font-size:18px}
+  .quiz-container{background:#fff;border-radius:18px;padding:34px 40px;box-shadow:0 8px 28px #00000012;width:100%;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.75em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}h1{color:var(--green);font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.25;margin:10px 0 12px}h2{line-height:1.45}h3{line-height:1.4}.instructions{font-size:.9em;color:var(--muted);margin:0 0 22px}.instructions strong{color:var(--ink)}
+  .progress-text{font-size:.85em;color:var(--blue);font-weight:600;margin:0 0 8px}.progress-wrapper{background:#e9f5ef;border-radius:8px;height:12px;width:100%;margin-bottom:24px;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(to right,var(--green),#2b7de9);width:0;transition:width .25s ease}
+  .question{font-size:1.18em;color:var(--blue);margin:0 0 20px}.choices{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}.choice{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:2px solid transparent;border-radius:10px;background:#eef1fb;color:var(--ink);text-align:left;font:inherit;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}.letter{font-weight:750;color:var(--blue);flex-shrink:0}.choice-body{flex:1;min-width:0}.choice-label{display:block}.choice:hover:not(:disabled){background:#dfe7fb;border-color:#a9bde4}.choice:disabled{cursor:default;opacity:1}.choice.correct{background:#e7efff;border-color:var(--blue);color:#113e83}.choice.incorrect{background:#fdecef;border-color:var(--red);color:#8c1d29}.choice.incorrect .letter{color:var(--red)}.choice-status{font-size:.8em;font-weight:750;display:block;margin-top:7px}.choice-status:empty{display:none}
+  .explanation{padding:18px;border:1px solid #b9cee9;border-left:5px solid var(--blue);border-radius:10px;background:#f2f6ff;margin:18px 0}.explanation.incorrect-feedback{border-left-color:var(--red)}.explanation h3{font-size:1em;margin:0 0 8px}.explanation p{margin:8px 0}.correct-answer{font-weight:700;color:var(--blue)}.small{font-size:.85em;color:var(--muted)}
+  button{touch-action:manipulation}.next-btn,.quiz-btn{border:0;border-radius:9px;padding:12px 22px;font:650 .95em "Segoe UI",Arial,sans-serif;cursor:pointer;min-height:46px}.next-btn,.quiz-btn.primary{background:var(--green);color:#fff}.next-btn:hover:not(:disabled),.quiz-btn.primary:hover:not(:disabled){background:#0f5b52}.next-row{text-align:right}.quiz-btn{background:#e8ecf8;color:var(--blue)}.quiz-btn:hover:not(:disabled){background:#d7e1f8}.quiz-btn:disabled{opacity:.5;cursor:not-allowed}.quiz-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px 0}.quiz-result-panel{text-align:center}.quiz-result-panel h2{color:var(--blue);font-size:1.45em;margin:12px 0}.stars{color:#a56a00;font-size:2.4em;letter-spacing:6px;line-height:1.3}.result-status{font-weight:700}.save-status{font-size:.85em;background:#f1f6fa;padding:12px;border-radius:8px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9em}caption{text-align:left;font-weight:700;color:var(--green);margin-bottom:8px}th,td{padding:11px 12px;border-bottom:1px solid #dde5ed;text-align:left}thead th{background:#f2f6fd;color:var(--blue)}
+  details{margin:12px 0;border:1px solid #d7e1e9;border-radius:9px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:var(--green)}.review-question{font-weight:650}.review-choice{font-size:.9em}.review-answer{border-left:4px solid var(--blue);padding-left:12px}.review-section h3{color:var(--green)}.review-section p{margin:10px 0}.footer-note{font-size:.8em;color:var(--muted);text-align:center;margin:20px 0 0}
+  [hidden]{display:none!important}:focus-visible{outline:3px solid #b36c0c;outline-offset:4px}.question:focus,.quiz-result-panel h2:focus{outline:none}
+  .evidence{margin:0 0 20px}.evidence table{margin-top:0}.evidence caption{font-size:.85em;color:var(--muted);font-weight:400}.evidence td,.evidence th{vertical-align:top}
+  @media(max-width:600px){body{padding:16px 10px;font-size:17px}.quiz-container{padding:24px 18px;border-radius:14px}.choice{padding:12px;gap:10px}.quiz-nav{flex-direction:column}.quiz-nav button{width:100%}.question{font-size:1.1em}.next-btn{width:100%}th,td{padding:9px 8px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
-<div class="quiz-container">
-  <h2>Lesson 6 Quiz – Cis–Trans Isomerism in Cycloalkanes</h2>
-
-  <p>10 questions · Pass: 8/10 (80% required). Choose one answer; your first choice is final. Read the explanation before continuing.</p>
-  <div id="progressText" class="progress-text">Question 1 of 10</div>
-  <div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
-
+<main class="quiz-container" aria-labelledby="quizTitle">
+  <div class="eyebrow">LearnTrack · Organic Chemistry · Chapter 4 · Lesson 6</div>
+  <h1 id="quizTitle">Cis–Trans Isomerism — Quiz</h1>
+  <p class="instructions" id="instructions"><strong>10 questions · Pass: 8/10 (80%).</strong> Choose one answer. Your first choice is final for that question; read the feedback before continuing. Each question is worth one point.</p>
+  <p class="progress-text" id="progressText">Question 1 of 10 · 0 answered</p>
+  <div class="progress-wrapper" id="progressMeter" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="progress-bar" id="progressBar"></div></div>
   <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-</div>
-
+  <div class="next-row"><button type="button" id="nextBtn" class="next-btn" hidden disabled>Next Question →</button></div>
+  <p class="footer-note">Stars: 100% = 3 · 90% = 2 · 80% = 1 · below 80% = 0</p>
+  <noscript><p>This quiz requires JavaScript to show questions and record your choices.</p></noscript>
+</main>
 <script>
-/* ============================
-     QUIZ DATA
-============================= */
-
+'use strict';
+// Fixed order: 10 original Chapter 4 Lesson 6 questions.
+// Integration contract retained: quizResult {score, passed}, quizBack, quizNextLesson.
 const quizData = [
   {
+    "id": "c4lesson6q01",
+    "topic": "Cis–Trans Isomerism",
     "q": "What does cis mean for two specified substituents on different carbons of a ring?",
     "c": [
       "They are on the same face of the ring.",
@@ -184,10 +47,18 @@ const quizData = [
       "They must both be axial.",
       "They must be different types of groups."
     ],
-    "a": 0,
-    "e": "Cis means that the two specified substituents are on the same face, whether both up or both down."
+    a: 0,
+    "e": "Cis means that the two specified substituents are on the same face, whether both up or both down.",
+    "why": [
+      "Cis means that the two specified substituents are on the same face, whether both up or both down.",
+      "Cis means that the two specified substituents are on the same face, whether both up or both down.",
+      "Cis means that the two specified substituents are on the same face, whether both up or both down.",
+      "Cis means that the two specified substituents are on the same face, whether both up or both down."
+    ]
   },
   {
+    "id": "c4lesson6q02",
+    "topic": "Cis–Trans Isomerism",
     "q": "What is the relationship between the methyl groups in these drawings?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st1t st1d\"><title id=\"st1t\">Semi-displayed structural formula</title><desc id=\"st1d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,92.0 218.0,49.0 202.0,49.0\" fill=\"#174ea6\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><polygon points=\"294.9,141.0 336.1,126.4 328.1,112.6\" fill=\"#174ea6\"/><text x=\"353.8\" y=\"113.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st2t st2d\"><title id=\"st2t\">Skeletal formula</title><desc id=\"st2d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,111.0 218.0,37.0 202.0,37.0\" fill=\"#174ea6\"/><polygon points=\"278.4,150.5 346.5,120.4 338.5,106.6\" fill=\"#174ea6\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
     "c": [
       "trans",
@@ -195,10 +66,18 @@ const quizData = [
       "Not specified",
       "Constitutional isomers"
     ],
-    "a": 1,
-    "e": "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis."
+    a: 1,
+    "e": "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis.",
+    "why": [
+      "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis.",
+      "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis.",
+      "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis.",
+      "Both methyl bonds are solid wedges, so both groups project toward the viewer and lie on the same ring face: cis."
+    ]
   },
   {
+    "id": "c4lesson6q03",
+    "topic": "Cis–Trans Isomerism",
     "q": "What is the relationship between the methyl groups in these drawings?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st3t st3d\"><title id=\"st3t\">Semi-displayed structural formula</title><desc id=\"st3d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,92.0 218.0,49.0 202.0,49.0\" fill=\"#174ea6\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"302.2\" y1=\"139.3\" x2=\"300.0\" y2=\"135.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"309.0\" y1=\"136.7\" x2=\"305.6\" y2=\"130.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"315.7\" y1=\"134.1\" x2=\"311.2\" y2=\"126.4\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"322.5\" y1=\"131.6\" x2=\"316.9\" y2=\"121.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"329.3\" y1=\"129.0\" x2=\"322.5\" y2=\"117.2\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"353.8\" y=\"113.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st4t st4d\"><title id=\"st4t\">Skeletal formula</title><desc id=\"st4d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 2 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,111.0 218.0,37.0 202.0,37.0\" fill=\"#174ea6\"/><line x1=\"290.2\" y1=\"146.2\" x2=\"288.0\" y2=\"142.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"301.4\" y1=\"141.1\" x2=\"298.1\" y2=\"135.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"312.7\" y1=\"135.9\" x2=\"308.2\" y2=\"128.1\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"324.0\" y1=\"130.7\" x2=\"318.3\" y2=\"120.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"335.2\" y1=\"125.6\" x2=\"328.4\" y2=\"113.7\" stroke=\"#174ea6\" stroke-width=\"2\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
     "c": [
       "cis",
@@ -206,10 +85,18 @@ const quizData = [
       "trans",
       "They are on the same carbon"
     ],
-    "a": 2,
-    "e": "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans."
+    a: 2,
+    "e": "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans.",
+    "why": [
+      "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans.",
+      "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans.",
+      "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans.",
+      "One methyl bond is a solid wedge and the other is dashed. They are on opposite faces, so the relationship is trans."
+    ]
   },
   {
+    "id": "c4lesson6q04",
+    "topic": "Cis–Trans Isomerism",
     "q": "Both methyl groups are shown with dashed wedges. What is their relative relationship?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st11t st11d\"><title id=\"st11t\">Semi-displayed structural formula</title><desc id=\"st11d\">A 6-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"84.8\" x2=\"207.8\" y2=\"84.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"77.7\" x2=\"206.7\" y2=\"77.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"70.5\" x2=\"205.5\" y2=\"70.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"63.3\" x2=\"204.3\" y2=\"63.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"56.2\" x2=\"203.2\" y2=\"56.2\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"300.0\" y1=\"244.5\" x2=\"302.2\" y2=\"240.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"305.6\" y1=\"249.1\" x2=\"309.0\" y2=\"243.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"311.2\" y1=\"253.6\" x2=\"315.7\" y2=\"245.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"316.9\" y1=\"258.2\" x2=\"322.5\" y2=\"248.4\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"322.5\" y1=\"262.8\" x2=\"329.3\" y2=\"251.0\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"353.8\" y=\"279.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st12t st12d\"><title id=\"st12t\">Skeletal formula</title><desc id=\"st12d\">A 6-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a dashed wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"98.7\" x2=\"207.8\" y2=\"98.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"86.3\" x2=\"206.7\" y2=\"86.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"74.0\" x2=\"205.5\" y2=\"74.0\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"61.7\" x2=\"204.3\" y2=\"61.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"49.3\" x2=\"203.2\" y2=\"49.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"288.0\" y1=\"237.5\" x2=\"290.2\" y2=\"233.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"298.1\" y1=\"244.7\" x2=\"301.4\" y2=\"238.9\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"308.2\" y1=\"251.9\" x2=\"312.7\" y2=\"244.1\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"318.3\" y1=\"259.1\" x2=\"324.0\" y2=\"249.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"328.4\" y1=\"266.3\" x2=\"335.2\" y2=\"254.4\" stroke=\"#174ea6\" stroke-width=\"2\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
     "c": [
       "trans",
@@ -217,10 +104,18 @@ const quizData = [
       "Cannot be determined",
       "cis"
     ],
-    "a": 3,
-    "e": "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis."
+    a: 3,
+    "e": "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis.",
+    "why": [
+      "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis.",
+      "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis.",
+      "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis.",
+      "Both dashed wedges point away from the viewer. They are on the same face, so the groups are cis."
+    ]
   },
   {
+    "id": "c4lesson6q05",
+    "topic": "Cis–Trans Isomerism",
     "q": "What can be determined about the relative stereochemistry shown?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st13t st13d\"><title id=\"st13t\">Semi-displayed structural formula</title><desc id=\"st13d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 3 drawn on an ordinary bond. The ring is shown as a flat reference for connectivity.</desc><line x1=\"225.59\" y1=\"121.00\" x2=\"261.96\" y2=\"142.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"169.00\" x2=\"277.55\" y2=\"211.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"261.96\" y1=\"238.00\" x2=\"225.59\" y2=\"259.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"194.41\" y1=\"259.00\" x2=\"158.04\" y2=\"238.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"211.00\" x2=\"142.45\" y2=\"169.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.04\" y1=\"142.00\" x2=\"194.41\" y2=\"121.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,92.0 218.0,49.0 202.0,49.0\" fill=\"#174ea6\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><line x1=\"294.9\" y1=\"239.0\" x2=\"332.1\" y2=\"260.5\" stroke=\"#174ea6\" stroke-width=\"3\"/><text x=\"353.8\" y=\"279.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"277.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"277.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"210.0\" y=\"275.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"236.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"142.5\" y=\"158.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st14t st14d\"><title id=\"st14t\">Skeletal formula</title><desc id=\"st14d\">A 6-carbon ring with a methyl group on position 1 drawn on a solid wedge, a methyl group on position 3 drawn on an ordinary bond. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"277.55\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"151.00\" x2=\"277.55\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"277.55\" y1=\"229.00\" x2=\"210.00\" y2=\"268.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"210.00\" y1=\"268.00\" x2=\"142.45\" y2=\"229.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"229.00\" x2=\"142.45\" y2=\"151.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"142.45\" y1=\"151.00\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><polygon points=\"210.0,111.0 218.0,37.0 202.0,37.0\" fill=\"#174ea6\"/><line x1=\"278.4\" y1=\"229.5\" x2=\"342.5\" y2=\"266.5\" stroke=\"#174ea6\" stroke-width=\"3\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
     "c": [
       "It is definitely cis.",
@@ -228,10 +123,18 @@ const quizData = [
       "It is definitely trans.",
       "The ring contains only three carbons."
     ],
-    "a": 1,
-    "e": "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans."
+    a: 1,
+    "e": "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans.",
+    "why": [
+      "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans.",
+      "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans.",
+      "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans.",
+      "One methyl group has an ordinary bond with no face specified. The two-dimensional connectivity alone does not determine cis or trans."
+    ]
   },
   {
+    "id": "c4lesson6q06",
+    "topic": "Cis–Trans Isomerism",
     "q": "What is the complete name of this structure?<div style=\"display:flex;flex-wrap:wrap;justify-content:center;gap:8px\"><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st15t st15d\"><title id=\"st15t\">Semi-displayed structural formula</title><desc id=\"st15d\">A 5-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"224.56\" y1=\"122.58\" x2=\"269.62\" y2=\"155.32\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"278.62\" y1=\"183.02\" x2=\"261.41\" y2=\"235.98\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"237.85\" y1=\"253.10\" x2=\"182.15\" y2=\"253.10\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"158.59\" y1=\"235.98\" x2=\"141.38\" y2=\"183.02\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"150.38\" y1=\"155.32\" x2=\"195.44\" y2=\"122.58\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"84.8\" x2=\"207.8\" y2=\"84.8\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"77.7\" x2=\"206.7\" y2=\"77.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"70.5\" x2=\"205.5\" y2=\"70.5\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"63.3\" x2=\"204.3\" y2=\"63.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"56.2\" x2=\"203.2\" y2=\"56.2\" stroke=\"#174ea6\" stroke-width=\"2\"/><text x=\"210.0\" y=\"30.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><polygon points=\"267.6,269.3 286.4,308.8 299.3,299.4\" fill=\"#174ea6\"/><text x=\"307.6\" y=\"330.3\" text-anchor=\"middle\" font-size=\"20\" fill=\"#174ea6\">CH₃</text><text x=\"210.0\" y=\"119.0\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"284.2\" y=\"172.9\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"255.8\" y=\"260.1\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH</text><text x=\"164.2\" y=\"260.1\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text><text x=\"135.8\" y=\"172.9\" text-anchor=\"middle\" font-size=\"20\" fill=\"#24323d\">CH₂</text></svg><figcaption style=\"font-size:.7em\">Semi-displayed structural formula</figcaption></figure><figure style=\"flex:1 1 200px;margin:5px\"><svg style=\"display:block;width:100%;max-width:300px;max-height:250px;margin:auto\" viewBox=\"0 0 420 370\" role=\"img\" aria-labelledby=\"st16t st16d\"><title id=\"st16t\">Skeletal formula</title><desc id=\"st16d\">A 5-carbon ring with a methyl group on position 1 drawn on a dashed wedge, a methyl group on position 3 drawn on a solid wedge. The ring is shown as a flat reference for connectivity.</desc><line x1=\"210.00\" y1=\"112.00\" x2=\"284.18\" y2=\"165.90\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"284.18\" y1=\"165.90\" x2=\"255.85\" y2=\"253.10\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"255.85\" y1=\"253.10\" x2=\"164.15\" y2=\"253.10\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"164.15\" y1=\"253.10\" x2=\"135.82\" y2=\"165.90\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"135.82\" y1=\"165.90\" x2=\"210.00\" y2=\"112.00\" stroke=\"#136f63\" stroke-width=\"3.5\" stroke-linecap=\"round\"/><line x1=\"212.2\" y1=\"98.7\" x2=\"207.8\" y2=\"98.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"213.3\" y1=\"86.3\" x2=\"206.7\" y2=\"86.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"214.5\" y1=\"74.0\" x2=\"205.5\" y2=\"74.0\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"215.7\" y1=\"61.7\" x2=\"204.3\" y2=\"61.7\" stroke=\"#174ea6\" stroke-width=\"2\"/><line x1=\"216.8\" y1=\"49.3\" x2=\"203.2\" y2=\"49.3\" stroke=\"#174ea6\" stroke-width=\"2\"/><polygon points=\"256.4,253.9 293.5,318.5 306.4,309.1\" fill=\"#174ea6\"/></svg><figcaption style=\"font-size:.7em\">Skeletal formula</figcaption></figure></div>",
     "c": [
       "trans-1,3-dimethylcyclopentane",
@@ -239,10 +142,18 @@ const quizData = [
       "trans-1,2-dimethylcyclopentane",
       "trans-1,3-dimethylcyclohexane"
     ],
-    "a": 0,
-    "e": "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans."
+    a: 0,
+    "e": "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans.",
+    "why": [
+      "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans.",
+      "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans.",
+      "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans.",
+      "The five-carbon ring has methyl groups at positions 1 and 3. One solid and one dashed wedge show opposite faces: trans."
+    ]
   },
   {
+    "id": "c4lesson6q07",
+    "topic": "Cis–Trans Isomerism",
     "q": "Which statement is correct for a simple disubstituted cycloalkane?",
     "c": [
       "The substituents must be different types for cis/trans to be possible.",
@@ -250,10 +161,18 @@ const quizData = [
       "Identical groups on different ring carbons can have cis and trans arrangements.",
       "Both substituents must be on the same ring carbon."
     ],
-    "a": 2,
-    "e": "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements."
+    a: 2,
+    "e": "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements.",
+    "why": [
+      "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements.",
+      "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements.",
+      "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements.",
+      "The substituents may be identical or different. For example, two methyl groups on different ring carbons can have cis and trans arrangements."
+    ]
   },
   {
+    "id": "c4lesson6q08",
+    "topic": "Cis–Trans Isomerism",
     "q": "During a cyclohexane chair flip, what happens to an axial-down substituent?",
     "c": [
       "It becomes axial up.",
@@ -261,10 +180,18 @@ const quizData = [
       "It remains axial down.",
       "It becomes equatorial down."
     ],
-    "a": 3,
-    "e": "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down."
+    a: 3,
+    "e": "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down.",
+    "why": [
+      "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down.",
+      "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down.",
+      "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down.",
+      "A chair flip exchanges axial and equatorial positions while retaining each substituent’s up/down orientation. Axial down becomes equatorial down."
+    ]
   },
   {
+    "id": "c4lesson6q09",
+    "topic": "Cis–Trans Isomerism",
     "q": "What happens to the cis/trans relationship during an ordinary cyclohexane chair flip?",
     "c": [
       "Cis always becomes trans.",
@@ -272,10 +199,18 @@ const quizData = [
       "Trans always becomes cis.",
       "The substituents swap their ring carbons."
     ],
-    "a": 1,
-    "e": "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved."
+    a: 1,
+    "e": "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved.",
+    "why": [
+      "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved.",
+      "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved.",
+      "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved.",
+      "A chair flip changes conformation, not connectivity or which ring face a substituent occupies. The cis/trans relationship is preserved."
+    ]
   },
   {
+    "id": "c4lesson6q10",
+    "topic": "Cis–Trans Isomerism",
     "q": "How do a cis and trans stereoisomer of the same disubstituted cycloalkane differ?",
     "c": [
       "They have the same connectivity but differ in spatial arrangement.",
@@ -283,142 +218,188 @@ const quizData = [
       "They differ only in how the name is capitalized.",
       "They differ only by turning a drawing on the page."
     ],
-    "a": 0,
-    "e": "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space."
+    a: 0,
+    "e": "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space.",
+    "why": [
+      "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space.",
+      "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space.",
+      "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space.",
+      "Cis and trans stereoisomers have the same connectivity but differ in the relative positions of substituents in three-dimensional space."
+    ]
   }
 ];
 
-/* ============================
-       QUIZ LOGIC
-============================= */
-
-let current = 0, score = 0, selected = null, showingExplanation = false;
-const quizBox = document.getElementById("quizBox");
-const nextBtn = document.getElementById("nextBtn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-
-function showQuestion() {
-  const q = quizData[current];
-  updateProgress();
-  quizBox.innerHTML = `
-    <div class='question'>${q.q}</div>
-    <div class='choices'></div>
-    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
-  `;
-  const choicesContainer = quizBox.querySelector(".choices");
-  q.c.forEach((choice, i) => {
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.innerHTML = choice;
-    btn.addEventListener("click", () => selectChoice(i));
-    choicesContainer.appendChild(btn);
-  });
-  nextBtn.style.display = "none";
-  selected = null;
-  showingExplanation = false;
-}
-
-function selectChoice(i) {
-  if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    if (idx === quizData[current].a) btn.classList.add("correct");
-    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
-    btn.disabled = true;
-  });
-  const q = quizData[current];
-  const expBox = document.getElementById("explanationBox");
-  const correct = i === q.a;
-
-  if (correct) score++;
-
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
-  expBox.style.display = "block";
-  nextBtn.style.display = "inline-block";
-  showingExplanation = true;
-}
-
-nextBtn.addEventListener("click", () => {
-  current++;
-  if (current < quizData.length) showQuestion();
-  else showResult();
-});
-
-function updateProgress() {
-  const percent = (current / quizData.length) * 100;
-  progressBar.style.width = percent + "%";
-  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
-}
-
-function getStarRating(percent) {
-  if (percent === 100) return "⭐️⭐️⭐️";
-  else if (percent >= 90) return "⭐️⭐️☆";
-  else if (percent >= 80) return "⭐️☆☆";
-  else return "☆☆☆";
-}
-
+const PASS_PERCENT = 80;
+const letters = ['A','B','C','D'];
+let current = 0;
+let answers = Array(quizData.length).fill(null);
 let resultSent = false;
+let completed = false;
+const quizBox = document.getElementById('quizBox');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const progressMeter = document.getElementById('progressMeter');
 
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+function isEmbedded() { return window.parent !== window; }
+function updateProgress() {
+  const count = answers.filter(value => value !== null).length;
+  progressBar.style.width = (count / quizData.length * 100) + '%';
+  progressMeter.setAttribute('aria-valuenow', String(count));
+  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
+  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
+  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+}
+function renderEvidence(data) {
+  const wrap = element('div','table-wrap evidence');
+  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
+  const table = element('table'); table.append(element('caption','',data.caption));
+  const head = element('thead'); const heading = element('tr');
+  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
+  head.append(heading); table.append(head);
+  const body=element('tbody');
+  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
+  table.append(body);wrap.append(table);return wrap;
+}
+function showQuestion(focus = false) {
+  const q = quizData[current];
+  quizBox.replaceChildren();
+  const heading = element('h2', 'question', q.q);
+  heading.innerHTML = q.q;
+  heading.id = 'questionTitle'; heading.tabIndex = -1;
+  const choices = element('div', 'choices');
+  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
+  q.c.forEach((text, i) => {
+    const button = element('button', 'choice'); button.type = 'button';
+    button.setAttribute('data-choice', String(i));
+    const body = element('span', 'choice-body');
+    body.append(element('span', 'choice-label', text), element('span','choice-status'));
+    button.append(body);
+    button.addEventListener('click', () => selectChoice(i));
+    choices.append(button);
+  });
+  const feedback = element('div','explanation');
+  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
+  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('aria-atomic','true');
+  quizBox.append(heading);
+  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
+  quizBox.append(choices, feedback);
+  nextBtn.hidden = true; nextBtn.disabled = true;
+  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
+  updateProgress();
+  if (focus) heading.focus();
+}
+function selectChoice(index) {
+  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
+  const q = quizData[current];
+  answers[current] = index;
+  const correct = index === q.a;
+  quizBox.querySelectorAll('.choice').forEach((button,i) => {
+    button.disabled = true;
+    const status = button.querySelector('.choice-status');
+    if (i === q.a) {
+      button.classList.add('correct');
+      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
+    } else if (i === index) {
+      button.classList.add('incorrect');
+      status.textContent = '✗ Your answer — incorrect';
+    }
+  });
+  const feedback = document.getElementById('explanationBox');
+  feedback.classList.toggle('incorrect-feedback', !correct);
+  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
+  if (!correct) feedback.append(element('p','',q.why[index]));
+  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
+  feedback.hidden = false;
+  nextBtn.hidden = false; nextBtn.disabled = false;
+  updateProgress();
+  feedback.focus();
+}
+function nextQuestion() {
+  if (completed || answers[current] === null) return;
+  if (current === quizData.length - 1) showResult();
+  else { current += 1; showQuestion(true); }
+}
+function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
+function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
+function sendResult(percent,passed) {
+  if (resultSent || !isEmbedded()) return;
+  resultSent = true;
+  // Preserve the LearnTrack quizResult message format.
+  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
+}
 function showResult() {
-  progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
-
-  const percent = Math.round((score / quizData.length) * 100);
-  const passed = percent >= 80;
-
-  quizBox.innerHTML = `
-    <div class='stars'>${getStarRating(percent)}</div>
-    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
-    <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
-    </div>
-  `;
-
-  nextBtn.style.display = "none";
-
-  if (!resultSent) {
-    resultSent = true;
-    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
-  }
-
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
-
-    if (status) status.textContent = passed
-      ? "Progress sent. You may proceed after it is saved."
-      : "Result sent. Retake the quiz to meet the 80% target.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+  if (completed || answers.some(value => value === null)) return;
+  completed = true;
+  const score = getScore();
+  const percent = Math.round(score / quizData.length * 100);
+  const passed = percent >= PASS_PERCENT;
+  const stars = starCount(percent);
+  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
+  updateProgress();
+  const result = element('section','quiz-result-panel');
+  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
+  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
+  const title = element('h2','result',`You scored ${score}/${quizData.length} (${percent}%)`);
+  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
+  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
+  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
+  status.textContent = isEmbedded()
+    ? 'Waiting for LearnTrack to verify and save your answers...'
+    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
+  result.append(starDisplay,title,element('p','result-status',outcome),status);
+  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
+  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
+  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
+  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=true;
+  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
+  retry.addEventListener('click',retryQuiz);
+  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
+  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
+  renderTopicSummary();renderReview();
+  sendResult(percent,passed);title.focus();
 }
-
+function renderTopicSummary() {
+  const wrap = element('div','table-wrap');
+  const table = element('table');table.append(element('caption','','Your review priorities'));
+  const head=element('thead');const header=element('tr');
+  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
+  const body=element('tbody');
+  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
+    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
+    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
+    const row=element('tr');const name=element('th','',topic);name.scope='row';
+    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
+    body.append(row);
+  });table.append(body);wrap.append(table);quizBox.append(wrap);
+}
+function renderReview() {
+  const section=element('section','review-section');
+  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
+  quizData.forEach((q,index)=>{
+    const correct=answers[index]===q.a;
+    const details=element('details');
+    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
+    details.querySelector('.review-question').innerHTML = q.q;
+    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
+    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
+    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
+    details.append(all);section.append(details);
+  });quizBox.append(section);
+}
 function retryQuiz() {
-  resultSent = false;
-  current = 0;
-  score = 0;
-  showQuestion();
+  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
+  showQuestion(true);
 }
-
+nextBtn.addEventListener('click',nextQuestion);
 showQuestion();
-
 </script>
 </body>
 </html>
