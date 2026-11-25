@@ -310,179 +310,133 @@ const quizData = [
   }
 ];
 
-/* ============================
-       QUIZ LOGIC
-============================= */
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
 
-const PASS_PERCENT = 80;
-const letters = ['A','B','C','D'];
-let current = 0;
-let answers = Array(quizData.length).fill(null);
-let resultSent = false;
-let completed = false;
-const quizBox = document.getElementById('quizBox');
-const nextBtn = document.getElementById('nextBtn');
-const progressText = document.getElementById('progressText');
-const progressBar = document.getElementById('progressBar');
-const progressMeter = document.getElementById('progressMeter');
-
-function element(tag, className, text) {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  if (text !== undefined) node.textContent = text;
-  return node;
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox' role='status' aria-live='polite'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
 }
-function isEmbedded() { return window.parent !== window; }
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+  selected = i;
+  document.querySelectorAll(".choice").forEach((btn, idx) => {
+    btn.classList.toggle("selected", idx === i);
+    if (idx === quizData[current].a) btn.classList.add("correct");
+    if (idx === i && i !== quizData[current].a) btn.classList.add("incorrect");
+    btn.disabled = true;
+  });
+  const q = quizData[current];
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br><strong>Correct answer:</strong> ${q.c[q.a]}<br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
 function updateProgress() {
-  const count = answers.filter(value => value !== null).length;
-  progressBar.style.width = (count / quizData.length * 100) + '%';
-  progressMeter.setAttribute('aria-valuenow', String(count));
-  progressMeter.setAttribute('aria-valuemax', String(quizData.length));
-  progressMeter.setAttribute('aria-valuetext', `${count} of ${quizData.length} questions answered`);
-  progressText.textContent = completed ? `Quiz completed · ${count} of ${quizData.length} answered` : `Question ${current + 1} of ${quizData.length} · ${count} answered`;
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
 }
-function renderEvidence(data) {
-  const wrap = element('div','table-wrap evidence');
-  wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label',data.caption);
-  const table = element('table'); table.append(element('caption','',data.caption));
-  const head = element('thead'); const heading = element('tr');
-  data.headers.forEach(text => { const cell=element('th','',text); cell.scope='col'; heading.append(cell); });
-  head.append(heading); table.append(head);
-  const body=element('tbody');
-  data.rows.forEach(row => { const tr=element('tr'); row.forEach((text,i) => { const td=element(i===0?'th':'td','',text); if(i===0)td.scope='row'; tr.append(td); }); body.append(tr); });
-  table.append(body);wrap.append(table);return wrap;
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
 }
-function showQuestion(focus = false) {
-  const q = quizData[current];
-  quizBox.replaceChildren();
-  const heading = element('h2', 'question', q.q);
-  heading.id = 'questionTitle'; heading.tabIndex = -1;
-  const choices = element('div', 'choices');
-  choices.setAttribute('role','group'); choices.setAttribute('aria-labelledby','questionTitle');
-  q.c.forEach((text, i) => {
-    const button = element('button', 'choice'); button.type = 'button';
-    button.setAttribute('data-choice', String(i));
-    const body = element('span', 'choice-body');
-    body.append(element('span', 'choice-label', text), element('span','choice-status'));
-    button.append(body);
-    button.addEventListener('click', () => selectChoice(i));
-    choices.append(button);
-  });
-  const feedback = element('div','explanation');
-  feedback.id = 'explanationBox'; feedback.hidden = true; feedback.tabIndex = -1;
-  feedback.setAttribute('role','status'); feedback.setAttribute('aria-live','polite');
-  feedback.setAttribute('aria-atomic','true');
-  quizBox.append(heading);
-  if (q.evidence) quizBox.append(renderEvidence(q.evidence));
-  quizBox.append(choices, feedback);
-  nextBtn.hidden = true; nextBtn.disabled = true;
-  nextBtn.textContent = current === quizData.length - 1 ? 'View Results →' : 'Next Question →';
-  updateProgress();
-  if (focus) heading.focus();
-}
-function selectChoice(index) {
-  if (completed || answers[current] !== null || !Number.isInteger(index) || index < 0 || index > 3) return;
-  const q = quizData[current];
-  answers[current] = index;
-  const correct = index === q.a;
-  quizBox.querySelectorAll('.choice').forEach((button,i) => {
-    button.disabled = true;
-    const status = button.querySelector('.choice-status');
-    if (i === q.a) {
-      button.classList.add('correct');
-      status.textContent = correct ? '✓ Your answer — correct' : '✓ Correct answer';
-    } else if (i === index) {
-      button.classList.add('incorrect');
-      status.textContent = '✗ Your answer — incorrect';
-    }
-  });
-  const feedback = document.getElementById('explanationBox');
-  feedback.classList.toggle('incorrect-feedback', !correct);
-  feedback.append(element('h3','',correct ? 'Correct.' : 'Not quite.'));
-  if (!correct) feedback.append(element('p','',q.why[index]));
-  feedback.append(element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','',q.e));
-  feedback.hidden = false;
-  nextBtn.hidden = false; nextBtn.disabled = false;
-  updateProgress();
-  feedback.focus();
-}
-function nextQuestion() {
-  if (completed || answers[current] === null) return;
-  if (current === quizData.length - 1) showResult();
-  else { current += 1; showQuestion(true); }
-}
-function starCount(percent) { return percent === 100 ? 3 : percent >= 90 ? 2 : percent >= 80 ? 1 : 0; }
-function getScore() { return answers.reduce((total,value,index) => total + (value === quizData[index].a ? 1 : 0),0); }
-function sendResult(percent,passed) {
-  if (resultSent || !isEmbedded()) return;
-  resultSent = true;
-  // Preserve the LearnTrack quizResult message format.
-  window.parent.postMessage({type:'quizResult',score:percent,passed},'*');
-}
+
+let resultSent = false;
+
 function showResult() {
-  if (completed || answers.some(value => value === null)) return;
-  completed = true;
-  const score = getScore();
-  const percent = Math.round(score / quizData.length * 100);
-  const passed = percent >= PASS_PERCENT;
-  const stars = starCount(percent);
-  quizBox.replaceChildren(); nextBtn.hidden = true; nextBtn.disabled = true;
-  updateProgress();
-  const result = element('section','quiz-result-panel');
-  const starDisplay = element('div','stars','★'.repeat(stars)+'☆'.repeat(3-stars));
-  starDisplay.setAttribute('role','img');starDisplay.setAttribute('aria-label',`${stars} out of 3 stars`);
-  const title = element('h2','result',`You scored ${score}/${quizData.length} (${percent}%)`);
-  title.id = 'resultTitle'; title.tabIndex = -1; result.setAttribute('aria-labelledby','resultTitle');
-  const outcome = passed ? 'Passed — you met the 80% target.' : 'Not yet passed — review the explanations, then retry.';
-  const status = element('p','save-status');status.id = 'saveStatus';status.setAttribute('role','status');
-  status.textContent = isEmbedded()
-    ? 'Waiting for LearnTrack to verify and save your answers...'
-    : 'Preview mode: this attempt is not saved. Open the quiz inside LearnTrack to record progress and use lesson navigation.';
-  result.append(starDisplay,title,element('p','result-status',outcome),status);
-  const nav = element('nav','quiz-nav');nav.setAttribute('aria-label','Quiz result actions');
-  const back = element('button','quiz-btn','← Back to Lesson');back.type='button';back.id='backBtn';back.disabled=!isEmbedded();
-  const retry = element('button','quiz-btn','Retry Quiz');retry.type='button';retry.id='retryBtn';
-  const next = element('button','quiz-btn primary','Next Lesson →');next.type='button';next.id='nextLessonBtn';next.disabled=true;
-  back.addEventListener('click',()=>{if(isEmbedded())window.parent.postMessage({type:'quizBack'},'*');});
-  retry.addEventListener('click',retryQuiz);
-  next.addEventListener('click',()=>{if(passed && isEmbedded())window.parent.postMessage({type:'quizNextLesson'},'*');});
-  nav.append(back,retry,next);result.append(nav);quizBox.append(result);
-  renderTopicSummary();renderReview();
-  sendResult(percent,passed);title.focus();
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Result sent to LearnTrack. Saving has not been confirmed."
+      : "Result sent to LearnTrack. Retake the quiz to meet the 80% target.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
 }
-function renderTopicSummary() {
-  const wrap = element('div','table-wrap');
-  const table = element('table');table.append(element('caption','','Your review priorities'));
-  const head=element('thead');const header=element('tr');
-  ['Area','Score','Next step'].forEach(text=>{const th=element('th','',text);th.scope='col';header.append(th);});head.append(header);table.append(head);
-  const body=element('tbody');
-  [...new Set(quizData.map(q=>q.topic))].forEach(topic=>{
-    const indices=quizData.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);
-    const correct=indices.filter(i=>answers[i]===quizData[i].a).length;
-    const row=element('tr');const name=element('th','',topic);name.scope='row';
-    row.append(name,element('td','',`${correct}/${indices.length}`),element('td','',correct===indices.length?'All correct this attempt':'Review the related explanations below'));
-    body.append(row);
-  });table.append(body);wrap.append(table);quizBox.append(wrap);
-}
-function renderReview() {
-  const section=element('section','review-section');
-  section.append(element('h3','','Review your answers'),element('p','small','Open any question to compare your answer with the explanation. Retry starts a new attempt with the same question and choice order.'));
-  quizData.forEach((q,index)=>{
-    const correct=answers[index]===q.a;
-    const details=element('details');
-    details.append(element('summary','',`Question ${index+1} · ${correct?'Correct':'Review needed'}`),element('p','review-question',q.q),element('p','review-choice',`Your answer: ${letters[answers[index]]}. ${q.c[answers[index]]}`),element('p','correct-answer',`Correct answer: ${letters[q.a]}. ${q.c[q.a]}`),element('p','review-answer',q.e));
-    if (q.evidence) details.querySelector('.review-question').after(renderEvidence(q.evidence));
-    const all=element('details');all.append(element('summary','','Why each option fits or does not fit'));
-    q.c.forEach((text,i)=>all.append(element('p','review-choice',`${letters[i]}. ${text} — ${q.why[i]}`)));
-    details.append(all);section.append(details);
-  });quizBox.append(section);
-}
+
 function retryQuiz() {
-  current=0;answers=Array(quizData.length).fill(null);completed=false;resultSent=false;
-  showQuestion(true);
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
 }
-nextBtn.addEventListener('click',nextQuestion);
+
 showQuestion();
+
 </script>
 </body>
 </html>
