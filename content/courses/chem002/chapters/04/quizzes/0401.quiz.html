@@ -327,7 +327,7 @@ function showQuestion() {
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
     const btn = document.createElement("button");
-    btn.className = "choice";
+    btn.className = "choice"; btn.type = "button"; btn.setAttribute("data-choice", String(i));
     btn.innerHTML = choice;
     btn.addEventListener("click", () => selectChoice(i));
     choicesContainer.appendChild(btn);
@@ -338,7 +338,7 @@ function showQuestion() {
 }
 
 function selectChoice(i) {
-  if (showingExplanation) return;
+  if (showingExplanation || current >= quizData.length || !Number.isInteger(i) || i < 0 || i >= quizData[current].c.length) return;
   selected = i;
   document.querySelectorAll(".choice").forEach((btn, idx) => {
     btn.classList.toggle("selected", idx === i);
@@ -359,6 +359,8 @@ function selectChoice(i) {
 }
 
 nextBtn.addEventListener("click", () => {
+  if (!showingExplanation || selected === null || current >= quizData.length) return;
+  showingExplanation = false; selected = null;
   current++;
   if (current < quizData.length) showQuestion();
   else showResult();
@@ -389,43 +391,35 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
-    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Sending your result to LearnTrack...</p>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Waiting for LearnTrack to verify and save your answers...</p>
     <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn' id='backBtn'>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn'>🔁 Retry</button>
       <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
     </div>
   `;
 
   nextBtn.style.display = "none";
 
-  if (!resultSent) {
+  if (window.parent === window) {
+    document.getElementById("saveStatus").textContent = "Preview mode: open this quiz inside LearnTrack to save progress.";
+  } else if (!resultSent) {
     resultSent = true;
     window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
   }
 
-  setTimeout(() => {
-    const status = document.getElementById("saveStatus");
-    const backBtn = document.getElementById("backBtn");
-    const retryBtn = document.getElementById("retryBtn");
-    const nextLessonBtn = document.getElementById("nextLessonBtn");
-
-    if (status) status.textContent = passed
-      ? "Result sent to LearnTrack. Saving has not been confirmed."
-      : "Result sent to LearnTrack. Retake the quiz to meet the 80% target.";
-
-    if (backBtn) backBtn.disabled = false;
-    if (retryBtn) retryBtn.disabled = false;
-    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
-
-    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
-    if (backBtn) backBtn.addEventListener("click", () =>
-      window.parent.postMessage({ type: "quizBack" }, "*")
-    );
-    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
-      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-    });
-  }, 1200);
+  const backBtn = document.getElementById("backBtn");
+  const retryBtn = document.getElementById("retryBtn");
+  const nextLessonBtn = document.getElementById("nextLessonBtn");
+  const embedded = window.parent !== window;
+  backBtn.disabled = !embedded;
+  retryBtn.addEventListener("click", retryQuiz);
+  backBtn.addEventListener("click", () => {
+    if (embedded) window.parent.postMessage({ type: "quizBack" }, "*");
+  });
+  nextLessonBtn.addEventListener("click", () => {
+    if (embedded && !nextLessonBtn.disabled) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+  });
 }
 
 function retryQuiz() {
